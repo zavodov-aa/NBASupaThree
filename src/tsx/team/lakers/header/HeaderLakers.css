@@ -1,0 +1,587 @@
+/* .headerLakers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  background: #fdb927;
+  min-width: 280px;
+
+  box-shadow: 0 4px 20px rgba(85, 37, 131, 0.3);
+  position: relative;
+  z-index: 1000;
+  padding: 12px 20px;
+  border-bottom: 3px solid #552583;
+  animation: headerAppear 0.6s ease-out;
+}
+
+
+.headerLakers::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(135deg, #fdb927 0%, #ffd54f 100%);
+  z-index: -1;
+}
+
+.headerLogoLakers {
+  width: 20%;
+  max-width: 200px;
+  min-width: 60px;
+  height: auto;
+  transition: width 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(2px 2px 4px rgba(85, 37, 131, 0.3));
+  transform: translateY(0);
+}
+
+.headerLogoLakers:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(3px 3px 6px rgba(85, 37, 131, 0.4));
+}
+
+.headerNav {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.headerNavLink {
+  background: transparent;
+  border: 2px solid #552583;
+  color: #552583;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(85, 37, 131, 0.2);
+}
+
+.headerNavLink::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  border-radius: 50%;
+}
+
+.headerNavLink:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.headerNavLink::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #552583;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.headerNavLink:hover {
+  background: #fdb927;
+  color: #552583;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(85, 37, 131, 0.4);
+  text-decoration: none;
+}
+
+.headerNavLink:hover::after {
+  width: 70%;
+}
+
+.headerNavLink:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s ease;
+}
+
+.headerNavLink.active {
+  background: #fdb927;
+  color: #552583;
+}
+
+.headerNavLink.active::after {
+  width: 70%;
+}
+
+
+
+@media (max-width: 1024px) {
+  .headerLogoLakers {
+    width: 25%;
+  }
+
+  .headerNavLink {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerLakers {
+  
+    padding: 10px 15px;
+    border-bottom-width: 2px;
+    margin: 0 auto;
+  }
+
+  .headerLakers::before {
+    background: linear-gradient(135deg, #fdb927 0%, #fdb927 100%);
+  }
+
+  .headerLogoLakers {
+    width: 30%;
+    min-width: 70px;
+  }
+
+  .headerNav {
+    gap: 10px;
+  }
+
+  .headerNavLink {
+    padding: 5px 10px;
+    font-size: 13px;
+    border-width: 1.5px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .headerLakers {
+  
+    padding: 8px 10px;
+    border-bottom-width: 1px;
+    margin: 0 auto;
+  }
+
+  .headerLogoLakers {
+    width: 35%;
+    min-width: 60px;
+  }
+
+  .headerNav {
+    gap: 5px;
+  }
+
+  .headerNavLink {
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 15px;
+    border-width: 1px;
+  }
+
+  .headerNavLink:hover::before {
+    display: none; 
+  }
+}
+
+@media (max-width: 360px) {
+  .headerNav {
+    gap: 3px;
+  }
+
+  .headerNavLink {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 280px) {
+  .headerLakers {
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    padding: 6px 8px;
+    margin: 0 auto;
+  }
+
+  .headerLogoLakers {
+    width: 10%;
+    min-width: 50px;
+  }
+
+  .headerNav {
+    gap: 1px;
+  }
+
+  .headerNavLink {
+    padding: 2px 4px;
+    font-size: 8px;
+    border-radius: 10px;
+    letter-spacing: -0.5px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .headerLakers {
+    padding: 15px 30px;
+    box-shadow: 0 6px 30px rgba(85, 37, 131, 0.4);
+    margin: 0 auto;
+  }
+
+  .headerLogoLakers {
+    width: 18%;
+    max-width: 250px;
+  }
+
+  .headerNavLink {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .headerLogoLakers {
+    width: 15%;
+    max-width: 300px;
+  }
+
+  .headerNavLink {
+    padding: 12px 24px;
+    font-size: 20px;
+  }
+}
+
+@keyframes headerAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+.headerLakers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  background: #fdb927;
+  min-width: 280px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(85, 37, 131, 0.3);
+  position: relative;
+  z-index: 1000;
+  padding: 12px 20px;
+  border-bottom: 3px solid #552583;
+  animation: headerAppear 0.6s ease-out;
+}
+
+/* Градиентный фон */
+.headerLakers::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(135deg, #fdb927 0%, #ffd54f 100%);
+  z-index: -1;
+}
+
+.headerLogoLakers {
+  width: 20%;
+  max-width: 200px;
+  min-width: 60px;
+  height: auto;
+  flex-shrink: 0;
+  transition: width 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(2px 2px 4px rgba(85, 37, 131, 0.3));
+  transform: translateY(0);
+}
+
+.headerLogoLakers:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(3px 3px 6px rgba(85, 37, 131, 0.4));
+}
+
+.headerNav {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.headerNavLink {
+  background: transparent;
+  border: 2px solid #552583;
+  color: #552583;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(85, 37, 131, 0.2);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Эффект пульсации при наведении */
+.headerNavLink::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  border-radius: 50%;
+}
+
+.headerNavLink:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Акцентная линия под элементом */
+.headerNavLink::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #552583;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.headerNavLink:hover {
+  background: #fdb927;
+  color: #552583;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(85, 37, 131, 0.4);
+  text-decoration: none;
+}
+
+.headerNavLink:hover::after {
+  width: 70%;
+}
+
+.headerNavLink:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s ease;
+}
+
+.headerNavLink.active {
+  background: #fdb927;
+  color: #552583;
+}
+
+.headerNavLink.active::after {
+  width: 70%;
+}
+
+/* Адаптив */
+
+@media (max-width: 1024px) {
+  .headerLogoLakers {
+    width: 25%;
+  }
+
+  .headerNavLink {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Для планшетов в портретной ориентации */
+@media (max-width: 768px) {
+  .headerLakers {
+    padding: 10px 15px;
+    border-bottom-width: 2px;
+  }
+
+  .headerLakers::before {
+    background: linear-gradient(135deg, #fdb927 0%, #fdb927 100%);
+  }
+
+  .headerLogoLakers {
+    width: 30%;
+    min-width: 70px;
+  }
+
+  .headerNav {
+    gap: 10px;
+  }
+
+  .headerNavLink {
+    padding: 5px 10px;
+    font-size: 13px;
+    border-width: 1.5px;
+  }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 480px) {
+  .headerLakers {
+    padding: 8px 10px;
+    border-bottom-width: 1px;
+  }
+
+  .headerLogoLakers {
+    width: 35%;
+    min-width: 60px;
+  }
+
+  .headerNav {
+    gap: 5px;
+  }
+
+  .headerNavLink {
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 15px;
+    border-width: 1px;
+  }
+
+  .headerNavLink:hover::before {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .headerLakers {
+    flex-wrap: nowrap;
+    padding: 6px 8px;
+  }
+
+  .headerNav {
+    gap: 3px;
+  }
+
+  .headerNavLink {
+    padding: 3px 5px;
+    font-size: 10px;
+    border-radius: 12px;
+  }
+}
+
+/* Для минимальной ширины 320px */
+@media (max-width: 320px) {
+  .headerLakers {
+    padding: 5px 6px;
+    min-width: 280px;
+  }
+
+  .headerLogoLakers {
+    width: 25%;
+    min-width: 50px;
+  }
+
+  .headerNav {
+    gap: 2px;
+  }
+
+  .headerNavLink {
+    padding: 2px 4px;
+    font-size: 9px;
+    border-radius: 10px;
+    border-width: 1px;
+  }
+}
+
+/* Для крайне маленьких экранов (минимальный предел) */
+@media (max-width: 280px) {
+  .headerLakers {
+    padding: 4px 5px;
+    min-width: 280px;
+    overflow: hidden;
+  }
+
+  .headerLogoLakers {
+    width: 20%;
+    min-width: 45px;
+    max-width: 50px;
+  }
+
+  .headerNav {
+    gap: 1px;
+    flex-wrap: nowrap;
+  }
+
+  .headerNavLink {
+    padding: 2px 3px;
+    font-size: 8px;
+    border-radius: 8px;
+    letter-spacing: -0.3px;
+    min-width: 50px;
+  }
+}
+
+/* Для больших экранов */
+@media (min-width: 1400px) {
+  .headerLakers {
+    padding: 15px 30px;
+    box-shadow: 0 6px 30px rgba(85, 37, 131, 0.4);
+  }
+
+  .headerLogoLakers {
+    width: 18%;
+    max-width: 250px;
+  }
+
+  .headerNavLink {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .headerLogoLakers {
+    width: 15%;
+    max-width: 300px;
+  }
+
+  .headerNavLink {
+    padding: 12px 24px;
+    font-size: 20px;
+  }
+}
+
+/* Анимация появления */
+@keyframes headerAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

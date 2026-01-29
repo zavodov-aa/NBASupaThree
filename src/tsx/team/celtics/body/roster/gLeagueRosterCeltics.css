@@ -1,0 +1,125 @@
+.celtics-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-celtics {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-celtics {
+  color: #008348;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-celtics {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-celtics {
+  overflow-x: auto;
+}
+
+.players-table-celtics {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-celtics {
+  background: black;
+}
+
+.table-th-celtics {
+  padding: 15px 10px;
+  color: white;
+
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-celtics:last-child {
+}
+
+.table-body-celtics {
+  background: white;
+}
+
+.tables-row-celtics {
+}
+
+.row-even-celtics {
+  background: black;
+}
+
+.row-odd-celtics {
+}
+
+.table-tdw-celtics {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+
+  color: white;
+}
+.table-tdw-celtics {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+
+  color: black;
+}
+
+.player-id-celtics {
+  color: black;
+
+  font-weight: bold;
+}
+
+.player-position-celtics {
+  font-weight: bold;
+
+  color: white;
+}
+
+.player-age-celtics {
+  color: #008348;
+  font-weight: bold;
+}
+
+.roster-badge-celtics {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-celtics {
+  color: white;
+}
+
+.badge-inactive-celtics {
+  color: black;
+}
+
+.loading-text-celtics {
+  text-align: center;
+  color: #008348;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-celtics {
+  background-color: rgba(0, 0, 0, 0.637); /* Фиолетовый цвет */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-celtics {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

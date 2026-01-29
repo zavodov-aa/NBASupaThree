@@ -1,0 +1,156 @@
+.rosterNuggets {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerNuggets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerNuggets h1 {
+  color: #0d2240; /* Основной синий цвет Denver Nuggets */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleNuggets {
+  color: #fec524; /* Золотой/желтый цвет Denver Nuggets */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerNuggets {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #0d2240; /* Основной синий */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableNuggets {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableNuggets thead {
+  background: #0d2240; /* Основной синий */
+}
+
+.roster-tableNuggets th {
+  padding: 15px 10px;
+  color: #fec524; /* Золотой текст */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.roster-tableNuggets th.highlight {
+}
+
+.roster-tableNuggets tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableNuggets tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableNuggets tbody tr:hover {
+  background: white;
+}
+
+.roster-tableNuggets td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(13, 34, 64, 0.3); /* Синий с прозрачностью */
+  color: #000;
+}
+
+.roster-tableNuggets .franchiseNuggets {
+  background: rgba(13, 34, 64, 0.8) !important; /* Темно-синий фон */
+}
+
+.roster-tableNuggets .franchiseNuggets td {
+  color: #fec524; /* Золотой текст */
+  font-weight: bold;
+}
+
+.number-cellNuggets {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starNuggets {
+  color: #fec524; /* Золотая звезда */
+  font-size: 1.2em;
+}
+
+.player-tagNuggets {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingNuggets {
+  text-align: center;
+  color: #0d2240; /* Синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateNuggets {
+  text-align: center;
+  padding: 40px;
+  color: #0d2240; /* Синий */
+}
+
+.empty-iconNuggets {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleNuggets {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleNuggets {
+  opacity: 0.8;
+}
+
+.franchise-colorNuggets {
+  background: #0d2240; /* Синий */
+}
+
+.salary-colorNuggets {
+  background: #0d2240; /* Синий */
+}
+
+@media (max-width: 768px) {
+  .rosterNuggets {
+    padding: 10px;
+  }
+
+  .roster-headerNuggets h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleNuggets {
+    font-size: 1rem;
+  }
+
+  .roster-tableNuggets th,
+  .roster-tableNuggets td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

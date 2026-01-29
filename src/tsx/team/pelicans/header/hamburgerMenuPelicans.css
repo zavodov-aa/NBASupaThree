@@ -1,0 +1,147 @@
+.hamburgerButtonPelicans {
+  position: relative;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.hamburgerButtonPelicans span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+  margin: 2px;
+}
+
+@media (max-width: 280px) {
+  .hamburgerButtonPelicans span {
+    width: 20px;
+    height: 2.5px;
+    margin: 1.5px;
+  }
+}
+
+.hamburgerButtonPelicans.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #c8102e; /* Красный цвет Pelicans */
+}
+.hamburgerButtonPelicans.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButtonPelicans.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #c8102e; /* Красный цвет Pelicans */
+}
+
+/* Полноэкранное меню */
+.fullscreenMenuPelicans {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0c2340; /* Синий цвет Pelicans */
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.fullscreenMenuPelicans.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Содержимое меню */
+.menuContentPelicans {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 280px;
+}
+
+.menuContentHPelicans {
+  color: #c8102e; /* Красный цвет Pelicans */
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.menuContentPelicans a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.menuContentPelicans a:hover {
+  color: #c8102e; /* Красный цвет Pelicans */
+  background-color: rgba(200, 16, 46, 0.1); /* Красный с прозрачностью */
+  border-radius: 5px;
+}
+
+/* Адаптив для меню */
+@media (max-width: 768px) {
+  .menuContentHPelicans {
+    font-size: 1.3rem;
+  }
+
+  .menuContentPelicans a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuContentHPelicans {
+    font-size: 1.1rem;
+  }
+
+  .menuContentPelicans a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .menuContentHPelicans {
+    font-size: 1rem;
+  }
+
+  .menuContentPelicans a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 280px) {
+  .menuContentPelicans {
+    padding: 15px;
+    gap: 1rem;
+  }
+
+  .menuContentHPelicans {
+    font-size: 0.9rem;
+  }
+
+  .menuContentPelicans a {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

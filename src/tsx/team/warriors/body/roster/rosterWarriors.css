@@ -1,0 +1,155 @@
+.rosterWarriors {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerWarriors {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerWarriors h1 {
+  color: #1D428A; /* Warriors blue */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleWarriors {
+  color: #FFC72C; /* Warriors yellow */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerWarriors {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #1D428A; /* Warriors blue */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableWarriors {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableWarriors thead {
+  background: #1D428A; /* Warriors blue */
+}
+
+.roster-tableWarriors th {
+  padding: 15px 10px;
+  color: #FFC72C; /* Warriors yellow */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.roster-tableWarriors tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableWarriors tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableWarriors tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.roster-tableWarriors td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(29, 66, 138, 0.3); /* Warriors blue with transparency */
+  color: #000;
+}
+
+.roster-tableWarriors .franchiseWarriors {
+  background: rgba(29, 66, 138, 0.1) !important; /* Warriors blue with transparency */
+}
+
+.roster-tableWarriors .franchiseWarriors td {
+  color: #1D428A; /* Warriors blue */
+  font-weight: bold;
+}
+
+.number-cellWarriors {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starWarriors {
+  color: #1D428A; /* Warriors blue */
+  font-size: 1.2em;
+}
+
+.player-tagWarriors {
+  padding: 4px 8px;
+  background: #1D428A; /* Warriors blue */
+  color: #FFC72C; /* Warriors yellow */
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingWarriors {
+  text-align: center;
+  color: #1D428A; /* Warriors blue */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateWarriors {
+  text-align: center;
+  padding: 40px;
+  color: #1D428A; /* Warriors blue */
+}
+
+.empty-iconWarriors {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleWarriors {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleWarriors {
+  opacity: 0.8;
+}
+
+.franchise-colorWarriors {
+  background: #1D428A; /* Warriors blue */
+}
+
+.salary-colorWarriors {
+  background: #FFC72C; /* Warriors yellow */
+}
+
+@media (max-width: 768px) {
+  .rosterWarriors {
+    padding: 10px;
+  }
+
+  .roster-headerWarriors h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleWarriors {
+    font-size: 1rem;
+  }
+
+  .roster-tableWarriors th,
+  .roster-tableWarriors td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

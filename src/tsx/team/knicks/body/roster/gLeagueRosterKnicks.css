@@ -1,0 +1,118 @@
+.knicks-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-knicks {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-knicks {
+  color: #0065b3; /* Knicks синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-knicks {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-knicks {
+  overflow-x: auto;
+}
+
+.players-table-knicks {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-knicks {
+  background: black;
+}
+
+.table-th-knicks {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-body-knicks {
+  background: white;
+}
+
+.tables-row-knicks {
+}
+
+.row-even-knicks {
+  background: black;
+}
+
+.row-odd-knicks {
+}
+
+.table-tdw-knicks {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-td-knicks {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-knicks {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-knicks {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-knicks {
+  color: #f58426; /* Knicks оранжевый */
+  font-weight: bold;
+}
+
+.roster-badge-knicks {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-knicks {
+  color: white;
+}
+
+.badge-inactive-knicks {
+  color: black;
+}
+
+.loading-text-knicks {
+  text-align: center;
+  color: #0065b3; /* Knicks синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-knicks {
+  background-color: rgba(0, 101, 179, 0.637); /* Knicks синий с прозрачностью */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-knicks {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

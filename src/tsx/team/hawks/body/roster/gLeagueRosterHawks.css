@@ -1,0 +1,125 @@
+.hawks-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-hawks {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-hawks {
+  color: #e03a3e;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-hawks {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-hawks {
+  overflow-x: auto;
+}
+
+.players-table-hawks {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-hawks {
+  background: black;
+}
+
+.table-th-hawks {
+  padding: 15px 10px;
+  color: white;
+
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-hawks:last-child {
+}
+
+.table-body-hawks {
+  background: white;
+}
+
+.tables-row-hawks {
+}
+
+.row-even-hawks {
+  background: black;
+}
+
+.row-odd-hawks {
+}
+
+.table-tdw-hawks {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+
+  color: white;
+}
+.table-tdw-hawks {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+
+  color: black;
+}
+
+.player-id-hawks {
+  color: black;
+
+  font-weight: bold;
+}
+
+.player-position-hawks {
+  font-weight: bold;
+
+  color: white;
+}
+
+.player-age-hawks {
+  color: #e03a3e;
+  font-weight: bold;
+}
+
+.roster-badge-hawks {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-hawks {
+  color: white;
+}
+
+.badge-inactive-hawks {
+  color: black;
+}
+
+.loading-text-hawks {
+  text-align: center;
+  color: #e03a3e;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-hawks {
+  background-color: rgba(0, 0, 0, 0.637); /* Фиолетовый цвет */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-hawks {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

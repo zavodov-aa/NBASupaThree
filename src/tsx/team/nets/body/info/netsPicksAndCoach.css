@@ -1,0 +1,288 @@
+.nets-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-nets {
+  color: #000000; /* Brooklyn Nets black */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Основной контейнер карточки */
+.nets-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #c0c0c0; /* Brooklyn Nets silver */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.nets-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #000000, #c0c0c0); /* Black to Silver */
+}
+
+/* Контейнер для горизонтального расположения */
+.nets-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .nets-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .nets-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.nets-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Black with opacity */
+}
+
+.nets-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1),
+    /* Black with opacity */ rgba(192, 192, 192, 0.05) /* Silver with opacity */
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nets-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #000000; /* Black */
+  text-transform: uppercase;
+}
+
+.nets-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nets-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.nets-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.nets-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.nets-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.nets-pick-year {
+  background: linear-gradient(
+    135deg,
+    #000000,
+    #333333
+  ); /* Dark gray gradient */
+  color: white; /* White text for contrast */
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-nets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-nets:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.pick-item-nets:last-child {
+  border-bottom: none;
+}
+
+.pick-round-nets {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-nets {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.nets-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.nets-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.nets-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.coach-item-nets {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-nets:hover {
+  background: rgba(192, 192, 192, 0.05); /* Silver hover */
+}
+
+.coach-item-nets:last-child {
+  border-bottom: none;
+}
+
+.coach-position-nets {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-nets {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.nets-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.color-dot-nets {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.black-dark-nets {
+  background: #000000; /* Black */
+}
+.black-nets {
+  background: #333333; /* Dark Gray */
+}
+.gray-dark-nets {
+  background: #666666; /* Medium Gray */
+}
+.silver-nets {
+  background: #c0c0c0; /* Silver */
+}
+.silver-light-nets {
+  background: #e0e0e0; /* Light Silver */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .nets-containers {
+    padding: 16px;
+  }
+
+  .header-title-nets {
+    font-size: 2rem;
+  }
+
+  .nets-picks-grid,
+  .nets-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nets-pick-column:not(:last-child)::after,
+  .nets-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .nets-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-nets,
+  .coach-item-nets {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text {
+  color: #ff4444;
+}

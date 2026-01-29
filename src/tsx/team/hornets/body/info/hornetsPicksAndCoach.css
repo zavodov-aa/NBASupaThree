@@ -1,0 +1,285 @@
+/* hornetsPicksAndCoach.css */
+.hornets-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content-hornets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-hornets {
+  color: #00788c;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.hornets-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #6cbabf;
+  box-shadow: 0 8px 24px rgba(0, 120, 140, 0.15);
+}
+
+.hornets-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00788c, #6cbabf);
+}
+
+/* Контейнер для горизонтального расположения */
+.hornets-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .hornets-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .hornets-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.hornets-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(0, 120, 140, 0.2);
+}
+
+.hornets-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 120, 140, 0.1),
+    rgba(108, 186, 191, 0.05)
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 120, 140, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hornets-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #1d1160;
+  text-transform: uppercase;
+}
+
+.hornets-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hornets-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.hornets-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.hornets-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hornets-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 120, 140, 0.1);
+}
+
+.hornets-pick-year {
+  background: linear-gradient(135deg, #00788c, #6cbabf);
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-hornets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 120, 140, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-hornets:hover {
+  background: rgba(0, 120, 140, 0.05);
+}
+
+.pick-item-hornets:last-child {
+  border-bottom: none;
+}
+
+.pick-round-hornets {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-hornets {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.hornets-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.hornets-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hornets-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 120, 140, 0.1);
+}
+
+.coach-item-hornets {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 120, 140, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-hornets:hover {
+  background: rgba(108, 186, 191, 0.05);
+}
+
+.coach-item-hornets:last-child {
+  border-bottom: none;
+}
+
+.coach-position-hornets {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-hornets {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.hornets-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 120, 140, 0.1);
+}
+
+.color-dot-hornets {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.teal-hornets {
+  background: #00788c;
+}
+.purple-dark-hornets {
+  background: #1d1160;
+}
+.purple-hornets {
+  background: #4a2c6d;
+}
+.blue-hornets {
+  background: #6cbabf;
+}
+.gray-hornets {
+  background: #a1a1a4;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .hornets-containers {
+    padding: 16px;
+  }
+
+  .header-title-hornets {
+    font-size: 2rem;
+  }
+
+  .hornets-picks-grid,
+  .hornets-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hornets-pick-column:not(:last-child)::after,
+  .hornets-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .hornets-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-hornets,
+  .coach-item-hornets {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text-hornets,
+.error-text-hornets {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text-hornets {
+  color: #ff4444;
+}

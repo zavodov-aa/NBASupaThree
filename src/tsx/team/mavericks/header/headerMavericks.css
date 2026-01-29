@@ -1,0 +1,301 @@
+.headerMavericks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  background: #0053bc; /* Dallas Mavericks blue */
+  min-width: 280px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 83, 188, 0.3);
+  position: relative;
+  z-index: 1000;
+  padding: 12px 20px;
+  border-bottom: 3px solid #00285e; /* Darker blue border */
+  animation: headerAppear 0.6s ease-out;
+}
+
+.headerMavericks::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(135deg, #0053bc 0%, #0066e6 100%);
+  z-index: -1;
+}
+
+.headerLogoMavericks {
+  width: 20%;
+  max-width: 200px;
+  min-width: 60px;
+  height: auto;
+  flex-shrink: 0;
+  transition: width 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(2px 2px 4px rgba(0, 40, 94, 0.3));
+  transform: translateY(0);
+}
+
+.headerLogoMavericks:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(3px 3px 6px rgba(0, 40, 94, 0.4));
+}
+
+.headerNavMavericks {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.headerNavLinkMavericks {
+  background: transparent;
+  border: 2px solid #ffffff; /* White border */
+  color: #ffffff; /* White text */
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 40, 94, 0.2);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.headerNavLinkMavericks::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  border-radius: 50%;
+}
+
+.headerNavLinkMavericks:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.headerNavLinkMavericks::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ffffff; /* White underline */
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.headerNavLinkMavericks:hover {
+  background: #8d9093; /* Mavericks silver */
+  color: #000000; /* Black text on hover */
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 40, 94, 0.4);
+  text-decoration: none;
+}
+
+.headerNavLinkMavericks:hover::after {
+  width: 70%;
+}
+
+.headerNavLinkMavericks:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s ease;
+}
+
+.headerNavLinkMavericks.active {
+  background: #8d9093; /* Mavericks silver */
+  color: #000000; /* Black text for active state */
+}
+
+.headerNavLinkMavericks.active::after {
+  width: 70%;
+}
+
+@media (max-width: 1024px) {
+  .headerLogoMavericks {
+    width: 25%;
+  }
+
+  .headerNavLinkMavericks {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Для планшетов в портретной ориентации */
+@media (max-width: 768px) {
+  .headerMavericks {
+    padding: 10px 15px;
+    border-bottom-width: 2px;
+  }
+
+  .headerMavericks::before {
+    background: linear-gradient(135deg, #0053bc 0%, #0066e6 100%);
+  }
+
+  .headerLogoMavericks {
+    width: 30%;
+    min-width: 70px;
+  }
+
+  .headerNavMavericks {
+    gap: 10px;
+  }
+
+  .headerNavLinkMavericks {
+    padding: 5px 10px;
+    font-size: 13px;
+    border-width: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerMavericks {
+    padding: 8px 10px;
+    border-bottom-width: 1px;
+  }
+
+  .headerLogoMavericks {
+    width: 35%;
+    min-width: 60px;
+  }
+
+  .headerNavMavericks {
+    gap: 5px;
+  }
+
+  .headerNavLinkMavericks {
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 15px;
+    border-width: 1px;
+  }
+
+  .headerNavLinkMavericks:hover::before {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .headerMavericks {
+    flex-wrap: nowrap;
+    padding: 6px 8px;
+  }
+
+  .headerNavMavericks {
+    gap: 3px;
+  }
+
+  .headerNavLinkMavericks {
+    padding: 3px 5px;
+    font-size: 10px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .headerMavericks {
+    padding: 5px 6px;
+    min-width: 280px;
+  }
+
+  .headerLogoMavericks {
+    width: 25%;
+    min-width: 50px;
+  }
+
+  .headerNavMavericks {
+    gap: 2px;
+  }
+
+  .headerNavLinkMavericks {
+    padding: 2px 4px;
+    font-size: 9px;
+    border-radius: 10px;
+    border-width: 1px;
+  }
+}
+
+@media (max-width: 260px) {
+  .headerMavericks {
+    padding: 4px 5px;
+    min-width: 280px;
+    overflow: hidden;
+  }
+
+  .headerLogoMavericks {
+    width: 20%;
+    min-width: 45px;
+    max-width: 50px;
+  }
+
+  .headerNavMavericks {
+    gap: 1px;
+    flex-wrap: nowrap;
+  }
+
+  .headerNavLinkMavericks {
+    padding: 2px 3px;
+    font-size: 8px;
+    border-radius: 8px;
+    letter-spacing: -0.3px;
+    min-width: 50px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .headerMavericks {
+    padding: 15px 30px;
+    box-shadow: 0 6px 30px rgba(0, 40, 94, 0.4);
+  }
+
+  .headerLogoMavericks {
+    width: 18%;
+    max-width: 250px;
+  }
+
+  .headerNavLinkMavericks {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .headerLogoMavericks {
+    width: 15%;
+    max-width: 300px;
+  }
+
+  .headerNavLinkMavericks {
+    padding: 12px 24px;
+    font-size: 20px;
+  }
+}
+
+@keyframes headerAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

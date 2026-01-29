@@ -1,0 +1,285 @@
+.cavaliers-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-cavaliers {
+  color: #860038; /* Wine color */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.cavaliers-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #fdbb30; /* Gold color */
+  box-shadow: 0 8px 24px rgba(134, 0, 56, 0.15); /* Wine color with opacity */
+}
+
+.cavaliers-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #860038, #fdbb30); /* Wine to Gold */
+}
+
+/* Контейнер для горизонтального расположения */
+.cavaliers-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .cavaliers-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .cavaliers-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.cavaliers-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(134, 0, 56, 0.2); /* Wine color with opacity */
+}
+
+.cavaliers-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(134, 0, 56, 0.1),
+    /* Wine */ rgba(253, 187, 48, 0.05) /* Gold */
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(134, 0, 56, 0.1); /* Wine color with opacity */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cavaliers-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #860038; /* Wine color */
+  text-transform: uppercase;
+}
+
+.cavaliers-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cavaliers-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.cavaliers-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.cavaliers-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.cavaliers-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(134, 0, 56, 0.1); /* Wine color with opacity */
+}
+
+.cavaliers-pick-year {
+  background: linear-gradient(135deg, #860038, #b3004b); /* Wine gradient */
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-cavaliers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(134, 0, 56, 0.1); /* Wine color with opacity */
+  transition: background 0.2s ease;
+}
+
+.pick-item-cavaliers:hover {
+  background: rgba(134, 0, 56, 0.05); /* Wine color with opacity */
+}
+
+.pick-item-cavaliers:last-child {
+  border-bottom: none;
+}
+
+.pick-round-cavaliers {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-cavaliers {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.cavaliers-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.cavaliers-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.cavaliers-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(134, 0, 56, 0.1); /* Wine color with opacity */
+}
+
+.coach-item-cavaliers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(134, 0, 56, 0.1); /* Wine color with opacity */
+  transition: background 0.2s ease;
+}
+
+.coach-item-cavaliers:hover {
+  background: rgba(253, 187, 48, 0.05); /* Gold color with opacity */
+}
+
+.coach-item-cavaliers:last-child {
+  border-bottom: none;
+}
+
+.coach-position-cavaliers {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-cavaliers {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.cavaliers-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(134, 0, 56, 0.1); /* Wine color with opacity */
+}
+
+.color-dot-cavaliers {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.wine-dark-cavaliers {
+  background: #6b0030; /* Dark Wine */
+}
+.wine-cavaliers {
+  background: #860038; /* Wine */
+}
+.gold-cavaliers {
+  background: #fdbb30; /* Gold */
+}
+.navy-cavaliers {
+  background: #041e42; /* Navy */
+}
+.white-cavaliers {
+  background: #ffffff;
+  border: 1px solid #ccc;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .cavaliers-containers {
+    padding: 16px;
+  }
+
+  .header-title-cavaliers {
+    font-size: 2rem;
+  }
+
+  .cavaliers-picks-grid,
+  .cavaliers-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cavaliers-pick-column:not(:last-child)::after,
+  .cavaliers-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .cavaliers-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-cavaliers,
+  .coach-item-cavaliers {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text {
+  color: #ff4444;
+}

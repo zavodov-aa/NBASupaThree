@@ -1,0 +1,125 @@
+.warriors-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-contents-warriors {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-titles-warriors {
+  color: #1d428a; /* Warriors Royal Blue */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containers-warriors {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrappers-warriors {
+  overflow-x: auto;
+}
+
+.players-tables-warriors {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headers-warriors {
+  background: black;
+}
+
+.table-ths-warriors {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-ths-warriors:last-child {
+  border-right: none;
+}
+
+.table-bodys-warriors {
+}
+
+.table-rows-warriors {
+  transition: background-color 0.3s;
+}
+
+.table-rows-warriors:hover {
+}
+
+.row-evens-warriors {
+  background: white;
+}
+
+.row-odds-warriors {
+  background: white;
+}
+
+.table-tds-warriors {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-ids-warriors {
+  color: black;
+  font-weight: bold;
+}
+
+.player-positions-warriors {
+  font-weight: bold;
+  color: black;
+}
+
+.player-ages-warriors {
+  color: black;
+  font-weight: bold;
+}
+
+.roster-badges-warriors {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-actives-warriors {
+  color: black;
+}
+
+.badge-inactives-warriors {
+  background: #6b7280;
+  color: white;
+}
+
+.loading-texts-warriors {
+  text-align: center;
+  color: #1d428a; /* Warriors Royal Blue */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.special-players-warriors {
+  background: linear-gradient(
+    135deg,
+    #1d428a,
+    #ffc72c
+  ) !important; /* Warriors Blue & Yellow */
+}
+
+.special-players-warriors .table-tds-warriors {
+  color: white;
+  font-weight: bold;
+}

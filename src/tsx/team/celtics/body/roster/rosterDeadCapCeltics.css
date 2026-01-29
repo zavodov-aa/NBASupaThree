@@ -1,0 +1,125 @@
+.celtics-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-contents-celtics {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-titles-celtics {
+  color: #008348;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containers-celtics {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrappers-celtics {
+  overflow-x: auto;
+}
+
+.players-tables-celtics {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headers-celtics {
+  background: black;
+}
+
+.table-ths-celtics {
+  padding: 15px 10px;
+
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-ths-celtics:last-child {
+  border-right: none;
+}
+
+.table-bodys-celtics {
+}
+
+.table-rows-celtics {
+  transition: background-color 0.3s;
+}
+
+.table-rows-celtics:hover {
+}
+
+.row-evens-celtics {
+  background: white;
+}
+
+.row-odds-celtics {
+  /* background-color: rgb(86, 37, 131); */
+  background: white;
+}
+
+.table-tds-celtics {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+
+  color: black;
+}
+
+.player-ids-celtics {
+  color: black;
+  font-weight: bold;
+}
+
+.player-positions-celtics {
+  font-weight: bold;
+  color: black;
+}
+
+.player-ages-celtics {
+  color: black;
+  font-weight: bold;
+}
+
+.roster-badges-celtics {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-actives-celtics {
+  color: black;
+}
+
+.badge-inactives-celtics {
+  background: #6b7280;
+  color: white;
+}
+
+.loading-texts-celtics {
+  text-align: center;
+  color: #008348;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.special-players-celtics {
+  /* background: linear-gradient(135deg, #fdb927, #552583) !important; */
+  background: rgba(0, 0, 0, 0.637) !important;
+}
+
+.special-players-celtics .table-tds-celtics {
+  color: white;
+  font-weight: bold;
+}

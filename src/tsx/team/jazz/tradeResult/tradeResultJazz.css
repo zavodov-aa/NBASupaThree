@@ -1,0 +1,803 @@
+/* Стили только для компонента TradeResultJazz */
+
+.resultJazz-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultJazz-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultJazz-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #002b5c; /* Utah Jazz Navy */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultJazz-button:hover:not(:disabled) {
+  background: #00471b; /* Utah Jazz Green */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultJazz-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultJazz-button--hasNotifications {
+  background: linear-gradient(135deg, #002b5c 0%, #00471b 100%);
+}
+
+.resultJazz-notificationCount {
+  background: #f9a01b; /* Utah Jazz Yellow */
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultJazz-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultJazz-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultJazz-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #002b5c; /* Utah Jazz Navy */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultJazz-modalHeader {
+  background: #002b5c; /* Utah Jazz Navy */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #f9a01b; /* Utah Jazz Yellow */
+}
+
+.resultJazz-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultJazz-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultJazz-teamLogo::before {
+  content: "UTA";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #002b5c; /* Utah Jazz Navy */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultJazz-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultJazz-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultJazz-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultJazz-tradePartner {
+  color: #f9a01b; /* Utah Jazz Yellow */
+  font-weight: 500;
+}
+
+.resultJazz-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultJazz-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultJazz-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultJazz-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultJazz-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultJazz-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultJazz-tradesList {
+  padding: 24px;
+}
+
+.resultJazz-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultJazz-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultJazz-tradeHeader {
+  background: rgba(0, 43, 92, 0.05); /* Utah Jazz Navy with opacity */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultJazz-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultJazz-tradeNumber {
+  font-weight: 600;
+  color: #002b5c; /* Utah Jazz Navy */
+  font-size: 15px;
+}
+
+.resultJazz-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultJazz-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultJazz-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultJazz-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultJazz-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #002b5c; /* Utah Jazz Navy */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultJazz-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultJazz-exchangeArrow {
+  font-size: 28px;
+  color: #f9a01b; /* Utah Jazz Yellow */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultJazz-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultJazz-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultJazz-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultJazz-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultJazz-tradeSection--team1 {
+  border-left: 3px solid #002b5c; /* Utah Jazz Navy */
+}
+
+.resultJazz-tradeSection--team2 {
+  border-left: 3px solid #f9a01b; /* Utah Jazz Yellow */
+}
+
+.resultJazz-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultJazz-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultJazz-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultJazz-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultJazz-countBadge--players {
+  background: rgba(0, 43, 92, 0.1); /* Utah Jazz Navy with opacity */
+  color: #002b5c; /* Utah Jazz Navy */
+  border: 1px solid rgba(0, 43, 92, 0.2);
+}
+
+.resultJazz-countBadge--picks {
+  background: rgba(249, 160, 27, 0.1); /* Utah Jazz Yellow with opacity */
+  color: #f9a01b; /* Utah Jazz Yellow */
+  border: 1px solid rgba(249, 160, 27, 0.2);
+}
+
+.resultJazz-sectionContent {
+  padding: 16px;
+}
+
+.resultJazz-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultJazz-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultJazz-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultJazz-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultJazz-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultJazz-playerCard--active {
+  border-left-color: #002b5c; /* Utah Jazz Navy */
+}
+
+.resultJazz-playerCard--gleague {
+  border-left-color: #f9a01b; /* Utah Jazz Yellow */
+}
+
+.resultJazz-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultJazz-playerNameSection {
+  flex: 1;
+}
+
+.resultJazz-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultJazz-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultJazz-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultJazz-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultJazz-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultJazz-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultJazz-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultJazz-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultJazz-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultJazz-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultJazz-teamLabel {
+  color: #666666;
+}
+
+.resultJazz-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultJazz-tradeNote {
+  background: rgba(249, 160, 27, 0.05); /* Utah Jazz Yellow with opacity */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(249, 160, 27, 0.2);
+}
+
+.resultJazz-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultJazz-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultJazz-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultJazz-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultJazz-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultJazz-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultJazz-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultJazz-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultJazz-actionButton--accept {
+  background: #f9a01b; /* Utah Jazz Yellow */
+  color: #000000;
+}
+
+.resultJazz-actionButton--accept:hover:not(:disabled) {
+  background: #e69010;
+}
+
+.resultJazz-actionButton--reject {
+  background: #002b5c; /* Utah Jazz Navy */
+  color: #ffffff;
+}
+
+.resultJazz-actionButton--reject:hover:not(:disabled) {
+  background: #00471b; /* Utah Jazz Green */
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultJazz-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultJazz-closeAllButton {
+  background: #002b5c; /* Utah Jazz Navy */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultJazz-closeAllButton:hover {
+  background: #00471b; /* Utah Jazz Green */
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultJazz-modal {
+    max-height: 90vh;
+  }
+
+  .resultJazz-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultJazz-tradesList {
+    padding: 16px;
+  }
+
+  .resultJazz-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultJazz-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultJazz-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultJazz-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultJazz-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultJazz-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultJazz-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultJazz-tradeSummary,
+  .resultJazz-tradeSection,
+  .resultJazz-tradeNote,
+  .resultJazz-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultJazz-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultJazz-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultJazz-modalHeader {
+    padding: 16px;
+  }
+
+  .resultJazz-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultJazz-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultJazz-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultJazz-statValue {
+    font-size: 28px;
+  }
+
+  .resultJazz-statLabel {
+    font-size: 12px;
+  }
+
+  .resultJazz-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultJazz-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultJazz-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultJazz-modal {
+    max-height: 95vh;
+  }
+
+  .resultJazz-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultJazz-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultJazz-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultJazz-statValue {
+    font-size: 24px;
+  }
+
+  .resultJazz-playerName,
+  .resultJazz-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultJazz-noteContent {
+    font-size: 13px;
+  }
+
+  .resultJazz-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultJazz-container .resultJazz-modal {
+    background: #1a1a1a;
+    border-color: #002b5c; /* Utah Jazz Navy */
+  }
+
+  .resultJazz-container .resultJazz-tradeItem,
+  .resultJazz-container .resultJazz-playerCard,
+  .resultJazz-container .resultJazz-draftPickCard,
+  .resultJazz-container .resultJazz-tradeSummary,
+  .resultJazz-container .resultJazz-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultJazz-container .resultJazz-playerName,
+  .resultJazz-container .resultJazz-statLabel,
+  .resultJazz-container .resultJazz-sectionTitle,
+  .resultJazz-container .resultJazz-noteTitle,
+  .resultJazz-container .resultJazz-teamName,
+  .resultJazz-container .resultJazz-pickYearRound,
+  .resultJazz-container .resultJazz-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultJazz-container .resultJazz-playerType,
+  .resultJazz-container .resultJazz-pickType,
+  .resultJazz-container .resultJazz-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultJazz-container .resultJazz-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultJazz-container .resultJazz-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

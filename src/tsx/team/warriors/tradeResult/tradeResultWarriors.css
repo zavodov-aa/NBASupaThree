@@ -1,0 +1,803 @@
+/* Стили только для компонента TradeResultWarriors */
+
+.resultWarriors-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultWarriors-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultWarriors-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #1d428a; /* Основной синий цвет Warriors */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultWarriors-button:hover:not(:disabled) {
+  background: #003da5; /* Темно-синий Warriors */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultWarriors-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultWarriors-button--hasNotifications {
+  background: linear-gradient(135deg, #1d428a 0%, #003da5 100%);
+}
+
+.resultWarriors-notificationCount {
+  background: #ffc72c; /* Золотой цвет Warriors */
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultWarriors-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultWarriors-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultWarriors-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #1d428a; /* Основной синий цвет Warriors */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultWarriors-modalHeader {
+  background: #1d428a; /* Основной синий цвет Warriors */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #ffc72c; /* Золотой цвет Warriors */
+}
+
+.resultWarriors-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultWarriors-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultWarriors-teamLogo::before {
+  content: "GSW";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #1d428a;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultWarriors-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultWarriors-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultWarriors-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultWarriors-tradePartner {
+  color: #ffc72c; /* Золотой цвет Warriors */
+  font-weight: 500;
+}
+
+.resultWarriors-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultWarriors-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultWarriors-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultWarriors-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultWarriors-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultWarriors-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultWarriors-tradesList {
+  padding: 24px;
+}
+
+.resultWarriors-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultWarriors-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultWarriors-tradeHeader {
+  background: rgba(29, 66, 138, 0.05); /* Прозрачный синий Warriors */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultWarriors-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultWarriors-tradeNumber {
+  font-weight: 600;
+  color: #1d428a; /* Основной синий цвет Warriors */
+  font-size: 15px;
+}
+
+.resultWarriors-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultWarriors-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultWarriors-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultWarriors-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultWarriors-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1d428a; /* Основной синий цвет Warriors */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultWarriors-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultWarriors-exchangeArrow {
+  font-size: 28px;
+  color: #ffc72c; /* Золотой цвет Warriors */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultWarriors-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultWarriors-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultWarriors-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultWarriors-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultWarriors-tradeSection--team1 {
+  border-left: 3px solid #1d428a; /* Основной синий цвет Warriors */
+}
+
+.resultWarriors-tradeSection--team2 {
+  border-left: 3px solid #ffc72c; /* Золотой цвет Warriors */
+}
+
+.resultWarriors-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultWarriors-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultWarriors-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultWarriors-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultWarriors-countBadge--players {
+  background: rgba(29, 66, 138, 0.1); /* Прозрачный синий Warriors */
+  color: #1d428a; /* Основной синий цвет Warriors */
+  border: 1px solid rgba(29, 66, 138, 0.2);
+}
+
+.resultWarriors-countBadge--picks {
+  background: rgba(255, 199, 44, 0.1); /* Прозрачный золотой Warriors */
+  color: #ffc72c; /* Золотой цвет Warriors */
+  border: 1px solid rgba(255, 199, 44, 0.2);
+}
+
+.resultWarriors-sectionContent {
+  padding: 16px;
+}
+
+.resultWarriors-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultWarriors-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultWarriors-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultWarriors-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultWarriors-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultWarriors-playerCard--active {
+  border-left-color: #1d428a; /* Основной синий цвет Warriors */
+}
+
+.resultWarriors-playerCard--gleague {
+  border-left-color: #ffc72c; /* Золотой цвет Warriors */
+}
+
+.resultWarriors-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultWarriors-playerNameSection {
+  flex: 1;
+}
+
+.resultWarriors-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultWarriors-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultWarriors-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultWarriors-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultWarriors-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultWarriors-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultWarriors-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultWarriors-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultWarriors-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultWarriors-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultWarriors-teamLabel {
+  color: #666666;
+}
+
+.resultWarriors-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultWarriors-tradeNote {
+  background: rgba(255, 199, 44, 0.05); /* Прозрачный золотой Warriors */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(255, 199, 44, 0.2);
+}
+
+.resultWarriors-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultWarriors-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultWarriors-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultWarriors-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultWarriors-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultWarriors-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultWarriors-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultWarriors-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultWarriors-actionButton--accept {
+  background: #ffc72c; /* Золотой цвет Warriors */
+  color: #000000;
+}
+
+.resultWarriors-actionButton--accept:hover:not(:disabled) {
+  background: #e6b325;
+}
+
+.resultWarriors-actionButton--reject {
+  background: #1d428a; /* Основной синий цвет Warriors */
+  color: #ffffff;
+}
+
+.resultWarriors-actionButton--reject:hover:not(:disabled) {
+  background: #003da5; /* Темно-синий Warriors */
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultWarriors-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultWarriors-closeAllButton {
+  background: #1d428a; /* Основной синий цвет Warriors */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultWarriors-closeAllButton:hover {
+  background: #003da5; /* Темно-синий Warriors */
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultWarriors-modal {
+    max-height: 90vh;
+  }
+
+  .resultWarriors-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultWarriors-tradesList {
+    padding: 16px;
+  }
+
+  .resultWarriors-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultWarriors-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultWarriors-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultWarriors-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultWarriors-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultWarriors-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultWarriors-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultWarriors-tradeSummary,
+  .resultWarriors-tradeSection,
+  .resultWarriors-tradeNote,
+  .resultWarriors-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultWarriors-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultWarriors-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultWarriors-modalHeader {
+    padding: 16px;
+  }
+
+  .resultWarriors-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultWarriors-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultWarriors-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultWarriors-statValue {
+    font-size: 28px;
+  }
+
+  .resultWarriors-statLabel {
+    font-size: 12px;
+  }
+
+  .resultWarriors-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultWarriors-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultWarriors-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultWarriors-modal {
+    max-height: 95vh;
+  }
+
+  .resultWarriors-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultWarriors-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultWarriors-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultWarriors-statValue {
+    font-size: 24px;
+  }
+
+  .resultWarriors-playerName,
+  .resultWarriors-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultWarriors-noteContent {
+    font-size: 13px;
+  }
+
+  .resultWarriors-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultWarriors-container .resultWarriors-modal {
+    background: #1a1a1a;
+    border-color: #1d428a; /* Основной синий цвет Warriors */
+  }
+
+  .resultWarriors-container .resultWarriors-tradeItem,
+  .resultWarriors-container .resultWarriors-playerCard,
+  .resultWarriors-container .resultWarriors-draftPickCard,
+  .resultWarriors-container .resultWarriors-tradeSummary,
+  .resultWarriors-container .resultWarriors-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultWarriors-container .resultWarriors-playerName,
+  .resultWarriors-container .resultWarriors-statLabel,
+  .resultWarriors-container .resultWarriors-sectionTitle,
+  .resultWarriors-container .resultWarriors-noteTitle,
+  .resultWarriors-container .resultWarriors-teamName,
+  .resultWarriors-container .resultWarriors-pickYearRound,
+  .resultWarriors-container .resultWarriors-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultWarriors-container .resultWarriors-playerType,
+  .resultWarriors-container .resultWarriors-pickType,
+  .resultWarriors-container .resultWarriors-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultWarriors-container .resultWarriors-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultWarriors-container .resultWarriors-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

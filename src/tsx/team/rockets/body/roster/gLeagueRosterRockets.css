@@ -1,0 +1,128 @@
+.rockets-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-rockets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-rockets {
+  color: #ce1141; /* Houston Rockets красный */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-rockets {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-rockets {
+  overflow-x: auto;
+}
+
+.players-table-rockets {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-rockets {
+  background: black;
+}
+
+.table-th-rockets {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-rockets:last-child {
+}
+
+.table-body-rockets {
+  background: white;
+}
+
+.tables-row-rockets {
+}
+
+.row-even-rockets {
+  background: black;
+}
+
+.row-odd-rockets {
+}
+
+.table-tdw-rockets {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-td-rockets {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-rockets {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-rockets {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-rockets {
+  color: #ce1141; /* Houston Rockets красный */
+  font-weight: bold;
+}
+
+.roster-badge-rockets {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-rockets {
+  background-color: #ce1141; /* Houston Rockets красный */
+  color: white;
+}
+
+.badge-inactive-rockets {
+  background-color: #c4ced4; /* Houston Rockets серый */
+  color: black;
+}
+
+.loading-text-rockets {
+  text-align: center;
+  color: #ce1141; /* Houston Rockets красный */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-rockets {
+  background-color: rgba(
+    206,
+    17,
+    65,
+    0.7
+  ); /* Houston Rockets красный с прозрачностью */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-rockets {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

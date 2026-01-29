@@ -1,0 +1,807 @@
+/* Стили только для компонента TradeResultBucks */
+
+.resultBucks-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultBucks-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultBucks-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #00471b; /* Milwaukee Bucks зеленый */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultBucks-button:hover:not(:disabled) {
+  background: #0077c0; /* Milwaukee Bucks синий */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBucks-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultBucks-button--hasNotifications {
+  background: linear-gradient(
+    135deg,
+    #00471b 0%,
+    #0077c0 100%
+  ); /* Bucks цвета */
+}
+
+.resultBucks-notificationCount {
+  background: #eee1c6; /* Milwaukee Bucks кремовый/бежевый */
+  color: #00471b; /* Зеленый текст на кремовом фоне */
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultBucks-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultBucks-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultBucks-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #00471b; /* Bucks зеленый */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultBucks-modalHeader {
+  background: #00471b; /* Bucks зеленый */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #eee1c6; /* Bucks кремовый */
+}
+
+.resultBucks-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultBucks-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultBucks-teamLogo::before {
+  content: "MIL";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #00471b;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultBucks-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultBucks-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultBucks-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultBucks-tradePartner {
+  color: #eee1c6; /* Bucks кремовый */
+  font-weight: 500;
+}
+
+.resultBucks-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultBucks-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultBucks-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultBucks-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultBucks-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultBucks-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultBucks-tradesList {
+  padding: 24px;
+}
+
+.resultBucks-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultBucks-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultBucks-tradeHeader {
+  background: rgba(0, 71, 27, 0.05); /* Прозрачный Bucks зеленый */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultBucks-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultBucks-tradeNumber {
+  font-weight: 600;
+  color: #00471b; /* Bucks зеленый */
+  font-size: 15px;
+}
+
+.resultBucks-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultBucks-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBucks-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultBucks-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultBucks-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #00471b; /* Bucks зеленый */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultBucks-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultBucks-exchangeArrow {
+  font-size: 28px;
+  color: #0077c0; /* Bucks синий */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultBucks-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultBucks-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultBucks-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultBucks-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultBucks-tradeSection--team1 {
+  border-left: 3px solid #00471b; /* Bucks зеленый */
+}
+
+.resultBucks-tradeSection--team2 {
+  border-left: 3px solid #0077c0; /* Bucks синий */
+}
+
+.resultBucks-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultBucks-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultBucks-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultBucks-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultBucks-countBadge--players {
+  background: rgba(0, 71, 27, 0.1); /* Bucks зеленый прозрачный */
+  color: #00471b; /* Bucks зеленый */
+  border: 1px solid rgba(0, 71, 27, 0.2);
+}
+
+.resultBucks-countBadge--picks {
+  background: rgba(0, 119, 192, 0.1); /* Bucks синий прозрачный */
+  color: #0077c0; /* Bucks синий */
+  border: 1px solid rgba(0, 119, 192, 0.2);
+}
+
+.resultBucks-sectionContent {
+  padding: 16px;
+}
+
+.resultBucks-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultBucks-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultBucks-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultBucks-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultBucks-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBucks-playerCard--active {
+  border-left-color: #00471b; /* Bucks зеленый */
+}
+
+.resultBucks-playerCard--gleague {
+  border-left-color: #0077c0; /* Bucks синий */
+}
+
+.resultBucks-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultBucks-playerNameSection {
+  flex: 1;
+}
+
+.resultBucks-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultBucks-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultBucks-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077c0; /* Bucks синий */
+  transition: all 0.2s;
+}
+
+.resultBucks-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBucks-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultBucks-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultBucks-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultBucks-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 192, 0.1); /* Bucks синий прозрачный */
+  color: #0077c0; /* Bucks синий */
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 192, 0.2);
+}
+
+.resultBucks-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultBucks-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultBucks-teamLabel {
+  color: #666666;
+}
+
+.resultBucks-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultBucks-tradeNote {
+  background: rgba(0, 119, 192, 0.05); /* Bucks синий прозрачный */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(0, 119, 192, 0.2);
+}
+
+.resultBucks-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultBucks-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultBucks-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultBucks-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultBucks-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultBucks-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultBucks-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultBucks-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultBucks-actionButton--accept {
+  background: #00471b; /* Bucks зеленый */
+  color: #ffffff;
+}
+
+.resultBucks-actionButton--accept:hover:not(:disabled) {
+  background: #003314; /* Темнее Bucks зеленый */
+}
+
+.resultBucks-actionButton--reject {
+  background: #0077c0; /* Bucks синий */
+  color: #ffffff;
+}
+
+.resultBucks-actionButton--reject:hover:not(:disabled) {
+  background: #005a96; /* Темнее Bucks синий */
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultBucks-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultBucks-closeAllButton {
+  background: #00471b; /* Bucks зеленый */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultBucks-closeAllButton:hover {
+  background: #0077c0; /* Bucks синий */
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultBucks-modal {
+    max-height: 90vh;
+  }
+
+  .resultBucks-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultBucks-tradesList {
+    padding: 16px;
+  }
+
+  .resultBucks-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultBucks-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultBucks-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultBucks-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultBucks-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultBucks-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultBucks-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultBucks-tradeSummary,
+  .resultBucks-tradeSection,
+  .resultBucks-tradeNote,
+  .resultBucks-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultBucks-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultBucks-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultBucks-modalHeader {
+    padding: 16px;
+  }
+
+  .resultBucks-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultBucks-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultBucks-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultBucks-statValue {
+    font-size: 28px;
+  }
+
+  .resultBucks-statLabel {
+    font-size: 12px;
+  }
+
+  .resultBucks-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultBucks-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultBucks-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultBucks-modal {
+    max-height: 95vh;
+  }
+
+  .resultBucks-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultBucks-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultBucks-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultBucks-statValue {
+    font-size: 24px;
+  }
+
+  .resultBucks-playerName,
+  .resultBucks-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultBucks-noteContent {
+    font-size: 13px;
+  }
+
+  .resultBucks-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultBucks-container .resultBucks-modal {
+    background: #1a1a1a;
+    border-color: #00471b; /* Bucks зеленый */
+  }
+
+  .resultBucks-container .resultBucks-tradeItem,
+  .resultBucks-container .resultBucks-playerCard,
+  .resultBucks-container .resultBucks-draftPickCard,
+  .resultBucks-container .resultBucks-tradeSummary,
+  .resultBucks-container .resultBucks-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultBucks-container .resultBucks-playerName,
+  .resultBucks-container .resultBucks-statLabel,
+  .resultBucks-container .resultBucks-sectionTitle,
+  .resultBucks-container .resultBucks-noteTitle,
+  .resultBucks-container .resultBucks-teamName,
+  .resultBucks-container .resultBucks-pickYearRound,
+  .resultBucks-container .resultBucks-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultBucks-container .resultBucks-playerType,
+  .resultBucks-container .resultBucks-pickType,
+  .resultBucks-container .resultBucks-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultBucks-container .resultBucks-draftPickCard {
+    border-left-color: #0077c0; /* Bucks синий */
+  }
+
+  .resultBucks-container .resultBucks-pickType {
+    background: rgba(0, 119, 192, 0.15);
+    border-color: rgba(0, 119, 192, 0.3);
+    color: #0077c0; /* Bucks синий */
+  }
+}

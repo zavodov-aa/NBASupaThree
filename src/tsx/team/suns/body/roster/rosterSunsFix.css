@@ -1,0 +1,190 @@
+.rosterSuns {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerSuns {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerSuns h1 {
+  color: #1d1160; /* Phoenix Suns фиолетовый */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleSuns {
+  color: black;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerSuns {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #1d1160; /* Phoenix Suns фиолетовый */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableSuns {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableSuns thead {
+  background: #1d1160; /* Phoenix Suns фиолетовый */
+}
+
+.roster-tableSuns th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableSuns tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableSuns tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableSuns tbody tr:hover {
+  background: white;
+}
+
+.roster-tableSuns td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(229, 96, 32, 0.3); /* Phoenix Suns оранжевый с прозрачностью */
+  color: #000;
+}
+
+.roster-tableSuns .franchiseSuns {
+  background: rgba(
+    29,
+    17,
+    96,
+    0.1
+  ) !important; /* Phoenix Suns фиолетовый с прозрачностью */
+}
+
+.roster-tableSuns .franchiseSuns td {
+  color: #1d1160; /* Phoenix Suns фиолетовый */
+  font-weight: bold;
+}
+
+.number-cellSuns {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starSuns {
+  color: #e56020; /* Phoenix Suns оранжевый */
+  font-size: 1.2em;
+}
+
+.player-tagSuns {
+  padding: 4px 8px;
+  background: rgba(
+    29,
+    17,
+    96,
+    0.1
+  ); /* Phoenix Suns фиолетовый с прозрачностью */
+  color: #1d1160; /* Phoenix Suns фиолетовый */
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingSuns {
+  text-align: center;
+  color: #1d1160; /* Phoenix Suns фиолетовый */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateSuns {
+  text-align: center;
+  padding: 40px;
+  color: #1d1160; /* Phoenix Suns фиолетовый */
+}
+
+.empty-iconSuns {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleSuns {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleSuns {
+  opacity: 0.8;
+}
+
+.franchise-colorSuns {
+  background: #1d1160; /* Phoenix Suns фиолетовый */
+}
+
+.salary-colorSuns {
+  background: #e56020; /* Phoenix Suns оранжевый */
+}
+
+@media (max-width: 768px) {
+  .rosterSuns {
+    padding: 10px;
+  }
+
+  .roster-headerSuns h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleSuns {
+    font-size: 1rem;
+  }
+
+  .roster-tableSuns th,
+  .roster-tableSuns td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Добавьте в rosterSuns.css */
+.g-league-dividerSuns {
+  background: rgba(
+    29,
+    17,
+    96,
+    0.1
+  ) !important; /* Phoenix Suns фиолетовый с прозрачностью */
+}
+
+.g-league-headerSuns {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #1d1160; /* Phoenix Suns фиолетовый */
+  border-top: 2px solid #1d1160; /* Phoenix Suns фиолетовый */
+  border-bottom: 2px solid #1d1160; /* Phoenix Suns фиолетовый */
+  background: rgba(
+    29,
+    17,
+    96,
+    0.05
+  ); /* Phoenix Suns фиолетовый с прозрачностью */
+}

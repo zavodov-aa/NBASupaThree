@@ -1,0 +1,123 @@
+.pacers-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-pacers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Основные цвета Indiana Pacers: синий (#002D62) и желтый (#FDBB30) */
+.header-title-pacers {
+  color: #002d62; /* Темно-синий цвет Pacers */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-pacers {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-pacers {
+  overflow-x: auto;
+}
+
+.players-table-pacers {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-pacers {
+  background: black;
+}
+
+.table-th-pacers {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-pacers:last-child {
+}
+
+.table-body-pacers {
+  background: white;
+}
+
+.tables-row-pacers {
+}
+
+.row-even-pacers {
+  background: black;
+}
+
+.row-odd-pacers {
+}
+
+.table-tdw-pacers {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-tdw-pacers {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-pacers {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-pacers {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-pacers {
+  color: #002d62; /* Темно-синий цвет Pacers */
+  font-weight: bold;
+}
+
+.roster-badge-pacers {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-pacers {
+  background-color: #002d62; /* Темно-синий для активного статуса */
+  color: white;
+}
+
+.badge-inactive-pacers {
+  background-color: #fdbb30; /* Желтый цвет Pacers для неактивного статуса */
+  color: black;
+}
+
+.loading-text-pacers {
+  text-align: center;
+  color: #002d62; /* Темно-синий цвет Pacers */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-pacers {
+  background-color: #002d62; /* Темно-синий цвет Pacers */
+  color: white;
+}
+
+.tables-row-pacers {
+  background-color: transparent;
+}

@@ -1,0 +1,121 @@
+.cavaliers-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-contents-cavaliers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-titles-cavaliers {
+  color: #860038; /* Основной цвет Cleveland Cavaliers */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containers-cavaliers {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrappers-cavaliers {
+  overflow-x: auto;
+}
+
+.players-tables-cavaliers {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headers-cavaliers {
+  background: black;
+}
+
+.table-ths-cavaliers {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-ths-cavaliers:last-child {
+  border-right: none;
+}
+
+.table-bodys-cavaliers {
+}
+
+.table-rows-cavaliers {
+  transition: background-color 0.3s;
+}
+
+.table-rows-cavaliers:hover {
+}
+
+.row-evens-cavaliers {
+  background: white;
+}
+
+.row-odds-cavaliers {
+  background: white;
+}
+
+.table-tds-cavaliers {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-ids-cavaliers {
+  color: black;
+  font-weight: bold;
+}
+
+.player-positions-cavaliers {
+  font-weight: bold;
+  color: black;
+}
+
+.player-ages-cavaliers {
+  color: black;
+  font-weight: bold;
+}
+
+.roster-badges-cavaliers {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-actives-cavaliers {
+  color: black;
+}
+
+.badge-inactives-cavaliers {
+  background: #6b7280;
+  color: white;
+}
+
+.loading-texts-cavaliers {
+  text-align: center;
+  color: #860038; /* Основной цвет Cleveland Cavaliers */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.special-players-cavaliers {
+  background: #860038 !important; /* Основной цвет Cleveland Cavaliers */
+}
+
+.special-players-cavaliers .table-tds-cavaliers {
+  color: white;
+  font-weight: bold;
+}

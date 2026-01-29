@@ -1,0 +1,288 @@
+.heat-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content-heat {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-heat {
+  color: #98002e; /* Miami Heat красный */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.heat-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #f9a01b; /* Miami Heat желтый */
+  box-shadow: 0 8px 24px rgba(152, 0, 46, 0.15); /* Красный оттенок */
+}
+
+.heat-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #000000, #98002e); /* Черный к красному */
+}
+
+/* Контейнер для горизонтального расположения */
+.heat-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .heat-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .heat-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.heat-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(152, 0, 46, 0.2); /* Красный оттенок */
+}
+
+.heat-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1),
+    /* Черный */ rgba(249, 160, 27, 0.05) /* Желтый */
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(152, 0, 46, 0.1); /* Красный оттенок */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.heat-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #000000; /* Черный */
+  text-transform: uppercase;
+}
+
+.heat-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heat-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.heat-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.heat-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.heat-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(152, 0, 46, 0.1); /* Красный оттенок */
+}
+
+.heat-pick-year {
+  background: linear-gradient(
+    135deg,
+    #000000,
+    #26282a
+  ); /* Черный к темно-серому */
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-heat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(152, 0, 46, 0.1); /* Красный оттенок */
+  transition: background 0.2s ease;
+}
+
+.pick-item-heat:hover {
+  background: rgba(152, 0, 46, 0.05); /* Красный оттенок */
+}
+
+.pick-item-heat:last-child {
+  border-bottom: none;
+}
+
+.pick-round-heat {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-heat {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.heat-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.heat-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.heat-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(152, 0, 46, 0.1); /* Красный оттенок */
+}
+
+.coach-item-heat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(152, 0, 46, 0.1); /* Красный оттенок */
+  transition: background 0.2s ease;
+}
+
+.coach-item-heat:hover {
+  background: rgba(249, 160, 27, 0.05); /* Желтый оттенок */
+}
+
+.coach-item-heat:last-child {
+  border-bottom: none;
+}
+
+.coach-position-heat {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-heat {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.heat-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(152, 0, 46, 0.1); /* Красный оттенок */
+}
+
+.color-dot-heat {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.black-heat {
+  background: #000000; /* Черный */
+}
+.red-dark-heat {
+  background: #5a0016; /* Темно-красный */
+}
+.red-heat {
+  background: #98002e; /* Основной красный Miami Heat */
+}
+.yellow-heat {
+  background: #f9a01b; /* Желтый Miami Heat */
+}
+.yellow-light-heat {
+  background: #fbc56d; /* Светло-желтый */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .heat-containers {
+    padding: 16px;
+  }
+
+  .header-title-heat {
+    font-size: 2rem;
+  }
+
+  .heat-picks-grid,
+  .heat-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heat-pick-column:not(:last-child)::after,
+  .heat-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .heat-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-heat,
+  .coach-item-heat {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text-heat,
+.error-text-heat {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text-heat {
+  color: #ff4444;
+}

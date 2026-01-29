@@ -1,0 +1,897 @@
+.playersRosterAgentControlCenter-container {
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+}
+
+.playersRosterAgentControlCenter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.playersRosterAgentControlCenter-title {
+  font-size: 24px;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+  filter: invert(100%);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.HeadInfoAgent-A-Href {
+  text-decoration: none;
+  color: wheat;
+}
+
+.playersRosterAgentControlCenter-statusBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #252525;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #888;
+}
+
+/* Мобильный заголовок */
+.playersRosterAgentControlCenter-mobile-header {
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-mobile-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.playersRosterAgentControlCenter-mobile-logo {
+  width: 100px;
+  height: auto;
+  filter: invert(100%);
+}
+
+.playersRosterAgentControlCenter-mobile-menu-button {
+  background: none;
+  border: 1px solid #444;
+  color: #fff;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playersRosterAgentControlCenter-mobile-title {
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.playersRosterAgentControlCenter-mobile-status {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-mobile-nav {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-mobile-nav-link {
+  flex: 1;
+  text-align: center;
+  padding: 8px 12px;
+  background-color: #252525;
+  border-radius: 4px;
+  font-size: 12px;
+  color: wheat;
+  text-decoration: none;
+  border: 1px solid #333;
+}
+
+.playersRosterAgentControlCenter-mobile-view-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.playersRosterAgentControlCenter-view-button {
+  flex: 1;
+  padding: 8px 12px;
+  background-color: #252525;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 70px;
+}
+
+.playersRosterAgentControlCenter-successButton {
+  background-color: #4caf50;
+  color: #fff;
+  border: 1px solid #45a049;
+}
+
+.playersRosterAgentControlCenter-successButton:hover {
+  background-color: #45a049;
+}
+
+/* Мобильный селектор колонок */
+.playersRosterAgentControlCenter-mobile-column-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.playersRosterAgentControlCenter-mobile-column-group {
+  background-color: #252525;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.playersRosterAgentControlCenter-mobile-column-group-title {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #444;
+}
+
+.playersRosterAgentControlCenter-mobile-column-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.playersRosterAgentControlCenter-mobile-checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 3px;
+  background-color: #2a2a2a;
+}
+
+.playersRosterAgentControlCenter-mobile-checkbox-label:hover {
+  background-color: #333;
+}
+
+.playersRosterAgentControlCenter-mobile-checkbox-input {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.playersRosterAgentControlCenter-mobile-checkbox-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+.playersRosterAgentControlCenter-columnSelector {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.playersRosterAgentControlCenter-columnSelectorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-columnSelectorTitle {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.playersRosterAgentControlCenter-massSelectionButtons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-columnGroup {
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-columnGroupTitle {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.playersRosterAgentControlCenter-columnCheckboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.playersRosterAgentControlCenter-checkboxLabel {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.playersRosterAgentControlCenter-checkbox {
+  margin-right: 5px;
+}
+
+.playersRosterAgentControlCenter-actionButtons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.playersRosterAgentControlCenter-controlPanel {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.playersRosterAgentControlCenter-panelHeader {
+  padding: 15px 20px;
+  background-color: #252525;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.playersRosterAgentControlCenter-panelHeaderText {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.playersRosterAgentControlCenter-panelHeaderIcon {
+  color: #888;
+}
+
+.playersRosterAgentControlCenter-panelContent {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.playersRosterAgentControlCenter-filterGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.playersRosterAgentControlCenter-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.playersRosterAgentControlCenter-input {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 8px 10px;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.playersRosterAgentControlCenter-input:focus {
+  border-color: #666;
+}
+
+.playersRosterAgentControlCenter-buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #252525;
+  border-top: 1px solid #333;
+}
+
+.playersRosterAgentControlCenter-filterStatus {
+  font-size: 14px;
+  color: #666;
+}
+
+.playersRosterAgentControlCenter-button {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.playersRosterAgentControlCenter-button:hover {
+  background-color: #3a3a3a;
+  border-color: #555;
+}
+
+.playersRosterAgentControlCenter-primaryButton {
+  background-color: #0066cc;
+  color: #fff;
+  border: 1px solid #0077ee;
+}
+
+.playersRosterAgentControlCenter-primaryButton:hover {
+  background-color: #0077ee;
+}
+
+.playersRosterAgentControlCenter-smallButton {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  margin-left: 5px;
+}
+
+.playersRosterAgentControlCenter-smallButton:hover {
+  background-color: #3a3a3a;
+}
+
+.playersRosterAgentControlCenter-shiftButton {
+  background-color: #8b4513;
+  color: #fff;
+  border: 1px solid #a0522d;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  margin-left: 5px;
+}
+
+.playersRosterAgentControlCenter-shiftButton:hover {
+  background-color: #a0522d;
+}
+
+.playersRosterAgentControlCenter-tableContainer {
+  overflow-x: auto;
+}
+
+.playersRosterAgentControlCenter-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.playersRosterAgentControlCenter-tableHeader {
+  background-color: #252525;
+  border-bottom: 1px solid #333;
+}
+
+.playersRosterAgentControlCenter-tableHeaderCell {
+  padding: 12px 8px;
+  text-align: left;
+  font-size: 11px;
+  color: #888;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-right: 1px solid #333;
+  white-space: nowrap;
+  position: relative;
+}
+
+.playersRosterAgentControlCenter-tableRow {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.2s ease;
+}
+
+.playersRosterAgentControlCenter-tableRow:hover {
+  background-color: #222;
+}
+
+.playersRosterAgentControlCenter-newRow {
+  background-color: #1a2a1a;
+  border-bottom: 1px solid #334;
+}
+
+.playersRosterAgentControlCenter-tableCell {
+  padding: 10px 8px;
+  font-size: 12px;
+  border-right: 1px solid #333;
+  white-space: nowrap;
+}
+
+.playersRosterAgentControlCenter-teamCell,
+.playersRosterAgentControlCenter-gLeagueCell {
+  padding: 10px 8px;
+  font-size: 12px;
+  border-right: 1px solid #333;
+  white-space: nowrap;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.playersRosterAgentControlCenter-editableCell:hover {
+  background-color: #2a3a2a;
+}
+
+.playersRosterAgentControlCenter-editInput {
+  width: 100%;
+  padding: 4px 6px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 12px;
+}
+
+.playersRosterAgentControlCenter-newPlayerId {
+  font-family: monospace;
+  font-size: 11px;
+  color: #4caf50;
+}
+
+.playersRosterAgentControlCenter-cellValue {
+  font-size: 11px;
+}
+
+.playersRosterAgentControlCenter-actionButtonsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.playersRosterAgentControlCenter-emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 14px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.playersRosterAgentControlCenter-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.playersRosterAgentControlCenter-modalContent {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  max-width: 500px;
+  width: 100%;
+}
+
+.playersRosterAgentControlCenter-modalTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.playersRosterAgentControlCenter-modalDescription {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.playersRosterAgentControlCenter-warningText {
+  color: #ff6b6b;
+}
+
+.playersRosterAgentControlCenter-modalInput {
+  width: 100%;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.playersRosterAgentControlCenter-contextMenu {
+  position: fixed;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 1100;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.playersRosterAgentControlCenter-contextMenuContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.playersRosterAgentControlCenter-contextMenuHeader {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  background-color: #252525;
+}
+
+.playersRosterAgentControlCenter-contextSearchInput {
+  width: 100%;
+  padding: 6px 8px;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 12px;
+  outline: none;
+}
+
+.playersRosterAgentControlCenter-contextMenuList {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.playersRosterAgentControlCenter-contextMenuItem {
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.2s ease;
+}
+
+.playersRosterAgentControlCenter-contextMenuItem:hover {
+  background-color: #333;
+}
+
+.playersRosterAgentControlCenter-noResults {
+  color: #888;
+  cursor: default;
+}
+
+.playersRosterAgentControlCenter-noResults:hover {
+  background-color: transparent;
+}
+
+/* Мобильные фильтры */
+.playersRosterAgentControlCenter-mobile-more-filters {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-top: 10px;
+}
+
+/* Стили для массового выбора колонок на мобильных */
+.playersRosterAgentControlCenter-mobile-mass-selection {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.playersRosterAgentControlCenter-mobile-mass-selection
+  .playersRosterAgentControlCenter-button {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 8px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Мобильная версия формы добавления */
+@media (max-width: 768px) {
+  .playersRosterAgentControlCenter-newRow {
+    position: relative;
+    background-color: #1a2a1a;
+  }
+
+  .playersRosterAgentControlCenter-newRow td {
+    padding: 8px 4px !important;
+  }
+
+  .playersRosterAgentControlCenter-newPlayerId {
+    font-size: 10px !important;
+    padding: 2px 4px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-actionButtonsContainer {
+    flex-direction: column;
+    gap: 4px;
+    min-width: 80px;
+  }
+
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-button {
+    padding: 4px 6px !important;
+    font-size: 10px !important;
+    min-width: 60px;
+    margin: 0;
+  }
+
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-editInput {
+    font-size: 10px !important;
+    padding: 3px 4px !important;
+    min-width: 60px;
+  }
+
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-teamCell,
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-gLeagueCell {
+    font-size: 10px !important;
+    padding: 4px !important;
+    min-width: 80px;
+    word-break: break-word;
+    white-space: normal;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 480px) {
+  .playersRosterAgentControlCenter-mobile-mass-selection {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .playersRosterAgentControlCenter-mobile-mass-selection
+    .playersRosterAgentControlCenter-button {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  .playersRosterAgentControlCenter-newRow td {
+    padding: 6px 3px !important;
+  }
+
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-actionButtonsContainer {
+    min-width: 70px;
+  }
+
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-button {
+    padding: 3px 4px !important;
+    font-size: 9px !important;
+    min-width: 50px;
+  }
+
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-editInput {
+    font-size: 9px !important;
+    padding: 2px 3px !important;
+    min-width: 50px;
+  }
+
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-teamCell,
+  .playersRosterAgentControlCenter-newRow
+    .playersRosterAgentControlCenter-gLeagueCell {
+    font-size: 9px !important;
+    padding: 3px !important;
+    min-width: 70px;
+  }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .playersRosterAgentControlCenter-container {
+    padding: 12px;
+  }
+
+  .playersRosterAgentControlCenter-header {
+    display: none;
+  }
+
+  .playersRosterAgentControlCenter-panelContent {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .playersRosterAgentControlCenter-table {
+    min-width: 800px;
+  }
+
+  .playersRosterAgentControlCenter-tableHeaderCell,
+  .playersRosterAgentControlCenter-tableCell {
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+
+  .playersRosterAgentControlCenter-actionButtons {
+    display: none;
+  }
+
+  .playersRosterAgentControlCenter-modalContent {
+    min-width: auto;
+    padding: 15px;
+  }
+
+  .playersRosterAgentControlCenter-modalButtons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .playersRosterAgentControlCenter-container {
+    padding: 10px;
+  }
+
+  .playersRosterAgentControlCenter-columnSelector {
+    padding: 12px;
+  }
+
+  .playersRosterAgentControlCenter-panelContent {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .playersRosterAgentControlCenter-mobile-column-checkboxes {
+    grid-template-columns: 1fr;
+  }
+
+  .playersRosterAgentControlCenter-buttonGroup {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .playersRosterAgentControlCenter-modalContent {
+    padding: 12px;
+  }
+
+  .playersRosterAgentControlCenter-modalDescription {
+    font-size: 12px;
+  }
+
+  .playersRosterAgentControlCenter-modalTitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .playersRosterAgentControlCenter-container {
+    padding: 8px;
+  }
+
+  .playersRosterAgentControlCenter-mobile-nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .playersRosterAgentControlCenter-mobile-view-controls {
+    flex-wrap: wrap;
+  }
+
+  .playersRosterAgentControlCenter-view-button {
+    flex: 0 0 calc(50% - 4px);
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .playersRosterAgentControlCenter-contextMenu {
+    width: calc(100vw - 40px) !important;
+    left: 20px !important;
+    right: 20px !important;
+  }
+}
+
+@media (max-width: 280px) {
+  .playersRosterAgentControlCenter-container {
+    padding: 6px;
+  }
+
+  .playersRosterAgentControlCenter-mobile-title {
+    font-size: 16px;
+  }
+
+  .playersRosterAgentControlCenter-mobile-logo {
+    width: 80px;
+  }
+
+  .playersRosterAgentControlCenter-mobile-menu-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .playersRosterAgentControlCenter-button {
+    padding: 6px 8px;
+    font-size: 11px;
+    min-width: 50px;
+  }
+
+  .playersRosterAgentControlCenter-view-button {
+    padding: 6px 4px;
+    font-size: 10px;
+    min-width: 60px;
+  }
+
+  .playersRosterAgentControlCenter-contextMenu {
+    width: calc(100vw - 32px) !important;
+    left: 16px !important;
+    right: 16px !important;
+  }
+}
+
+/* Горизонтальная ориентация на очень узких экранах */
+@media (max-height: 400px) and (orientation: landscape) {
+  .playersRosterAgentControlCenter-contextMenu {
+    max-height: 250px;
+  }
+
+  .playersRosterAgentControlCenter-contextMenuList {
+    max-height: 200px;
+  }
+}

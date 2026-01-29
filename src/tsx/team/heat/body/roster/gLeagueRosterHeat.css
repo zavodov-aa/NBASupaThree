@@ -1,0 +1,136 @@
+.heat-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-heat {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-heat {
+  color: #98002e; /* Miami Heat красный */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-heat {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-heat {
+  overflow-x: auto;
+}
+
+.players-table-heat {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-heat {
+  background: black;
+}
+
+.table-th-heat {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-heat:last-child {
+}
+
+.table-body-heat {
+  background: white;
+}
+
+.tables-row-heat {
+}
+
+.row-even-heat {
+  background: black;
+}
+
+.row-odd-heat {
+}
+
+.table-tdw-heat {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-tdw-heat {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-heat {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-heat {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-heat {
+  color: #98002e; /* Miami Heat красный */
+  font-weight: bold;
+}
+
+.roster-badge-heat {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-heat {
+  background-color: #98002e; /* Miami Heat красный */
+  color: white;
+}
+
+.badge-inactive-heat {
+  background-color: #f9a01b; /* Miami Heat желтый */
+  color: black;
+}
+
+.loading-text-heat {
+  text-align: center;
+  color: #98002e; /* Miami Heat красный */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-heat {
+  background-color: #98002e; /* Miami Heat красный */
+  color: white;
+}
+
+.tables-row-heat {
+  background-color: transparent;
+}
+
+/* Дополнительные стили для лучшей видимости */
+.first-row-highlight-heat .table-tdw-heat,
+.first-row-highlight-heat .table-td-heat {
+  color: white;
+}
+
+.first-row-highlight-heat .player-position-heat {
+  color: #f9a01b; /* Miami Heat желтый для контраста */
+}
+
+.first-row-highlight-heat .player-age-heat {
+  color: #f9a01b; /* Miami Heat желтый */
+}

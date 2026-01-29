@@ -1,0 +1,191 @@
+/* rosterSevSixFix.css */
+.rosterSevSix {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerSevSix {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerSevSix h1 {
+  color: #006bb6; /* Philadelphia 76ers синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleSevSix {
+  color: #ed174c; /* Philadelphia 76ers красный */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerSevSix {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #006bb6; /* Philadelphia 76ers синий */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableSevSix {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableSevSix thead {
+  background: #006bb6; /* Philadelphia 76ers синий */
+}
+
+.roster-tableSevSix th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableSevSix th.highlight {
+}
+
+.roster-tableSevSix tbody tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.roster-tableSevSix tbody tr:nth-child(odd) {
+  background: #fff;
+}
+
+.roster-tableSevSix tbody tr:hover {
+  background: #e9ecef;
+}
+
+.roster-tableSevSix td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 107, 182, 0.3); /* Philadelphia 76ers синий */
+  color: #000;
+}
+
+.roster-tableSevSix .franchiseSevSix {
+  background: rgba(
+    0,
+    107,
+    182,
+    0.1
+  ) !important; /* Philadelphia 76ers синий с прозрачностью */
+  border-left: 4px solid #ed174c; /* Philadelphia 76ers красный */
+}
+
+.roster-tableSevSix .franchiseSevSix td {
+  color: #000;
+  font-weight: bold;
+}
+
+.number-cellSevSix {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starSevSix {
+  color: #ed174c; /* Philadelphia 76ers красный */
+  font-size: 1.2em;
+}
+
+.player-tagSevSix {
+  padding: 4px 8px;
+  background: #006bb6; /* Philadelphia 76ers синий */
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingSevSix {
+  text-align: center;
+  color: #006bb6; /* Philadelphia 76ers синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateSevSix {
+  text-align: center;
+  padding: 40px;
+  color: #006bb6; /* Philadelphia 76ers синий */
+}
+
+.empty-iconSevSix {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleSevSix {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleSevSix {
+  opacity: 0.8;
+}
+
+.franchise-colorSevSix {
+  background: #006bb6; /* Philadelphia 76ers синий */
+}
+
+.salary-colorSevSix {
+  background: #ed174c; /* Philadelphia 76ers красный */
+}
+
+/* Добавьте в rosterSevSix.css */
+
+.g-league-dividerSevSix {
+  background: rgba(
+    0,
+    107,
+    182,
+    0.1
+  ) !important; /* Philadelphia 76ers синий с прозрачностью */
+}
+
+.g-league-headerSevSix {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #006bb6; /* Philadelphia 76ers синий */
+  border-top: 2px solid #ed174c; /* Philadelphia 76ers красный */
+  border-bottom: 2px solid #ed174c; /* Philadelphia 76ers красный */
+  background: rgba(
+    237,
+    23,
+    76,
+    0.05
+  ); /* Philadelphia 76ers красный с прозрачностью */
+}
+
+@media (max-width: 768px) {
+  .rosterSevSix {
+    padding: 10px;
+  }
+
+  .roster-headerSevSix h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleSevSix {
+    font-size: 1rem;
+  }
+
+  .roster-tableSevSix th,
+  .roster-tableSevSix td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

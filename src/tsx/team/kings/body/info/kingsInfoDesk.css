@@ -1,0 +1,311 @@
+.desk-card-wrapper-kings {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.kings-desk-card {
+  background: rgba(90, 54, 128, 0.7); /* Sacramento Kings фиолетовый */
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(90, 54, 128, 0.15),
+    0 4px 12px rgba(255, 198, 55, 0.1); /* Серебряный акцент */
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.desk-accent-top-kings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #5a3680 25%,
+    #8a7a99 50%,
+    #a39ba8 75%,
+    #ffffff 100%
+  );
+}
+
+.desk-sections-horizontal-kings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.desk-section-kings {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.desk-section-kings:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 20px rgba(90, 54, 128, 0.15);
+}
+
+.desk-header-kings {
+  background: linear-gradient(
+    135deg,
+    rgba(90, 54, 128, 0.1) 0%,
+    rgba(255, 198, 55, 0.05) 100%
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desk-title-icon-kings {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #000000, #5a3680);
+  flex-shrink: 0;
+}
+
+.desk-title-kings {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.desk-content-kings {
+  padding: 0;
+}
+
+.desk-items-vertical-kings {
+  display: flex;
+  flex-direction: column;
+}
+
+.desk-item-kings {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(90, 54, 128, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  justify-content: center;
+}
+
+.desk-item-kings:last-child {
+  border-bottom: none;
+}
+
+.desk-item-kings::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(90, 54, 128, 0.05) 50%,
+    transparent 100%
+  );
+  transition: left 0.4s ease;
+}
+
+.desk-item-kings:hover::before {
+  left: 100%;
+}
+
+.desk-item-kings:hover {
+  background: rgba(255, 255, 255, 0.8);
+  padding-left: 20px;
+}
+
+.desk-label-kings {
+  font-size: 0.8em;
+  color: #666;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.desk-value-kings {
+  font-size: 1em;
+  color: #333;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+/* Highlight Styles */
+.highlight-positive-kings {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.1) 0%,
+    rgba(34, 197, 94, 0.05) 100%
+  );
+}
+
+.highlight-positive-kings .desk-value-kings {
+  color: #16a34a;
+}
+
+.highlight-negative-kings {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.1) 0%,
+    rgba(239, 68, 68, 0.05) 100%
+  );
+}
+
+.highlight-negative-kings .desk-value-kings {
+  color: #dc2626;
+}
+
+.highlight-playoffs-kings {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
+}
+
+.highlight-playoffs-kings .desk-value-kings {
+  color: #2563eb;
+}
+
+.highlight-championship-kings {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 198, 55, 0.15) 0%,
+    rgba(255, 198, 55, 0.08) 100%
+  );
+}
+
+.highlight-championship-kings .desk-value-kings {
+  color: #000000;
+  font-weight: 800;
+}
+
+.desk-colors-kings {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+}
+
+.color-dot-kings {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.color-dot-kings:hover {
+  transform: scale(1.4);
+}
+
+.color-dot-kings.purple-dark-kings {
+  background: #000000;
+}
+
+.color-dot-kings.purple-kings {
+  background: #5a3680;
+}
+
+.color-dot-kings.purple-light-kings {
+  background: #8a7a99;
+}
+
+.color-dot-kings.gold-kings {
+  background: #a39ba8;
+}
+
+.color-dot-kings.gold-light-kings {
+  background: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .desk-sections-horizontal-kings {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .desk-header-kings {
+    padding: 14px 16px;
+  }
+
+  .desk-item-kings {
+    padding: 12px 14px;
+    min-height: 55px;
+  }
+}
+
+@media (max-width: 992px) {
+  .desk-sections-horizontal-kings {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .kings-desk-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kings-desk-card {
+    padding: 16px;
+  }
+
+  .desk-header-kings {
+    padding: 12px 14px;
+  }
+
+  .desk-item-kings {
+    padding: 10px 12px;
+    min-height: 50px;
+  }
+
+  .desk-item-kings:hover {
+    padding-left: 16px;
+  }
+
+  .desk-colors-kings {
+    bottom: 12px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-title-kings {
+    font-size: 0.9em;
+  }
+
+  .desk-label-kings {
+    font-size: 0.75em;
+  }
+
+  .desk-value-kings {
+    font-size: 0.9em;
+  }
+}

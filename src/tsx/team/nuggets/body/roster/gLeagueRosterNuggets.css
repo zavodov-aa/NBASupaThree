@@ -1,0 +1,131 @@
+.nuggets-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-nuggets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-nuggets {
+  color: #0d2240; /* Темно-синий основной цвет Nuggets */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-nuggets {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-nuggets {
+  overflow-x: auto;
+}
+
+.players-table-nuggets {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-nuggets {
+  background: #0d2240;
+}
+
+.table-th-nuggets {
+  padding: 15px 10px;
+  color: #fdb927; /* Золотой акцентный цвет Nuggets */
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-nuggets:last-child {
+}
+
+.table-body-nuggets {
+  background: white;
+}
+
+.tables-row-nuggets {
+}
+
+.row-even-nuggets {
+  background: #0d2240;
+}
+
+.row-odd-nuggets {
+}
+
+.table-tdw-nuggets {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #fdb927; /* Золотой цвет для заголовков */
+}
+
+.table-tdw-nuggets {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #0d2240; /* Темно-синий для текста */
+}
+
+.player-id-nuggets {
+  color: #0d2240;
+  font-weight: bold;
+}
+
+.player-position-nuggets {
+  font-weight: bold;
+  color: #8b2131; /* Красный цвет Nuggets */
+}
+
+.player-age-nuggets {
+  color: #fdb927; /* Золотой цвет */
+  font-weight: bold;
+}
+
+.roster-badge-nuggets {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-nuggets {
+  background-color: #0d2240;
+  color: #fdb927;
+}
+
+.badge-inactive-nuggets {
+  background-color: #f0f0f0;
+  color: #0d2240;
+}
+
+.loading-text-nuggets {
+  text-align: center;
+  color: #0d2240;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-nuggets {
+  background-color: rgba(13, 34, 64, 0.9); /* Темно-синий с прозрачностью */
+  color: #fdb927; /* Золотой текст для контраста */
+}
+
+.tables-row-nuggets {
+  background-color: transparent;
+}
+
+/* Цвета для чередования строк, если нужно */
+.row-even-nuggets {
+  background-color: #f8f8f8;
+}
+
+.row-odd-nuggets {
+  background-color: #ffffff;
+}

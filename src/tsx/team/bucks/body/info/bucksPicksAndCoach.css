@@ -1,0 +1,288 @@
+.bucks-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-bucks {
+  color: #00471b; /* Bucks зеленый */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.bucks-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #eee1c6; /* Bucks кремовый */
+  box-shadow: 0 8px 24px rgba(0, 71, 27, 0.15);
+}
+
+.bucks-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00471b, #eee1c6);
+}
+
+/* Контейнер для горизонтального расположения */
+.bucks-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .bucks-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .bucks-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.bucks-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(0, 71, 27, 0.2);
+}
+
+.bucks-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 71, 27, 0.1),
+    rgba(238, 225, 198, 0.05)
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 71, 27, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bucks-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #00471b; /* Bucks зеленый */
+  text-transform: uppercase;
+}
+
+.bucks-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bucks-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.bucks-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.bucks-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.bucks-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 71, 27, 0.1);
+}
+
+.bucks-pick-year {
+  background: linear-gradient(
+    135deg,
+    #00471b,
+    #0077c0
+  ); /* Зеленый и синий Bucks */
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-bucks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 71, 27, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-bucks:hover {
+  background: rgba(0, 71, 27, 0.05);
+}
+
+.pick-item-bucks:last-child {
+  border-bottom: none;
+}
+
+.pick-round-bucks {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-bucks {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.bucks-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.bucks-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.bucks-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 71, 27, 0.1);
+}
+
+.coach-item-bucks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 71, 27, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-bucks:hover {
+  background: rgba(238, 225, 198, 0.05);
+}
+
+.coach-item-bucks:last-child {
+  border-bottom: none;
+}
+
+.coach-position-bucks {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-bucks {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.bucks-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 71, 27, 0.1);
+}
+
+.color-dot-bucks {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.green-dark-bucks {
+  background: #002611;
+}
+.green-bucks {
+  background: #00471b;
+}
+.cream-bucks {
+  background: #eee1c6;
+}
+.blue-bucks {
+  background: #0077c0;
+}
+.blue-light-bucks {
+  background: #4da8e0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .bucks-containers {
+    padding: 16px;
+  }
+
+  .header-title-bucks {
+    font-size: 2rem;
+  }
+
+  .bucks-picks-grid,
+  .bucks-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bucks-pick-column:not(:last-child)::after,
+  .bucks-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .bucks-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-bucks,
+  .coach-item-bucks {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text {
+  color: #ff4444;
+}

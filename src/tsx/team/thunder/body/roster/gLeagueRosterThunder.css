@@ -1,0 +1,123 @@
+.thunder-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-thunder {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-thunder {
+  color: #007ac1; /* Thunder blue */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-container-thunder {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-thunder {
+  overflow-x: auto;
+}
+
+.players-table-thunder {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-thunder {
+  background: black;
+}
+
+.table-th-thunder {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-thunder:last-child {
+}
+
+.table-body-thunder {
+  background: white;
+}
+
+.tables-row-thunder {
+}
+
+.row-even-thunder {
+  background: black;
+}
+
+.row-odd-thunder {
+}
+
+.table-tdw-thunder {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-td-thunder {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-thunder {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-thunder {
+  font-weight: bold;
+  color: #007ac1; /* Thunder blue */
+}
+
+.player-age-thunder {
+  color: #ef3b24; /* Thunder orange */
+  font-weight: bold;
+}
+
+.roster-badge-thunder {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-thunder {
+  background-color: #007ac1; /* Thunder blue */
+  color: white;
+}
+
+.badge-inactive-thunder {
+  background-color: #fdbb30; /* Thunder yellow */
+  color: black;
+}
+
+.loading-text-thunder {
+  text-align: center;
+  color: #007ac1; /* Thunder blue */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-thunder {
+  background-color: rgba(0, 122, 193, 0.8); /* Thunder blue with transparency */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-thunder {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

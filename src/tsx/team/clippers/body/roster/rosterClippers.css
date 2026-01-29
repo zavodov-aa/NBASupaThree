@@ -1,0 +1,159 @@
+/* rosterClippers.css */
+.rosterClippers {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerClippers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerClippers h1 {
+  color: #1d428a; /* Clippers blue */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleClippers {
+  color: #c8102e; /* Clippers red */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerClippers {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #1d428a; /* Clippers blue */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableClippers {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableClippers thead {
+  background: #1d428a; /* Clippers blue */
+}
+
+.roster-tableClippers th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.roster-tableClippers tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableClippers tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableClippers tbody tr:hover {
+  background: white;
+}
+
+.roster-tableClippers td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(200, 16, 46, 0.3); /* Clippers red with opacity */
+  color: #000;
+}
+
+.roster-tableClippers .franchiseClippers {
+  background: rgba(
+    29,
+    66,
+    138,
+    0.9
+  ) !important; /* Clippers blue with opacity */
+}
+
+.roster-tableClippers .franchiseClippers td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellClippers {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starClippers {
+  color: #c8102e; /* Clippers red */
+  font-size: 1.2em;
+}
+
+.player-tagClippers {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingClippers {
+  text-align: center;
+  color: #1d428a; /* Clippers blue */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateClippers {
+  text-align: center;
+  padding: 40px;
+  color: #1d428a; /* Clippers blue */
+}
+
+.empty-iconClippers {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleClippers {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleClippers {
+  opacity: 0.8;
+}
+
+.franchise-colorClippers {
+  background: #1d428a; /* Clippers blue */
+}
+
+.salary-colorClippers {
+  background: #c8102e; /* Clippers red */
+}
+
+@media (max-width: 768px) {
+  .rosterClippers {
+    padding: 10px;
+  }
+
+  .roster-headerClippers h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleClippers {
+    font-size: 1rem;
+  }
+
+  .roster-tableClippers th,
+  .roster-tableClippers td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

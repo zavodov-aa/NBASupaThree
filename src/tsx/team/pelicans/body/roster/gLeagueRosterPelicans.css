@@ -1,0 +1,125 @@
+.pelicans-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-pelicans {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-pelicans {
+  color: #0c2340; /* New Orleans Pelicans темно-синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-pelicans {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-pelicans {
+  overflow-x: auto;
+}
+
+.players-table-pelicans {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-pelicans {
+  background: #0c2340; /* New Orleans Pelicans темно-синий */
+}
+
+.table-th-pelicans {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-pelicans:last-child {
+}
+
+.table-body-pelicans {
+  background: white;
+}
+
+.tables-row-pelicans {
+}
+
+.row-even-pelicans {
+  background: #0c2340; /* New Orleans Pelicans темно-синий */
+}
+
+.row-odd-pelicans {
+}
+
+.table-tdw-pelicans {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+.table-tdw-pelicans {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-pelicans {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-pelicans {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-pelicans {
+  color: #c8102e; /* New Orleans Pelicans красный */
+  font-weight: bold;
+}
+
+.roster-badge-pelicans {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-pelicans {
+  color: white;
+}
+
+.badge-inactive-pelicans {
+  color: black;
+}
+
+.loading-text-pelicans {
+  text-align: center;
+  color: #0c2340; /* New Orleans Pelicans темно-синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-pelicans {
+  background-color: rgba(
+    12,
+    35,
+    64,
+    0.637
+  ); /* New Orleans Pelicans темно-синий с прозрачностью */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-pelicans {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

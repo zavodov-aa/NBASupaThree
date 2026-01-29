@@ -1,0 +1,138 @@
+.nets-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-nets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-nets {
+  color: #000000; /* Черный цвет для Brooklyn Nets */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-nets {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-nets {
+  overflow-x: auto;
+}
+
+.players-table-nets {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-nets {
+  background: black;
+}
+
+.table-th-nets {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-nets:last-child {
+}
+
+.table-body-nets {
+  background: white;
+}
+
+.tables-row-nets {
+}
+
+.row-even-nets {
+  background: black;
+}
+
+.row-odd-nets {
+}
+
+.table-tdw-nets {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-td-nets {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-nets {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-nets {
+  font-weight: bold;
+  color: #000000; /* Черный цвет для позиции */
+}
+
+.player-age-nets {
+  color: #000000; /* Черный цвет для возраста (вместо красного) */
+  font-weight: bold;
+}
+
+.roster-badge-nets {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-nets {
+  background-color: #000000; /* Черный фон для активных */
+  color: white;
+}
+
+.badge-inactive-nets {
+  background-color: #cccccc; /* Светло-серый для неактивных */
+  color: black;
+}
+
+.loading-text-nets {
+  text-align: center;
+  color: #000000; /* Черный цвет для текста загрузки */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-nets {
+  background-color: #000000; /* Черный цвет для выделения первой строки */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-nets {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}
+
+/* Дополнительные стили для Brooklyn Nets тематики */
+.first-row-highlight-nets td {
+  color: white;
+}
+
+.badge-active-nets {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+}
+
+.badge-inactive-nets {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}

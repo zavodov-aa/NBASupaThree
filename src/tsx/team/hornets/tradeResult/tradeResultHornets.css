@@ -1,0 +1,807 @@
+/* Стили только для компонента TradeResultHornets */
+
+.resultHornets-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultHornets-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultHornets-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #280071; /* Фиолетовый Charlotte Hornets */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultHornets-button:hover:not(:disabled) {
+  background: #1a004d; /* Темный фиолетовый */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHornets-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultHornets-button--hasNotifications {
+  background: linear-gradient(
+    135deg,
+    #280071 0%,
+    #1a004d 100%
+  ); /* Фиолетовый градиент */
+}
+
+.resultHornets-notificationCount {
+  background: #008ca8; /* Бирюзовый Charlotte Hornets */
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultHornets-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultHornets-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultHornets-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #280071; /* Фиолетовый Charlotte Hornets */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultHornets-modalHeader {
+  background: #280071; /* Фиолетовый Charlotte Hornets */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #008ca8; /* Бирюзовый Charlotte Hornets */
+}
+
+.resultHornets-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultHornets-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultHornets-teamLogo::before {
+  content: "CHA";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #280071; /* Фиолетовый Charlotte Hornets */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultHornets-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultHornets-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultHornets-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultHornets-tradePartner {
+  color: #008ca8; /* Бирюзовый Charlotte Hornets */
+  font-weight: 500;
+}
+
+.resultHornets-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultHornets-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultHornets-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultHornets-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultHornets-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultHornets-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultHornets-tradesList {
+  padding: 24px;
+}
+
+.resultHornets-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultHornets-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultHornets-tradeHeader {
+  background: rgba(40, 0, 113, 0.05); /* Полупрозрачный фиолетовый */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultHornets-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultHornets-tradeNumber {
+  font-weight: 600;
+  color: #280071; /* Фиолетовый Charlotte Hornets */
+  font-size: 15px;
+}
+
+.resultHornets-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultHornets-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHornets-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultHornets-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultHornets-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #280071; /* Фиолетовый Charlotte Hornets */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultHornets-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultHornets-exchangeArrow {
+  font-size: 28px;
+  color: #008ca8; /* Бирюзовый Charlotte Hornets */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultHornets-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultHornets-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultHornets-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultHornets-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultHornets-tradeSection--team1 {
+  border-left: 3px solid #280071; /* Фиолетовый Charlotte Hornets */
+}
+
+.resultHornets-tradeSection--team2 {
+  border-left: 3px solid #008ca8; /* Бирюзовый Charlotte Hornets */
+}
+
+.resultHornets-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultHornets-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultHornets-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultHornets-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultHornets-countBadge--players {
+  background: rgba(40, 0, 113, 0.1); /* Полупрозрачный фиолетовый */
+  color: #280071; /* Фиолетовый Charlotte Hornets */
+  border: 1px solid rgba(40, 0, 113, 0.2);
+}
+
+.resultHornets-countBadge--picks {
+  background: rgba(0, 140, 168, 0.1); /* Полупрозрачный бирюзовый */
+  color: #008ca8; /* Бирюзовый Charlotte Hornets */
+  border: 1px solid rgba(0, 140, 168, 0.2);
+}
+
+.resultHornets-sectionContent {
+  padding: 16px;
+}
+
+.resultHornets-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultHornets-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultHornets-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultHornets-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultHornets-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHornets-playerCard--active {
+  border-left-color: #280071; /* Фиолетовый Charlotte Hornets */
+}
+
+.resultHornets-playerCard--gleague {
+  border-left-color: #008ca8; /* Бирюзовый Charlotte Hornets */
+}
+
+.resultHornets-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultHornets-playerNameSection {
+  flex: 1;
+}
+
+.resultHornets-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultHornets-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultHornets-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultHornets-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHornets-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultHornets-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultHornets-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultHornets-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultHornets-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultHornets-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultHornets-teamLabel {
+  color: #666666;
+}
+
+.resultHornets-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultHornets-tradeNote {
+  background: rgba(0, 140, 168, 0.05); /* Полупрозрачный бирюзовый */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(0, 140, 168, 0.2);
+}
+
+.resultHornets-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultHornets-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultHornets-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultHornets-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultHornets-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultHornets-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultHornets-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultHornets-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultHornets-actionButton--accept {
+  background: #008ca8; /* Бирюзовый Charlotte Hornets */
+  color: #ffffff;
+}
+
+.resultHornets-actionButton--accept:hover:not(:disabled) {
+  background: #007a8f;
+}
+
+.resultHornets-actionButton--reject {
+  background: #280071; /* Фиолетовый Charlotte Hornets */
+  color: #ffffff;
+}
+
+.resultHornets-actionButton--reject:hover:not(:disabled) {
+  background: #1a004d;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultHornets-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultHornets-closeAllButton {
+  background: #280071; /* Фиолетовый Charlotte Hornets */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultHornets-closeAllButton:hover {
+  background: #1a004d;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultHornets-modal {
+    max-height: 90vh;
+  }
+
+  .resultHornets-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultHornets-tradesList {
+    padding: 16px;
+  }
+
+  .resultHornets-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultHornets-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultHornets-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultHornets-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultHornets-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultHornets-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultHornets-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultHornets-tradeSummary,
+  .resultHornets-tradeSection,
+  .resultHornets-tradeNote,
+  .resultHornets-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultHornets-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultHornets-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultHornets-modalHeader {
+    padding: 16px;
+  }
+
+  .resultHornets-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultHornets-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultHornets-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultHornets-statValue {
+    font-size: 28px;
+  }
+
+  .resultHornets-statLabel {
+    font-size: 12px;
+  }
+
+  .resultHornets-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultHornets-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultHornets-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultHornets-modal {
+    max-height: 95vh;
+  }
+
+  .resultHornets-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultHornets-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultHornets-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultHornets-statValue {
+    font-size: 24px;
+  }
+
+  .resultHornets-playerName,
+  .resultHornets-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultHornets-noteContent {
+    font-size: 13px;
+  }
+
+  .resultHornets-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultHornets-container .resultHornets-modal {
+    background: #1a1a1a;
+    border-color: #280071; /* Фиолетовый Charlotte Hornets */
+  }
+
+  .resultHornets-container .resultHornets-tradeItem,
+  .resultHornets-container .resultHornets-playerCard,
+  .resultHornets-container .resultHornets-draftPickCard,
+  .resultHornets-container .resultHornets-tradeSummary,
+  .resultHornets-container .resultHornets-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultHornets-container .resultHornets-playerName,
+  .resultHornets-container .resultHornets-statLabel,
+  .resultHornets-container .resultHornets-sectionTitle,
+  .resultHornets-container .resultHornets-noteTitle,
+  .resultHornets-container .resultHornets-teamName,
+  .resultHornets-container .resultHornets-pickYearRound,
+  .resultHornets-container .resultHornets-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultHornets-container .resultHornets-playerType,
+  .resultHornets-container .resultHornets-pickType,
+  .resultHornets-container .resultHornets-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultHornets-container .resultHornets-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultHornets-container .resultHornets-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

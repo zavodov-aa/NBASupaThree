@@ -1,0 +1,161 @@
+.rosterMavericks {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerMavericks {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerMavericks h1 {
+  color: #0050b5; /* Синий цвет Dallas Mavericks */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleMavericks {
+  color: black;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerMavericks {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #0050b5; /* Синий цвет Dallas Mavericks */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableMavericks {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableMavericks thead {
+  background: #0050b5; /* Синий цвет Dallas Mavericks */
+}
+
+.roster-tableMavericks th {
+  padding: 15px 10px;
+  color: #fff; /* Белый текст на синем фоне */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.roster-tableMavericks th.highlight {
+}
+
+.roster-tableMavericks tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableMavericks tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableMavericks tbody tr:hover {
+  background: white;
+}
+
+.roster-tableMavericks td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 80, 181, 0.3); /* Синий цвет Dallas Mavericks с прозрачностью */
+  color: #000;
+}
+
+.roster-tableMavericks .franchiseMavericks {
+  background: rgba(
+    0,
+    80,
+    181,
+    0.1
+  ) !important; /* Светло-синий фон для франчайзного игрока */
+}
+
+.roster-tableMavericks .franchiseMavericks td {
+  color: #0050b5; /* Синий цвет текста */
+  font-weight: bold;
+}
+
+.number-cellMavericks {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starMavericks {
+  color: #0050b5; /* Синий цвет звезды */
+  font-size: 1.2em;
+}
+
+.player-tagMavericks {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingMavericks {
+  text-align: center;
+  color: #0050b5; /* Синий цвет Dallas Mavericks */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateMavericks {
+  text-align: center;
+  padding: 40px;
+  color: #0050b5; /* Синий цвет Dallas Mavericks */
+}
+
+.empty-iconMavericks {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleMavericks {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleMavericks {
+  opacity: 0.8;
+}
+
+.franchise-colorMavericks {
+  background: rgba(0, 80, 181, 0.1);
+}
+
+.salary-colorMavericks {
+  background: rgba(0, 80, 181, 0.1);
+}
+
+@media (max-width: 768px) {
+  .rosterMavericks {
+    padding: 10px;
+  }
+
+  .roster-headerMavericks h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleMavericks {
+    font-size: 1rem;
+  }
+
+  .roster-tableMavericks th,
+  .roster-tableMavericks td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

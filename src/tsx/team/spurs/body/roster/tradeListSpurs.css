@@ -1,0 +1,228 @@
+.trade-list-container-spurs {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.trade-header-content-spurs {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.trade-header-title-spurs {
+  color: #000000; /* Черный для Spurs */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.trade-table-container-spurs {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.trade-table-wrapper-spurs {
+  overflow-x: auto;
+}
+
+.trade-list-table-spurs {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trade-table-header-spurs {
+  background: rgba(0, 0, 0, 0.8); /* Темный фон для шапки */
+}
+
+.trade-table-th-spurs {
+  padding: 15px 10px;
+  color: #c4ced4; /* Серебристый текст */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trade-table-th-spurs:last-child {
+  border-right: none;
+}
+
+.trade-table-body-spurs {
+}
+
+.trade-table-row-spurs {
+  transition: background-color 0.3s;
+}
+
+.trade-table-row-spurs:hover {
+  background-color: rgba(196, 206, 212, 0.1); /* Серебристый оттенок */
+}
+
+.trade-row-even-spurs {
+  background: white;
+}
+
+.trade-row-odd-spurs {
+  background: white;
+}
+
+.trade-row-adding-spurs {
+  background: rgba(
+    196,
+    206,
+    212,
+    0.2
+  ) !important; /* Серебристый для добавления */
+}
+
+.trade-table-td-spurs {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.trade-actions-td-spurs {
+  white-space: nowrap;
+}
+
+.trade-item-text-spurs {
+  font-weight: 500;
+}
+
+.trade-list-input-spurs {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background: white;
+}
+
+.trade-list-input-spurs:focus {
+  outline: none;
+  border-color: #000000; /* Черный для фокуса */
+  box-shadow: 0 0 0 3px rgba(196, 206, 212, 0.3); /* Серебристая тень */
+}
+
+.trade-list-actions-spurs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trade-list-btn-spurs {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.trade-list-btn-edit-spurs {
+  background: #000000; /* Черный */
+  color: #c4ced4; /* Серебристый */
+}
+
+.trade-list-btn-edit-spurs:hover {
+  background: #333333; /* Темно-серый при наведении */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-save-spurs {
+  background: #000000; /* Черный */
+  color: #c4ced4; /* Серебристый */
+}
+
+.trade-list-btn-save-spurs:hover {
+  background: #333333; /* Темно-серый */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-delete-spurs {
+  background: #000000; /* Черный */
+  color: #c4ced4; /* Серебристый */
+}
+
+.trade-list-btn-delete-spurs:hover {
+  background: #333333; /* Темно-серый */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-cancel-spurs {
+  background: #c4ced4; /* Серебристый */
+  color: #000000; /* Черный */
+}
+
+.trade-list-btn-cancel-spurs:hover {
+  background: #a8b4bc; /* Темнее серебристого */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-add-spurs {
+  background: #000000; /* Черный */
+  color: #c4ced4; /* Серебристый */
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: center;
+}
+
+.trade-list-btn-add-spurs:hover {
+  background: #333333; /* Темно-серый */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trade-add-button-container-spurs {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.trade-loading-text-spurs {
+  text-align: center;
+  color: #000000; /* Черный */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .trade-list-container-spurs {
+    padding: 10px;
+  }
+
+  .trade-header-title-spurs {
+    font-size: 2rem;
+  }
+
+  .trade-table-th-spurs {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-table-td-spurs {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-list-actions-spurs {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .trade-list-btn-spurs {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

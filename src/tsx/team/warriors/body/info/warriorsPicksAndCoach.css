@@ -1,0 +1,269 @@
+.warriors-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-warriors {
+  color: #1d428a; /* Warriors blue */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.warriors-picks-coach-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #ffc72c; /* Warriors gold */
+  box-shadow: 0 8px 24px rgba(29, 66, 138, 0.15);
+}
+
+.warriors-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .warriors-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .warriors-pc-section {
+    flex: 1;
+  }
+}
+
+.warriors-pc-section {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(29, 66, 138, 0.2);
+}
+
+.warriors-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(29, 66, 138, 0.1),
+    rgba(255, 199, 44, 0.05)
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(29, 66, 138, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.warriors-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #1d428a;
+  text-transform: uppercase;
+}
+
+.warriors-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.warriors-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+.warriors-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.warriors-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.warriors-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(29, 66, 138, 0.1);
+}
+
+.warriors-pick-year {
+  background: linear-gradient(135deg, #1d428a, #ffc72c);
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-warriors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(29, 66, 138, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-warriors:hover {
+  background: rgba(29, 66, 138, 0.05);
+}
+
+.pick-item-warriors:last-child {
+  border-bottom: none;
+}
+
+.pick-round-warriors {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-warriors {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+.warriors-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.warriors-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.warriors-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(29, 66, 138, 0.1);
+}
+
+.coach-item-warriors {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(29, 66, 138, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-warriors:hover {
+  background: rgba(255, 199, 44, 0.05);
+}
+
+.coach-item-warriors:last-child {
+  border-bottom: none;
+}
+
+.coach-position-warriors {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-warriors {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+.warriors-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(29, 66, 138, 0.1);
+}
+
+.color-dot-warriors {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.blue-dark-warriors {
+  background: #0c2340; /* Dark blue */
+}
+.blue-warriors {
+  background: #1d428a; /* Warriors blue */
+}
+.yellow-warriors {
+  background: #ffc72c; /* Warriors gold */
+}
+.yellow-light-warriors {
+  background: #ffd700; /* Light gold */
+}
+.white-warriors {
+  background: #ffffff;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  .warriors-containers {
+    padding: 16px;
+  }
+
+  .header-title-warriors {
+    font-size: 2rem;
+  }
+
+  .warriors-picks-grid,
+  .warriors-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .warriors-pick-column:not(:last-child)::after,
+  .warriors-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .warriors-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-warriors,
+  .coach-item-warriors {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text {
+  color: #ff4444;
+}

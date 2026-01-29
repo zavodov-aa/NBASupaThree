@@ -1,0 +1,803 @@
+/* Стили только для компонента TradeResultHawks */
+
+.resultHawks-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultHawks-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultHawks-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #e03a3e;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultHawks-button:hover:not(:disabled) {
+  background: #c8102e;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHawks-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultHawks-button--hasNotifications {
+  background: linear-gradient(135deg, #e03a3e 0%, #c8102e 100%);
+}
+
+.resultHawks-notificationCount {
+  background: #c1d32f;
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultHawks-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultHawks-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultHawks-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #e03a3e;
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultHawks-modalHeader {
+  background: #e03a3e;
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #c1d32f;
+}
+
+.resultHawks-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultHawks-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultHawks-teamLogo::before {
+  content: "ATL";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #e03a3e;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultHawks-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultHawks-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultHawks-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultHawks-tradePartner {
+  color: #c1d32f;
+  font-weight: 500;
+}
+
+.resultHawks-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultHawks-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultHawks-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultHawks-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultHawks-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultHawks-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultHawks-tradesList {
+  padding: 24px;
+}
+
+.resultHawks-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultHawks-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultHawks-tradeHeader {
+  background: rgba(224, 58, 62, 0.05);
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultHawks-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultHawks-tradeNumber {
+  font-weight: 600;
+  color: #e03a3e;
+  font-size: 15px;
+}
+
+.resultHawks-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultHawks-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHawks-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultHawks-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultHawks-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #e03a3e;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultHawks-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultHawks-exchangeArrow {
+  font-size: 28px;
+  color: #c1d32f;
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultHawks-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultHawks-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultHawks-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultHawks-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultHawks-tradeSection--team1 {
+  border-left: 3px solid #e03a3e;
+}
+
+.resultHawks-tradeSection--team2 {
+  border-left: 3px solid #c1d32f;
+}
+
+.resultHawks-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultHawks-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultHawks-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultHawks-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultHawks-countBadge--players {
+  background: rgba(224, 58, 62, 0.1);
+  color: #e03a3e;
+  border: 1px solid rgba(224, 58, 62, 0.2);
+}
+
+.resultHawks-countBadge--picks {
+  background: rgba(193, 211, 47, 0.1);
+  color: #c1d32f;
+  border: 1px solid rgba(193, 211, 47, 0.2);
+}
+
+.resultHawks-sectionContent {
+  padding: 16px;
+}
+
+.resultHawks-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultHawks-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultHawks-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultHawks-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultHawks-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHawks-playerCard--active {
+  border-left-color: #e03a3e;
+}
+
+.resultHawks-playerCard--gleague {
+  border-left-color: #c1d32f;
+}
+
+.resultHawks-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultHawks-playerNameSection {
+  flex: 1;
+}
+
+.resultHawks-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultHawks-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultHawks-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultHawks-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHawks-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultHawks-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultHawks-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultHawks-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultHawks-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultHawks-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultHawks-teamLabel {
+  color: #666666;
+}
+
+.resultHawks-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultHawks-tradeNote {
+  background: rgba(193, 211, 47, 0.05);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(193, 211, 47, 0.2);
+}
+
+.resultHawks-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultHawks-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultHawks-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultHawks-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultHawks-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultHawks-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultHawks-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultHawks-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultHawks-actionButton--accept {
+  background: #c1d32f;
+  color: #000000;
+}
+
+.resultHawks-actionButton--accept:hover:not(:disabled) {
+  background: #a8c41f;
+}
+
+.resultHawks-actionButton--reject {
+  background: #e03a3e;
+  color: #ffffff;
+}
+
+.resultHawks-actionButton--reject:hover:not(:disabled) {
+  background: #c8102e;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultHawks-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultHawks-closeAllButton {
+  background: #e03a3e;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultHawks-closeAllButton:hover {
+  background: #c8102e;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultHawks-modal {
+    max-height: 90vh;
+  }
+
+  .resultHawks-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultHawks-tradesList {
+    padding: 16px;
+  }
+
+  .resultHawks-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultHawks-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultHawks-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultHawks-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultHawks-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultHawks-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultHawks-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultHawks-tradeSummary,
+  .resultHawks-tradeSection,
+  .resultHawks-tradeNote,
+  .resultHawks-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultHawks-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultHawks-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultHawks-modalHeader {
+    padding: 16px;
+  }
+
+  .resultHawks-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultHawks-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultHawks-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultHawks-statValue {
+    font-size: 28px;
+  }
+
+  .resultHawks-statLabel {
+    font-size: 12px;
+  }
+
+  .resultHawks-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultHawks-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultHawks-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultHawks-modal {
+    max-height: 95vh;
+  }
+
+  .resultHawks-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultHawks-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultHawks-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultHawks-statValue {
+    font-size: 24px;
+  }
+
+  .resultHawks-playerName,
+  .resultHawks-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultHawks-noteContent {
+    font-size: 13px;
+  }
+
+  .resultHawks-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultHawks-container .resultHawks-modal {
+    background: #1a1a1a;
+    border-color: #e03a3e;
+  }
+
+  .resultHawks-container .resultHawks-tradeItem,
+  .resultHawks-container .resultHawks-playerCard,
+  .resultHawks-container .resultHawks-draftPickCard,
+  .resultHawks-container .resultHawks-tradeSummary,
+  .resultHawks-container .resultHawks-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultHawks-container .resultHawks-playerName,
+  .resultHawks-container .resultHawks-statLabel,
+  .resultHawks-container .resultHawks-sectionTitle,
+  .resultHawks-container .resultHawks-noteTitle,
+  .resultHawks-container .resultHawks-teamName,
+  .resultHawks-container .resultHawks-pickYearRound,
+  .resultHawks-container .resultHawks-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultHawks-container .resultHawks-playerType,
+  .resultHawks-container .resultHawks-pickType,
+  .resultHawks-container .resultHawks-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultHawks-container .resultHawks-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultHawks-container .resultHawks-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

@@ -1,0 +1,181 @@
+.rosterCavaliers {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerCavaliers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerCavaliers h1 {
+  color: #6f263d; /* Cavaliers винно-красный */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleCavaliers {
+  color: #ffb81c; /* Cavaliers золотой */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerCavaliers {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #6f263d; /* Cavaliers винно-красный */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableCavaliers {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableCavaliers thead {
+  background: #6f263d; /* Cavaliers винно-красный */
+}
+
+.roster-tableCavaliers th {
+  padding: 15px 10px;
+  color: #ffb81c; /* Cavaliers золотой */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.roster-tableCavaliers th.highlight {
+}
+
+.roster-tableCavaliers tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableCavaliers tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableCavaliers tbody tr:hover {
+  background: white;
+}
+
+.roster-tableCavaliers td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255, 184, 28, 0.3); /* Cavaliers золотой с прозрачностью */
+  color: #000;
+}
+
+.roster-tableCavaliers .franchiseCavaliers {
+  background: rgba(111, 38, 61, 0.9) !important; /* Cavaliers винно-красный */
+}
+
+.roster-tableCavaliers .franchiseCavaliers td {
+  color: #ffb81c; /* Cavaliers золотой */
+  font-weight: bold;
+}
+
+.number-cellCavaliers {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starCavaliers {
+  color: #ffb81c; /* Cavaliers золотой */
+  font-size: 1.2em;
+}
+
+.player-tagCavaliers {
+  padding: 4px 8px;
+  color: #6f263d; /* Cavaliers винно-красный */
+  border: 1px solid #6f263d; /* Cavaliers винно-красный */
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingCavaliers {
+  text-align: center;
+  color: #6f263d; /* Cavaliers винно-красный */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateCavaliers {
+  text-align: center;
+  padding: 40px;
+  color: #6f263d; /* Cavaliers винно-красный */
+}
+
+.empty-iconCavaliers {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleCavaliers {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleCavaliers {
+  opacity: 0.8;
+}
+
+.franchise-colorCavaliers {
+  background: #6f263d; /* Cavaliers винно-красный */
+}
+
+.salary-colorCavaliers {
+  background: #6f263d; /* Cavaliers винно-красный */
+}
+
+@media (max-width: 768px) {
+  .rosterCavaliers {
+    padding: 10px;
+  }
+
+  .roster-headerCavaliers h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleCavaliers {
+    font-size: 1rem;
+  }
+
+  .roster-tableCavaliers th,
+  .roster-tableCavaliers td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}
+
+.g-league-dividerCavaliers {
+  background: rgba(
+    111,
+    38,
+    61,
+    0.1
+  ) !important; /* Cavaliers винно-красный с прозрачностью */
+}
+
+.g-league-headerCavaliers {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #6f263d; /* Cavaliers винно-красный */
+  border-top: 2px solid #6f263d; /* Cavaliers винно-красный */
+  border-bottom: 2px solid #6f263d; /* Cavaliers винно-красный */
+  background: rgba(
+    111,
+    38,
+    61,
+    0.05
+  ); /* Cavaliers винно-красный с прозрачностью */
+}

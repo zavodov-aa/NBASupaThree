@@ -1,0 +1,288 @@
+.jazz-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content-jazz {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-jazz {
+  color: #002b5c; /* Utah Jazz navy blue */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.jazz-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #f9a01b; /* Utah Jazz yellow */
+  box-shadow: 0 8px 24px rgba(0, 43, 92, 0.15);
+}
+
+.jazz-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #002b5c, #f9a01b);
+}
+
+/* Контейнер для горизонтального расположения */
+.jazz-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .jazz-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .jazz-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.jazz-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(0, 43, 92, 0.2);
+}
+
+.jazz-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 43, 92, 0.1),
+    rgba(249, 160, 27, 0.05)
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 43, 92, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.jazz-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #002b5c;
+  text-transform: uppercase;
+}
+
+.jazz-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.jazz-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.jazz-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.jazz-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.jazz-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 43, 92, 0.1);
+}
+
+.jazz-pick-year {
+  background: linear-gradient(
+    135deg,
+    #002b5c,
+    #0047a0
+  ); /* Navy to lighter blue */
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-jazz {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 43, 92, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-jazz:hover {
+  background: rgba(0, 43, 92, 0.05);
+}
+
+.pick-item-jazz:last-child {
+  border-bottom: none;
+}
+
+.pick-round-jazz {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-jazz {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.jazz-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.jazz-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.jazz-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 43, 92, 0.1);
+}
+
+.coach-item-jazz {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 43, 92, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-jazz:hover {
+  background: rgba(249, 160, 27, 0.05);
+}
+
+.coach-item-jazz:last-child {
+  border-bottom: none;
+}
+
+.coach-position-jazz {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-jazz {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.jazz-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 43, 92, 0.1);
+}
+
+.color-dot-jazz {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.navy-jazz {
+  background: #002b5c; /* Utah Jazz navy blue */
+}
+.blue-jazz {
+  background: #0047a0; /* Utah Jazz blue */
+}
+.yellow-jazz {
+  background: #f9a01b; /* Utah Jazz yellow */
+}
+.green-jazz {
+  background: #007a33; /* Utah Jazz green */
+}
+.gray-jazz {
+  background: #bec0c2; /* Utah Jazz gray */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .jazz-containers {
+    padding: 16px;
+  }
+
+  .header-title-jazz {
+    font-size: 2rem;
+  }
+
+  .jazz-picks-grid,
+  .jazz-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .jazz-pick-column:not(:last-child)::after,
+  .jazz-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .jazz-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-jazz,
+  .coach-item-jazz {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text-jazz,
+.error-text-jazz {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text-jazz {
+  color: #ff4444;
+}

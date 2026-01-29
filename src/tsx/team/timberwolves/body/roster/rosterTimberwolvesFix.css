@@ -1,0 +1,180 @@
+.rosterTimberwolves {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerTimberwolves {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerTimberwolves h1 {
+  color: #0c2340; /* Timberwolves Navy Blue */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleTimberwolves {
+  color: #236192; /* Timberwolves Blue */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerTimberwolves {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #0c2340; /* Timberwolves Navy Blue */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableTimberwolves {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableTimberwolves thead {
+  background: #0c2340; /* Timberwolves Navy Blue */
+}
+
+.roster-tableTimberwolves th {
+  padding: 15px 10px;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableTimberwolves tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableTimberwolves tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableTimberwolves tbody tr:hover {
+  background: white;
+}
+
+.roster-tableTimberwolves td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(35, 97, 146, 0.3); /* Timberwolves Blue */
+  color: #000;
+}
+
+.roster-tableTimberwolves .franchiseTimberwolves {
+  background: rgba(
+    12,
+    35,
+    64,
+    0.8
+  ) !important; /* Timberwolves Navy Blue with opacity */
+}
+
+.roster-tableTimberwolves .franchiseTimberwolves td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellTimberwolves {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starTimberwolves {
+  color: #78be20; /* Timberwolves Green */
+  font-size: 1.2em;
+}
+
+.player-tagTimberwolves {
+  padding: 4px 8px;
+  background: #0c2340; /* Timberwolves Navy Blue */
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingTimberwolves {
+  text-align: center;
+  color: #0c2340; /* Timberwolves Navy Blue */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateTimberwolves {
+  text-align: center;
+  padding: 40px;
+  color: #0c2340; /* Timberwolves Navy Blue */
+}
+
+.empty-iconTimberwolves {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleTimberwolves {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleTimberwolves {
+  opacity: 0.8;
+}
+
+.franchise-colorTimberwolves {
+  background: #0c2340; /* Timberwolves Navy Blue */
+}
+
+.salary-colorTimberwolves {
+  background: #236192; /* Timberwolves Blue */
+}
+
+/* G-League Divider Styles */
+.g-league-dividerTimberwolves {
+  background: rgba(
+    12,
+    35,
+    64,
+    0.1
+  ) !important; /* Timberwolves Navy Blue with opacity */
+}
+
+.g-league-headerTimberwolves {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #0c2340; /* Timberwolves Navy Blue */
+  border-top: 2px solid #0c2340; /* Timberwolves Navy Blue */
+  border-bottom: 2px solid #0c2340; /* Timberwolves Navy Blue */
+  background: rgba(12, 35, 64, 0.05); /* Timberwolves Navy Blue with opacity */
+}
+
+@media (max-width: 768px) {
+  .rosterTimberwolves {
+    padding: 10px;
+  }
+
+  .roster-headerTimberwolves h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleTimberwolves {
+    font-size: 1rem;
+  }
+
+  .roster-tableTimberwolves th,
+  .roster-tableTimberwolves td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

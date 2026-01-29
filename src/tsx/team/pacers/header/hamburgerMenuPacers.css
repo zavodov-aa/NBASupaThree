@@ -1,0 +1,147 @@
+.hamburgerButtonPacers {
+  position: relative;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.hamburgerButtonPacers span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #002d62;
+  transition: all 0.3s ease;
+  margin: 2px;
+}
+
+@media (max-width: 280px) {
+  .hamburgerButtonPacers span {
+    width: 20px;
+    height: 2.5px;
+    margin: 1.5px;
+  }
+}
+
+.hamburgerButtonPacers.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #ffffff;
+}
+.hamburgerButtonPacers.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButtonPacers.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #ffffff;
+}
+
+/* Полноэкранное меню */
+.fullscreenMenuPacers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fdbb30;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.fullscreenMenuPacers.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Содержимое меню */
+.menuContentPacers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 280px;
+}
+
+.menuContentHPacers {
+  color: #002d62;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.menuContentPacers a {
+  color: #002d62;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.menuContentPacers a:hover {
+  color: #ffffff;
+  background-color: rgba(0, 45, 98, 0.1);
+  border-radius: 5px;
+}
+
+/* Адаптив для меню */
+@media (max-width: 768px) {
+  .menuContentHPacers {
+    font-size: 1.3rem;
+  }
+
+  .menuContentPacers a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuContentHPacers {
+    font-size: 1.1rem;
+  }
+
+  .menuContentPacers a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .menuContentHPacers {
+    font-size: 1rem;
+  }
+
+  .menuContentPacers a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 280px) {
+  .menuContentPacers {
+    padding: 15px;
+    gap: 1rem;
+  }
+
+  .menuContentHPacers {
+    font-size: 0.9rem;
+  }
+
+  .menuContentPacers a {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

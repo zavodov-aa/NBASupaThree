@@ -1,0 +1,803 @@
+/* Стили только для компонента TradeResultKnicks */
+
+.resultKnicks-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultKnicks-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultKnicks-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #006bb6;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultKnicks-button:hover:not(:disabled) {
+  background: #005293;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultKnicks-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultKnicks-button--hasNotifications {
+  background: linear-gradient(135deg, #006bb6 0%, #005293 100%);
+}
+
+.resultKnicks-notificationCount {
+  background: #f58426;
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultKnicks-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultKnicks-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultKnicks-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #006bb6;
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultKnicks-modalHeader {
+  background: #006bb6;
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #f58426;
+}
+
+.resultKnicks-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultKnicks-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultKnicks-teamLogo::before {
+  content: "NYK";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #006bb6;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultKnicks-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultKnicks-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultKnicks-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultKnicks-tradePartner {
+  color: #f58426;
+  font-weight: 500;
+}
+
+.resultKnicks-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultKnicks-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultKnicks-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultKnicks-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultKnicks-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultKnicks-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultKnicks-tradesList {
+  padding: 24px;
+}
+
+.resultKnicks-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultKnicks-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultKnicks-tradeHeader {
+  background: rgba(0, 107, 182, 0.05);
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultKnicks-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultKnicks-tradeNumber {
+  font-weight: 600;
+  color: #006bb6;
+  font-size: 15px;
+}
+
+.resultKnicks-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultKnicks-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultKnicks-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultKnicks-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultKnicks-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #006bb6;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultKnicks-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultKnicks-exchangeArrow {
+  font-size: 28px;
+  color: #f58426;
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultKnicks-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultKnicks-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultKnicks-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultKnicks-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultKnicks-tradeSection--team1 {
+  border-left: 3px solid #006bb6;
+}
+
+.resultKnicks-tradeSection--team2 {
+  border-left: 3px solid #f58426;
+}
+
+.resultKnicks-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultKnicks-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultKnicks-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultKnicks-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultKnicks-countBadge--players {
+  background: rgba(0, 107, 182, 0.1);
+  color: #006bb6;
+  border: 1px solid rgba(0, 107, 182, 0.2);
+}
+
+.resultKnicks-countBadge--picks {
+  background: rgba(245, 132, 38, 0.1);
+  color: #f58426;
+  border: 1px solid rgba(245, 132, 38, 0.2);
+}
+
+.resultKnicks-sectionContent {
+  padding: 16px;
+}
+
+.resultKnicks-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultKnicks-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultKnicks-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultKnicks-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultKnicks-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultKnicks-playerCard--active {
+  border-left-color: #006bb6;
+}
+
+.resultKnicks-playerCard--gleague {
+  border-left-color: #f58426;
+}
+
+.resultKnicks-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultKnicks-playerNameSection {
+  flex: 1;
+}
+
+.resultKnicks-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultKnicks-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultKnicks-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultKnicks-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultKnicks-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultKnicks-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultKnicks-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultKnicks-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultKnicks-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultKnicks-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultKnicks-teamLabel {
+  color: #666666;
+}
+
+.resultKnicks-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultKnicks-tradeNote {
+  background: rgba(245, 132, 38, 0.05);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(245, 132, 38, 0.2);
+}
+
+.resultKnicks-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultKnicks-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultKnicks-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultKnicks-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultKnicks-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultKnicks-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultKnicks-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultKnicks-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultKnicks-actionButton--accept {
+  background: #f58426;
+  color: #000000;
+}
+
+.resultKnicks-actionButton--accept:hover:not(:disabled) {
+  background: #e6731f;
+}
+
+.resultKnicks-actionButton--reject {
+  background: #006bb6;
+  color: #ffffff;
+}
+
+.resultKnicks-actionButton--reject:hover:not(:disabled) {
+  background: #005293;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultKnicks-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultKnicks-closeAllButton {
+  background: #006bb6;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultKnicks-closeAllButton:hover {
+  background: #005293;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultKnicks-modal {
+    max-height: 90vh;
+  }
+
+  .resultKnicks-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultKnicks-tradesList {
+    padding: 16px;
+  }
+
+  .resultKnicks-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultKnicks-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultKnicks-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultKnicks-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultKnicks-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultKnicks-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultKnicks-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultKnicks-tradeSummary,
+  .resultKnicks-tradeSection,
+  .resultKnicks-tradeNote,
+  .resultKnicks-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultKnicks-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultKnicks-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultKnicks-modalHeader {
+    padding: 16px;
+  }
+
+  .resultKnicks-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultKnicks-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultKnicks-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultKnicks-statValue {
+    font-size: 28px;
+  }
+
+  .resultKnicks-statLabel {
+    font-size: 12px;
+  }
+
+  .resultKnicks-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultKnicks-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultKnicks-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultKnicks-modal {
+    max-height: 95vh;
+  }
+
+  .resultKnicks-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultKnicks-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultKnicks-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultKnicks-statValue {
+    font-size: 24px;
+  }
+
+  .resultKnicks-playerName,
+  .resultKnicks-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultKnicks-noteContent {
+    font-size: 13px;
+  }
+
+  .resultKnicks-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultKnicks-container .resultKnicks-modal {
+    background: #1a1a1a;
+    border-color: #006bb6;
+  }
+
+  .resultKnicks-container .resultKnicks-tradeItem,
+  .resultKnicks-container .resultKnicks-playerCard,
+  .resultKnicks-container .resultKnicks-draftPickCard,
+  .resultKnicks-container .resultKnicks-tradeSummary,
+  .resultKnicks-container .resultKnicks-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultKnicks-container .resultKnicks-playerName,
+  .resultKnicks-container .resultKnicks-statLabel,
+  .resultKnicks-container .resultKnicks-sectionTitle,
+  .resultKnicks-container .resultKnicks-noteTitle,
+  .resultKnicks-container .resultKnicks-teamName,
+  .resultKnicks-container .resultKnicks-pickYearRound,
+  .resultKnicks-container .resultKnicks-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultKnicks-container .resultKnicks-playerType,
+  .resultKnicks-container .resultKnicks-pickType,
+  .resultKnicks-container .resultKnicks-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultKnicks-container .resultKnicks-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultKnicks-container .resultKnicks-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

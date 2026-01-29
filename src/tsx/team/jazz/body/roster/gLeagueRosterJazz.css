@@ -1,0 +1,122 @@
+.jazz-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-jazz {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-jazz {
+  color: #00471b; /* Utah Jazz зеленый */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-jazz {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-jazz {
+  overflow-x: auto;
+}
+
+.players-table-jazz {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-jazz {
+  background: black;
+}
+
+.table-th-jazz {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-jazz:last-child {
+}
+
+.table-body-jazz {
+  background: white;
+}
+
+.tables-row-jazz {
+}
+
+.row-even-jazz {
+  background: black;
+}
+
+.row-odd-jazz {
+}
+
+.table-tdw-jazz {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+.table-tdw-jazz {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-jazz {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-jazz {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-jazz {
+  color: #f9a01b; /* Utah Jazz желтый/золотой */
+  font-weight: bold;
+}
+
+.roster-badge-jazz {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-jazz {
+  color: white;
+  background-color: #00471b; /* Utah Jazz зеленый */
+}
+
+.badge-inactive-jazz {
+  color: black;
+  background-color: #f9a01b; /* Utah Jazz желтый/золотой */
+}
+
+.loading-text-jazz {
+  text-align: center;
+  color: #00471b; /* Utah Jazz зеленый */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-jazz {
+  background-color: #002b5c; /* Utah Jazz темно-синий */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-jazz {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

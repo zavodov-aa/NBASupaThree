@@ -1,0 +1,803 @@
+/* Стили только для компонента TradeResultRockets */
+
+.resultRockets-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultRockets-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultRockets-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #ce1141; /* Основной красный Houston Rockets */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultRockets-button:hover:not(:disabled) {
+  background: #9c0c30; /* Более темный оттенок красного */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultRockets-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultRockets-button--hasNotifications {
+  background: linear-gradient(135deg, #ce1141 0%, #9c0c30 100%);
+}
+
+.resultRockets-notificationCount {
+  background: #c4ced4; /* Серебряный Houston Rockets */
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultRockets-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultRockets-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultRockets-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ce1141; /* Красный Houston Rockets */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultRockets-modalHeader {
+  background: #ce1141; /* Красный Houston Rockets */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #c4ced4; /* Серебряный Houston Rockets */
+}
+
+.resultRockets-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultRockets-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultRockets-teamLogo::before {
+  content: "HOU";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ce1141;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultRockets-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultRockets-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultRockets-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultRockets-tradePartner {
+  color: #c4ced4; /* Серебряный Houston Rockets */
+  font-weight: 500;
+}
+
+.resultRockets-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultRockets-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultRockets-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultRockets-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultRockets-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultRockets-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultRockets-tradesList {
+  padding: 24px;
+}
+
+.resultRockets-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultRockets-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultRockets-tradeHeader {
+  background: rgba(206, 17, 65, 0.05); /* Красный с прозрачностью */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultRockets-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultRockets-tradeNumber {
+  font-weight: 600;
+  color: #ce1141; /* Красный Houston Rockets */
+  font-size: 15px;
+}
+
+.resultRockets-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultRockets-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultRockets-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultRockets-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultRockets-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ce1141; /* Красный Houston Rockets */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultRockets-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultRockets-exchangeArrow {
+  font-size: 28px;
+  color: #c4ced4; /* Серебряный Houston Rockets */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultRockets-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultRockets-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultRockets-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultRockets-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultRockets-tradeSection--team1 {
+  border-left: 3px solid #ce1141; /* Красный Houston Rockets */
+}
+
+.resultRockets-tradeSection--team2 {
+  border-left: 3px solid #c4ced4; /* Серебряный Houston Rockets */
+}
+
+.resultRockets-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultRockets-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultRockets-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultRockets-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultRockets-countBadge--players {
+  background: rgba(206, 17, 65, 0.1); /* Красный с прозрачностью */
+  color: #ce1141;
+  border: 1px solid rgba(206, 17, 65, 0.2);
+}
+
+.resultRockets-countBadge--picks {
+  background: rgba(196, 206, 212, 0.1); /* Серебряный с прозрачностью */
+  color: #c4ced4;
+  border: 1px solid rgba(196, 206, 212, 0.2);
+}
+
+.resultRockets-sectionContent {
+  padding: 16px;
+}
+
+.resultRockets-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultRockets-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultRockets-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultRockets-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultRockets-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultRockets-playerCard--active {
+  border-left-color: #ce1141; /* Красный Houston Rockets */
+}
+
+.resultRockets-playerCard--gleague {
+  border-left-color: #c4ced4; /* Серебряный Houston Rockets */
+}
+
+.resultRockets-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultRockets-playerNameSection {
+  flex: 1;
+}
+
+.resultRockets-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultRockets-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultRockets-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultRockets-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultRockets-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultRockets-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultRockets-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultRockets-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultRockets-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultRockets-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultRockets-teamLabel {
+  color: #666666;
+}
+
+.resultRockets-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultRockets-tradeNote {
+  background: rgba(196, 206, 212, 0.05); /* Серебряный с прозрачностью */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(196, 206, 212, 0.2);
+}
+
+.resultRockets-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultRockets-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultRockets-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultRockets-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultRockets-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultRockets-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultRockets-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultRockets-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultRockets-actionButton--accept {
+  background: #c4ced4; /* Серебряный Houston Rockets */
+  color: #000000;
+}
+
+.resultRockets-actionButton--accept:hover:not(:disabled) {
+  background: #a8b5bd; /* Темнее серебряного */
+}
+
+.resultRockets-actionButton--reject {
+  background: #ce1141; /* Красный Houston Rockets */
+  color: #ffffff;
+}
+
+.resultRockets-actionButton--reject:hover:not(:disabled) {
+  background: #9c0c30; /* Темнее красного */
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultRockets-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultRockets-closeAllButton {
+  background: #ce1141; /* Красный Houston Rockets */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultRockets-closeAllButton:hover {
+  background: #9c0c30; /* Темнее красного */
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultRockets-modal {
+    max-height: 90vh;
+  }
+
+  .resultRockets-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultRockets-tradesList {
+    padding: 16px;
+  }
+
+  .resultRockets-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultRockets-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultRockets-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultRockets-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultRockets-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultRockets-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultRockets-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultRockets-tradeSummary,
+  .resultRockets-tradeSection,
+  .resultRockets-tradeNote,
+  .resultRockets-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultRockets-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultRockets-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultRockets-modalHeader {
+    padding: 16px;
+  }
+
+  .resultRockets-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultRockets-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultRockets-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultRockets-statValue {
+    font-size: 28px;
+  }
+
+  .resultRockets-statLabel {
+    font-size: 12px;
+  }
+
+  .resultRockets-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultRockets-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultRockets-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultRockets-modal {
+    max-height: 95vh;
+  }
+
+  .resultRockets-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultRockets-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultRockets-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultRockets-statValue {
+    font-size: 24px;
+  }
+
+  .resultRockets-playerName,
+  .resultRockets-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultRockets-noteContent {
+    font-size: 13px;
+  }
+
+  .resultRockets-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultRockets-container .resultRockets-modal {
+    background: #1a1a1a;
+    border-color: #ce1141; /* Красный Houston Rockets */
+  }
+
+  .resultRockets-container .resultRockets-tradeItem,
+  .resultRockets-container .resultRockets-playerCard,
+  .resultRockets-container .resultRockets-draftPickCard,
+  .resultRockets-container .resultRockets-tradeSummary,
+  .resultRockets-container .resultRockets-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultRockets-container .resultRockets-playerName,
+  .resultRockets-container .resultRockets-statLabel,
+  .resultRockets-container .resultRockets-sectionTitle,
+  .resultRockets-container .resultRockets-noteTitle,
+  .resultRockets-container .resultRockets-teamName,
+  .resultRockets-container .resultRockets-pickYearRound,
+  .resultRockets-container .resultRockets-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultRockets-container .resultRockets-playerType,
+  .resultRockets-container .resultRockets-pickType,
+  .resultRockets-container .resultRockets-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultRockets-container .resultRockets-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultRockets-container .resultRockets-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

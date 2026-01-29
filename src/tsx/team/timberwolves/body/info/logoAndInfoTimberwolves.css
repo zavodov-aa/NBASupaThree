@@ -1,0 +1,815 @@
+.timberwolves-containerss {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+}
+
+.timberwolves-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 32px;
+  width: 80%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(12, 35, 64, 0.2),
+    0 4px 12px rgba(120, 190, 32, 0.15);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.timberwolves-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(12, 35, 64, 0.25),
+    0 6px 16px rgba(120, 190, 32, 0.2);
+}
+
+.timberwolves-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #0c2340 0%,
+    #2360a6 25%,
+    #78be20 50%,
+    #2360a6 75%,
+    #0c2340 100%
+  );
+  opacity: 0.9;
+}
+
+.timberwolves-accent-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #0c2340 0%, #78be20 50%, #0c2340 100%);
+  opacity: 0.7;
+}
+
+.timberwolves-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.logo-wrapper-timberwolves {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(100px, 12vw, 160px);
+  height: clamp(100px, 12vw, 160px);
+}
+
+.timberwolves-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 16px rgba(12, 35, 64, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.timberwolves-logo:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 6px 20px rgba(12, 35, 64, 0.7));
+}
+
+.timberwolves-titles {
+  flex: 1;
+}
+
+.team-name-main-timberwolves {
+  display: block;
+  font-size: clamp(1.4em, 4vw, 2.5em);
+  font-weight: 800;
+  background: linear-gradient(
+    135deg,
+    #0c2340 0%,
+    #2360a6 25%,
+    #78be20 50%,
+    #2360a6 75%,
+    #0c2340 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 4px rgba(12, 35, 64, 0.1);
+}
+
+.team-name-sub-timberwolves {
+  display: block;
+  font-size: clamp(0.85em, 2vw, 1em);
+  color: #0c2340;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.timberwolves-content {
+  position: relative;
+}
+
+.info-values-timberwolves {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.value-item-timberwolves {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-item-timberwolves::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(12, 35, 64, 0.1) 0%,
+    rgba(120, 190, 32, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.value-item-timberwolves:hover::before {
+  opacity: 1;
+}
+
+.value-item-timberwolves:hover {
+  transform: translateX(8px);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px rgba(12, 35, 64, 0.15);
+}
+
+.value-icon-timberwolves {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.value-item-timberwolves:hover .value-icon-timberwolves {
+  transform: scale(1.4);
+}
+
+.conference-icon-timberwolves {
+  background: #0c2340;
+  color: #0c2340;
+}
+
+.division-icon-timberwolves {
+  background: #2360a6;
+  color: #2360a6;
+}
+
+.gm-icon-timberwolves {
+  background: linear-gradient(135deg, #0c2340, #78be20);
+  color: #0c2340;
+}
+
+.value-text-timberwolves {
+  font-size: clamp(1em, 2.5vw, 1.2em);
+  color: #333;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  position: relative;
+  z-index: 1;
+}
+
+.timberwolves-colors {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  display: flex;
+  gap: 6px;
+}
+
+.color-dot-timberwolves {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.color-dot-timberwolves:hover {
+  transform: scale(1.5);
+}
+
+.color-dot-timberwolves.blue-dark-timberwolves {
+  background: #0c2340;
+  color: #0c2340;
+}
+
+.color-dot-timberwolves.blue-timberwolves {
+  background: #2360a6;
+  color: #2360a6;
+}
+
+.color-dot-timberwolves.green-timberwolves {
+  background: #78be20;
+  color: #78be20;
+}
+
+.color-dot-timberwolves.green-light-timberwolves {
+  background: #9ed548;
+  color: #9ed548;
+}
+
+.color-dot-timberwolves.gray-timberwolves {
+  background: #9ea2a2;
+  color: #9ea2a2;
+}
+
+/* Медиазапросы остаются без изменений по структуре, только с заменой имени класса */
+@media (max-width: 767px) {
+  .timberwolves-card {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  .timberwolves-card,
+  .value-item-timberwolves,
+  .timberwolves-logo,
+  .color-dot-timberwolves {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+}
+
+@media (min-width: 1200px) {
+  .logo-wrapper-timberwolves {
+    width: 260px;
+    height: 260px;
+  }
+
+  .timberwolves-header {
+    gap: 32px;
+  }
+
+  .timberwolves-card {
+    padding: 40px;
+    width: 70%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .logo-wrapper-timberwolves {
+    width: 240px;
+    height: 240px;
+  }
+
+  .timberwolves-header {
+    gap: 28px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .logo-wrapper-timberwolves {
+    width: 220px;
+    height: 220px;
+  }
+
+  .timberwolves-header {
+    gap: 24px;
+  }
+
+  .timberwolves-card {
+    width: 85%;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-wrapper-timberwolves {
+    width: 200px;
+    height: 200px;
+  }
+
+  .timberwolves-header {
+    gap: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .timberwolves-card {
+    padding: 24px;
+    width: 90%;
+  }
+
+  .info-values-timberwolves {
+    gap: 12px;
+  }
+
+  .value-item-timberwolves {
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-wrapper-timberwolves {
+    width: 90px;
+    height: 90px;
+  }
+
+  .timberwolves-container {
+    padding: 16px;
+  }
+
+  .timberwolves-card {
+    padding: 20px;
+    width: 95%;
+  }
+
+  .timberwolves-colors {
+    bottom: 15px;
+    right: 20px;
+  }
+
+  .value-item-timberwolves {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .team-name-main-timberwolves {
+    font-size: 1.7em;
+  }
+
+  .value-text-timberwolves {
+    font-size: 0.95em;
+  }
+}
+
+@media (min-width: 280px) and (max-width: 399px) {
+  .timberwolves-container {
+    padding: 12px;
+  }
+
+  .timberwolves-card {
+    padding: 18px 16px;
+    width: 100%;
+    border-radius: 16px;
+    margin: 0 auto;
+  }
+
+  .timberwolves-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .logo-wrapper-timberwolves {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+  }
+
+  .team-name-main-timberwolves {
+    font-size: 1.6em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .team-name-sub-timberwolves {
+    font-size: 0.75em;
+    letter-spacing: 0.6px;
+  }
+
+  .info-values-timberwolves {
+    gap: 10px;
+  }
+
+  .value-item-timberwolves {
+    padding: 12px 14px;
+    border-radius: 12px;
+    gap: 12px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .value-item-timberwolves:hover {
+    transform: translateX(4px);
+  }
+
+  .value-icon-timberwolves {
+    width: 10px;
+    height: 10px;
+  }
+
+  .value-text-timberwolves {
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+
+  .timberwolves-colors {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px;
+  }
+
+  .color-dot-timberwolves {
+    width: 8px;
+    height: 8px;
+  }
+
+  .timberwolves-card {
+    box-shadow: 0 4px 12px rgba(12, 35, 64, 0.15);
+  }
+
+  .timberwolves-card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(12, 35, 64, 0.15);
+  }
+
+  .value-item-timberwolves:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateX(0);
+  }
+
+  .timberwolves-logo:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .timberwolves-container {
+    padding: 10px;
+  }
+
+  .timberwolves-card {
+    padding: 16px 14px;
+  }
+
+  .logo-wrapper-timberwolves {
+    width: 70px;
+    height: 70px;
+  }
+
+  .team-name-main-timberwolves {
+    font-size: 1.5em;
+  }
+
+  .value-text-timberwolves {
+    font-size: 0.85em;
+  }
+
+  .value-item-timberwolves {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 300px) {
+  .logo-wrapper-timberwolves {
+    width: 65px;
+    height: 65px;
+  }
+
+  .team-name-main-timberwolves {
+    font-size: 1.4em;
+  }
+
+  .team-name-sub-timberwolves {
+    font-size: 0.7em;
+  }
+
+  .value-text-timberwolves {
+    font-size: 0.8em;
+  }
+
+  .timberwolves-colors {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .value-item-timberwolves {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .value-icon-timberwolves {
+    margin-bottom: 4px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .timberwolves-card:hover {
+    transform: none;
+  }
+
+  .value-item-timberwolves:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .timberwolves-logo:hover {
+    transform: none;
+  }
+
+  .color-dot-timberwolves:hover {
+    transform: none;
+  }
+
+  .value-item-timberwolves:hover .value-icon-timberwolves {
+    transform: scale(1);
+  }
+}
+
+.timberwolves-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #0c2340;
+  font-weight: 600;
+  font-size: 1.1em;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.timberwolves-error {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 245, 245, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(254, 215, 215, 0.8);
+  border-radius: 12px;
+  color: #c53030;
+  font-weight: 500;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timberwolves-container *,
+.timberwolves-container *::before,
+.timberwolves-container *::after {
+  box-sizing: border-box;
+}
+
+.timberwolves-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.timberwolves-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 32px;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(12, 35, 64, 0.2),
+    0 4px 12px rgba(120, 190, 32, 0.15);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@media (max-width: 399px) {
+  .timberwolves-container {
+    padding: 8px;
+  }
+
+  .timberwolves-card {
+    padding: 16px 14px;
+    border-radius: 16px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .timberwolves-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .logo-wrapper-timberwolves {
+    width: 70px !important;
+    height: 70px !important;
+    margin: 0 auto;
+  }
+
+  .team-name-main-timberwolves {
+    font-size: 1.4em !important;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .team-name-sub-timberwolves {
+    font-size: 0.7em !important;
+    letter-spacing: 0.5px;
+  }
+
+  .info-values-timberwolves {
+    gap: 8px;
+  }
+
+  .value-item-timberwolves {
+    padding: 10px 12px;
+    border-radius: 10px;
+    gap: 10px;
+    flex-direction: row;
+    text-align: left;
+    min-width: 0;
+  }
+
+  .value-text-timberwolves {
+    font-size: 0.85em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .timberwolves-colors {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    justify-content: center;
+    margin-top: 16px;
+    gap: 4px;
+  }
+
+  .color-dot-timberwolves {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 320px) {
+  .timberwolves-container {
+    padding: 6px;
+  }
+
+  .timberwolves-card {
+    padding: 14px 10px;
+    border-radius: 14px;
+  }
+
+  .logo-wrapper-timberwolves {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .team-name-main-timberwolves {
+    font-size: 1.2em !important;
+  }
+
+  .team-name-sub-timberwolves {
+    font-size: 0.65em !important;
+  }
+
+  .value-item-timberwolves {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .value-icon-timberwolves {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+  }
+
+  .value-text-timberwolves {
+    font-size: 0.75em;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .value-item-timberwolves {
+    display: flex;
+    align-items: center;
+  }
+
+  .value-icon-timberwolves {
+    margin-right: 6px;
+  }
+
+  .timberwolves-colors {
+    gap: 3px;
+  }
+
+  .color-dot-timberwolves {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 280px) {
+  .timberwolves-container {
+    padding: 4px;
+  }
+
+  .timberwolves-card {
+    padding: 12px 8px;
+    border-radius: 12px;
+  }
+
+  .logo-wrapper-timberwolves {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .team-name-main-timberwolves {
+    font-size: 1.1em !important;
+  }
+
+  .team-name-sub-timberwolves {
+    font-size: 0.6em !important;
+  }
+
+  .value-item-timberwolves {
+    padding: 6px 8px;
+  }
+
+  .value-text-timberwolves {
+    font-size: 0.7em;
+  }
+
+  .value-item-timberwolves {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .value-icon-timberwolves {
+    width: 6px;
+    height: 6px;
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 320px) {
+  .headerTimberwolves {
+    min-width: 100%;
+    padding: 6px 8px;
+  }
+
+  .headerLogoTimberwolves {
+    width: 40px;
+    min-width: 40px;
+  }
+
+  .headerNav {
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .headerNavLink {
+    padding: 3px 5px;
+    font-size: 9px;
+    border-radius: 8px;
+  }
+}

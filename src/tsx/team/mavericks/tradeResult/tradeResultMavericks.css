@@ -1,0 +1,818 @@
+/* tradeResultMavericks.css */
+/* Стили только для компонента TradeResultMavericks */
+
+.resultMavericks-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultMavericks-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultMavericks-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #00538c; /* Dallas Mavericks синий */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultMavericks-button:hover:not(:disabled) {
+  background: #002b5c; /* Dallas Mavericks темно-синий */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultMavericks-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultMavericks-button--hasNotifications {
+  background: linear-gradient(
+    135deg,
+    #00538c 0%,
+    #002b5c 100%
+  ); /* Градиент Mavericks */
+}
+
+.resultMavericks-notificationCount {
+  background: #b8c4ca; /* Dallas Mavericks серебристый/серый */
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultMavericks-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultMavericks-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultMavericks-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #00538c; /* Dallas Mavericks синий */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultMavericks-modalHeader {
+  background: #00538c; /* Dallas Mavericks синий */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #b8c4ca; /* Dallas Mavericks серебристый */
+}
+
+.resultMavericks-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultMavericks-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultMavericks-teamLogo::before {
+  content: "DAL";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #00538c; /* Dallas Mavericks синий */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultMavericks-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultMavericks-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultMavericks-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultMavericks-tradePartner {
+  color: #b8c4ca; /* Dallas Mavericks серебристый */
+  font-weight: 500;
+}
+
+.resultMavericks-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultMavericks-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultMavericks-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultMavericks-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultMavericks-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultMavericks-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultMavericks-tradesList {
+  padding: 24px;
+}
+
+.resultMavericks-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultMavericks-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultMavericks-tradeHeader {
+  background: rgba(0, 83, 140, 0.05); /* Mavericks синий с прозрачностью */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultMavericks-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultMavericks-tradeNumber {
+  font-weight: 600;
+  color: #00538c; /* Dallas Mavericks синий */
+  font-size: 15px;
+}
+
+.resultMavericks-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultMavericks-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultMavericks-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultMavericks-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultMavericks-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #00538c; /* Dallas Mavericks синий */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultMavericks-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultMavericks-exchangeArrow {
+  font-size: 28px;
+  color: #b8c4ca; /* Dallas Mavericks серебристый */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultMavericks-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultMavericks-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultMavericks-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultMavericks-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultMavericks-tradeSection--team1 {
+  border-left: 3px solid #00538c; /* Dallas Mavericks синий */
+}
+
+.resultMavericks-tradeSection--team2 {
+  border-left: 3px solid #b8c4ca; /* Dallas Mavericks серебристый */
+}
+
+.resultMavericks-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultMavericks-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultMavericks-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultMavericks-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultMavericks-countBadge--players {
+  background: rgba(0, 83, 140, 0.1); /* Mavericks синий с прозрачностью */
+  color: #00538c;
+  border: 1px solid rgba(0, 83, 140, 0.2);
+}
+
+.resultMavericks-countBadge--picks {
+  background: rgba(
+    184,
+    196,
+    202,
+    0.1
+  ); /* Mavericks серебристый с прозрачностью */
+  color: #b8c4ca;
+  border: 1px solid rgba(184, 196, 202, 0.2);
+}
+
+.resultMavericks-sectionContent {
+  padding: 16px;
+}
+
+.resultMavericks-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultMavericks-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultMavericks-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultMavericks-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultMavericks-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultMavericks-playerCard--active {
+  border-left-color: #00538c; /* Dallas Mavericks синий */
+}
+
+.resultMavericks-playerCard--gleague {
+  border-left-color: #b8c4ca; /* Dallas Mavericks серебристый */
+}
+
+.resultMavericks-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultMavericks-playerNameSection {
+  flex: 1;
+}
+
+.resultMavericks-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultMavericks-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultMavericks-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultMavericks-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultMavericks-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultMavericks-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultMavericks-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultMavericks-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultMavericks-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultMavericks-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultMavericks-teamLabel {
+  color: #666666;
+}
+
+.resultMavericks-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultMavericks-tradeNote {
+  background: rgba(
+    184,
+    196,
+    202,
+    0.05
+  ); /* Mavericks серебристый с прозрачностью */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(184, 196, 202, 0.2);
+}
+
+.resultMavericks-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultMavericks-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultMavericks-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultMavericks-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultMavericks-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultMavericks-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultMavericks-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultMavericks-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultMavericks-actionButton--accept {
+  background: #b8c4ca; /* Dallas Mavericks серебристый */
+  color: #000000;
+}
+
+.resultMavericks-actionButton--accept:hover:not(:disabled) {
+  background: #9ca8ae;
+}
+
+.resultMavericks-actionButton--reject {
+  background: #00538c; /* Dallas Mavericks синий */
+  color: #ffffff;
+}
+
+.resultMavericks-actionButton--reject:hover:not(:disabled) {
+  background: #002b5c; /* Dallas Mavericks темно-синий */
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultMavericks-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultMavericks-closeAllButton {
+  background: #00538c; /* Dallas Mavericks синий */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultMavericks-closeAllButton:hover {
+  background: #002b5c; /* Dallas Mavericks темно-синий */
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultMavericks-modal {
+    max-height: 90vh;
+  }
+
+  .resultMavericks-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultMavericks-tradesList {
+    padding: 16px;
+  }
+
+  .resultMavericks-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultMavericks-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultMavericks-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultMavericks-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultMavericks-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultMavericks-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultMavericks-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultMavericks-tradeSummary,
+  .resultMavericks-tradeSection,
+  .resultMavericks-tradeNote,
+  .resultMavericks-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultMavericks-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultMavericks-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultMavericks-modalHeader {
+    padding: 16px;
+  }
+
+  .resultMavericks-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultMavericks-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultMavericks-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultMavericks-statValue {
+    font-size: 28px;
+  }
+
+  .resultMavericks-statLabel {
+    font-size: 12px;
+  }
+
+  .resultMavericks-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultMavericks-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultMavericks-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultMavericks-modal {
+    max-height: 95vh;
+  }
+
+  .resultMavericks-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultMavericks-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultMavericks-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultMavericks-statValue {
+    font-size: 24px;
+  }
+
+  .resultMavericks-playerName,
+  .resultMavericks-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultMavericks-noteContent {
+    font-size: 13px;
+  }
+
+  .resultMavericks-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultMavericks-container .resultMavericks-modal {
+    background: #1a1a1a;
+    border-color: #00538c; /* Dallas Mavericks синий */
+  }
+
+  .resultMavericks-container .resultMavericks-tradeItem,
+  .resultMavericks-container .resultMavericks-playerCard,
+  .resultMavericks-container .resultMavericks-draftPickCard,
+  .resultMavericks-container .resultMavericks-tradeSummary,
+  .resultMavericks-container .resultMavericks-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultMavericks-container .resultMavericks-playerName,
+  .resultMavericks-container .resultMavericks-statLabel,
+  .resultMavericks-container .resultMavericks-sectionTitle,
+  .resultMavericks-container .resultMavericks-noteTitle,
+  .resultMavericks-container .resultMavericks-teamName,
+  .resultMavericks-container .resultMavericks-pickYearRound,
+  .resultMavericks-container .resultMavericks-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultMavericks-container .resultMavericks-playerType,
+  .resultMavericks-container .resultMavericks-pickType,
+  .resultMavericks-container .resultMavericks-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultMavericks-container .resultMavericks-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultMavericks-container .resultMavericks-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

@@ -1,0 +1,164 @@
+.rosterWizards {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerWizards {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerWizards h1 {
+  color: #002b5c; /* Темно-синий Wizards */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleWizards {
+  color: #e31837; /* Красный Wizards */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerWizards {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #002b5c; /* Темно-синий Wizards */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableWizards {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableWizards thead {
+  background: #002b5c; /* Темно-синий Wizards */
+}
+
+.roster-tableWizards th {
+  padding: 15px 10px;
+  color: #fff; /* Белый текст на темном фоне */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableWizards th.highlight {
+}
+
+.roster-tableWizards tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableWizards tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableWizards tbody tr:hover {
+  background: white;
+}
+
+.roster-tableWizards td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e31837; /* Красный Wizards */
+
+  color: #000;
+}
+
+.roster-tableWizards .franchiseWizards {
+  background: rgba(
+    0,
+    43,
+    92,
+    0.8
+  ) !important; /* Темно-синий Wizards с прозрачностью */
+}
+
+.roster-tableWizards .franchiseWizards td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellWizards {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starWizards {
+  color: #e31837; /* Красный Wizards */
+  font-size: 1.2em;
+}
+
+.player-tagWizards {
+  padding: 4px 8px;
+  background: #002b5c; /* Темно-синий Wizards */
+  color: #fff; /* Белый текст */
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingWizards {
+  text-align: center;
+  color: #002b5c; /* Темно-синий Wizards */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateWizards {
+  text-align: center;
+  padding: 40px;
+  color: #002b5c; /* Темно-синий Wizards */
+}
+
+.empty-iconWizards {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleWizards {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleWizards {
+  opacity: 0.8;
+}
+
+.franchise-colorWizards {
+  background: #002b5c; /* Темно-синий Wizards */
+}
+
+.salary-colorWizards {
+  background: #002b5c; /* Темно-синий Wizards */
+}
+
+@media (max-width: 768px) {
+  .rosterWizards {
+    padding: 10px;
+  }
+
+  .roster-headerWizards h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleWizards {
+    font-size: 1rem;
+  }
+
+  .roster-tableWizards th,
+  .roster-tableWizards td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

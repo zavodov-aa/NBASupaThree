@@ -1,0 +1,311 @@
+.desk-card-wrapper-thunder {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.thunder-desk-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 122, 193, 0.15),
+    0 4px 12px rgba(253, 187, 48, 0.1);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.desk-accent-top-thunder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #002d62 0%,
+    #007ac1 25%,
+    #ef3b24 50%,
+    #fdbb30 75%,
+    #fa8320 100%
+  );
+}
+
+.desk-sections-horizontal-thunder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.desk-section-thunder {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.desk-section-thunder:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 20px rgba(0, 122, 193, 0.15);
+}
+
+.desk-header-thunder {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 122, 193, 0.1) 0%,
+    rgba(253, 187, 48, 0.05) 100%
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desk-title-icon-thunder {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #002d62, #ef3b24);
+  flex-shrink: 0;
+}
+
+.desk-title-thunder {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+  color: #002d62;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.desk-content-thunder {
+  padding: 0;
+}
+
+.desk-items-vertical-thunder {
+  display: flex;
+  flex-direction: column;
+}
+
+.desk-item-thunder {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 122, 193, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  justify-content: center;
+}
+
+.desk-item-thunder:last-child {
+  border-bottom: none;
+}
+
+.desk-item-thunder::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 122, 193, 0.05) 50%,
+    transparent 100%
+  );
+  transition: left 0.4s ease;
+}
+
+.desk-item-thunder:hover::before {
+  left: 100%;
+}
+
+.desk-item-thunder:hover {
+  background: rgba(255, 255, 255, 0.8);
+  padding-left: 20px;
+}
+
+.desk-label-thunder {
+  font-size: 0.8em;
+  color: #666;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.desk-value-thunder {
+  font-size: 1em;
+  color: #333;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+/* Highlight Styles */
+.highlight-positive-thunder {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.1) 0%,
+    rgba(34, 197, 94, 0.05) 100%
+  );
+}
+
+.highlight-positive-thunder .desk-value-thunder {
+  color: #16a34a;
+}
+
+.highlight-negative-thunder {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.1) 0%,
+    rgba(239, 68, 68, 0.05) 100%
+  );
+}
+
+.highlight-negative-thunder .desk-value-thunder {
+  color: #e03a3e;
+}
+
+.highlight-playoffs-thunder {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 122, 193, 0.1) 0%,
+    rgba(0, 122, 193, 0.05) 100%
+  );
+}
+
+.highlight-playoffs-thunder .desk-value-thunder {
+  color: #007ac1;
+}
+
+.highlight-championship-thunder {
+  background: linear-gradient(
+    135deg,
+    rgba(253, 187, 48, 0.15) 0%,
+    rgba(253, 187, 48, 0.08) 100%
+  );
+}
+
+.highlight-championship-thunder .desk-value-thunder {
+  color: #002d62;
+  font-weight: 800;
+}
+
+.desk-colors-thunder {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+}
+
+.color-dot-thunder {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.color-dot-thunder:hover {
+  transform: scale(1.4);
+}
+
+.color-dot-thunder.thunder-blue-dark {
+  background: #002d62;
+}
+
+.color-dot-thunder.thunder-blue {
+  background: #007ac1;
+}
+
+.color-dot-thunder.thunder-orange {
+  background: #ef3b24;
+}
+
+.color-dot-thunder.thunder-yellow {
+  background: #fdbb30;
+}
+
+.color-dot-thunder.thunder-sunset {
+  background: #fa8320;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .desk-sections-horizontal-thunder {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .desk-header-thunder {
+    padding: 14px 16px;
+  }
+
+  .desk-item-thunder {
+    padding: 12px 14px;
+    min-height: 55px;
+  }
+}
+
+@media (max-width: 992px) {
+  .desk-sections-horizontal-thunder {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .thunder-desk-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .thunder-desk-card {
+    padding: 16px;
+  }
+
+  .desk-header-thunder {
+    padding: 12px 14px;
+  }
+
+  .desk-item-thunder {
+    padding: 10px 12px;
+    min-height: 50px;
+  }
+
+  .desk-item-thunder:hover {
+    padding-left: 16px;
+  }
+
+  .desk-colors-thunder {
+    bottom: 12px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-title-thunder {
+    font-size: 0.9em;
+  }
+
+  .desk-label-thunder {
+    font-size: 0.75em;
+  }
+
+  .desk-value-thunder {
+    font-size: 0.9em;
+  }
+}

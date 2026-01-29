@@ -1,0 +1,621 @@
+/* Основной контейнер компонента */
+.HeadInfoAgent-main {
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+}
+
+/* Заголовок компонента */
+.HeadInfoAgent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+.logo {
+  width: 180px;
+  height: auto;
+  filter: invert(100%);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.HeadInfoAgent-title {
+  font-size: 24px;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.HeadInfoAgent-status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #252525;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #888;
+}
+
+/* Мобильный заголовок */
+.HeadInfoAgent-mobile-header {
+  margin-bottom: 15px;
+}
+
+.HeadInfoAgent-mobile-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.HeadInfoAgent-mobile-logo {
+  width: 100px;
+  height: auto;
+  filter: invert(100%);
+}
+
+.HeadInfoAgent-mobile-menu-button {
+  background: none;
+  border: 1px solid #444;
+  color: #fff;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.HeadInfoAgent-mobile-title {
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.HeadInfoAgent-mobile-status {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.HeadInfoAgent-mobile-nav {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.HeadInfoAgent-mobile-nav-link {
+  flex: 1;
+  text-align: center;
+  padding: 8px 12px;
+  background-color: #252525;
+  border-radius: 4px;
+  font-size: 12px;
+  color: wheat;
+  text-decoration: none;
+  border: 1px solid #333;
+}
+
+.HeadInfoAgent-mobile-view-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.HeadInfoAgent-view-button {
+  flex: 1;
+  padding: 8px 12px;
+  background-color: #252525;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 70px;
+}
+
+/* Селектор колонок */
+.HeadInfoAgent-column-selector {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.HeadInfoAgent-column-selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.HeadInfoAgent-column-selector-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.HeadInfoAgent-mass-selection-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.HeadInfoAgent-column-group {
+  margin-bottom: 15px;
+}
+
+.HeadInfoAgent-column-group-title {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.HeadInfoAgent-column-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.HeadInfoAgent-checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.HeadInfoAgent-checkbox-input {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/* Мобильный селектор колонок */
+.HeadInfoAgent-mobile-column-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.HeadInfoAgent-mobile-mass-selection {
+  margin-bottom: 10px;
+}
+
+.HeadInfoAgent-mobile-mass-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.HeadInfoAgent-mobile-mass-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.HeadInfoAgent-mobile-column-group {
+  background-color: #252525;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.HeadInfoAgent-mobile-column-group-title {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #444;
+}
+
+.HeadInfoAgent-mobile-column-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.HeadInfoAgent-mobile-checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 3px;
+  background-color: #2a2a2a;
+}
+
+.HeadInfoAgent-mobile-checkbox-label:hover {
+  background-color: #333;
+}
+
+.HeadInfoAgent-mobile-checkbox-input {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.HeadInfoAgent-mobile-checkbox-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+/* Панель управления фильтрами */
+.HeadInfoAgent-control-panel {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.HeadInfoAgent-panel-header {
+  padding: 15px 20px;
+  background-color: #252525;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.HeadInfoAgent-panel-header:hover {
+  background-color: #2a2a2a;
+}
+
+.HeadInfoAgent-panel-header-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.HeadInfoAgent-panel-content {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.HeadInfoAgent-filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.HeadInfoAgent-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.HeadInfoAgent-input {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 8px 10px;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+  font-family: inherit;
+}
+
+.HeadInfoAgent-input:focus {
+  border-color: #666;
+}
+
+.HeadInfoAgent-button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #252525;
+  border-top: 1px solid #333;
+}
+
+.HeadInfoAgent-record-count {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Мобильные фильтры */
+.HeadInfoAgent-mobile-more-filters {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-top: 10px;
+}
+
+/* Кнопки */
+.HeadInfoAgent-button {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.HeadInfoAgent-button:hover:not(:disabled) {
+  background-color: #3a3a3a;
+  border-color: #555;
+}
+
+.HeadInfoAgent-button:active:not(:disabled) {
+  background-color: #2a2a2a;
+}
+
+.HeadInfoAgent-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.HeadInfoAgent-primary-button {
+  background-color: #0066cc;
+  border-color: #0077ee;
+  color: #fff;
+}
+
+.HeadInfoAgent-primary-button:hover:not(:disabled) {
+  background-color: #0077ee;
+  border-color: #0088ff;
+}
+
+.HeadInfoAgent-small-button {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.HeadInfoAgent-small-button:hover {
+  background-color: #3a3a3a;
+  border-color: #555;
+}
+
+/* Таблица */
+.HeadInfoAgent-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.HeadInfoAgent-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a;
+  min-width: 100%;
+}
+
+.HeadInfoAgent-table-header {
+  background-color: #252525;
+  border-bottom: 1px solid #333;
+}
+
+.HeadInfoAgent-table-header-cell {
+  padding: 12px 8px;
+  text-align: left;
+  font-size: 11px;
+  color: #888;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-right: 1px solid #333;
+  white-space: nowrap;
+}
+
+.HeadInfoAgent-table-header-cell:last-child {
+  border-right: none;
+}
+
+.HeadInfoAgent-table-row {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.2s ease;
+}
+
+.HeadInfoAgent-table-row:hover {
+  background-color: #222;
+}
+
+.HeadInfoAgent-table-row:last-child {
+  border-bottom: none;
+}
+
+.HeadInfoAgent-table-cell {
+  padding: 10px 8px;
+  font-size: 12px;
+  border-right: 1px solid #333;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.HeadInfoAgent-table-cell:last-child {
+  border-right: none;
+}
+
+/* Поля ввода в таблице */
+.HeadInfoAgent-edit-input {
+  width: 100%;
+  padding: 4px 6px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 12px;
+  outline: none;
+  transition: border 0.2s ease;
+  font-family: inherit;
+}
+
+.HeadInfoAgent-A-Href {
+  text-decoration: none;
+  color: wheat;
+}
+
+.HeadInfoAgent-edit-input:focus {
+  border-color: #666;
+}
+
+.HeadInfoAgent-read-only-input {
+  width: 100%;
+  padding: 4px 6px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #888;
+  font-size: 12px;
+  cursor: not-allowed;
+  font-family: inherit;
+}
+
+/* Значения в ячейках */
+.HeadInfoAgent-cell-value {
+  font-size: 11px;
+  font-family: inherit;
+}
+
+.HeadInfoAgent-numeric-value {
+  font-family: "Monaco", "Consolas", "Courier New", monospace;
+}
+
+/* Кнопки действий */
+.HeadInfoAgent-action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .HeadInfoAgent-main {
+    padding: 12px;
+  }
+
+  .HeadInfoAgent-header {
+    display: none;
+  }
+
+  .HeadInfoAgent-mass-selection-buttons {
+    display: none;
+  }
+
+  .HeadInfoAgent-panel-content {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .HeadInfoAgent-table {
+    min-width: 800px;
+  }
+
+  .HeadInfoAgent-table-header-cell,
+  .HeadInfoAgent-table-cell {
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .HeadInfoAgent-main {
+    padding: 10px;
+  }
+
+  .HeadInfoAgent-column-selector {
+    padding: 12px;
+  }
+
+  .HeadInfoAgent-panel-content {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .HeadInfoAgent-mobile-column-checkboxes {
+    grid-template-columns: 1fr;
+  }
+
+  .HeadInfoAgent-button-group {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 320px) {
+  .HeadInfoAgent-main {
+    padding: 8px;
+  }
+
+  .HeadInfoAgent-mobile-nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .HeadInfoAgent-view-controls {
+    flex-wrap: wrap;
+  }
+
+  .HeadInfoAgent-view-button {
+    flex: 0 0 calc(50% - 4px);
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 280px) {
+  .HeadInfoAgent-main {
+    padding: 6px;
+  }
+
+  .HeadInfoAgent-mobile-title {
+    font-size: 16px;
+  }
+
+  .HeadInfoAgent-mobile-logo {
+    width: 80px;
+  }
+
+  .HeadInfoAgent-mobile-menu-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .HeadInfoAgent-button {
+    padding: 6px 8px;
+    font-size: 11px;
+    min-width: 50px;
+  }
+}

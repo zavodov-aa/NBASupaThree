@@ -1,0 +1,135 @@
+.blazers-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-blazers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-blazers {
+  color: #e03a3e; /* Portland Blazers red */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-blazers {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-blazers {
+  overflow-x: auto;
+}
+
+.players-table-blazers {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-blazers {
+  background: black;
+}
+
+.table-th-blazers {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-blazers:last-child {
+}
+
+.table-body-blazers {
+  background: white;
+}
+
+.tables-row-blazers {
+}
+
+.row-even-blazers {
+  background: black;
+}
+
+.row-odd-blazers {
+}
+
+.table-tdw-blazers {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-td-blazers {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-blazers {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-blazers {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-blazers {
+  color: #e03a3e; /* Portland Blazers red */
+  font-weight: bold;
+}
+
+.roster-badge-blazers {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-blazers {
+  color: white;
+  background-color: #e03a3e; /* Portland Blazers red */
+}
+
+.badge-inactive-blazers {
+  color: black;
+  background-color: #b6bfbf; /* Portland Blazers silver/gray */
+}
+
+.loading-text-blazers {
+  text-align: center;
+  color: #e03a3e; /* Portland Blazers red */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-blazers {
+  background-color: #000000; /* Portland Blazers black */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-blazers {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}
+
+/* Дополнительные стили для лучшей интеграции с цветами Blazers */
+.first-row-highlight-blazers .table-td-blazers,
+.first-row-highlight-blazers .table-tdw-blazers {
+  color: white;
+  border-bottom: 1px solid #e03a3e; /* Red border for highlighted row */
+}
+
+.first-row-highlight-blazers .player-age-blazers {
+  color: #ffffff; /* White for age in highlighted row */
+  font-weight: bold;
+}

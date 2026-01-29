@@ -1,0 +1,170 @@
+.rosterPistons {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerPistons {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerPistons h1 {
+  color: #006bb6;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitlePistons {
+  color: black;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerPistons {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #006bb6;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tablePistons {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tablePistons thead {
+  background: #006bb6;
+}
+
+.roster-tablePistons th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tablePistons th.highlight {
+}
+
+.roster-tablePistons tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tablePistons tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tablePistons tbody tr:hover {
+  background: white;
+}
+
+.roster-tablePistons td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 107, 182, 0.3);
+  color: #000;
+}
+
+.roster-tablePistons .franchisePistons {
+  background: rgba(0, 107, 182, 0.1) !important;
+}
+
+.roster-tablePistons .franchisePistons td {
+  color: #000;
+  font-weight: bold;
+}
+
+.number-cellPistons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starPistons {
+  color: #ed174c;
+  font-size: 1.2em;
+}
+
+.player-tagPistons {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingPistons {
+  text-align: center;
+  color: #006bb6;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-statePistons {
+  text-align: center;
+  padding: 40px;
+  color: #006bb6;
+}
+
+.empty-iconPistons {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titlePistons {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitlePistons {
+  opacity: 0.8;
+}
+
+.franchise-colorPistons {
+  background: #006bb6;
+}
+
+.salary-colorPistons {
+  background: #006bb6;
+}
+
+@media (max-width: 768px) {
+  .rosterPistons {
+    padding: 10px;
+  }
+
+  .roster-headerPistons h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitlePistons {
+    font-size: 1rem;
+  }
+
+  .roster-tablePistons th,
+  .roster-tablePistons td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}
+
+.g-league-dividerPistons {
+  background: rgba(0, 107, 182, 0.1) !important;
+}
+
+.g-league-headerPistons {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #006bb6;
+  border-top: 2px solid #006bb6;
+  border-bottom: 2px solid #006bb6;
+  background: rgba(0, 107, 182, 0.05);
+}

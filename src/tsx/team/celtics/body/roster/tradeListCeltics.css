@@ -1,0 +1,223 @@
+.trade-list-container-celtics {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.trade-header-content-celtics {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.trade-header-title-celtics {
+  color: #008348;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.trade-table-container-celtics {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.trade-table-wrapper-celtics {
+  overflow-x: auto;
+}
+
+.trade-list-table-celtics {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trade-table-header-celtics {
+  background: rgba(0, 0, 0, 0.637);
+}
+
+.trade-table-th-celtics {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trade-table-th-celtics:last-child {
+  border-right: none;
+}
+
+.trade-table-body-celtics {
+}
+
+.trade-table-row-celtics {
+  transition: background-color 0.3s;
+}
+
+.trade-table-row-celtics:hover {
+  background-color: rgba(253, 185, 39, 0.1);
+}
+
+.trade-row-even-celtics {
+  background: white;
+}
+
+.trade-row-odd-celtics {
+  background: white;
+}
+
+.trade-row-adding-celtics {
+  background: rgba(253, 185, 39, 0.2) !important;
+}
+
+.trade-table-td-celtics {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.trade-actions-td-celtics {
+  white-space: nowrap;
+}
+
+.trade-item-text-celtics {
+  font-weight: 500;
+}
+
+.trade-list-input-celtics {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background: white;
+}
+
+.trade-list-input-celtics:focus {
+  outline: none;
+  border-color: #008348;
+  box-shadow: 0 0 0 3px rgba(253, 185, 39, 0.3);
+}
+
+.trade-list-actions-celtics {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trade-list-btn-celtics {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.trade-list-btn-edit-celtics {
+  background: #008348;
+  color: black;
+}
+
+.trade-list-btn-edit-celtics:hover {
+  background: #008348;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-save-celtics {
+  background: black;
+  color: white;
+}
+
+.trade-list-btn-save-celtics:hover {
+  background: rgb(39, 37, 37);
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-delete-celtics {
+  background: #008348;
+  color: white;
+}
+
+.trade-list-btn-delete-celtics:hover {
+  background: #008348;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-cancel-celtics {
+  background: #6b7280;
+  color: white;
+}
+
+.trade-list-btn-cancel-celtics:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-add-celtics {
+  background: #008348;
+  color: black;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: center;
+}
+
+.trade-list-btn-add-celtics:hover {
+  background: #008348;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trade-add-button-container-celtics {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.trade-loading-text-celtics {
+  text-align: center;
+  color: #008348;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .trade-list-container-celtics {
+    padding: 10px;
+  }
+
+  .trade-header-title-celtics {
+    font-size: 2rem;
+  }
+
+  .trade-table-th-celtics {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-table-td-celtics {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-list-actions-celtics {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .trade-list-btn-celtics {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

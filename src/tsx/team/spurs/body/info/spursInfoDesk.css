@@ -1,0 +1,312 @@
+.desk-card-wrapper-spurs {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.spurs-desk-card {
+  background: rgba(0, 0, 0, 0.7); /* черный цвет Spurs */
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(192, 192, 192, 0.1); /* серебристый акцент */
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.desk-accent-top-spurs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #333333 25%,
+    #c0c0c0 50%,
+    #666666 75%,
+    #000000 100%
+  ); /* градиент от черного к серебристому */
+}
+
+.desk-sections-horizontal-spurs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.desk-section-spurs {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.desk-section-spurs:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.desk-header-spurs {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(192, 192, 192, 0.1) 100%
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desk-title-icon-spurs {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #000000, #c0c0c0);
+  flex-shrink: 0;
+}
+
+.desk-title-spurs {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.desk-content-spurs {
+  padding: 0;
+}
+
+.desk-items-vertical-spurs {
+  display: flex;
+  flex-direction: column;
+}
+
+.desk-item-spurs {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  justify-content: center;
+}
+
+.desk-item-spurs:last-child {
+  border-bottom: none;
+}
+
+.desk-item-spurs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(192, 192, 192, 0.1) 50%,
+    transparent 100%
+  );
+  transition: left 0.4s ease;
+}
+
+.desk-item-spurs:hover::before {
+  left: 100%;
+}
+
+.desk-item-spurs:hover {
+  background: rgba(255, 255, 255, 0.1);
+  padding-left: 20px;
+}
+
+.desk-label-spurs {
+  font-size: 0.8em;
+  color: #c0c0c0;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.desk-value-spurs {
+  font-size: 1em;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+/* Highlight Styles */
+.highlight-positive-spurs {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.15) 0%,
+    rgba(34, 197, 94, 0.05) 100%
+  );
+}
+
+.highlight-positive-spurs .desk-value-spurs {
+  color: #4ade80;
+}
+
+.highlight-negative-spurs {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.15) 0%,
+    rgba(239, 68, 68, 0.05) 100%
+  );
+}
+
+.highlight-negative-spurs .desk-value-spurs {
+  color: #f87171;
+}
+
+.highlight-playoffs-spurs {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
+}
+
+.highlight-playoffs-spurs .desk-value-spurs {
+  color: #60a5fa;
+}
+
+.highlight-championship-spurs {
+  background: linear-gradient(
+    135deg,
+    rgba(192, 192, 192, 0.25) 0%,
+    rgba(192, 192, 192, 0.1) 100%
+  );
+}
+
+.highlight-championship-spurs .desk-value-spurs {
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+}
+
+.desk-colors-spurs {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+}
+
+.color-dot-spurs {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.color-dot-spurs:hover {
+  transform: scale(1.4);
+}
+
+.color-dot-spurs.black-spurs {
+  background: #000000;
+}
+
+.color-dot-spurs.silver-dark-spurs {
+  background: #333333;
+}
+
+.color-dot-spurs.silver-spurs {
+  background: #c0c0c0;
+}
+
+.color-dot-spurs.silver-light-spurs {
+  background: #666666;
+}
+
+.color-dot-spurs.white-spurs {
+  background: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .desk-sections-horizontal-spurs {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .desk-header-spurs {
+    padding: 14px 16px;
+  }
+
+  .desk-item-spurs {
+    padding: 12px 14px;
+    min-height: 55px;
+  }
+}
+
+@media (max-width: 992px) {
+  .desk-sections-horizontal-spurs {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .spurs-desk-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .spurs-desk-card {
+    padding: 16px;
+  }
+
+  .desk-header-spurs {
+    padding: 12px 14px;
+  }
+
+  .desk-item-spurs {
+    padding: 10px 12px;
+    min-height: 50px;
+  }
+
+  .desk-item-spurs:hover {
+    padding-left: 16px;
+  }
+
+  .desk-colors-spurs {
+    bottom: 12px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-title-spurs {
+    font-size: 0.9em;
+  }
+
+  .desk-label-spurs {
+    font-size: 0.75em;
+  }
+
+  .desk-value-spurs {
+    font-size: 0.9em;
+  }
+}

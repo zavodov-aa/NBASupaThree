@@ -1,0 +1,317 @@
+.desk-card-wrapper-suns {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.suns-desk-card {
+  background: rgba(229, 96, 32, 0.7); /* Phoenix Suns оранжевый */
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(29, 17, 96, 0.15),
+    /* Phoenix Suns фиолетовый */ 0 4px 12px rgba(229, 96, 32, 0.1); /* Phoenix Suns оранжевый */
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.desk-accent-top-suns {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #1d1160 25%,
+    /* Phoenix Suns фиолетовый */ #e56020 50%,
+    /* Phoenix Suns оранжевый */ #ffb81c 75%,
+    /* Phoenix Suns желтый */ #000000 100%
+  );
+}
+
+.desk-sections-horizontal-suns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.desk-section-suns {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.desk-section-suns:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 20px rgba(29, 17, 96, 0.15); /* Phoenix Suns фиолетовый */
+}
+
+.desk-header-suns {
+  background: linear-gradient(
+    135deg,
+    rgba(29, 17, 96, 0.1) 0%,
+    /* Phoenix Suns фиолетовый */ rgba(229, 96, 32, 0.05) 100%
+      /* Phoenix Suns оранжевый */
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desk-title-icon-suns {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    #1d1160,
+    #e56020
+  ); /* Phoenix Suns цвета */
+  flex-shrink: 0;
+}
+
+.desk-title-suns {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+  color: #1d1160; /* Phoenix Suns фиолетовый */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.desk-content-suns {
+  padding: 0;
+}
+
+.desk-items-vertical-suns {
+  display: flex;
+  flex-direction: column;
+}
+
+.desk-item-suns {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(29, 17, 96, 0.1); /* Phoenix Suns фиолетовый */
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  justify-content: center;
+}
+
+.desk-item-suns:last-child {
+  border-bottom: none;
+}
+
+.desk-item-suns::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(29, 17, 96, 0.05) 50%,
+    /* Phoenix Suns фиолетовый */ transparent 100%
+  );
+  transition: left 0.4s ease;
+}
+
+.desk-item-suns:hover::before {
+  left: 100%;
+}
+
+.desk-item-suns:hover {
+  background: rgba(255, 255, 255, 0.8);
+  padding-left: 20px;
+}
+
+.desk-label-suns {
+  font-size: 0.8em;
+  color: #666;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.desk-value-suns {
+  font-size: 1em;
+  color: #333;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+/* Highlight Styles */
+.highlight-positive-suns {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.1) 0%,
+    rgba(34, 197, 94, 0.05) 100%
+  );
+}
+
+.highlight-positive-suns .desk-value-suns {
+  color: #16a34a;
+}
+
+.highlight-negative-suns {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.1) 0%,
+    rgba(239, 68, 68, 0.05) 100%
+  );
+}
+
+.highlight-negative-suns .desk-value-suns {
+  color: #e03a3e;
+}
+
+.highlight-playoffs-suns {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
+}
+
+.highlight-playoffs-suns .desk-value-suns {
+  color: #2563eb;
+}
+
+.highlight-championship-suns {
+  background: linear-gradient(
+    135deg,
+    rgba(229, 96, 32, 0.15) 0%,
+    /* Phoenix Suns оранжевый */ rgba(29, 17, 96, 0.08) 100%
+      /* Phoenix Suns фиолетовый */
+  );
+}
+
+.highlight-championship-suns .desk-value-suns {
+  color: #1d1160; /* Phoenix Suns фиолетовый */
+  font-weight: 800;
+}
+
+.desk-colors-suns {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+}
+
+.color-dot-suns {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.color-dot-suns:hover {
+  transform: scale(1.4);
+}
+
+.color-dot-suns.purple-dark-suns {
+  background: #000000;
+}
+
+.color-dot-suns.purple-suns {
+  background: #1d1160; /* Phoenix Suns фиолетовый */
+}
+
+.color-dot-suns.orange-suns {
+  background: #e56020; /* Phoenix Suns оранжевый */
+}
+
+.color-dot-suns.orange-light-suns {
+  background: #ffb81c; /* Phoenix Suns желтый */
+}
+
+.color-dot-suns.yellow-suns {
+  background: #f9ad1b; /* Дополнительный желтый Phoenix Suns */
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .desk-sections-horizontal-suns {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .desk-header-suns {
+    padding: 14px 16px;
+  }
+
+  .desk-item-suns {
+    padding: 12px 14px;
+    min-height: 55px;
+  }
+}
+
+@media (max-width: 992px) {
+  .desk-sections-horizontal-suns {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .suns-desk-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .suns-desk-card {
+    padding: 16px;
+  }
+
+  .desk-header-suns {
+    padding: 12px 14px;
+  }
+
+  .desk-item-suns {
+    padding: 10px 12px;
+    min-height: 50px;
+  }
+
+  .desk-item-suns:hover {
+    padding-left: 16px;
+  }
+
+  .desk-colors-suns {
+    bottom: 12px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-title-suns {
+    font-size: 0.9em;
+  }
+
+  .desk-label-suns {
+    font-size: 0.75em;
+  }
+
+  .desk-value-suns {
+    font-size: 0.9em;
+  }
+}

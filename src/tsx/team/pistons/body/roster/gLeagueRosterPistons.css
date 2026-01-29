@@ -1,0 +1,121 @@
+.pistons-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-pistons {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-pistons {
+  color: #1d428a; /* Синий цвет Detroit Pistons */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-pistons {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-pistons {
+  overflow-x: auto;
+}
+
+.players-table-pistons {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-pistons {
+  background: #c8102e; /* Красный цвет Detroit Pistons */
+}
+
+.table-th-pistons {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-pistons:last-child {
+}
+
+.table-body-pistons {
+  background: white;
+}
+
+.tables-row-pistons {
+}
+
+.row-even-pistons {
+  background: #1d428a; /* Синий цвет Detroit Pistons */
+}
+
+.row-odd-pistons {
+}
+
+.table-tdw-pistons {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+.table-tdw-pistons {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-pistons {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-pistons {
+  font-weight: bold;
+  color: #c8102e; /* Красный цвет Detroit Pistons */
+}
+
+.player-age-pistons {
+  color: #1d428a; /* Синий цвет Detroit Pistons */
+  font-weight: bold;
+}
+
+.roster-badge-pistons {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-pistons {
+  color: white;
+  background-color: #1d428a; /* Синий цвет Detroit Pistons */
+}
+
+.badge-inactive-pistons {
+  color: white;
+  background-color: #c8102e; /* Красный цвет Detroit Pistons */
+}
+
+.loading-text-pistons {
+  text-align: center;
+  color: #1d428a; /* Синий цвет Detroit Pistons */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-pistons {
+  background-color: #1d428a; /* Синий цвет Detroit Pistons */
+  color: white;
+}
+
+.tables-row-pistons {
+  background-color: transparent;
+}

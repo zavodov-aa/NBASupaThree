@@ -1,0 +1,182 @@
+.rosterPelicans {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerPelicans {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerPelicans h1 {
+  color: #0c2340; /* Основной синий цвет Pelicans */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitlePelicans {
+  color: #0c2340;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerPelicans {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #0c2340;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tablePelicans {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tablePelicans thead {
+  background: #0c2340;
+}
+
+.roster-tablePelicans th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tablePelicans th.highlight {
+}
+
+.roster-tablePelicans tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tablePelicans tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tablePelicans tbody tr:hover {
+  background: white;
+}
+
+.roster-tablePelicans td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(200, 16, 46, 0.3); /* Вторичный красный цвет Pelicans */
+  color: #000;
+}
+
+.roster-tablePelicans .franchisePelicans {
+  background: rgba(
+    12,
+    35,
+    64,
+    0.8
+  ) !important; /* Полупрозрачный основной синий */
+}
+
+.roster-tablePelicans .franchisePelicans td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellPelicans {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starPelicans {
+  color: #c8102e; /* Вторичный красный цвет Pelicans */
+  font-size: 1.2em;
+}
+
+.player-tagPelicans {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingPelicans {
+  text-align: center;
+  color: #0c2340;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-statePelicans {
+  text-align: center;
+  padding: 40px;
+  color: #0c2340;
+}
+
+.empty-iconPelicans {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titlePelicans {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitlePelicans {
+  opacity: 0.8;
+}
+
+.franchise-colorPelicans {
+  background: #0c2340;
+}
+
+.salary-colorPelicans {
+  background: #0c2340;
+}
+
+/* Добавьте в rosterPelicans.css */
+
+.g-league-dividerPelicans {
+  background: rgba(12, 35, 64, 0.1) !important;
+}
+
+.g-league-headerPelicans {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #0c2340;
+  border-top: 2px solid #0c2340;
+  border-bottom: 2px solid #0c2340;
+  background: rgba(12, 35, 64, 0.05);
+}
+
+.highlightPelicans {
+  color: #0c2340;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .rosterPelicans {
+    padding: 10px;
+  }
+
+  .roster-headerPelicans h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitlePelicans {
+    font-size: 1rem;
+  }
+
+  .roster-tablePelicans th,
+  .roster-tablePelicans td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

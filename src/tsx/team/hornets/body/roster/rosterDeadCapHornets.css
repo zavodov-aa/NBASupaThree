@@ -1,0 +1,133 @@
+.hornets-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-contents-hornets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-titles-hornets {
+  color: #1d1160; /* Charlotte Hornets темно-синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containers-hornets {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrappers-hornets {
+  overflow-x: auto;
+}
+
+.players-tables-hornets {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headers-hornets {
+  background: black;
+}
+
+.table-ths-hornets {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-ths-hornets:last-child {
+  border-right: none;
+}
+
+.table-bodys-hornets {
+}
+
+.table-rows-hornets {
+  transition: background-color 0.3s;
+}
+
+.table-rows-hornets:hover {
+}
+
+.row-evens-hornets {
+  background: white;
+}
+
+.row-odds-hornets {
+  background: white;
+}
+
+.table-tds-hornets {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-ids-hornets {
+  color: black;
+  font-weight: bold;
+}
+
+.player-positions-hornets {
+  font-weight: bold;
+  color: black;
+}
+
+.player-ages-hornets {
+  color: black;
+  font-weight: bold;
+}
+
+.roster-badges-hornets {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-actives-hornets {
+  color: black;
+}
+
+.badge-inactives-hornets {
+  background: #6b7280;
+  color: white;
+}
+
+.loading-texts-hornets {
+  text-align: center;
+  color: #1d1160; /* Charlotte Hornets темно-синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.special-players-hornets {
+  background: linear-gradient(
+    135deg,
+    #00788c,
+    #1d1160
+  ) !important; /* Charlotte Hornets бирюзовый и темно-синий */
+}
+
+.special-players-hornets .table-tds-hornets {
+  color: white;
+  font-weight: bold;
+}
+
+/* Для элемента loading-text (если нужно) */
+.loading-text {
+  text-align: center;
+  color: #1d1160; /* Charlotte Hornets темно-синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}

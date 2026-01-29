@@ -1,0 +1,284 @@
+.celtics-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content-celtics {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-celtics {
+  color: #008348;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.celtics-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #fdb927;
+  box-shadow: 0 8px 24px rgba(85, 37, 131, 0.15);
+}
+
+.celtics-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #552583, #fdb927);
+}
+
+/* Контейнер для горизонтального расположения */
+.celtics-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .celtics-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .celtics-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.celtics-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(85, 37, 131, 0.2);
+}
+
+.celtics-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(85, 37, 131, 0.1),
+    rgba(253, 185, 39, 0.05)
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.celtics-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: black;
+  text-transform: uppercase;
+}
+
+.celtics-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.celtics-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.celtics-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.celtics-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.celtics-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(85, 37, 131, 0.1);
+}
+
+.celtics-pick-year {
+  background: linear-gradient(135deg, #008348, #0b683e);
+  color: black;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-celtics {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-celtics:hover {
+  background: rgba(85, 37, 131, 0.05);
+}
+
+.pick-item-celtics:last-child {
+  border-bottom: none;
+}
+
+.pick-round-celtics {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-celtics {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.celtics-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.celtics-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.celtics-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(85, 37, 131, 0.1);
+}
+
+.coach-item-celtics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-celtics:hover {
+  background: rgba(253, 185, 39, 0.05);
+}
+
+.coach-item-celtics:last-child {
+  border-bottom: none;
+}
+
+.coach-position-celtics {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-celtics {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.celtics-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(85, 37, 131, 0.1);
+}
+
+.color-dot-celtics {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.purple-dark-celtics {
+  background: #008348;
+}
+.purple-celtics {
+  background: #15fc94;
+}
+.purple-light-celtics {
+  background: #ffffff;
+}
+.gold-celtics {
+  background: #bb9753;
+}
+.gold-light-celtics {
+  background: #008348;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .celtics-containers {
+    padding: 16px;
+  }
+
+  .header-title-celtics {
+    font-size: 2rem;
+  }
+
+  .celtics-picks-grid,
+  .celtics-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .celtics-pick-column:not(:last-child)::after,
+  .celtics-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .celtics-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-celtics,
+  .coach-item-celtics {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text-celtics,
+.error-text-celtics {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text-celtics {
+  color: #008348;
+}

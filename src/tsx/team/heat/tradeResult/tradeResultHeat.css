@@ -1,0 +1,803 @@
+/* Стили только для компонента TradeResultHeat */
+
+.resultHeat-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultHeat-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultHeat-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #98002e; /* Основной красный Miami Heat */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultHeat-button:hover:not(:disabled) {
+  background: #7a0024; /* Темнее основной красный */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHeat-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultHeat-button--hasNotifications {
+  background: linear-gradient(135deg, #98002e 0%, #7a0024 100%);
+}
+
+.resultHeat-notificationCount {
+  background: #f9a01b; /* Желтый Miami Heat */
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultHeat-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultHeat-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultHeat-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #98002e; /* Основной красный Miami Heat */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultHeat-modalHeader {
+  background: #98002e; /* Основной красный Miami Heat */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #f9a01b; /* Желтый Miami Heat */
+}
+
+.resultHeat-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultHeat-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultHeat-teamLogo::before {
+  content: "MIA";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #98002e; /* Основной красный Miami Heat */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultHeat-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultHeat-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultHeat-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultHeat-tradePartner {
+  color: #f9a01b; /* Желтый Miami Heat */
+  font-weight: 500;
+}
+
+.resultHeat-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultHeat-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultHeat-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultHeat-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultHeat-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultHeat-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultHeat-tradesList {
+  padding: 24px;
+}
+
+.resultHeat-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultHeat-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultHeat-tradeHeader {
+  background: rgba(152, 0, 46, 0.05); /* Основной красный с прозрачностью */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultHeat-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultHeat-tradeNumber {
+  font-weight: 600;
+  color: #98002e; /* Основной красный Miami Heat */
+  font-size: 15px;
+}
+
+.resultHeat-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultHeat-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHeat-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultHeat-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultHeat-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #98002e; /* Основной красный Miami Heat */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultHeat-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultHeat-exchangeArrow {
+  font-size: 28px;
+  color: #f9a01b; /* Желтый Miami Heat */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultHeat-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultHeat-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultHeat-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultHeat-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultHeat-tradeSection--team1 {
+  border-left: 3px solid #98002e; /* Основной красный Miami Heat */
+}
+
+.resultHeat-tradeSection--team2 {
+  border-left: 3px solid #f9a01b; /* Желтый Miami Heat */
+}
+
+.resultHeat-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultHeat-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultHeat-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultHeat-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultHeat-countBadge--players {
+  background: rgba(152, 0, 46, 0.1); /* Основной красный с прозрачностью */
+  color: #98002e; /* Основной красный Miami Heat */
+  border: 1px solid rgba(152, 0, 46, 0.2);
+}
+
+.resultHeat-countBadge--picks {
+  background: rgba(249, 160, 27, 0.1); /* Желтый с прозрачностью */
+  color: #f9a01b; /* Желтый Miami Heat */
+  border: 1px solid rgba(249, 160, 27, 0.2);
+}
+
+.resultHeat-sectionContent {
+  padding: 16px;
+}
+
+.resultHeat-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultHeat-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultHeat-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultHeat-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultHeat-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHeat-playerCard--active {
+  border-left-color: #98002e; /* Основной красный Miami Heat */
+}
+
+.resultHeat-playerCard--gleague {
+  border-left-color: #f9a01b; /* Желтый Miami Heat */
+}
+
+.resultHeat-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultHeat-playerNameSection {
+  flex: 1;
+}
+
+.resultHeat-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultHeat-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultHeat-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultHeat-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultHeat-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultHeat-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultHeat-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultHeat-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultHeat-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultHeat-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultHeat-teamLabel {
+  color: #666666;
+}
+
+.resultHeat-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultHeat-tradeNote {
+  background: rgba(249, 160, 27, 0.05); /* Желтый с прозрачностью */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(249, 160, 27, 0.2);
+}
+
+.resultHeat-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultHeat-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultHeat-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultHeat-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultHeat-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultHeat-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultHeat-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultHeat-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultHeat-actionButton--accept {
+  background: #f9a01b; /* Желтый Miami Heat */
+  color: #000000;
+}
+
+.resultHeat-actionButton--accept:hover:not(:disabled) {
+  background: #e09017; /* Темнее желтый */
+}
+
+.resultHeat-actionButton--reject {
+  background: #98002e; /* Основной красный Miami Heat */
+  color: #ffffff;
+}
+
+.resultHeat-actionButton--reject:hover:not(:disabled) {
+  background: #7a0024; /* Темнее красный */
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultHeat-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultHeat-closeAllButton {
+  background: #98002e; /* Основной красный Miami Heat */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultHeat-closeAllButton:hover {
+  background: #7a0024; /* Темнее красный */
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultHeat-modal {
+    max-height: 90vh;
+  }
+
+  .resultHeat-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultHeat-tradesList {
+    padding: 16px;
+  }
+
+  .resultHeat-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultHeat-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultHeat-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultHeat-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultHeat-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultHeat-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultHeat-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultHeat-tradeSummary,
+  .resultHeat-tradeSection,
+  .resultHeat-tradeNote,
+  .resultHeat-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultHeat-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultHeat-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultHeat-modalHeader {
+    padding: 16px;
+  }
+
+  .resultHeat-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultHeat-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultHeat-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultHeat-statValue {
+    font-size: 28px;
+  }
+
+  .resultHeat-statLabel {
+    font-size: 12px;
+  }
+
+  .resultHeat-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultHeat-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultHeat-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultHeat-modal {
+    max-height: 95vh;
+  }
+
+  .resultHeat-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultHeat-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultHeat-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultHeat-statValue {
+    font-size: 24px;
+  }
+
+  .resultHeat-playerName,
+  .resultHeat-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultHeat-noteContent {
+    font-size: 13px;
+  }
+
+  .resultHeat-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultHeat-container .resultHeat-modal {
+    background: #1a1a1a;
+    border-color: #98002e; /* Основной красный Miami Heat */
+  }
+
+  .resultHeat-container .resultHeat-tradeItem,
+  .resultHeat-container .resultHeat-playerCard,
+  .resultHeat-container .resultHeat-draftPickCard,
+  .resultHeat-container .resultHeat-tradeSummary,
+  .resultHeat-container .resultHeat-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultHeat-container .resultHeat-playerName,
+  .resultHeat-container .resultHeat-statLabel,
+  .resultHeat-container .resultHeat-sectionTitle,
+  .resultHeat-container .resultHeat-noteTitle,
+  .resultHeat-container .resultHeat-teamName,
+  .resultHeat-container .resultHeat-pickYearRound,
+  .resultHeat-container .resultHeat-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultHeat-container .resultHeat-playerType,
+  .resultHeat-container .resultHeat-pickType,
+  .resultHeat-container .resultHeat-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultHeat-container .resultHeat-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultHeat-container .resultHeat-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

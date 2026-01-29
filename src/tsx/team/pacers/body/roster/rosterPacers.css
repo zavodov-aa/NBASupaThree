@@ -1,0 +1,161 @@
+.rosterPacers {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerPacers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerPacers h1 {
+  color: #002d62; /* Indiana Pacers синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitlePacers {
+  color: black;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerPacers {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #002d62; /* Indiana Pacers синий */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tablePacers {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tablePacers thead {
+  background: #002d62; /* Indiana Pacers синий */
+}
+
+.roster-tablePacers th {
+  padding: 15px 10px;
+  color: #fff; /* Белый текст на синем фоне */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.roster-tablePacers th.highlight {
+}
+
+.roster-tablePacers tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tablePacers tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tablePacers tbody tr:hover {
+  background: #f5f5f5;
+}
+
+.roster-tablePacers td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 45, 98, 0.3); /* Indiana Pacers синий с прозрачностью */
+  color: #000;
+}
+
+.roster-tablePacers .franchisePacers {
+  background: rgba(
+    0,
+    45,
+    98,
+    0.1
+  ) !important; /* Indiana Pacers синий с прозрачностью */
+}
+
+.roster-tablePacers .franchisePacers td {
+  color: #002d62; /* Indiana Pacers синий */
+  font-weight: bold;
+}
+
+.number-cellPacers {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starPacers {
+  color: #002d62; /* Indiana Pacers синий */
+  font-size: 1.2em;
+}
+
+.player-tagPacers {
+  padding: 4px 8px;
+  color: #002d62; /* Indiana Pacers синий */
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingPacers {
+  text-align: center;
+  color: #002d62; /* Indiana Pacers синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-statePacers {
+  text-align: center;
+  padding: 40px;
+  color: #002d62; /* Indiana Pacers синий */
+}
+
+.empty-iconPacers {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titlePacers {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitlePacers {
+  opacity: 0.8;
+}
+
+.franchise-colorPacers {
+  background: #002d62; /* Indiana Pacers синий */
+}
+
+.salary-colorPacers {
+  background: #fdbb30; /* Indiana Pacers золотой для акцентных элементов */
+}
+
+@media (max-width: 768px) {
+  .rosterPacers {
+    padding: 10px;
+  }
+
+  .roster-headerPacers h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitlePacers {
+    font-size: 1rem;
+  }
+
+  .roster-tablePacers th,
+  .roster-tablePacers td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

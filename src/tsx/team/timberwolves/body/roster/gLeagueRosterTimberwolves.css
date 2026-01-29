@@ -1,0 +1,117 @@
+.timberwolves-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-timberwolves {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-timberwolves {
+  color: #0C2340; /* Темно-синий Timberwolves */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-container-timberwolves {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-timberwolves {
+  overflow-x: auto;
+}
+
+.players-table-timberwolves {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header-timberwolves {
+  background: #0C2340; /* Темно-синий Timberwolves */
+}
+
+.table-th-timberwolves {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-body-timberwolves {
+  background: white;
+}
+
+.table-row-timberwolves {
+}
+
+.row-even-timberwolves {
+  background: #236192; /* Средний синий Timberwolves */
+}
+
+.row-odd-timberwolves {
+}
+
+.table-td-timberwolves {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.player-id-timberwolves {
+  color: #0C2340; /* Темно-синий Timberwolves */
+  font-weight: bold;
+}
+
+.player-position-timberwolves {
+  font-weight: bold;
+  color: #236192; /* Средний синий Timberwolves */
+}
+
+.player-age-timberwolves {
+  color: #78BE20; /* Зеленый Timberwolves */
+  font-weight: bold;
+}
+
+.roster-badge-timberwolves {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-timberwolves {
+  background-color: #78BE20; /* Зеленый Timberwolves */
+  color: white;
+}
+
+.badge-inactive-timberwolves {
+  background-color: #C4CED4; /* Серый Timberwolves */
+  color: black;
+}
+
+.loading-text {
+  text-align: center;
+  color: #0C2340; /* Темно-синий Timberwolves */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-timberwolves {
+  background-color: #0C2340; /* Темно-синий Timberwolves */
+  color: white;
+}
+
+/* Альтернативные цвета для строк таблицы */
+.table-row-timberwolves:nth-child(even) {
+  background-color: #F5F5F5; /* Светло-серый для четных строк */
+}
+
+.table-row-timberwolves:nth-child(odd) {
+  background-color: white; /* Белый для нечетных строк */
+}

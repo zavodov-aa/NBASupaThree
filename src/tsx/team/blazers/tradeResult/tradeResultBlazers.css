@@ -1,0 +1,809 @@
+/* Стили только для компонента TradeResultBlazers */
+
+/* Основные цвета Portland Trail Blazers:
+   Красный: #E03A3E (остается)
+   Черный: #000000 (заменяем акцентный)
+   Серебристый: #C8C8C8 (может использоваться для второстепенных элементов)
+*/
+
+.resultBlazers-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultBlazers-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultBlazers-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #e03a3e;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultBlazers-button:hover:not(:disabled) {
+  background: #c8102e;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBlazers-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultBlazers-button--hasNotifications {
+  background: linear-gradient(135deg, #e03a3e 0%, #c8102e 100%);
+}
+
+.resultBlazers-notificationCount {
+  background: #000000;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultBlazers-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultBlazers-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultBlazers-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #e03a3e;
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultBlazers-modalHeader {
+  background: #e03a3e;
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #000000;
+}
+
+.resultBlazers-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultBlazers-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultBlazers-teamLogo::before {
+  content: "POR";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #e03a3e;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultBlazers-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultBlazers-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultBlazers-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultBlazers-tradePartner {
+  color: #000000;
+  font-weight: 500;
+}
+
+.resultBlazers-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultBlazers-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultBlazers-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultBlazers-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultBlazers-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultBlazers-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultBlazers-tradesList {
+  padding: 24px;
+}
+
+.resultBlazers-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultBlazers-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultBlazers-tradeHeader {
+  background: rgba(224, 58, 62, 0.05);
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultBlazers-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultBlazers-tradeNumber {
+  font-weight: 600;
+  color: #e03a3e;
+  font-size: 15px;
+}
+
+.resultBlazers-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultBlazers-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBlazers-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultBlazers-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultBlazers-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #e03a3e;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultBlazers-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultBlazers-exchangeArrow {
+  font-size: 28px;
+  color: #000000;
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultBlazers-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultBlazers-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultBlazers-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultBlazers-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultBlazers-tradeSection--team1 {
+  border-left: 3px solid #e03a3e;
+}
+
+.resultBlazers-tradeSection--team2 {
+  border-left: 3px solid #000000;
+}
+
+.resultBlazers-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultBlazers-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultBlazers-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultBlazers-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultBlazers-countBadge--players {
+  background: rgba(224, 58, 62, 0.1);
+  color: #e03a3e;
+  border: 1px solid rgba(224, 58, 62, 0.2);
+}
+
+.resultBlazers-countBadge--picks {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.resultBlazers-sectionContent {
+  padding: 16px;
+}
+
+.resultBlazers-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultBlazers-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultBlazers-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultBlazers-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultBlazers-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBlazers-playerCard--active {
+  border-left-color: #e03a3e;
+}
+
+.resultBlazers-playerCard--gleague {
+  border-left-color: #000000;
+}
+
+.resultBlazers-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultBlazers-playerNameSection {
+  flex: 1;
+}
+
+.resultBlazers-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultBlazers-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultBlazers-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultBlazers-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBlazers-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultBlazers-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultBlazers-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultBlazers-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultBlazers-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultBlazers-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultBlazers-teamLabel {
+  color: #666666;
+}
+
+.resultBlazers-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultBlazers-tradeNote {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.resultBlazers-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultBlazers-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultBlazers-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultBlazers-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultBlazers-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultBlazers-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultBlazers-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultBlazers-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultBlazers-actionButton--accept {
+  background: #000000;
+  color: #ffffff;
+}
+
+.resultBlazers-actionButton--accept:hover:not(:disabled) {
+  background: #333333;
+}
+
+.resultBlazers-actionButton--reject {
+  background: #e03a3e;
+  color: #ffffff;
+}
+
+.resultBlazers-actionButton--reject:hover:not(:disabled) {
+  background: #c8102e;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultBlazers-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultBlazers-closeAllButton {
+  background: #e03a3e;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultBlazers-closeAllButton:hover {
+  background: #c8102e;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultBlazers-modal {
+    max-height: 90vh;
+  }
+
+  .resultBlazers-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultBlazers-tradesList {
+    padding: 16px;
+  }
+
+  .resultBlazers-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultBlazers-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultBlazers-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultBlazers-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultBlazers-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultBlazers-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultBlazers-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultBlazers-tradeSummary,
+  .resultBlazers-tradeSection,
+  .resultBlazers-tradeNote,
+  .resultBlazers-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultBlazers-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultBlazers-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultBlazers-modalHeader {
+    padding: 16px;
+  }
+
+  .resultBlazers-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultBlazers-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultBlazers-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultBlazers-statValue {
+    font-size: 28px;
+  }
+
+  .resultBlazers-statLabel {
+    font-size: 12px;
+  }
+
+  .resultBlazers-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultBlazers-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultBlazers-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultBlazers-modal {
+    max-height: 95vh;
+  }
+
+  .resultBlazers-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultBlazers-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultBlazers-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultBlazers-statValue {
+    font-size: 24px;
+  }
+
+  .resultBlazers-playerName,
+  .resultBlazers-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultBlazers-noteContent {
+    font-size: 13px;
+  }
+
+  .resultBlazers-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultBlazers-container .resultBlazers-modal {
+    background: #1a1a1a;
+    border-color: #e03a3e;
+  }
+
+  .resultBlazers-container .resultBlazers-tradeItem,
+  .resultBlazers-container .resultBlazers-playerCard,
+  .resultBlazers-container .resultBlazers-draftPickCard,
+  .resultBlazers-container .resultBlazers-tradeSummary,
+  .resultBlazers-container .resultBlazers-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultBlazers-container .resultBlazers-playerName,
+  .resultBlazers-container .resultBlazers-statLabel,
+  .resultBlazers-container .resultBlazers-sectionTitle,
+  .resultBlazers-container .resultBlazers-noteTitle,
+  .resultBlazers-container .resultBlazers-teamName,
+  .resultBlazers-container .resultBlazers-pickYearRound,
+  .resultBlazers-container .resultBlazers-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultBlazers-container .resultBlazers-playerType,
+  .resultBlazers-container .resultBlazers-pickType,
+  .resultBlazers-container .resultBlazers-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultBlazers-container .resultBlazers-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultBlazers-container .resultBlazers-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

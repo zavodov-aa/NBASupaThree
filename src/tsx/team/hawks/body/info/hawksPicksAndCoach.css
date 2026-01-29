@@ -1,0 +1,284 @@
+.hawks-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content-hawks {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-hawks {
+  color: #e03a3e;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.hawks-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #fdb927;
+  box-shadow: 0 8px 24px rgba(85, 37, 131, 0.15);
+}
+
+.hawks-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #552583, #fdb927);
+}
+
+/* Контейнер для горизонтального расположения */
+.hawks-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .hawks-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .hawks-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.hawks-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(85, 37, 131, 0.2);
+}
+
+.hawks-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(85, 37, 131, 0.1),
+    rgba(253, 185, 39, 0.05)
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hawks-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #552583;
+  text-transform: uppercase;
+}
+
+.hawks-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hawks-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.hawks-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.hawks-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hawks-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(85, 37, 131, 0.1);
+}
+
+.hawks-pick-year {
+  background: linear-gradient(135deg, #e03a3e, #ff595c);
+  color: black;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-hawks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-hawks:hover {
+  background: rgba(85, 37, 131, 0.05);
+}
+
+.pick-item-hawks:last-child {
+  border-bottom: none;
+}
+
+.pick-round-hawks {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-hawks {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.hawks-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.hawks-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hawks-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(85, 37, 131, 0.1);
+}
+
+.coach-item-hawks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-hawks:hover {
+  background: rgba(253, 185, 39, 0.05);
+}
+
+.coach-item-hawks:last-child {
+  border-bottom: none;
+}
+
+.coach-position-hawks {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-hawks {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.hawks-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(85, 37, 131, 0.1);
+}
+
+.color-dot-hawks {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.purple-dark-hawks {
+  background: #2b0e4e;
+}
+.purple-hawks {
+  background: #552583;
+}
+.purple-light-hawks {
+  background: #8b5cb6;
+}
+.gold-hawks {
+  background: #fdb927;
+}
+.gold-light-hawks {
+  background: #ffd166;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .hawks-containers {
+    padding: 16px;
+  }
+
+  .header-title-hawks {
+    font-size: 2rem;
+  }
+
+  .hawks-picks-grid,
+  .hawks-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hawks-pick-column:not(:last-child)::after,
+  .hawks-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .hawks-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-hawks,
+  .coach-item-hawks {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text-hawks,
+.error-text-hawks {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text-hawks {
+  color: #ff4444;
+}

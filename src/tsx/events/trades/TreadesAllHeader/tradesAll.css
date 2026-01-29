@@ -1,0 +1,1454 @@
+/* 
+.tradesAllContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  background: transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.tradesAllBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f8f9fa;
+  z-index: 0;
+}
+
+
+.tradesAll {
+  position: relative;
+  z-index: 1;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+  background: transparent;
+  min-height: 100vh;
+}
+
+
+.tradesAllTabs {
+  display: flex;
+  background: #e8ecef;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 28px;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.tradesAllTab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #5c6975;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  letter-spacing: -0.2px;
+}
+
+.tradesAllTab:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.tradesAllTabActive {
+  background: #ffffff;
+  color: #2c3e50;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+}
+
+.tradesAllTabLabel {
+  flex: 1;
+  text-align: center;
+}
+
+
+.tradesAllContent {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  border: 0.5px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.03),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.tradesAllTitle {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  padding-bottom: 16px;
+  border-bottom: 0.5px solid #eaedf0;
+  letter-spacing: -0.3px;
+}
+
+.tradesAllList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tradesAllItem {
+  padding: 20px;
+  border: 0.5px solid #eaedf0;
+  border-radius: 14px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.tradesAllItem:hover {
+  border-color: #d0d7e0;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
+}
+
+.tradesAllItem:active {
+  transform: translateY(0);
+  background: #fafbfc;
+}
+
+
+.tradesAllHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 0.5px solid #f0f2f5;
+}
+
+.tradesAllTeams {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.tradesAllTeam {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  backdrop-filter: blur(20px);
+}
+
+.tradesAllTeamFrom {
+  background: rgba(100, 149, 237, 0.12);
+  color: #6495ed;
+  border: 0.5px solid rgba(100, 149, 237, 0.2);
+}
+
+.tradesAllTeamTo {
+  background: rgba(144, 238, 144, 0.12);
+  color: #90ee90;
+  border: 0.5px solid rgba(144, 238, 144, 0.2);
+}
+
+.tradesAllArrow {
+  color: #b0b7c3;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.tradesAllStatus {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border: 0.5px solid transparent;
+}
+
+.tradesAllStatusCompleted {
+  background: rgba(144, 238, 144, 0.1);
+  color: #90ee90;
+  border-color: rgba(144, 238, 144, 0.2);
+}
+
+
+.tradesAllStatusRejected {
+  background: rgba(255, 68, 68, 0.1);
+  color: #ff4444;
+  border-color: rgba(255, 68, 68, 0.2);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .tradesAllStatusRejected {
+    background: rgba(255, 68, 68, 0.15);
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.3);
+  }
+}
+
+.tradesAllStatusPending {
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+  border-color: rgba(255, 215, 0, 0.2);
+}
+
+
+.tradeAssetsDisplay {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  margin: 0 0 16px 0;
+}
+
+.tradeAssetsColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
+}
+
+.tradeAssetsColumnHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 0.5px solid #f0f2f5;
+}
+
+.tradeAssetsTeamName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tradeAssetsCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: #f0f2f5;
+  color: #5c6975;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #d0d7e0;
+}
+
+.tradeAssetsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.tradeAssetItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 0.5px solid #eaedf0;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.tradeAssetItem:hover {
+  background: #f0f2f5;
+  border-color: #d0d7e0;
+}
+
+.tradeAssetItem-player {
+  border-left-color: #6495ed;
+}
+
+.tradeAssetItem-gleague {
+  border-left-color: #ff9800;
+}
+
+.tradeAssetItem-pick {
+  border-left-color: #4caf50;
+}
+
+.tradeAssetInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.tradeAssetName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2c3e50;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.tradeAssetMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #8a94a6;
+  flex-wrap: wrap;
+}
+
+.tradeAssetType {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.tradeAssetTeam {
+  font-weight: 500;
+  color: #5c6975;
+  background: rgba(100, 149, 237, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 0.5px solid rgba(100, 149, 237, 0.2);
+  white-space: nowrap;
+}
+
+.tradeAssetDetails {
+  opacity: 0.8;
+}
+
+.tradeAssetMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: #f0f2f5;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #8a94a6;
+  font-weight: 500;
+  border: 1px dashed #d0d7e0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tradeAssetMore:hover {
+  background: #e8ecef;
+  color: #5c6975;
+}
+
+.tradeAssetsExchange {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  position: relative;
+}
+
+.tradeAssetsExchangeLine {
+  width: 1px;
+  height: 100%;
+  background: #d0d7e0;
+  position: relative;
+}
+
+.tradeAssetsExchangeLine::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border: 1px solid #d0d7e0;
+  border-radius: 50%;
+  background: #f8f9fa;
+}
+
+
+.tradesAllNote {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid #6495ed;
+  font-size: 13px;
+  color: #5c6975;
+  line-height: 1.4;
+}
+
+.tradesAllNoteContent {
+  flex: 1;
+}
+
+.tradesAllNoteContent strong {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.tradesAllDate {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #8a94a6;
+  font-weight: 400;
+  letter-spacing: -0.1px;
+  padding-top: 12px;
+  border-top: 0.5px solid #f0f2f5;
+}
+
+.tradesAllEmpty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a7b0be;
+  font-size: 15px;
+  background: #fafbfc;
+  border-radius: 14px;
+  border: 1.5px dashed #e1e5eb;
+}
+
+.tradesAllEmpty p {
+  margin: 16px 0 0 0;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+
+.tradesAllRetryButton {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: #6495ed;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tradesAllRetryButton:hover {
+  background: #4169e1;
+}
+
+
+.tradesAllLoading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6495ed;
+  font-size: 15px;
+  background: #fafbfc;
+  border-radius: 14px;
+  border: 1.5px dashed #e1e5eb;
+}
+
+.tradesAllLoading p {
+  margin: 16px 0 0 0;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.tradesAllSpinner {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(100, 149, 237, 0.2);
+  border-radius: 50%;
+  border-top-color: #6495ed;
+  animation: spin 1s ease-in-out infinite;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .tradesAllBackground {
+    background: #000000;
+  }
+
+  .tradesAllContent,
+  .tradesAllItem {
+    background: #1c1c1e;
+    border-color: #2c2c2e;
+  }
+
+  .tradesAllTitle {
+    color: #f5f5f7;
+    border-bottom-color: #2c2c2e;
+  }
+
+  .tradesAllTab {
+    color: #98989d;
+  }
+
+  .tradesAllTabActive {
+    background: #2c2c2e;
+    color: #ffffff;
+  }
+
+  .tradesAllTabs {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+  }
+
+  .tradesAllTeamFrom {
+    background: rgba(100, 149, 237, 0.15);
+    color: #7baaf7;
+    border-color: rgba(123, 170, 247, 0.3);
+  }
+
+  .tradesAllTeamTo {
+    background: rgba(144, 238, 144, 0.15);
+    color: #9df19d;
+    border-color: rgba(157, 241, 157, 0.3);
+  }
+
+  .tradesAllHeader {
+    border-bottom-color: #2c2c2e;
+  }
+
+  .tradeAssetItem {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+  }
+
+  .tradeAssetItem:hover {
+    background: #3a3a3c;
+    border-color: #48484a;
+  }
+
+  .tradeAssetName {
+    color: #e5e5ea;
+  }
+
+  .tradeAssetItem-player {
+    border-left-color: #6495ed;
+  }
+
+  .tradeAssetItem-gleague {
+    border-left-color: #ff9800;
+  }
+
+  .tradeAssetItem-pick {
+    border-left-color: #4caf50;
+  }
+
+  .tradeAssetMeta {
+    color: #8e8e93;
+  }
+
+  .tradeAssetType {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .tradeAssetTeam {
+    background: rgba(100, 149, 237, 0.15);
+    border-color: rgba(100, 149, 237, 0.3);
+    color: #7baaf7;
+  }
+
+  .tradeAssetMore {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+    color: #8e8e93;
+  }
+
+  .tradeAssetMore:hover {
+    background: #3a3a3c;
+    color: #b0b7c3;
+  }
+
+  .tradeAssetsExchangeLine {
+    background: #3a3a3c;
+  }
+
+  .tradeAssetsExchangeLine::before {
+    border-color: #3a3a3c;
+    background: #2c2c2e;
+  }
+
+  .tradeAssetsColumnHeader {
+    border-bottom-color: #2c2c2e;
+  }
+
+  .tradeAssetsTeamName {
+    color: #f5f5f7;
+  }
+
+  .tradeAssetsCount {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+    color: #b0b7c3;
+  }
+
+  .tradesAllNote {
+    background: #2c2c2e;
+    border-left-color: #6495ed;
+  }
+
+  .tradesAllNoteContent strong {
+    color: #f5f5f7;
+  }
+
+  .tradesAllNoteContent {
+    color: #b0b7c3;
+  }
+
+  .tradesAllDate {
+    color: #8e8e93;
+    border-top-color: #2c2c2e;
+  }
+
+  .tradesAllEmpty,
+  .tradesAllLoading {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+    color: #8e8e93;
+  }
+
+  .tradesAllRetryButton {
+    background: #4169e1;
+  }
+
+  .tradesAllRetryButton:hover {
+    background: #6495ed;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .tradesAll {
+    padding: 16px 16px 32px;
+  }
+
+  .tradesAllTabs {
+    flex-direction: row;
+    gap: 0;
+    border-radius: 10px;
+  }
+
+  .tradesAllTab {
+    padding: 14px 0;
+    font-size: 14px;
+  }
+
+  .tradesAllContent {
+    padding: 20px;
+    border-radius: 14px;
+    margin: 0 -16px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  .tradesAllHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tradesAllTeams {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tradesAllItem {
+    padding: 18px;
+  }
+
+  .tradesAllTitle {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  .tradeAssetsDisplay {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tradeAssetsExchange {
+    padding: 8px 0;
+    justify-content: center;
+    height: 1px;
+  }
+
+  .tradeAssetsExchangeLine {
+    width: 100%;
+    height: 1px;
+  }
+
+  .tradeAssetsExchangeLine::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .tradeAssetsColumnHeader {
+    margin-bottom: 8px;
+  }
+
+  .tradeAssetItem {
+    padding: 8px 10px;
+  }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tradesAllItem {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.tradesAllTab {
+  position: relative;
+  overflow: hidden;
+}
+
+.tradesAllTab:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.3s,
+    height 0.3s;
+}
+
+.tradesAllTab:active:after {
+  width: 100px;
+  height: 100px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tradesAllTab:after {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+
+.tradeDecisionButtons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 0.5px solid #f0f2f5;
+}
+
+.tradeDecisionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+
+.tradeDecisionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tradeDecisionButtonAccept {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  border: 0.5px solid rgba(76, 175, 80, 0.2);
+}
+
+.tradeDecisionButtonAccept:hover:not(:disabled) {
+  background: linear-gradient(135deg, #45a049, #3d8b40);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.tradeDecisionButtonReject {
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  color: white;
+  border: 0.5px solid rgba(255, 68, 68, 0.2);
+}
+
+.tradeDecisionButtonReject:hover:not(:disabled) {
+  background: linear-gradient(135deg, #cc0000, #b30000);
+  box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .tradeDecisionButtons {
+    border-top-color: #2c2c2e;
+  }
+
+  .tradeDecisionButtonAccept {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    border-color: rgba(46, 125, 50, 0.3);
+  }
+
+  .tradeDecisionButtonAccept:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1b5e20, #0d3c11);
+  }
+
+  .tradeDecisionButtonReject {
+    background: linear-gradient(135deg, #c62828, #b71c1c);
+    border-color: rgba(198, 40, 40, 0.3);
+  }
+
+  .tradeDecisionButtonReject:hover:not(:disabled) {
+    background: linear-gradient(135deg, #b71c1c, #9a1616);
+  }
+}
+
+
+@media (max-width: 640px) {
+  .tradeDecisionButtons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tradeDecisionButton {
+    padding: 14px 16px;
+  }
+} */
+
+.tradesAllContainer {
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.tradesAllContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.tradesAllTabs {
+  display: flex;
+  background: #e8ecef;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.tradesAllTab {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #5c6975;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tradesAllTab:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.tradesAllTabActive {
+  background: #ffffff;
+  color: #2c3e50;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+}
+
+.tradesAllListContainer {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid #eaedf0;
+}
+
+.tradesAllSectionTitle {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eaedf0;
+}
+
+.tradesAllList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tradesAllItem {
+  padding: 20px;
+  border: 1px solid #eaedf0;
+  border-radius: 14px;
+  background: #ffffff;
+  transition: all 0.2s;
+}
+
+.tradesAllItem:hover {
+  border-color: #d0d7e0;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.tradesAllItemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.tradesAllTeams {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.tradesAllTeam {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tradesAllTeamFrom {
+  background: rgba(100, 149, 237, 0.12);
+  color: #6495ed;
+  border: 1px solid rgba(100, 149, 237, 0.2);
+}
+
+.tradesAllTeamTo {
+  background: rgba(144, 238, 144, 0.12);
+  color: #90ee90;
+  border: 1px solid rgba(144, 238, 144, 0.2);
+}
+
+.tradesAllArrow {
+  color: #b0b7c3;
+  font-size: 15px;
+}
+
+.tradesAllStatus {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.tradesAllStatus-completed {
+  background: rgba(144, 238, 144, 0.1);
+  color: #90ee90;
+  border: 1px solid rgba(144, 238, 144, 0.2);
+}
+
+.tradesAllStatus-rejected {
+  background: rgba(255, 68, 68, 0.1);
+  color: #ff4444;
+  border: 1px solid rgba(255, 68, 68, 0.2);
+}
+
+.tradesAllStatus-pending-review {
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.tradesAllAssetsDisplay {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.tradesAllAssetsColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tradesAllAssetsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.tradesAllAssetsTeam {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.tradesAllAssetsCount {
+  width: 24px;
+  height: 24px;
+  background: #f0f2f5;
+  color: #5c6975;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d0d7e0;
+}
+
+.tradesAllAssetsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tradesAllAssetItem {
+  padding: 10px 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #eaedf0;
+  border-left: 3px solid #6495ed;
+}
+
+.tradesAllAsset-gleague {
+  border-left-color: #ff9800;
+}
+
+.tradesAllAsset-pick {
+  border-left-color: #4caf50;
+}
+
+.tradesAllAssetName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.tradesAllAssetMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #8a94a6;
+}
+
+.tradesAllAssetType {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.tradesAllAssetTeam {
+  font-weight: 500;
+  color: #5c6975;
+  background: rgba(100, 149, 237, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(100, 149, 237, 0.2);
+}
+
+.tradesAllAssetDetails {
+  opacity: 0.8;
+}
+
+.tradesAllAssetMore {
+  padding: 8px;
+  background: #f0f2f5;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #8a94a6;
+  font-weight: 500;
+  border: 1px dashed #d0d7e0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tradesAllAssetMore:hover {
+  background: #e8ecef;
+  color: #5c6975;
+}
+
+.tradesAllExchange {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  position: relative;
+}
+
+.tradesAllExchangeLine {
+  width: 1px;
+  height: 100%;
+  background: #d0d7e0;
+  position: relative;
+}
+
+.tradesAllExchangeLine::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border: 1px solid #d0d7e0;
+  border-radius: 50%;
+  background: #f8f9fa;
+}
+
+.tradesAllNote {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid #6495ed;
+  font-size: 13px;
+  color: #5c6975;
+  line-height: 1.4;
+}
+
+.tradesAllDate {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #8a94a6;
+  font-weight: 400;
+  padding-top: 12px;
+  border-top: 1px solid #f0f2f5;
+}
+
+.tradesAllButtons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f2f5;
+}
+
+.tradesAllButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tradesAllButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tradesAllButtonAccept {
+  background: #4caf50;
+  color: white;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.tradesAllButtonAccept:hover:not(:disabled) {
+  background: #45a049;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.tradesAllButtonReject {
+  background: #ff4444;
+  color: white;
+  border: 1px solid rgba(255, 68, 68, 0.2);
+}
+
+.tradesAllButtonReject:hover:not(:disabled) {
+  background: #cc0000;
+  box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
+}
+
+.tradesAllLoading,
+.tradesAllEmpty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a7b0be;
+  font-size: 15px;
+  background: #fafbfc;
+  border-radius: 14px;
+  border: 1px dashed #e1e5eb;
+}
+
+.tradesAllSpinner {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(100, 149, 237, 0.2);
+  border-radius: 50%;
+  border-top-color: #6495ed;
+  animation: tradesAllSpin 1s linear infinite;
+}
+
+@keyframes tradesAllSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tradesAllRetryButton {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: #6495ed;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tradesAllRetryButton:hover {
+  background: #4169e1;
+}
+
+/* Мобильная версия */
+@media (max-width: 640px) {
+  .tradesAllContent {
+    padding: 16px;
+  }
+
+  .tradesAllListContainer {
+    padding: 16px;
+  }
+
+  .tradesAllAssetsDisplay {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tradesAllExchange {
+    padding: 8px 0;
+    justify-content: center;
+    height: 1px;
+  }
+
+  .tradesAllExchangeLine {
+    width: 100%;
+    height: 1px;
+  }
+
+  .tradesAllButtons {
+    flex-direction: column;
+  }
+
+  .tradesAllItemHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tradesAllTeams {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .tradesAllContainer {
+    background: #000;
+  }
+
+  .tradesAllTabs {
+    background: #2c2c2e;
+  }
+
+  .tradesAllTab {
+    color: #98989d;
+  }
+
+  .tradesAllTabActive {
+    background: #3a3a3c;
+    color: #fff;
+  }
+
+  .tradesAllListContainer,
+  .tradesAllItem {
+    background: #1c1c1e;
+    border-color: #2c2c2e;
+  }
+
+  .tradesAllSectionTitle {
+    color: #f5f5f7;
+    border-bottom-color: #2c2c2e;
+  }
+
+  .tradesAllTeamFrom {
+    background: rgba(100, 149, 237, 0.15);
+    color: #7baaf7;
+    border-color: rgba(123, 170, 247, 0.3);
+  }
+
+  .tradesAllTeamTo {
+    background: rgba(144, 238, 144, 0.15);
+    color: #9df19d;
+    border-color: rgba(157, 241, 157, 0.3);
+  }
+
+  .tradesAllItemHeader {
+    border-bottom-color: #2c2c2e;
+  }
+
+  .tradesAllAssetItem {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+  }
+
+  .tradesAllAssetItem:hover {
+    background: #3a3a3c;
+  }
+
+  .tradesAllAssetName {
+    color: #e5e5ea;
+  }
+
+  .tradesAllAssetMeta {
+    color: #8e8e93;
+  }
+
+  .tradesAllAssetType {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .tradesAllAssetTeam {
+    background: rgba(100, 149, 237, 0.15);
+    border-color: rgba(100, 149, 237, 0.3);
+    color: #7baaf7;
+  }
+
+  .tradesAllAssetMore {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+    color: #8e8e93;
+  }
+
+  .tradesAllAssetMore:hover {
+    background: #3a3a3c;
+    color: #b0b7c3;
+  }
+
+  .tradesAllExchangeLine {
+    background: #3a3a3c;
+  }
+
+  .tradesAllExchangeLine::before {
+    border-color: #3a3a3c;
+    background: #2c2c2e;
+  }
+
+  .tradesAllAssetsHeader {
+    border-bottom-color: #2c2c2e;
+  }
+
+  .tradesAllAssetsTeam {
+    color: #f5f5f7;
+  }
+
+  .tradesAllAssetsCount {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+    color: #b0b7c3;
+  }
+
+  .tradesAllNote {
+    background: #2c2c2e;
+    border-left-color: #6495ed;
+  }
+
+  .tradesAllDate {
+    color: #8e8e93;
+    border-top-color: #2c2c2e;
+  }
+
+  .tradesAllLoading,
+  .tradesAllEmpty {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+    color: #8e8e93;
+  }
+
+  .tradesAllButtonAccept {
+    background: #2e7d32;
+    border-color: rgba(46, 125, 50, 0.3);
+  }
+
+  .tradesAllButtonAccept:hover:not(:disabled) {
+    background: #1b5e20;
+  }
+
+  .tradesAllButtonReject {
+    background: #c62828;
+    border-color: rgba(198, 40, 40, 0.3);
+  }
+
+  .tradesAllButtonReject:hover:not(:disabled) {
+    background: #b71c1c;
+  }
+
+  .tradesAllRetryButton {
+    background: #4169e1;
+  }
+
+  .tradesAllRetryButton:hover {
+    background: #6495ed;
+  }
+}

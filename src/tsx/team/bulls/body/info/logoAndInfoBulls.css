@@ -1,0 +1,812 @@
+.bulls-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+}
+
+.bulls-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 32px;
+  width: 80%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(206, 17, 65, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.bulls-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(206, 17, 65, 0.25), 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.bulls-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #333333 25%,
+    #ce1141 50%,
+    #333333 75%,
+    #000000 100%
+  );
+  opacity: 0.9;
+}
+
+.bulls-accent-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ce1141 0%, #e63946 50%, #ce1141 100%);
+  opacity: 0.7;
+}
+
+.bulls-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.logo-wrapper-bulls {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(100px, 12vw, 160px);
+  height: clamp(100px, 12vw, 160px);
+}
+
+.bulls-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.bulls-logo:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.4));
+}
+
+.bulls-titles {
+  flex: 1;
+}
+
+.team-name-main-bulls {
+  display: block;
+  font-size: clamp(1.8em, 4vw, 2.5em);
+  font-weight: 800;
+  background: linear-gradient(
+    135deg,
+    #000000 0%,
+    #333333 25%,
+    #ce1141 50%,
+    #333333 75%,
+    #000000 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 4px rgba(206, 17, 65, 0.1);
+}
+
+.team-name-sub-bulls {
+  display: block;
+  font-size: clamp(0.85em, 2vw, 1em);
+  color: #000000;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.bulls-content {
+  position: relative;
+}
+
+.info-values-bulls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.value-item-bulls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-item-bulls::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(206, 17, 65, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.value-item-bulls:hover::before {
+  opacity: 1;
+}
+
+.value-item-bulls:hover {
+  transform: translateX(8px);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px rgba(206, 17, 65, 0.15);
+}
+
+.value-icon-bulls {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.value-item-bulls:hover .value-icon-bulls {
+  transform: scale(1.4);
+}
+
+.conference-icon-bulls {
+  background: #ce1141;
+  color: #ce1141;
+}
+
+.division-icon-bulls {
+  background: #000000;
+  color: #000000;
+}
+
+.gm-icon-bulls {
+  background: linear-gradient(135deg, #ce1141, #000000);
+  color: #ce1141;
+}
+
+.value-text-bulls {
+  font-size: clamp(1em, 2.5vw, 1.2em);
+  color: #333;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  position: relative;
+  z-index: 1;
+}
+
+.bulls-colors {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  display: flex;
+  gap: 6px;
+}
+
+.color-dot-bulls {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.color-dot-bulls:hover {
+  transform: scale(1.5);
+}
+
+.color-dot-bulls.red-dark-bulls {
+  background: #8b0000;
+  color: #8b0000;
+}
+
+.color-dot-bulls.red-bulls {
+  background: #ce1141;
+  color: #ce1141;
+}
+
+.color-dot-bulls.red-light-bulls {
+  background: #e63946;
+  color: #e63946;
+}
+
+.color-dot-bulls.black-bulls {
+  background: #000000;
+  color: #000000;
+}
+
+.color-dot-bulls.white-bulls {
+  background: #ffffff;
+  color: #ffffff;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 767px) {
+  .bulls-card {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  .bulls-card,
+  .value-item-bulls,
+  .bulls-logo,
+  .color-dot-bulls {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+}
+
+@media (min-width: 1200px) {
+  .logo-wrapper-bulls {
+    width: 260px;
+    height: 260px;
+  }
+
+  .bulls-header {
+    gap: 32px;
+  }
+
+  .bulls-card {
+    padding: 40px;
+    width: 70%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .logo-wrapper-bulls {
+    width: 240px;
+    height: 240px;
+  }
+
+  .bulls-header {
+    gap: 28px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .logo-wrapper-bulls {
+    width: 220px;
+    height: 220px;
+  }
+
+  .bulls-header {
+    gap: 24px;
+  }
+
+  .bulls-card {
+    width: 85%;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-wrapper-bulls {
+    width: 200px;
+    height: 200px;
+  }
+
+  .bulls-header {
+    gap: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bulls-card {
+    padding: 24px;
+    width: 90%;
+  }
+
+  .info-values-bulls {
+    gap: 12px;
+  }
+
+  .value-item-bulls {
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-wrapper-bulls {
+    width: 90px;
+    height: 90px;
+  }
+
+  .bulls-container {
+    padding: 16px;
+  }
+
+  .bulls-card {
+    padding: 20px;
+    width: 95%;
+  }
+
+  .bulls-colors {
+    bottom: 15px;
+    right: 20px;
+  }
+
+  .value-item-bulls {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .team-name-main-bulls {
+    font-size: 1.7em;
+  }
+
+  .value-text-bulls {
+    font-size: 0.95em;
+  }
+}
+
+@media (min-width: 280px) and (max-width: 399px) {
+  .bulls-container {
+    padding: 12px;
+  }
+
+  .bulls-card {
+    padding: 18px 16px;
+    width: 100%;
+    border-radius: 16px;
+    margin: 0 auto;
+  }
+
+  .bulls-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .logo-wrapper-bulls {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+  }
+
+  .team-name-main-bulls {
+    font-size: 1.6em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .team-name-sub-bulls {
+    font-size: 0.75em;
+    letter-spacing: 0.6px;
+  }
+
+  .info-values-bulls {
+    gap: 10px;
+  }
+
+  .value-item-bulls {
+    padding: 12px 14px;
+    border-radius: 12px;
+    gap: 12px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .value-item-bulls:hover {
+    transform: translateX(4px);
+  }
+
+  .value-icon-bulls {
+    width: 10px;
+    height: 10px;
+  }
+
+  .value-text-bulls {
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+
+  .bulls-colors {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px;
+  }
+
+  .color-dot-bulls {
+    width: 8px;
+    height: 8px;
+  }
+
+  .bulls-card {
+    box-shadow: 0 4px 12px rgba(206, 17, 65, 0.15);
+  }
+
+  .bulls-card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(206, 17, 65, 0.15);
+  }
+
+  .value-item-bulls:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateX(0);
+  }
+
+  .bulls-logo:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .bulls-container {
+    padding: 10px;
+  }
+
+  .bulls-card {
+    padding: 16px 14px;
+  }
+
+  .logo-wrapper-bulls {
+    width: 70px;
+    height: 70px;
+  }
+
+  .team-name-main-bulls {
+    font-size: 1.5em;
+  }
+
+  .value-text-bulls {
+    font-size: 0.85em;
+  }
+
+  .value-item-bulls {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 300px) {
+  .logo-wrapper-bulls {
+    width: 65px;
+    height: 65px;
+  }
+
+  .team-name-main-bulls {
+    font-size: 1.4em;
+  }
+
+  .team-name-sub-bulls {
+    font-size: 0.7em;
+  }
+
+  .value-text-bulls {
+    font-size: 0.8em;
+  }
+
+  .bulls-colors {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .value-item-bulls {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .value-icon-bulls {
+    margin-bottom: 4px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .bulls-card:hover {
+    transform: none;
+  }
+
+  .value-item-bulls:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .bulls-logo:hover {
+    transform: none;
+  }
+
+  .color-dot-bulls:hover {
+    transform: none;
+  }
+
+  .value-item-bulls:hover .value-icon-bulls {
+    transform: scale(1);
+  }
+}
+
+.bulls-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.1em;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.bulls-error {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 245, 245, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(254, 215, 215, 0.8);
+  border-radius: 12px;
+  color: #c53030;
+  font-weight: 500;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bulls-container *,
+.bulls-container *::before,
+.bulls-container *::after {
+  box-sizing: border-box;
+}
+
+.bulls-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.bulls-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 32px;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(206, 17, 65, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@media (max-width: 399px) {
+  .bulls-container {
+    padding: 8px;
+  }
+
+  .bulls-card {
+    padding: 16px 14px;
+    border-radius: 16px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .bulls-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .logo-wrapper-bulls {
+    width: 70px !important;
+    height: 70px !important;
+    margin: 0 auto;
+  }
+
+  .team-name-main-bulls {
+    font-size: 1.4em !important;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .team-name-sub-bulls {
+    font-size: 0.7em !important;
+    letter-spacing: 0.5px;
+  }
+
+  .info-values-bulls {
+    gap: 8px;
+  }
+
+  .value-item-bulls {
+    padding: 10px 12px;
+    border-radius: 10px;
+    gap: 10px;
+    flex-direction: row;
+    text-align: left;
+    min-width: 0;
+  }
+
+  .value-text-bulls {
+    font-size: 0.85em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .bulls-colors {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    justify-content: center;
+    margin-top: 16px;
+    gap: 4px;
+  }
+
+  .color-dot-bulls {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 320px) {
+  .bulls-container {
+    padding: 6px;
+  }
+
+  .bulls-card {
+    padding: 14px 10px;
+    border-radius: 14px;
+  }
+
+  .logo-wrapper-bulls {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .team-name-main-bulls {
+    font-size: 1.2em !important;
+  }
+
+  .team-name-sub-bulls {
+    font-size: 0.65em !important;
+  }
+
+  .value-item-bulls {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .value-icon-bulls {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+  }
+
+  .value-text-bulls {
+    font-size: 0.75em;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .value-item-bulls {
+    display: flex;
+    align-items: center;
+  }
+
+  .value-icon-bulls {
+    margin-right: 6px;
+  }
+
+  .bulls-colors {
+    gap: 3px;
+  }
+
+  .color-dot-bulls {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 280px) {
+  .bulls-container {
+    padding: 4px;
+  }
+
+  .bulls-card {
+    padding: 12px 8px;
+    border-radius: 12px;
+  }
+
+  .logo-wrapper-bulls {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .team-name-main-bulls {
+    font-size: 1.1em !important;
+  }
+
+  .team-name-sub-bulls {
+    font-size: 0.6em !important;
+  }
+
+  .value-item-bulls {
+    padding: 6px 8px;
+  }
+
+  .value-text-bulls {
+    font-size: 0.7em;
+  }
+
+  .value-item-bulls {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .value-icon-bulls {
+    width: 6px;
+    height: 6px;
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 320px) {
+  .headerBulls {
+    min-width: 100%;
+    padding: 6px 8px;
+  }
+
+  .headerLogoBulls {
+    width: 40px;
+    min-width: 40px;
+  }
+
+  .headerNav {
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .headerNavLink {
+    padding: 3px 5px;
+    font-size: 9px;
+    border-radius: 8px;
+  }
+}

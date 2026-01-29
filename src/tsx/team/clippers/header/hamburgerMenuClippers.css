@@ -1,0 +1,147 @@
+.hamburgerButtonClippers {
+  position: relative;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.hamburgerButtonClippers span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white; /* Изменено с black на white для лучшей видимости на синем фоне */
+  transition: all 0.3s ease;
+  margin: 2px;
+}
+
+@media (max-width: 280px) {
+  .hamburgerButtonClippers span {
+    width: 20px;
+    height: 2.5px;
+    margin: 1.5px;
+  }
+}
+
+.hamburgerButtonClippers.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #c8102e; /* Clippers красный */
+}
+.hamburgerButtonClippers.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButtonClippers.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #c8102e; /* Clippers красный */
+}
+
+/* Полноэкранное меню */
+.fullscreenMenuClippers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1d428a; /* Clippers синий */
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.fullscreenMenuClippers.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Содержимое меню */
+.menuContentClippers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 280px;
+}
+
+.menuContentHClippers {
+  color: #c8102e; /* Clippers красный */
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.menuContentClippers a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.menuContentClippers a:hover {
+  color: #c8102e; /* Clippers красный */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Адаптив для меню */
+@media (max-width: 768px) {
+  .menuContentHClippers {
+    font-size: 1.3rem;
+  }
+
+  .menuContentClippers a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuContentHClippers {
+    font-size: 1.1rem;
+  }
+
+  .menuContentClippers a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .menuContentHClippers {
+    font-size: 1rem;
+  }
+
+  .menuContentClippers a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 280px) {
+  .menuContentClippers {
+    padding: 15px;
+    gap: 1rem;
+  }
+
+  .menuContentHClippers {
+    font-size: 0.9rem;
+  }
+
+  .menuContentClippers a {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

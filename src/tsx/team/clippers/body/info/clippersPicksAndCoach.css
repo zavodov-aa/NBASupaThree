@@ -1,0 +1,284 @@
+.clippers-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content-clippers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-clippers {
+  color: #c0102e;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.clippers-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #bec0c2;
+  box-shadow: 0 8px 24px rgba(200, 16, 46, 0.15);
+}
+
+.clippers-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #c0102e, #006bb6);
+}
+
+/* Контейнер для горизонтального расположения */
+.clippers-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .clippers-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .clippers-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.clippers-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(200, 16, 46, 0.2);
+}
+
+.clippers-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(200, 16, 46, 0.1),
+    rgba(0, 107, 182, 0.05)
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(200, 16, 46, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.clippers-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #1d428a;
+  text-transform: uppercase;
+}
+
+.clippers-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.clippers-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.clippers-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.clippers-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.clippers-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(200, 16, 46, 0.1);
+}
+
+.clippers-pick-year {
+  background: linear-gradient(135deg, #c0102e, #ed174c);
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-clippers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(200, 16, 46, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-clippers:hover {
+  background: rgba(200, 16, 46, 0.05);
+}
+
+.pick-item-clippers:last-child {
+  border-bottom: none;
+}
+
+.pick-round-clippers {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-clippers {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.clippers-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.clippers-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.clippers-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(200, 16, 46, 0.1);
+}
+
+.coach-item-clippers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(200, 16, 46, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-clippers:hover {
+  background: rgba(190, 192, 194, 0.05);
+}
+
+.coach-item-clippers:last-child {
+  border-bottom: none;
+}
+
+.coach-position-clippers {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-clippers {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.clippers-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(200, 16, 46, 0.1);
+}
+
+.color-dot-clippers {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.red-dark-clippers {
+  background: #c0102e;
+}
+.blue-clippers {
+  background: #006bb6;
+}
+.red-clippers {
+  background: #ed174c;
+}
+.silver-clippers {
+  background: #bec0c2;
+}
+.black-clippers {
+  background: #000000;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .clippers-containers {
+    padding: 16px;
+  }
+
+  .header-title-clippers {
+    font-size: 2rem;
+  }
+
+  .clippers-picks-grid,
+  .clippers-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clippers-pick-column:not(:last-child)::after,
+  .clippers-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .clippers-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-clippers,
+  .coach-item-clippers {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text-clippers,
+.error-text-clippers {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text-clippers {
+  color: #ff4444;
+}

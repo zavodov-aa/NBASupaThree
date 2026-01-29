@@ -1,0 +1,127 @@
+.bucks-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-bucks {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-bucks {
+  color: #00471b; /* Зеленый цвет Milwaukee Bucks */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-bucks {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-bucks {
+  overflow-x: auto;
+}
+
+.players-table-bucks {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-bucks {
+  background: black;
+}
+
+.table-th-bucks {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-bucks:last-child {
+}
+
+.table-body-bucks {
+  background: white;
+}
+
+.tables-row-bucks {
+}
+
+.row-even-bucks {
+  background: black;
+}
+
+.row-odd-bucks {
+}
+
+.table-tdw-bucks {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+.table-tdw-bucks {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-bucks {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-bucks {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-bucks {
+  color: #00471b; /* Зеленый цвет Milwaukee Bucks */
+  font-weight: bold;
+}
+
+.roster-badge-bucks {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-bucks {
+  background-color: #00471b; /* Зеленый цвет для активных игроков */
+  color: white;
+}
+
+.badge-inactive-bucks {
+  background-color: #eee;
+  color: black;
+}
+
+.loading-text-bucks {
+  text-align: center;
+  color: #00471b; /* Зеленый цвет Milwaukee Bucks */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-bucks {
+  background-color: rgba(
+    0,
+    71,
+    27,
+    0.8
+  ); /* Полупрозрачный зеленый цвет Bucks */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-bucks {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

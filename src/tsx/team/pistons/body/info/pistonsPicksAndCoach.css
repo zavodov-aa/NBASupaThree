@@ -1,0 +1,292 @@
+.pistons-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-pistons {
+  color: #c8102e; /* Pistons red */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.pistons-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #c8102e; /* Pistons red */
+  box-shadow: 0 8px 24px rgba(0, 87, 184, 0.15); /* Pistons blue */
+}
+
+.pistons-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #0057b8,
+    #c8102e
+  ); /* Pistons blue to red */
+}
+
+/* Контейнер для горизонтального расположения */
+.pistons-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .pistons-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .pistons-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.pistons-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(0, 87, 184, 0.2); /* Pistons blue */
+}
+
+.pistons-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 87, 184, 0.1),
+    /* Pistons blue */ rgba(200, 16, 46, 0.05) /* Pistons red */
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 87, 184, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pistons-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #0057b8; /* Pistons blue */
+  text-transform: uppercase;
+}
+
+.pistons-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pistons-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.pistons-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.pistons-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.pistons-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 87, 184, 0.1); /* Pistons blue */
+}
+
+.pistons-pick-year {
+  background: linear-gradient(
+    135deg,
+    #0057b8,
+    #0066cc
+  ); /* Pistons blue gradient */
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-pistons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 87, 184, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-pistons:hover {
+  background: rgba(0, 87, 184, 0.05); /* Pistons blue */
+}
+
+.pick-item-pistons:last-child {
+  border-bottom: none;
+}
+
+.pick-round-pistons {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-pistons {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.pistons-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.pistons-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.pistons-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 87, 184, 0.1); /* Pistons blue */
+}
+
+.coach-item-pistons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 87, 184, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-pistons:hover {
+  background: rgba(200, 16, 46, 0.05); /* Pistons red */
+}
+
+.coach-item-pistons:last-child {
+  border-bottom: none;
+}
+
+.coach-position-pistons {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-pistons {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.pistons-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 87, 184, 0.1);
+}
+
+.color-dot-pistons {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.blue-dark-pistons {
+  background: #003da5; /* Dark Pistons blue */
+}
+.blue-pistons {
+  background: #0057b8; /* Pistons blue */
+}
+.red-pistons {
+  background: #c8102e; /* Pistons red */
+}
+.red-light-pistons {
+  background: #e03a3e; /* Light red */
+}
+.silver-pistons {
+  background: #bec0c2; /* Pistons silver */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .pistons-containers {
+    padding: 16px;
+  }
+
+  .header-title-pistons {
+    font-size: 2rem;
+  }
+
+  .pistons-picks-grid,
+  .pistons-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pistons-pick-column:not(:last-child)::after,
+  .pistons-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .pistons-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-pistons,
+  .coach-item-pistons {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text {
+  color: #ff4444;
+}

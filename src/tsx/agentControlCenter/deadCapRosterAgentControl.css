@@ -1,0 +1,895 @@
+/* deadCapRosterAgentControl.css */
+.deadCapRosterAgentControl-container {
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+}
+
+.deadCapRosterAgentControl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.deadCapRosterAgentControl-title {
+  font-size: 24px;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.logo {
+  width: 180px;
+  height: auto;
+  filter: invert(100%);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.HeadInfoAgent-A-Href {
+  text-decoration: none;
+  color: wheat;
+}
+
+.deadCapRosterAgentControl-statusBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #252525;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #888;
+}
+
+/* Мобильный заголовок */
+.deadCapRosterAgentControl-mobile-header {
+  margin-bottom: 15px;
+}
+
+.deadCapRosterAgentControl-mobile-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.deadCapRosterAgentControl-mobile-logo {
+  width: 100px;
+  height: auto;
+  filter: invert(100%);
+}
+
+.deadCapRosterAgentControl-mobile-menu-button {
+  background: none;
+  border: 1px solid #444;
+  color: #fff;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deadCapRosterAgentControl-mobile-title {
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.deadCapRosterAgentControl-mobile-status {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.deadCapRosterAgentControl-mobile-nav {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.deadCapRosterAgentControl-mobile-nav-link {
+  flex: 1;
+  text-align: center;
+  padding: 8px 12px;
+  background-color: #252525;
+  border-radius: 4px;
+  font-size: 12px;
+  color: wheat;
+  text-decoration: none;
+  border: 1px solid #333;
+}
+
+.deadCapRosterAgentControl-mobile-view-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.deadCapRosterAgentControl-view-button {
+  flex: 1;
+  padding: 8px 12px;
+  background-color: #252525;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 70px;
+}
+
+.deadCapRosterAgentControl-successButton {
+  background-color: #4caf50;
+  color: #fff;
+  border: 1px solid #45a049;
+}
+
+.deadCapRosterAgentControl-successButton:hover {
+  background-color: #45a049;
+}
+
+/* Мобильный селектор колонок */
+.deadCapRosterAgentControl-mobile-column-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.deadCapRosterAgentControl-mobile-column-group {
+  background-color: #252525;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.deadCapRosterAgentControl-mobile-column-group-title {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #444;
+}
+
+.deadCapRosterAgentControl-mobile-column-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.deadCapRosterAgentControl-mobile-checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 3px;
+  background-color: #2a2a2a;
+}
+
+.deadCapRosterAgentControl-mobile-checkbox-label:hover {
+  background-color: #333;
+}
+
+.deadCapRosterAgentControl-mobile-checkbox-input {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.deadCapRosterAgentControl-mobile-checkbox-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+.deadCapRosterAgentControl-columnSelector {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.deadCapRosterAgentControl-columnSelectorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.deadCapRosterAgentControl-columnSelectorTitle {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.deadCapRosterAgentControl-massSelectionButtons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.deadCapRosterAgentControl-columnGroup {
+  margin-bottom: 15px;
+}
+
+.deadCapRosterAgentControl-columnGroupTitle {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deadCapRosterAgentControl-columnCheckboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.deadCapRosterAgentControl-checkboxLabel {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.deadCapRosterAgentControl-checkbox {
+  margin-right: 5px;
+}
+
+.deadCapRosterAgentControl-actionButtons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.deadCapRosterAgentControl-controlPanel {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.deadCapRosterAgentControl-panelHeader {
+  padding: 15px 20px;
+  background-color: #252525;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.deadCapRosterAgentControl-panelHeaderText {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.deadCapRosterAgentControl-panelHeaderIcon {
+  color: #888;
+}
+
+.deadCapRosterAgentControl-panelContent {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.deadCapRosterAgentControl-filterGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.deadCapRosterAgentControl-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.deadCapRosterAgentControl-input {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 8px 10px;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.deadCapRosterAgentControl-input:focus {
+  border-color: #666;
+}
+
+.deadCapRosterAgentControl-buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #252525;
+  border-top: 1px solid #333;
+}
+
+.deadCapRosterAgentControl-filterStatus {
+  font-size: 14px;
+  color: #666;
+}
+
+.deadCapRosterAgentControl-button {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.deadCapRosterAgentControl-button:hover {
+  background-color: #3a3a3a;
+  border-color: #555;
+}
+
+.deadCapRosterAgentControl-primaryButton {
+  background-color: #0066cc;
+  color: #fff;
+  border: 1px solid #0077ee;
+}
+
+.deadCapRosterAgentControl-primaryButton:hover {
+  background-color: #0077ee;
+}
+
+.deadCapRosterAgentControl-smallButton {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  margin-left: 5px;
+}
+
+.deadCapRosterAgentControl-smallButton:hover {
+  background-color: #3a3a3a;
+}
+
+.deadCapRosterAgentControl-shiftButton {
+  background-color: #8b4513;
+  color: #fff;
+  border: 1px solid #a0522d;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  margin-left: 5px;
+}
+
+.deadCapRosterAgentControl-shiftButton:hover {
+  background-color: #a0522d;
+}
+
+.deadCapRosterAgentControl-tableContainer {
+  overflow-x: auto;
+}
+
+.deadCapRosterAgentControl-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.deadCapRosterAgentControl-tableHeader {
+  background-color: #252525;
+  border-bottom: 1px solid #333;
+}
+
+.deadCapRosterAgentControl-tableHeaderCell {
+  padding: 12px 8px;
+  text-align: left;
+  font-size: 11px;
+  color: #888;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-right: 1px solid #333;
+  white-space: nowrap;
+  position: relative;
+}
+
+.deadCapRosterAgentControl-tableRow {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.2s ease;
+}
+
+.deadCapRosterAgentControl-tableRow:hover {
+  background-color: #222;
+}
+
+.deadCapRosterAgentControl-newRow {
+  background-color: #1a2a1a;
+  border-bottom: 1px solid #334;
+}
+
+.deadCapRosterAgentControl-tableCell {
+  padding: 10px 8px;
+  font-size: 12px;
+  border-right: 1px solid #333;
+  white-space: nowrap;
+}
+
+.deadCapRosterAgentControl-teamCell {
+  padding: 10px 8px;
+  font-size: 12px;
+  border-right: 1px solid #333;
+  white-space: nowrap;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.deadCapRosterAgentControl-editableCell:hover {
+  background-color: #2a3a2a;
+}
+
+.deadCapRosterAgentControl-editInput {
+  width: 100%;
+  padding: 4px 6px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 12px;
+}
+
+.deadCapRosterAgentControl-newPlayerId {
+  font-family: monospace;
+  font-size: 11px;
+  color: #4caf50;
+}
+
+.deadCapRosterAgentControl-cellValue {
+  font-size: 11px;
+}
+
+.deadCapRosterAgentControl-actionButtonsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.deadCapRosterAgentControl-emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 14px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.deadCapRosterAgentControl-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.deadCapRosterAgentControl-modalContent {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  max-width: 500px;
+  width: 100%;
+}
+
+.deadCapRosterAgentControl-addModal {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.deadCapRosterAgentControl-addForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.deadCapRosterAgentControl-addFormField {
+  display: flex;
+  flex-direction: column;
+}
+
+.deadCapRosterAgentControl-addFormLabel {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.deadCapRosterAgentControl-addFormInput {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+  width: 100%;
+}
+
+.deadCapRosterAgentControl-addFormInput:focus {
+  border-color: #666;
+}
+
+.deadCapRosterAgentControl-teamSelect {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: #e0e0e0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.deadCapRosterAgentControl-teamSelect:hover {
+  background-color: #333;
+}
+
+.deadCapRosterAgentControl-modalTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.deadCapRosterAgentControl-modalDescription {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.deadCapRosterAgentControl-warningText {
+  color: #ff6b6b;
+}
+
+.deadCapRosterAgentControl-modalInput {
+  width: 100%;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.deadCapRosterAgentControl-modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.deadCapRosterAgentControl-contextMenu {
+  position: fixed;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 1100;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.deadCapRosterAgentControl-contextMenuContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.deadCapRosterAgentControl-contextMenuHeader {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  background-color: #252525;
+}
+
+.deadCapRosterAgentControl-contextSearchInput {
+  width: 100%;
+  padding: 6px 8px;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 12px;
+  outline: none;
+}
+
+.deadCapRosterAgentControl-contextMenuList {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.deadCapRosterAgentControl-contextMenuItem {
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.2s ease;
+}
+
+.deadCapRosterAgentControl-contextMenuItem:hover {
+  background-color: #333;
+}
+
+.deadCapRosterAgentControl-noResults {
+  color: #888;
+  cursor: default;
+}
+
+.deadCapRosterAgentControl-noResults:hover {
+  background-color: transparent;
+}
+
+/* Мобильные фильтры */
+.deadCapRosterAgentControl-mobile-more-filters {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-top: 10px;
+}
+
+/* Добавьте эти стили в deadCapRosterAgentControl.css */
+
+.deadCapRosterAgentControl-mobile-mass-selection {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.deadCapRosterAgentControl-mobile-mass-selection
+  .deadCapRosterAgentControl-button {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 8px;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .deadCapRosterAgentControl-mobile-mass-selection {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .deadCapRosterAgentControl-mobile-mass-selection
+    .deadCapRosterAgentControl-button {
+    min-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .deadCapRosterAgentControl-container {
+    padding: 12px;
+  }
+
+  .deadCapRosterAgentControl-header {
+    display: none;
+  }
+
+  .deadCapRosterAgentControl-panelContent {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .deadCapRosterAgentControl-table {
+    min-width: 800px;
+  }
+
+  .deadCapRosterAgentControl-tableHeaderCell,
+  .deadCapRosterAgentControl-tableCell {
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+
+  .deadCapRosterAgentControl-actionButtons {
+    display: none;
+  }
+
+  .deadCapRosterAgentControl-modalContent {
+    min-width: auto;
+    padding: 15px;
+  }
+
+  .deadCapRosterAgentControl-modalButtons {
+    flex-direction: column;
+  }
+
+  .deadCapRosterAgentControl-addModal {
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .deadCapRosterAgentControl-addForm {
+    gap: 12px;
+  }
+
+  .deadCapRosterAgentControl-addFormInput,
+  .deadCapRosterAgentControl-teamSelect {
+    padding: 12px 14px;
+    font-size: 16px; /* Увеличиваем для удобства ввода на мобильных */
+  }
+}
+
+@media (max-width: 480px) {
+  .deadCapRosterAgentControl-container {
+    padding: 10px;
+  }
+
+  .deadCapRosterAgentControl-columnSelector {
+    padding: 12px;
+  }
+
+  .deadCapRosterAgentControl-panelContent {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .deadCapRosterAgentControl-mobile-column-checkboxes {
+    grid-template-columns: 1fr;
+  }
+
+  .deadCapRosterAgentControl-button-group {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .deadCapRosterAgentControl-modalContent {
+    padding: 12px;
+  }
+
+  .deadCapRosterAgentControl-modalDescription {
+    font-size: 12px;
+  }
+
+  .deadCapRosterAgentControl-modalTitle {
+    font-size: 14px;
+  }
+
+  .deadCapRosterAgentControl-addFormInput,
+  .deadCapRosterAgentControl-teamSelect {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .deadCapRosterAgentControl-container {
+    padding: 8px;
+  }
+
+  .deadCapRosterAgentControl-mobile-nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .deadCapRosterAgentControl-view-controls {
+    flex-wrap: wrap;
+  }
+
+  .deadCapRosterAgentControl-view-button {
+    flex: 0 0 calc(50% - 4px);
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .deadCapRosterAgentControl-contextMenu {
+    width: calc(100vw - 40px) !important;
+    left: 20px !important;
+    right: 20px !important;
+  }
+
+  .deadCapRosterAgentControl-addModal {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 280px) {
+  .deadCapRosterAgentControl-container {
+    padding: 6px;
+  }
+
+  .deadCapRosterAgentControl-mobile-title {
+    font-size: 16px;
+  }
+
+  .deadCapRosterAgentControl-mobile-logo {
+    width: 80px;
+  }
+
+  .deadCapRosterAgentControl-mobile-menu-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .deadCapRosterAgentControl-button {
+    padding: 6px 8px;
+    font-size: 11px;
+    min-width: 50px;
+  }
+
+  .deadCapRosterAgentControl-view-button {
+    padding: 6px 4px;
+    font-size: 10px;
+    min-width: 60px;
+  }
+
+  .deadCapRosterAgentControl-contextMenu {
+    width: calc(100vw - 32px) !important;
+    left: 16px !important;
+    right: 16px !important;
+  }
+}
+
+/* Горизонтальная ориентация на очень узких экранах */
+@media (max-height: 400px) and (orientation: landscape) {
+  .deadCapRosterAgentControl-contextMenu {
+    max-height: 250px;
+  }
+
+  .deadCapRosterAgentControl-contextMenuList {
+    max-height: 200px;
+  }
+
+  .deadCapRosterAgentControl-addModal {
+    max-height: 90vh;
+  }
+}

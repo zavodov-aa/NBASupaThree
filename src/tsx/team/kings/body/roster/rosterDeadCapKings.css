@@ -1,0 +1,126 @@
+/* rosterDeadCapKings.css */
+.kings-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-contents-kings {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-titles-kings {
+  color: #5a2d81; /* Фиолетовый Sacramento Kings */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containers-kings {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrappers-kings {
+  overflow-x: auto;
+}
+
+.players-tables-kings {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headers-kings {
+  background: black;
+}
+
+.table-ths-kings {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-ths-kings:last-child {
+  border-right: none;
+}
+
+.table-bodys-kings {
+}
+
+.table-rows-kings {
+  transition: background-color 0.3s;
+}
+
+.table-rows-kings:hover {
+}
+
+.row-evens-kings {
+  background: white;
+}
+
+.row-odds-kings {
+  background: white;
+}
+
+.table-tds-kings {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-ids-kings {
+  color: black;
+  font-weight: bold;
+}
+
+.player-positions-kings {
+  font-weight: bold;
+  color: black;
+}
+
+.player-ages-kings {
+  color: black;
+  font-weight: bold;
+}
+
+.roster-badges-kings {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-actives-kings {
+  color: black;
+}
+
+.badge-inactives-kings {
+  background: #6b7280;
+  color: white;
+}
+
+.loading-texts-kings {
+  text-align: center;
+  color: #5a2d81; /* Фиолетовый Sacramento Kings */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.special-players-kings {
+  background: linear-gradient(
+    135deg,
+    #5a2d81,
+    #000000
+  ) !important; /* Градиент от фиолетового к черному */
+}
+
+.special-players-kings .table-tds-kings {
+  color: white;
+  font-weight: bold;
+}

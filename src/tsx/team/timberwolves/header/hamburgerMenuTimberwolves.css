@@ -1,0 +1,147 @@
+.hamburgerButtonTimberwolves {
+  position: relative;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.hamburgerButtonTimberwolves span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff; /* Белый цвет на темном фоне */
+  transition: all 0.3s ease;
+  margin: 2px;
+}
+
+@media (max-width: 280px) {
+  .hamburgerButtonTimberwolves span {
+    width: 20px;
+    height: 2.5px;
+    margin: 1.5px;
+  }
+}
+
+.hamburgerButtonTimberwolves.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #236192; /* Timberwolves голубой */
+}
+.hamburgerButtonTimberwolves.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButtonTimberwolves.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #236192; /* Timberwolves голубой */
+}
+
+/* Полноэкранное меню */
+.fullscreenMenuTimberwolves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0c2340; /* Timberwolves основной синий */
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.fullscreenMenuTimberwolves.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Содержимое меню */
+.menuContentTimberwolves {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 280px;
+}
+
+.menuContentHTimberwolves {
+  color: #236192; /* Timberwolves голубой */
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.menuContentTimberwolves a {
+  color: #ffffff; /* Белый цвет текста */
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.menuContentTimberwolves a:hover {
+  color: #236192; /* Timberwolves голубой при наведении */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+/* Адаптив для меню */
+@media (max-width: 768px) {
+  .menuContentHTimberwolves {
+    font-size: 1.3rem;
+  }
+
+  .menuContentTimberwolves a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuContentHTimberwolves {
+    font-size: 1.1rem;
+  }
+
+  .menuContentTimberwolves a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .menuContentHTimberwolves {
+    font-size: 1rem;
+  }
+
+  .menuContentTimberwolves a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 280px) {
+  .menuContentTimberwolves {
+    padding: 15px;
+    gap: 1rem;
+  }
+
+  .menuContentHTimberwolves {
+    font-size: 0.9rem;
+  }
+
+  .menuContentTimberwolves a {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

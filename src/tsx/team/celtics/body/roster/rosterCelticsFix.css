@@ -1,0 +1,167 @@
+.rosterCeltics {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerCeltics {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerCeltics h1 {
+  color: #007a33;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleCeltics {
+  color: black;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerCeltics {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #007a33;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableCeltics {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableCeltics thead {
+  background: #007a33;
+}
+
+.roster-tableCeltics th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.roster-tableCeltics tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableCeltics tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableCeltics tbody tr:hover {
+  background: white;
+}
+
+.roster-tableCeltics td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 122, 51, 0.3);
+  color: #000;
+}
+
+.roster-tableCeltics .franchiseCeltics {
+  background: rgba(0, 122, 51, 0.8) !important;
+}
+
+.roster-tableCeltics .franchiseCeltics td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellCeltics {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starCeltics {
+  color: #ba9653;
+  font-size: 1.2em;
+}
+
+.player-tagCeltics {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingCeltics {
+  text-align: center;
+  color: #007a33;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateCeltics {
+  text-align: center;
+  padding: 40px;
+  color: #007a33;
+}
+
+.empty-iconCeltics {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleCeltics {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleCeltics {
+  opacity: 0.8;
+}
+
+.franchise-colorCeltics {
+  background: #007a33;
+}
+
+.salary-colorCeltics {
+  background: #007a33;
+}
+
+.g-league-dividerCeltics {
+  background: rgba(0, 122, 51, 0.1) !important;
+}
+
+.g-league-headerCeltics {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #007a33;
+  border-top: 2px solid #007a33;
+  border-bottom: 2px solid #007a33;
+  background: rgba(0, 122, 51, 0.05);
+}
+
+@media (max-width: 768px) {
+  .rosterCeltics {
+    padding: 10px;
+  }
+
+  .roster-headerCeltics h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleCeltics {
+    font-size: 1rem;
+  }
+
+  .roster-tableCeltics th,
+  .roster-tableCeltics td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

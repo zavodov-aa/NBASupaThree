@@ -1,0 +1,126 @@
+.warriors-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-warriors {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-warriors {
+  color: #1d428a; /* Warriors синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-container-warriors {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-warriors {
+  overflow-x: auto;
+}
+
+.players-table-warriors {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header-warriors {
+  background: black;
+}
+
+.table-th-warriors {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-body-warriors {
+  background: white;
+}
+
+.tables-row-warriors {
+  background-color: transparent;
+}
+
+.table-tdw-warriors {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-td-warriors {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-warriors {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-warriors {
+  font-weight: bold;
+  color: #1d428a; /* Warriors синий */
+}
+
+.player-age-warriors {
+  color: #ffc72c; /* Warriors желтый */
+  font-weight: bold;
+}
+
+.roster-badge-warriors {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-warriors {
+  background-color: #1d428a; /* Warriors синий */
+  color: white;
+}
+
+.badge-inactive-warriors {
+  background-color: #ffc72c; /* Warriors желтый */
+  color: black;
+}
+
+.loading-text {
+  text-align: center;
+  color: #1d428a; /* Warriors синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-warriors {
+  background-color: rgba(
+    29,
+    66,
+    138,
+    0.637
+  ); /* Warriors синий с прозрачностью */
+  color: white;
+}
+
+.first-row-highlight-warriors .table-td-warriors {
+  color: white;
+}
+
+.first-row-highlight-warriors .player-position-warriors {
+  color: white;
+}
+
+.first-row-highlight-warriors .player-age-warriors {
+  color: #ffc72c; /* Warriors желтый */
+}

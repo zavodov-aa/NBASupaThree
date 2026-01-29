@@ -1,0 +1,812 @@
+/* Стили только для компонента TradeResultNets */
+
+.resultNets-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultNets-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultNets-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultNets-button:hover:not(:disabled) {
+  background: #2d2d2d;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultNets-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultNets-button--hasNotifications {
+  background: linear-gradient(135deg, #000000 0%, #2d2d2d 100%);
+}
+
+.resultNets-notificationCount {
+  background: #ffffff;
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+  border: 1px solid #000000;
+}
+
+.resultNets-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultNets-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultNets-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #000000;
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultNets-modalHeader {
+  background: #000000;
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #ffffff;
+}
+
+.resultNets-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultNets-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  border-radius: 50%;
+  position: relative;
+  border: 2px solid #ffffff;
+}
+
+.resultNets-teamLogo::before {
+  content: "BKN";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultNets-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultNets-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultNets-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultNets-tradePartner {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.resultNets-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultNets-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultNets-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultNets-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultNets-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultNets-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultNets-tradesList {
+  padding: 24px;
+}
+
+.resultNets-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultNets-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultNets-tradeHeader {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultNets-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultNets-tradeNumber {
+  font-weight: 600;
+  color: #000000;
+  font-size: 15px;
+}
+
+.resultNets-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultNets-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultNets-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultNets-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultNets-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultNets-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultNets-exchangeArrow {
+  font-size: 28px;
+  color: #ffffff;
+  background: #000000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultNets-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultNets-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultNets-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultNets-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultNets-tradeSection--team1 {
+  border-left: 3px solid #000000;
+}
+
+.resultNets-tradeSection--team2 {
+  border-left: 3px solid #2d2d2d;
+}
+
+.resultNets-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultNets-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultNets-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultNets-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultNets-countBadge--players {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.resultNets-countBadge--picks {
+  background: rgba(45, 45, 45, 0.1);
+  color: #2d2d2d;
+  border: 1px solid rgba(45, 45, 45, 0.2);
+}
+
+.resultNets-sectionContent {
+  padding: 16px;
+}
+
+.resultNets-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultNets-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultNets-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultNets-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultNets-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultNets-playerCard--active {
+  border-left-color: #000000;
+}
+
+.resultNets-playerCard--gleague {
+  border-left-color: #2d2d2d;
+}
+
+.resultNets-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultNets-playerNameSection {
+  flex: 1;
+}
+
+.resultNets-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultNets-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultNets-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultNets-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultNets-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultNets-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultNets-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultNets-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultNets-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultNets-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultNets-teamLabel {
+  color: #666666;
+}
+
+.resultNets-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultNets-tradeNote {
+  background: rgba(45, 45, 45, 0.05);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(45, 45, 45, 0.2);
+}
+
+.resultNets-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultNets-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultNets-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultNets-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultNets-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultNets-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultNets-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultNets-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultNets-actionButton--accept {
+  background: #000000;
+  color: #ffffff;
+}
+
+.resultNets-actionButton--accept:hover:not(:disabled) {
+  background: #2d2d2d;
+}
+
+.resultNets-actionButton--reject {
+  background: #2d2d2d;
+  color: #ffffff;
+}
+
+.resultNets-actionButton--reject:hover:not(:disabled) {
+  background: #000000;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultNets-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultNets-closeAllButton {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultNets-closeAllButton:hover {
+  background: #2d2d2d;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultNets-modal {
+    max-height: 90vh;
+  }
+
+  .resultNets-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultNets-tradesList {
+    padding: 16px;
+  }
+
+  .resultNets-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultNets-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultNets-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultNets-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultNets-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultNets-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultNets-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultNets-tradeSummary,
+  .resultNets-tradeSection,
+  .resultNets-tradeNote,
+  .resultNets-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultNets-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultNets-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultNets-modalHeader {
+    padding: 16px;
+  }
+
+  .resultNets-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultNets-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultNets-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultNets-statValue {
+    font-size: 28px;
+  }
+
+  .resultNets-statLabel {
+    font-size: 12px;
+  }
+
+  .resultNets-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultNets-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultNets-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultNets-modal {
+    max-height: 95vh;
+  }
+
+  .resultNets-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultNets-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultNets-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultNets-statValue {
+    font-size: 24px;
+  }
+
+  .resultNets-playerName,
+  .resultNets-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultNets-noteContent {
+    font-size: 13px;
+  }
+
+  .resultNets-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultNets-container .resultNets-modal {
+    background: #1a1a1a;
+    border-color: #000000;
+  }
+
+  .resultNets-container .resultNets-tradeItem,
+  .resultNets-container .resultNets-playerCard,
+  .resultNets-container .resultNets-draftPickCard,
+  .resultNets-container .resultNets-tradeSummary,
+  .resultNets-container .resultNets-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultNets-container .resultNets-playerName,
+  .resultNets-container .resultNets-statLabel,
+  .resultNets-container .resultNets-sectionTitle,
+  .resultNets-container .resultNets-noteTitle,
+  .resultNets-container .resultNets-teamName,
+  .resultNets-container .resultNets-pickYearRound,
+  .resultNets-container .resultNets-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultNets-container .resultNets-playerType,
+  .resultNets-container .resultNets-pickType,
+  .resultNets-container .resultNets-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultNets-container .resultNets-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultNets-container .resultNets-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

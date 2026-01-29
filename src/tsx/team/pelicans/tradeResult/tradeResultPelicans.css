@@ -1,0 +1,808 @@
+/* Стили только для компонента TradeResultPelicans */
+
+.resultPelicans-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultPelicans-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultPelicans-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #0c2340; /* New Orleans Pelicans Navy Blue */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultPelicans-button:hover:not(:disabled) {
+  background: #0a1c33; /* Darker navy blue */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultPelicans-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultPelicans-button--hasNotifications {
+  background: linear-gradient(135deg, #0c2340 0%, #0a1c33 100%);
+}
+
+.resultPelicans-notificationCount {
+  background: #c8102e; /* New Orleans Pelicans Red */
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultPelicans-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultPelicans-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultPelicans-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #0c2340; /* New Orleans Pelicans Navy Blue */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultPelicans-modalHeader {
+  background: #0c2340; /* New Orleans Pelicans Navy Blue */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #c8102e; /* New Orleans Pelicans Red */
+}
+
+.resultPelicans-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultPelicans-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultPelicans-teamLogo::before {
+  content: "NOP";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #0c2340; /* New Orleans Pelicans Navy Blue */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultPelicans-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultPelicans-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultPelicans-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultPelicans-tradePartner {
+  color: #c8102e; /* New Orleans Pelicans Red */
+  font-weight: 500;
+}
+
+.resultPelicans-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultPelicans-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultPelicans-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultPelicans-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultPelicans-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultPelicans-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultPelicans-tradesList {
+  padding: 24px;
+}
+
+.resultPelicans-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultPelicans-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultPelicans-tradeHeader {
+  background: rgba(
+    12,
+    35,
+    64,
+    0.05
+  ); /* New Orleans Pelicans Navy Blue with opacity */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultPelicans-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultPelicans-tradeNumber {
+  font-weight: 600;
+  color: #0c2340; /* New Orleans Pelicans Navy Blue */
+  font-size: 15px;
+}
+
+.resultPelicans-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultPelicans-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultPelicans-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultPelicans-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultPelicans-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0c2340; /* New Orleans Pelicans Navy Blue */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultPelicans-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultPelicans-exchangeArrow {
+  font-size: 28px;
+  color: #c8102e; /* New Orleans Pelicans Red */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultPelicans-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultPelicans-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultPelicans-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultPelicans-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultPelicans-tradeSection--team1 {
+  border-left: 3px solid #0c2340; /* New Orleans Pelicans Navy Blue */
+}
+
+.resultPelicans-tradeSection--team2 {
+  border-left: 3px solid #c8102e; /* New Orleans Pelicans Red */
+}
+
+.resultPelicans-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultPelicans-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultPelicans-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultPelicans-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultPelicans-countBadge--players {
+  background: rgba(12, 35, 64, 0.1); /* New Orleans Pelicans Navy Blue */
+  color: #0c2340; /* New Orleans Pelicans Navy Blue */
+  border: 1px solid rgba(12, 35, 64, 0.2);
+}
+
+.resultPelicans-countBadge--picks {
+  background: rgba(200, 16, 46, 0.1); /* New Orleans Pelicans Red */
+  color: #c8102e; /* New Orleans Pelicans Red */
+  border: 1px solid rgba(200, 16, 46, 0.2);
+}
+
+.resultPelicans-sectionContent {
+  padding: 16px;
+}
+
+.resultPelicans-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultPelicans-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultPelicans-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultPelicans-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultPelicans-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultPelicans-playerCard--active {
+  border-left-color: #0c2340; /* New Orleans Pelicans Navy Blue */
+}
+
+.resultPelicans-playerCard--gleague {
+  border-left-color: #c8102e; /* New Orleans Pelicans Red */
+}
+
+.resultPelicans-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultPelicans-playerNameSection {
+  flex: 1;
+}
+
+.resultPelicans-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultPelicans-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultPelicans-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultPelicans-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultPelicans-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultPelicans-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultPelicans-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultPelicans-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultPelicans-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultPelicans-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultPelicans-teamLabel {
+  color: #666666;
+}
+
+.resultPelicans-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultPelicans-tradeNote {
+  background: rgba(200, 16, 46, 0.05); /* New Orleans Pelicans Red */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(200, 16, 46, 0.2); /* New Orleans Pelicans Red */
+}
+
+.resultPelicans-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultPelicans-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultPelicans-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultPelicans-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultPelicans-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultPelicans-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultPelicans-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultPelicans-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultPelicans-actionButton--accept {
+  background: #c8102e; /* New Orleans Pelicans Red */
+  color: #ffffff;
+}
+
+.resultPelicans-actionButton--accept:hover:not(:disabled) {
+  background: #a80d26;
+}
+
+.resultPelicans-actionButton--reject {
+  background: #0c2340; /* New Orleans Pelicans Navy Blue */
+  color: #ffffff;
+}
+
+.resultPelicans-actionButton--reject:hover:not(:disabled) {
+  background: #0a1c33;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultPelicans-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultPelicans-closeAllButton {
+  background: #0c2340; /* New Orleans Pelicans Navy Blue */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultPelicans-closeAllButton:hover {
+  background: #0a1c33;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultPelicans-modal {
+    max-height: 90vh;
+  }
+
+  .resultPelicans-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultPelicans-tradesList {
+    padding: 16px;
+  }
+
+  .resultPelicans-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultPelicans-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultPelicans-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultPelicans-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultPelicans-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultPelicans-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultPelicans-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultPelicans-tradeSummary,
+  .resultPelicans-tradeSection,
+  .resultPelicans-tradeNote,
+  .resultPelicans-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultPelicans-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultPelicans-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultPelicans-modalHeader {
+    padding: 16px;
+  }
+
+  .resultPelicans-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultPelicans-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultPelicans-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultPelicans-statValue {
+    font-size: 28px;
+  }
+
+  .resultPelicans-statLabel {
+    font-size: 12px;
+  }
+
+  .resultPelicans-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultPelicans-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultPelicans-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultPelicans-modal {
+    max-height: 95vh;
+  }
+
+  .resultPelicans-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultPelicans-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultPelicans-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultPelicans-statValue {
+    font-size: 24px;
+  }
+
+  .resultPelicans-playerName,
+  .resultPelicans-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultPelicans-noteContent {
+    font-size: 13px;
+  }
+
+  .resultPelicans-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultPelicans-container .resultPelicans-modal {
+    background: #1a1a1a;
+    border-color: #0c2340; /* New Orleans Pelicans Navy Blue */
+  }
+
+  .resultPelicans-container .resultPelicans-tradeItem,
+  .resultPelicans-container .resultPelicans-playerCard,
+  .resultPelicans-container .resultPelicans-draftPickCard,
+  .resultPelicans-container .resultPelicans-tradeSummary,
+  .resultPelicans-container .resultPelicans-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultPelicans-container .resultPelicans-playerName,
+  .resultPelicans-container .resultPelicans-statLabel,
+  .resultPelicans-container .resultPelicans-sectionTitle,
+  .resultPelicans-container .resultPelicans-noteTitle,
+  .resultPelicans-container .resultPelicans-teamName,
+  .resultPelicans-container .resultPelicans-pickYearRound,
+  .resultPelicans-container .resultPelicans-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultPelicans-container .resultPelicans-playerType,
+  .resultPelicans-container .resultPelicans-pickType,
+  .resultPelicans-container .resultPelicans-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultPelicans-container .resultPelicans-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultPelicans-container .resultPelicans-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

@@ -1,0 +1,121 @@
+.clippers-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-clippers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-clippers {
+  color: #c8102e; /* Основной красный цвет Clippers */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-clippers {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-clippers {
+  overflow-x: auto;
+}
+
+.players-table-clippers {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-clippers {
+  background: black;
+}
+
+.table-th-clippers {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-clippers:last-child {
+}
+
+.table-body-clippers {
+  background: white;
+}
+
+.tables-row-clippers {
+}
+
+.row-even-clippers {
+  background: black;
+}
+
+.row-odd-clippers {
+}
+
+.table-tdw-clippers {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+.table-tdw-clippers {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-clippers {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-clippers {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-clippers {
+  color: #1d428a; /* Синий цвет Clippers */
+  font-weight: bold;
+}
+
+.roster-badge-clippers {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-clippers {
+  color: white;
+  background-color: #c8102e; /* Красный цвет Clippers для активного бейджа */
+}
+
+.badge-inactive-clippers {
+  color: black;
+}
+
+.loading-text-clippers {
+  text-align: center;
+  color: #c8102e; /* Красный цвет Clippers */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-clippers {
+  background-color: #1d428a; /* Синий цвет Clippers */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-clippers {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

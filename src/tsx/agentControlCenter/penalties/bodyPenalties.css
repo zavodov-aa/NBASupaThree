@@ -1,0 +1,842 @@
+/* ===== КОНТЕЙНЕР И ОСНОВНЫЕ ЭЛЕМЕНТЫ ===== */
+.nba-penalties-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #000000;
+  background-color: #ffffff;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.nba-penalties-container * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== ШАПКА ПРИЛОЖЕНИЯ ===== */
+.nba-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-bottom: 2px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nba-main-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: -0.5px;
+}
+
+.nba-add-penalty-btn {
+  background-color: #ffffff;
+  color: #1e40af;
+  padding: 12px 24px;
+  border: 2px solid #1e40af;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.nba-add-penalty-btn:hover:not(:disabled) {
+  background-color: #1e40af;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(30, 64, 175, 0.2);
+}
+
+.nba-add-penalty-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #a3a3a3;
+  color: #a3a3a3;
+}
+
+/* ===== СООБЩЕНИЯ ОБ ОШИБКАХ ===== */
+.nba-error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 16px;
+  border-radius: 6px;
+  margin: 20px;
+  border: 1px solid #fecaca;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: nba-slideIn 0.3s ease;
+}
+
+.nba-error-icon {
+  font-size: 20px;
+}
+
+/* ===== ФОРМА ДОБАВЛЕНИЯ ШТРАФА ===== */
+.nba-penalty-form {
+  background: #ffffff;
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
+  animation: nba-slideIn 0.3s ease;
+  overflow: hidden;
+}
+
+.nba-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background-color: #fafafa;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nba-form-header h3 {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.nba-close-form-btn {
+  background: #ffffff;
+  border: 1px solid #d4d4d4;
+  font-size: 24px;
+  color: #737373;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.nba-close-form-btn:hover {
+  background-color: #f5f5f5;
+  border-color: #a3a3a3;
+  color: #000000;
+}
+
+.nba-form-content {
+  padding: 24px;
+}
+
+.nba-form-group {
+  margin-bottom: 20px;
+}
+
+.nba-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #262626;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nba-form-group input,
+.nba-form-group select,
+.nba-form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #d4d4d4;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: inherit;
+}
+
+.nba-form-group input:focus,
+.nba-form-group select:focus,
+.nba-form-group textarea:focus {
+  outline: none;
+  border-color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.nba-form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+.nba-form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.nba-save-btn {
+  background-color: #1e40af;
+  color: #ffffff;
+  padding: 14px 32px;
+  border: 2px solid #1e40af;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.nba-save-btn:hover:not(:disabled) {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nba-cancel-btn {
+  background-color: #ffffff;
+  color: #404040;
+  padding: 14px 32px;
+  border: 2px solid #d4d4d4;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.nba-cancel-btn:hover:not(:disabled) {
+  background-color: #f5f5f5;
+  border-color: #a3a3a3;
+  color: #000000;
+}
+
+.nba-save-btn:disabled,
+.nba-cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== ОБЗОР КОМАНД ===== */
+.nba-teams-overview {
+  padding: 20px;
+}
+
+.nba-overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.nba-overview-header h3 {
+  font-size: 24px;
+  color: #000000;
+  font-weight: 700;
+  margin: 0;
+}
+
+.nba-stats-summary {
+  background-color: #f5f5f5;
+  color: #404040;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid #e5e5e5;
+}
+
+.nba-loading-container {
+  text-align: center;
+  padding: 60px 20px;
+  color: #525252;
+}
+
+.nba-loading-spinner-large {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #e5e5e5;
+  border-top-color: #1e40af;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: nba-spin 1s linear infinite;
+}
+
+.nba-teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.nba-team-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
+  position: relative;
+  overflow: hidden;
+}
+
+.nba-team-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #d4d4d4;
+}
+
+.nba-team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: #a3a3a3;
+}
+
+.nba-team-card:hover::before {
+  background-color: #1e40af;
+}
+
+.nba-team-card.nba-team-selected {
+  border-color: #1e40af;
+  background-color: #fafafa;
+}
+
+.nba-team-card.nba-team-selected::before,
+.nba-team-card.nba-has-penalties::before {
+  background-color: #1e40af;
+}
+
+.nba-team-card.nba-no-penalties::before {
+  background-color: #16a34a;
+}
+
+.nba-team-logo-placeholder {
+  width: 48px;
+  height: 48px;
+  background-color: #171717;
+  color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  flex-shrink: 0;
+  border: 2px solid #404040;
+}
+
+.nba-team-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.nba-team-name {
+  font-weight: 700;
+  color: #000000;
+  /* color: white; */
+  font-size: 16px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nba-team-penalty-count {
+  font-size: 14px;
+  color: #525252;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nba-count-badge {
+  background-color: #171717;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  min-width: 28px;
+  text-align: center;
+  border: 1px solid #000000;
+}
+
+/* ===== ДЕТАЛЬНАЯ ИНФОРМАЦИЯ О КОМАНДЕ ===== */
+.nba-team-detail {
+  background: #ffffff;
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
+  animation: nba-slideIn 0.3s ease;
+  overflow: hidden;
+}
+
+.nba-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background-color: #fafafa;
+  border-bottom: 1px solid #e5e5e5;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.nba-detail-title h3 {
+  font-size: 24px;
+  color: #000000;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.nba-detail-subtitle {
+  color: #525252;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.nba-back-btn {
+  background-color: #ffffff;
+  color: #404040;
+  padding: 10px 20px;
+  border: 2px solid #d4d4d4;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.nba-back-btn:hover:not(:disabled) {
+  background-color: #f5f5f5;
+  border-color: #a3a3a3;
+  color: #000000;
+}
+
+.nba-back-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nba-back-arrow {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nba-no-penalties-message {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #fafafa;
+  border-top: 1px solid #e5e5e5;
+}
+
+.nba-no-penalties-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+  color: #525252;
+}
+
+.nba-no-penalties-message p {
+  color: #404040;
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.nba-no-penalties-hint {
+  font-size: 14px;
+  color: #737373;
+  font-weight: 400;
+}
+
+.nba-detail-list {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #fafafa;
+}
+
+.nba-detail-item {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  border-left: 4px solid #1e40af;
+  transition: all 0.2s ease;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.nba-detail-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nba-detail-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nba-detail-date {
+  color: #404040;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nba-date-icon {
+  font-size: 16px;
+  color: #1e40af;
+}
+
+.nba-detail-id {
+  background-color: #f5f5f5;
+  color: #404040;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #d4d4d4;
+  font-family: "Courier New", monospace;
+}
+
+.nba-detail-description {
+  color: #171717;
+  line-height: 1.6;
+  font-size: 15px;
+  padding-top: 12px;
+}
+
+/* ===== УТИЛИТЫ И АНИМАЦИИ ===== */
+.nba-loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: nba-spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes nba-slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nba-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== ДЛЯ СКРИНРИДЕРОВ ===== */
+.nba-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+  .nba-header-section {
+    padding: 20px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nba-main-title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .nba-teams-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .nba-team-card {
+    padding: 16px;
+  }
+
+  .nba-detail-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .nba-back-btn {
+    align-self: flex-start;
+  }
+
+  .nba-form-actions {
+    flex-direction: column;
+  }
+
+  .nba-save-btn,
+  .nba-cancel-btn {
+    width: 100%;
+  }
+
+  .nba-penalty-form,
+  .nba-team-detail {
+    margin: 16px;
+  }
+
+  .nba-teams-overview {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nba-teams-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nba-main-title {
+    font-size: 22px;
+  }
+
+  .nba-add-penalty-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nba-form-header h3 {
+    font-size: 18px;
+  }
+
+  .nba-form-content {
+    padding: 20px;
+  }
+
+  .nba-team-name {
+    font-size: 15px;
+  }
+
+  .nba-detail-title h3 {
+    font-size: 20px;
+  }
+
+  .nba-overview-header h3 {
+    font-size: 20px;
+  }
+
+  .nba-team-logo-placeholder {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .nba-detail-list {
+    padding: 20px;
+  }
+
+  .nba-form-group label {
+    font-size: 13px;
+  }
+
+  .nba-form-group input,
+  .nba-form-group select,
+  .nba-form-group textarea {
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nba-penalty-form,
+  .nba-team-detail {
+    margin: 12px;
+    border-radius: 6px;
+  }
+
+  .nba-header-section {
+    padding: 16px;
+  }
+
+  .nba-teams-overview {
+    padding: 12px;
+  }
+
+  .nba-team-card {
+    padding: 14px;
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .nba-team-content {
+    width: 100%;
+  }
+
+  .nba-team-name {
+    white-space: normal;
+    font-size: 14px;
+  }
+
+  .nba-team-penalty-count {
+    font-size: 13px;
+    justify-content: center;
+  }
+
+  .nba-form-content {
+    padding: 16px;
+  }
+}
+
+/* ===== ТЕМНАЯ ТЕМА ===== */
+@media (prefers-color-scheme: dark) {
+  .nba-penalties-container {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .nba-header-section {
+    background-color: #000000;
+    border-bottom-color: #262626;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .nba-main-title {
+    color: #ffffff;
+  }
+
+  .nba-add-penalty-btn {
+    background-color: #000000;
+    color: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  .nba-add-penalty-btn:hover:not(:disabled) {
+    background-color: #3b82f6;
+    color: #000000;
+  }
+
+  .nba-team-card,
+  .nba-penalty-form,
+  .nba-team-detail {
+    background-color: #171717;
+    border-color: #262626;
+  }
+
+  .nba-form-header,
+  .nba-detail-header {
+    background-color: #262626;
+    border-bottom-color: #404040;
+  }
+
+  .nba-form-header h3,
+  .nba-detail-title h3,
+  .nba-overview-header h3 {
+    color: #ffffff;
+  }
+
+  .nba-form-group input,
+  .nba-form-group select,
+  .nba-form-group textarea {
+    background-color: #262626;
+    border-color: #404040;
+    color: #ffffff;
+  }
+
+  .nba-cancel-btn {
+    background-color: #171717;
+    color: #d4d4d4;
+    border-color: #404040;
+  }
+
+  .nba-detail-list {
+    background-color: #171717;
+  }
+
+  .nba-detail-item {
+    background-color: #262626;
+    border-color: #404040;
+  }
+
+  .nba-team-name {
+    color: #ffffff;
+    /* color: #000000; */
+  }
+
+  .nba-team-penalty-count {
+    color: #a3a3a3;
+  }
+
+  .nba-detail-description {
+    color: #d4d4d4;
+  }
+
+  .nba-no-penalties-message {
+    background-color: #171717;
+    border-top-color: #262626;
+  }
+
+  .nba-no-penalties-message p {
+    color: #a3a3a3;
+  }
+
+  .nba-error-message {
+    background-color: #450a0a;
+    border-color: #7f1d1d;
+  }
+}

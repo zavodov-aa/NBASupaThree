@@ -1,0 +1,159 @@
+.rosterKnicks {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerKnicks {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerKnicks h1 {
+  color: #0065b3;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleKnicks {
+  color: #f58426;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerKnicks {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #0065b3;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableKnicks {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableKnicks thead {
+  background: #0065b3;
+}
+
+.roster-tableKnicks th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableKnicks th.highlight {
+}
+
+.roster-tableKnicks tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableKnicks tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableKnicks tbody tr:hover {
+  background: #f0f8ff;
+}
+
+.roster-tableKnicks td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(245, 132, 38, 0.3);
+  color: #000;
+}
+
+.roster-tableKnicks .franchiseKnicks {
+  background: rgba(0, 101, 179, 0.1) !important;
+  border-left: 4px solid #f58426;
+}
+
+.roster-tableKnicks .franchiseKnicks td {
+  color: #0065b3;
+  font-weight: bold;
+}
+
+.number-cellKnicks {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starKnicks {
+  color: #f58426;
+  font-size: 1.2em;
+}
+
+.player-tagKnicks {
+  padding: 4px 8px;
+  background: #f58426;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingKnicks {
+  text-align: center;
+  color: #0065b3;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateKnicks {
+  text-align: center;
+  padding: 40px;
+  color: #0065b3;
+}
+
+.empty-iconKnicks {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleKnicks {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleKnicks {
+  opacity: 0.8;
+}
+
+.franchise-colorKnicks {
+  background: #0065b3;
+}
+
+.salary-colorKnicks {
+  background: #f58426;
+}
+
+@media (max-width: 768px) {
+  .rosterKnicks {
+    padding: 10px;
+  }
+
+  .roster-headerKnicks h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleKnicks {
+    font-size: 1rem;
+  }
+
+  .roster-tableKnicks th,
+  .roster-tableKnicks td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

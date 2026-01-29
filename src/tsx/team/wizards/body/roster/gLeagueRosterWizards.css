@@ -1,0 +1,124 @@
+.wizards-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-wizards {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-wizards {
+  color: #002b5c; /* Washington Wizards синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-wizards {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-wizards {
+  overflow-x: auto;
+}
+
+.players-table-wizards {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-wizards {
+  background: black;
+}
+
+.table-th-wizards {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-wizards:last-child {
+}
+
+.table-body-wizards {
+  background: white;
+}
+
+.tables-row-wizards {
+}
+
+.row-even-wizards {
+  background: black;
+}
+
+.row-odd-wizards {
+}
+
+.table-tdw-wizards {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+.table-tdw-wizards {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-wizards {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-wizards {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-wizards {
+  color: #e31837; /* Washington Wizards красный */
+  font-weight: bold;
+}
+
+.roster-badge-wizards {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-wizards {
+  color: white;
+}
+
+.badge-inactive-wizards {
+  color: black;
+}
+
+.loading-text-wizards {
+  text-align: center;
+  color: #002b5c; /* Washington Wizards синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-wizards {
+  background-color: rgba(
+    0,
+    43,
+    92,
+    0.8
+  ); /* Washington Wizards синий с прозрачностью */
+  color: white;
+}
+
+.tables-row-wizards {
+  background-color: transparent;
+}

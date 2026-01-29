@@ -1,0 +1,155 @@
+.rosterSpurs {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerSpurs {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerSpurs h1 {
+  color: #000000; /* Черный цвет Spurs */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleSpurs {
+  color: #c4ced4; /* Серебристый цвет Spurs */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerSpurs {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #000000; /* Черный цвет Spurs */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableSpurs {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableSpurs thead {
+  background: #000000; /* Черный цвет Spurs */
+}
+
+.roster-tableSpurs th {
+  padding: 15px 10px;
+  color: #c4ced4; /* Серебристый текст */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(196, 206, 212, 0.3);
+}
+
+.roster-tableSpurs tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableSpurs tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableSpurs tbody tr:hover {
+  background: #f5f5f5;
+}
+
+.roster-tableSpurs td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+.roster-tableSpurs .franchiseSpurs {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+
+.roster-tableSpurs .franchiseSpurs td {
+  color: #c4ced4; /* Серебристый текст */
+  font-weight: bold;
+}
+
+.number-cellSpurs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starSpurs {
+  color: #c4ced4; /* Серебристая звезда */
+  font-size: 1.2em;
+}
+
+.player-tagSpurs {
+  padding: 4px 8px;
+  background: #000000; /* Черный фон */
+  color: #c4ced4; /* Серебристый текст */
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingSpurs {
+  text-align: center;
+  color: #000000;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateSpurs {
+  text-align: center;
+  padding: 40px;
+  color: #000000;
+}
+
+.empty-iconSpurs {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleSpurs {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleSpurs {
+  opacity: 0.8;
+}
+
+.franchise-colorSpurs {
+  background: black;
+}
+
+.salary-colorSpurs {
+  background: black;
+}
+
+@media (max-width: 768px) {
+  .rosterSpurs {
+    padding: 10px;
+  }
+
+  .roster-headerSpurs h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleSpurs {
+    font-size: 1rem;
+  }
+
+  .roster-tableSpurs th,
+  .roster-tableSpurs td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

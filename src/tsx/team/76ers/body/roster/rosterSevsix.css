@@ -1,0 +1,158 @@
+.rosterSevsix {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerSevsix {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerSevsix h1 {
+  color: #006bb6; /* Philadelphia 76ers blue */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleSevsix {
+  color: #ed174c; /* Philadelphia 76ers red */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerSevsix {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #006bb6; /* Philadelphia 76ers blue */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableSevsix {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableSevsix thead {
+  background: #006bb6; /* Philadelphia 76ers blue */
+}
+
+.roster-tableSevsix th {
+  padding: 15px 10px;
+  color: #fff; /* White text for better contrast */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.roster-tableSevsix th.highlight {
+}
+
+.roster-tableSevsix tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableSevsix tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableSevsix tbody tr:hover {
+  background: #f0f0f0;
+}
+
+.roster-tableSevsix td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 107, 182, 0.3); /* Philadelphia 76ers blue with opacity */
+  color: #000;
+}
+
+.roster-tableSevsix .franchiseSevsix {
+  background: rgba(0, 107, 182, 0.8) !important; /* Philadelphia 76ers blue */
+}
+
+.roster-tableSevsix .franchiseSevsix td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellSevsix {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starSevsix {
+  color: #ed174c; /* Philadelphia 76ers red */
+  font-size: 1.2em;
+}
+
+.player-tagSevsix {
+  padding: 4px 8px;
+  background: #006bb6; /* Philadelphia 76ers blue */
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingSevsix {
+  text-align: center;
+  color: #006bb6; /* Philadelphia 76ers blue */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateSevsix {
+  text-align: center;
+  padding: 40px;
+  color: #006bb6; /* Philadelphia 76ers blue */
+}
+
+.empty-iconSevsix {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleSevsix {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleSevsix {
+  opacity: 0.8;
+}
+
+.franchise-colorSevsix {
+  background: #006bb6; /* Philadelphia 76ers blue */
+}
+
+.salary-colorSevsix {
+  background: #ed174c; /* Philadelphia 76ers red */
+}
+
+@media (max-width: 768px) {
+  .rosterSevsix {
+    padding: 10px;
+  }
+
+  .roster-headerSevsix h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleSevsix {
+    font-size: 1rem;
+  }
+
+  .roster-tableSevsix th,
+  .roster-tableSevsix td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

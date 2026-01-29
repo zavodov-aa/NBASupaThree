@@ -1,0 +1,127 @@
+.sevsix-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-sevsix {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-sevsix {
+  color: #006bb6; /* Синий цвет Philadelphia 76ers */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-sevsix {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-sevsix {
+  overflow-x: auto;
+}
+
+.players-table-sevsix {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-sevsix {
+  background: #006bb6; /* Синий цвет Philadelphia 76ers */
+}
+
+.table-th-sevsix {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-sevsix:last-child {
+}
+
+.table-body-sevsix {
+  background: white;
+}
+
+.tables-row-sevsix {
+}
+
+.row-even-sevsix {
+  background: #ed174c; /* Красный цвет Philadelphia 76ers */
+}
+
+.row-odd-sevsix {
+}
+
+.table-tdw-sevsix {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+.table-tdw-sevsix {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-sevsix {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-sevsix {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-sevsix {
+  color: #006bb6; /* Синий цвет Philadelphia 76ers */
+  font-weight: bold;
+}
+
+.roster-badge-sevsix {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-sevsix {
+  background-color: #006bb6; /* Синий цвет Philadelphia 76ers */
+  color: white;
+}
+
+.badge-inactive-sevsix {
+  background-color: #ed174c; /* Красный цвет Philadelphia 76ers */
+  color: white;
+}
+
+.loading-text-sevsix {
+  text-align: center;
+  color: #006bb6; /* Синий цвет Philadelphia 76ers */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-sevsix {
+  background-color: rgba(
+    0,
+    107,
+    182,
+    0.7
+  ); /* Полупрозрачный синий Philadelphia 76ers */
+  color: white;
+}
+
+.tables-row-sevsix {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

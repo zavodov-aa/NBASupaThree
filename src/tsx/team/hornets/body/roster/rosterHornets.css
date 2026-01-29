@@ -1,0 +1,158 @@
+.rosterHornets {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerHornets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerHornets h1 {
+  color: #1d1160;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleHornets {
+  color: #00778b;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerHornets {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #1d1160;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableHornets {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableHornets thead {
+  background: #1d1160;
+}
+
+.roster-tableHornets th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableHornets th.highlight {
+}
+
+.roster-tableHornets tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableHornets tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableHornets tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.roster-tableHornets td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(29, 17, 96, 0.3);
+  color: #000;
+}
+
+.roster-tableHornets .franchiseHornets {
+  background: rgba(29, 17, 96, 0.1) !important;
+}
+
+.roster-tableHornets .franchiseHornets td {
+  color: #1d1160;
+  font-weight: bold;
+}
+
+.number-cellHornets {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starHornets {
+  color: #00778b;
+  font-size: 1.2em;
+}
+
+.player-tagHornets {
+  padding: 4px 8px;
+  background: #00778b;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingHornets {
+  text-align: center;
+  color: #1d1160;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateHornets {
+  text-align: center;
+  padding: 40px;
+  color: #1d1160;
+}
+
+.empty-iconHornets {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleHornets {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleHornets {
+  opacity: 0.8;
+}
+
+.franchise-colorHornets {
+  background: #1d1160;
+}
+
+.salary-colorHornets {
+  background: #00778b;
+}
+
+@media (max-width: 768px) {
+  .rosterHornets {
+    padding: 10px;
+  }
+
+  .roster-headerHornets h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleHornets {
+    font-size: 1rem;
+  }
+
+  .roster-tableHornets th,
+  .roster-tableHornets td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

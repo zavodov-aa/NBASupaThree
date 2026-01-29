@@ -1,0 +1,147 @@
+.hamburgerButtonBucks {
+  position: relative;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.hamburgerButtonBucks span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #eee1c6; /* Bucks cream color */
+  transition: all 0.3s ease;
+  margin: 2px;
+}
+
+@media (max-width: 280px) {
+  .hamburgerButtonBucks span {
+    width: 20px;
+    height: 2.5px;
+    margin: 1.5px;
+  }
+}
+
+.hamburgerButtonBucks.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #00471b; /* Milwaukee Bucks green */
+}
+.hamburgerButtonBucks.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButtonBucks.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #00471b; /* Milwaukee Bucks green */
+}
+
+/* Полноэкранное меню */
+.fullscreenMenuBucks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2d2b31;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.fullscreenMenuBucks.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Содержимое меню */
+.menuContentBucks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 280px;
+}
+
+.menuContentHBucks {
+  color: #00471b; /* Milwaukee Bucks green */
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.menuContentBucks a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.menuContentBucks a:hover {
+  color: #00471b; /* Milwaukee Bucks green */
+  background-color: rgba(238, 225, 198, 0.1); /* Bucks cream with opacity */
+  border-radius: 5px;
+}
+
+/* Адаптив для меню */
+@media (max-width: 768px) {
+  .menuContentHBucks {
+    font-size: 1.3rem;
+  }
+
+  .menuContentBucks a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuContentHBucks {
+    font-size: 1.1rem;
+  }
+
+  .menuContentBucks a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .menuContentHBucks {
+    font-size: 1rem;
+  }
+
+  .menuContentBucks a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 280px) {
+  .menuContentBucks {
+    padding: 15px;
+    gap: 1rem;
+  }
+
+  .menuContentHBucks {
+    font-size: 0.9rem;
+  }
+
+  .menuContentBucks a {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

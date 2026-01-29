@@ -1,0 +1,292 @@
+.thunder-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-thunder {
+  color: #007ac1; /* Thunder синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.thunder-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #fdbb30; /* Thunder желтый */
+  box-shadow: 0 8px 24px rgba(0, 122, 193, 0.15); /* Thunder синий с прозрачностью */
+}
+
+.thunder-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #002d62,
+    #ef3b24
+  ); /* Thunder темно-синий и оранжевый */
+}
+
+/* Контейнер для горизонтального расположения */
+.thunder-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .thunder-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .thunder-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.thunder-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(0, 122, 193, 0.2); /* Thunder синий */
+}
+
+.thunder-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 122, 193, 0.1),
+    /* Thunder синий */ rgba(253, 187, 48, 0.05) /* Thunder желтый */
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 122, 193, 0.1); /* Thunder синий */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.thunder-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #002d62; /* Thunder темно-синий */
+  text-transform: uppercase;
+}
+
+.thunder-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.thunder-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.thunder-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.thunder-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.thunder-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 122, 193, 0.1); /* Thunder синий */
+}
+
+.thunder-pick-year {
+  background: linear-gradient(
+    135deg,
+    #007ac1,
+    #002d62
+  ); /* Thunder синий и темно-синий */
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-thunder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 122, 193, 0.1); /* Thunder синий */
+  transition: background 0.2s ease;
+}
+
+.pick-item-thunder:hover {
+  background: rgba(0, 122, 193, 0.05); /* Thunder синий */
+}
+
+.pick-item-thunder:last-child {
+  border-bottom: none;
+}
+
+.pick-round-thunder {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-thunder {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.thunder-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.thunder-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.thunder-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(0, 122, 193, 0.1); /* Thunder синий */
+}
+
+.coach-item-thunder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 122, 193, 0.1); /* Thunder синий */
+  transition: background 0.2s ease;
+}
+
+.coach-item-thunder:hover {
+  background: rgba(253, 187, 48, 0.05); /* Thunder желтый */
+}
+
+.coach-item-thunder:last-child {
+  border-bottom: none;
+}
+
+.coach-position-thunder {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-thunder {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.thunder-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 122, 193, 0.1); /* Thunder синий */
+}
+
+.color-dot-thunder {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.blue-dark-thunder {
+  background: #002d62; /* Thunder темно-синий */
+}
+.blue-thunder {
+  background: #007ac1; /* Thunder синий */
+}
+.orange-thunder {
+  background: #ef3b24; /* Thunder оранжевый */
+}
+.yellow-thunder {
+  background: #fdbb30; /* Thunder желтый */
+}
+.yellow-light-thunder {
+  background: #ffd166; /* Светлый желтый */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .thunder-containers {
+    padding: 16px;
+  }
+
+  .header-title-thunder {
+    font-size: 2rem;
+  }
+
+  .thunder-picks-grid,
+  .thunder-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .thunder-pick-column:not(:last-child)::after,
+  .thunder-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .thunder-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-thunder,
+  .coach-item-thunder {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text {
+  color: #ff4444;
+}

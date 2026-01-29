@@ -1,0 +1,238 @@
+.trade-list-container-kings {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.trade-header-content-kings {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.trade-header-title-kings {
+  color: #5a2d81; /* Фиолетовый цвет Sacramento Kings */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.trade-table-container-kings {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.trade-table-wrapper-kings {
+  overflow-x: auto;
+}
+
+.trade-list-table-kings {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trade-table-header-kings {
+  background: rgba(
+    90,
+    45,
+    129,
+    0.9
+  ); /* Фиолетовый Sacramento Kings с прозрачностью */
+}
+
+.trade-table-th-kings {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trade-table-th-kings:last-child {
+  border-right: none;
+}
+
+.trade-table-body-kings {
+}
+
+.trade-table-row-kings {
+  transition: background-color 0.3s;
+}
+
+.trade-table-row-kings:hover {
+  background-color: rgba(
+    90,
+    45,
+    129,
+    0.1
+  ); /* Светло-фиолетовый при наведении */
+}
+
+.trade-row-even-kings {
+  background: white;
+}
+
+.trade-row-odd-kings {
+  background: white;
+}
+
+.trade-row-adding-kings {
+  background: rgba(
+    90,
+    45,
+    129,
+    0.2
+  ) !important; /* Светло-фиолетовый для новой строки */
+}
+
+.trade-table-td-kings {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.trade-actions-td-kings {
+  white-space: nowrap;
+}
+
+.trade-item-text-kings {
+  font-weight: 500;
+}
+
+.trade-list-input-kings {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background: white;
+}
+
+.trade-list-input-kings:focus {
+  outline: none;
+  border-color: #5a2d81; /* Фиолетовый акцент */
+  box-shadow: 0 0 0 3px rgba(90, 45, 129, 0.3);
+}
+
+.trade-list-actions-kings {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trade-list-btn-kings {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.trade-list-btn-edit-kings {
+  background: #5a2d81; /* Фиолетовый */
+  color: white;
+}
+
+.trade-list-btn-edit-kings:hover {
+  background: #4a2571; /* Темнее фиолетовый */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-save-kings {
+  background: #63727a; /* Серый Sacramento Kings */
+  color: white;
+}
+
+.trade-list-btn-save-kings:hover {
+  background: #53616a;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-delete-kings {
+  background: #dc2626;
+  color: white;
+}
+
+.trade-list-btn-delete-kings:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-cancel-kings {
+  background: #6b7280;
+  color: white;
+}
+
+.trade-list-btn-cancel-kings:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-add-kings {
+  background: #5a2d81; /* Фиолетовый */
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: center;
+}
+
+.trade-list-btn-add-kings:hover {
+  background: #4a2571; /* Темнее фиолетовый */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trade-add-button-container-kings {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.trade-loading-text-kings {
+  text-align: center;
+  color: #5a2d81; /* Фиолетовый */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .trade-list-container-kings {
+    padding: 10px;
+  }
+
+  .trade-header-title-kings {
+    font-size: 2rem;
+  }
+
+  .trade-table-th-kings {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-table-td-kings {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-list-actions-kings {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .trade-list-btn-kings {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

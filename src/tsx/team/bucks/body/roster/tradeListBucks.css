@@ -1,0 +1,238 @@
+.trade-list-container-bucks {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.trade-header-content-bucks {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.trade-header-title-bucks {
+  color: #00471b; /* Milwaukee Bucks зеленый */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.trade-table-container-bucks {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.trade-table-wrapper-bucks {
+  overflow-x: auto;
+}
+
+.trade-list-table-bucks {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trade-table-header-bucks {
+  background: rgba(
+    0,
+    71,
+    27,
+    0.8
+  ); /* Milwaukee Bucks зеленый с прозрачностью */
+}
+
+.trade-table-th-bucks {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trade-table-th-bucks:last-child {
+  border-right: none;
+}
+
+.trade-table-body-bucks {
+}
+
+.trade-table-row-bucks {
+  transition: background-color 0.3s;
+}
+
+.trade-table-row-bucks:hover {
+  background-color: rgba(
+    238,
+    225,
+    198,
+    0.1
+  ); /* Milwaukee Bucks кремовый с прозрачностью */
+}
+
+.trade-row-even-bucks {
+  background: white;
+}
+
+.trade-row-odd-bucks {
+  background: white;
+}
+
+.trade-row-adding-bucks {
+  background: rgba(
+    238,
+    225,
+    198,
+    0.2
+  ) !important; /* Milwaukee Bucks кремовый с прозрачностью */
+}
+
+.trade-table-td-bucks {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.trade-actions-td-bucks {
+  white-space: nowrap;
+}
+
+.trade-item-text-bucks {
+  font-weight: 500;
+}
+
+.trade-list-input-bucks {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background: white;
+}
+
+.trade-list-input-bucks:focus {
+  outline: none;
+  border-color: #00471b; /* Milwaukee Bucks зеленый */
+  box-shadow: 0 0 0 3px rgba(238, 225, 198, 0.3); /* Milwaukee Bucks кремовый с прозрачностью */
+}
+
+.trade-list-actions-bucks {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trade-list-btn-bucks {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.trade-list-btn-edit-bucks {
+  background: #00471b; /* Milwaukee Bucks зеленый */
+  color: white;
+}
+
+.trade-list-btn-edit-bucks:hover {
+  background: #003314; /* Более темный оттенок зеленого */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-save-bucks {
+  background: #00471b; /* Milwaukee Bucks зеленый */
+  color: white;
+}
+
+.trade-list-btn-save-bucks:hover {
+  background: #003314; /* Более темный оттенок зеленого */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-delete-bucks {
+  background: #dc2626; /* Оставляем красный для удаления, так как это стандартный цвет для опасных действий */
+  color: white;
+}
+
+.trade-list-btn-delete-bucks:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-cancel-bucks {
+  background: #6b7280;
+  color: white;
+}
+
+.trade-list-btn-cancel-bucks:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-add-bucks {
+  background: #00471b; /* Milwaukee Bucks зеленый */
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: center;
+}
+
+.trade-list-btn-add-bucks:hover {
+  background: #003314; /* Более темный оттенок зеленого */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trade-add-button-container-bucks {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.trade-loading-text-bucks {
+  text-align: center;
+  color: #00471b; /* Milwaukee Bucks зеленый */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .trade-list-container-bucks {
+    padding: 10px;
+  }
+
+  .trade-header-title-bucks {
+    font-size: 2rem;
+  }
+
+  .trade-table-th-bucks {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-table-td-bucks {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-list-actions-bucks {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .trade-list-btn-bucks {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

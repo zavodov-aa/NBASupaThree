@@ -1,0 +1,803 @@
+/* Стили с цветами Phoenix Suns */
+
+.resultSuns-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultSuns-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultSuns-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #e56020; /* Оранжевый Phoenix Suns */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultSuns-button:hover:not(:disabled) {
+  background: #cc4a1a; /* Темнее оранжевый */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultSuns-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultSuns-button--hasNotifications {
+  background: linear-gradient(135deg, #e56020 0%, #cc4a1a 100%);
+}
+
+.resultSuns-notificationCount {
+  background: #1d1160; /* Фиолетовый Phoenix Suns */
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultSuns-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultSuns-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultSuns-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #e56020; /* Оранжевый */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultSuns-modalHeader {
+  background: #e56020; /* Оранжевый */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #1d1160; /* Фиолетовый */
+}
+
+.resultSuns-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultSuns-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #e56020 0%, #1d1160 100%);
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultSuns-teamLogo::before {
+  content: "PHX";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultSuns-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultSuns-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultSuns-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultSuns-tradePartner {
+  color: #f9a01b; /* Желтый Phoenix Suns */
+  font-weight: 500;
+}
+
+.resultSuns-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultSuns-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultSuns-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultSuns-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultSuns-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultSuns-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultSuns-tradesList {
+  padding: 24px;
+}
+
+.resultSuns-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultSuns-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultSuns-tradeHeader {
+  background: rgba(229, 96, 32, 0.05);
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultSuns-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultSuns-tradeNumber {
+  font-weight: 600;
+  color: #e56020;
+  font-size: 15px;
+}
+
+.resultSuns-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultSuns-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultSuns-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultSuns-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultSuns-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #e56020;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultSuns-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultSuns-exchangeArrow {
+  font-size: 28px;
+  color: #1d1160;
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultSuns-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultSuns-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultSuns-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultSuns-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultSuns-tradeSection--team1 {
+  border-left: 3px solid #e56020;
+}
+
+.resultSuns-tradeSection--team2 {
+  border-left: 3px solid #1d1160;
+}
+
+.resultSuns-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultSuns-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultSuns-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultSuns-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultSuns-countBadge--players {
+  background: rgba(229, 96, 32, 0.1);
+  color: #e56020;
+  border: 1px solid rgba(229, 96, 32, 0.2);
+}
+
+.resultSuns-countBadge--picks {
+  background: rgba(29, 17, 96, 0.1);
+  color: #1d1160;
+  border: 1px solid rgba(29, 17, 96, 0.2);
+}
+
+.resultSuns-sectionContent {
+  padding: 16px;
+}
+
+.resultSuns-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultSuns-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultSuns-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultSuns-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultSuns-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultSuns-playerCard--active {
+  border-left-color: #e56020;
+}
+
+.resultSuns-playerCard--gleague {
+  border-left-color: #1d1160;
+}
+
+.resultSuns-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultSuns-playerNameSection {
+  flex: 1;
+}
+
+.resultSuns-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultSuns-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultSuns-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultSuns-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultSuns-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultSuns-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultSuns-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultSuns-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultSuns-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultSuns-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultSuns-teamLabel {
+  color: #666666;
+}
+
+.resultSuns-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultSuns-tradeNote {
+  background: rgba(29, 17, 96, 0.05);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(29, 17, 96, 0.2);
+}
+
+.resultSuns-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultSuns-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultSuns-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultSuns-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultSuns-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultSuns-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultSuns-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultSuns-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultSuns-actionButton--accept {
+  background: #1d1160;
+  color: #ffffff;
+}
+
+.resultSuns-actionButton--accept:hover:not(:disabled) {
+  background: #140b4a;
+}
+
+.resultSuns-actionButton--reject {
+  background: #e56020;
+  color: #ffffff;
+}
+
+.resultSuns-actionButton--reject:hover:not(:disabled) {
+  background: #cc4a1a;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultSuns-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultSuns-closeAllButton {
+  background: #e56020;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultSuns-closeAllButton:hover {
+  background: #cc4a1a;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultSuns-modal {
+    max-height: 90vh;
+  }
+
+  .resultSuns-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultSuns-tradesList {
+    padding: 16px;
+  }
+
+  .resultSuns-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultSuns-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultSuns-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultSuns-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultSuns-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultSuns-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultSuns-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultSuns-tradeSummary,
+  .resultSuns-tradeSection,
+  .resultSuns-tradeNote,
+  .resultSuns-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultSuns-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultSuns-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultSuns-modalHeader {
+    padding: 16px;
+  }
+
+  .resultSuns-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultSuns-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultSuns-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultSuns-statValue {
+    font-size: 28px;
+  }
+
+  .resultSuns-statLabel {
+    font-size: 12px;
+  }
+
+  .resultSuns-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultSuns-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultSuns-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultSuns-modal {
+    max-height: 95vh;
+  }
+
+  .resultSuns-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultSuns-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultSuns-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultSuns-statValue {
+    font-size: 24px;
+  }
+
+  .resultSuns-playerName,
+  .resultSuns-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultSuns-noteContent {
+    font-size: 13px;
+  }
+
+  .resultSuns-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultSuns-container .resultSuns-modal {
+    background: #1a1a1a;
+    border-color: #e56020;
+  }
+
+  .resultSuns-container .resultSuns-tradeItem,
+  .resultSuns-container .resultSuns-playerCard,
+  .resultSuns-container .resultSuns-draftPickCard,
+  .resultSuns-container .resultSuns-tradeSummary,
+  .resultSuns-container .resultSuns-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultSuns-container .resultSuns-playerName,
+  .resultSuns-container .resultSuns-statLabel,
+  .resultSuns-container .resultSuns-sectionTitle,
+  .resultSuns-container .resultSuns-noteTitle,
+  .resultSuns-container .resultSuns-teamName,
+  .resultSuns-container .resultSuns-pickYearRound,
+  .resultSuns-container .resultSuns-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultSuns-container .resultSuns-playerType,
+  .resultSuns-container .resultSuns-pickType,
+  .resultSuns-container .resultSuns-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultSuns-container .resultSuns-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultSuns-container .resultSuns-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

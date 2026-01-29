@@ -1,0 +1,174 @@
+.rosterRockets {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerRockets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerRockets h1 {
+  color: #ce1141; /* Houston Rockets red */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleRockets {
+  color: #000000; /* Black */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerRockets {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #ce1141; /* Houston Rockets red */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableRockets {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableRockets thead {
+  background: #ce1141; /* Houston Rockets red */
+}
+
+.roster-tableRockets th {
+  padding: 15px 10px;
+  color: #ffffff; /* White text on red background */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableRockets tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableRockets tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableRockets tbody tr:hover {
+  background: #f0f0f0; /* Light gray on hover */
+}
+
+.roster-tableRockets td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(206, 17, 65, 0.3); /* Rockets red with transparency */
+  color: #000000; /* Black text */
+}
+
+.roster-tableRockets .franchiseRockets {
+  background: rgba(0, 0, 0, 0.637) !important;
+}
+
+.roster-tableRockets .franchiseRockets td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellRockets {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starRockets {
+  color: #ce1141; /* Houston Rockets red */
+  font-size: 1.2em;
+}
+
+.player-tagRockets {
+  padding: 4px 8px;
+  background: #c4ced4; /* Houston Rockets silver/gray */
+  color: #000000; /* Black text */
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingRockets {
+  text-align: center;
+  color: #ce1141; /* Houston Rockets red */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateRockets {
+  text-align: center;
+  padding: 40px;
+  color: #ce1141; /* Houston Rockets red */
+}
+
+.empty-iconRockets {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleRockets {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleRockets {
+  opacity: 0.8;
+}
+
+.franchise-colorRockets {
+  background: black;
+}
+
+.salary-colorRockets {
+  background: black;
+}
+
+.g-league-dividerRockets {
+  background: rgba(
+    206,
+    17,
+    65,
+    0.1
+  ) !important; /* Rockets red with transparency */
+}
+
+.g-league-headerRockets {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #ce1141; /* Houston Rockets red */
+  border-top: 2px solid #ce1141;
+  border-bottom: 2px solid #ce1141;
+  background: rgba(206, 17, 65, 0.05);
+}
+
+@media (max-width: 768px) {
+  .rosterRockets {
+    padding: 10px;
+  }
+
+  .roster-headerRockets h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleRockets {
+    font-size: 1rem;
+  }
+
+  .roster-tableRockets th,
+  .roster-tableRockets td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

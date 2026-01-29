@@ -1,0 +1,803 @@
+/* tradeResultCavaliers.css */
+
+.resultCavaliers-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultCavaliers-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultCavaliers-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #6f263d; /* Cavaliers Burgundy */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultCavaliers-button:hover:not(:disabled) {
+  background: #860038; /* Darker Burgundy */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultCavaliers-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultCavaliers-button--hasNotifications {
+  background: linear-gradient(135deg, #6f263d 0%, #860038 100%);
+}
+
+.resultCavaliers-notificationCount {
+  background: #ffb81c; /* Cavaliers Gold */
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultCavaliers-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultCavaliers-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultCavaliers-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #6f263d; /* Cavaliers Burgundy */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultCavaliers-modalHeader {
+  background: #6f263d; /* Cavaliers Burgundy */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #ffb81c; /* Cavaliers Gold */
+}
+
+.resultCavaliers-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultCavaliers-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultCavaliers-teamLogo::before {
+  content: "CLE";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #6f263d; /* Cavaliers Burgundy */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultCavaliers-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultCavaliers-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultCavaliers-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultCavaliers-tradePartner {
+  color: #ffb81c; /* Cavaliers Gold */
+  font-weight: 500;
+}
+
+.resultCavaliers-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultCavaliers-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultCavaliers-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultCavaliers-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultCavaliers-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultCavaliers-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultCavaliers-tradesList {
+  padding: 24px;
+}
+
+.resultCavaliers-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultCavaliers-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultCavaliers-tradeHeader {
+  background: rgba(111, 38, 61, 0.05); /* Cavaliers Burgundy with opacity */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultCavaliers-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultCavaliers-tradeNumber {
+  font-weight: 600;
+  color: #6f263d; /* Cavaliers Burgundy */
+  font-size: 15px;
+}
+
+.resultCavaliers-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultCavaliers-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultCavaliers-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultCavaliers-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultCavaliers-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #6f263d; /* Cavaliers Burgundy */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultCavaliers-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultCavaliers-exchangeArrow {
+  font-size: 28px;
+  color: #ffb81c; /* Cavaliers Gold */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultCavaliers-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultCavaliers-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultCavaliers-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultCavaliers-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultCavaliers-tradeSection--team1 {
+  border-left: 3px solid #6f263d; /* Cavaliers Burgundy */
+}
+
+.resultCavaliers-tradeSection--team2 {
+  border-left: 3px solid #ffb81c; /* Cavaliers Gold */
+}
+
+.resultCavaliers-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultCavaliers-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultCavaliers-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultCavaliers-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultCavaliers-countBadge--players {
+  background: rgba(111, 38, 61, 0.1); /* Cavaliers Burgundy with opacity */
+  color: #6f263d; /* Cavaliers Burgundy */
+  border: 1px solid rgba(111, 38, 61, 0.2);
+}
+
+.resultCavaliers-countBadge--picks {
+  background: rgba(255, 184, 28, 0.1); /* Cavaliers Gold with opacity */
+  color: #ffb81c; /* Cavaliers Gold */
+  border: 1px solid rgba(255, 184, 28, 0.2);
+}
+
+.resultCavaliers-sectionContent {
+  padding: 16px;
+}
+
+.resultCavaliers-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultCavaliers-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultCavaliers-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultCavaliers-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultCavaliers-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultCavaliers-playerCard--active {
+  border-left-color: #6f263d; /* Cavaliers Burgundy */
+}
+
+.resultCavaliers-playerCard--gleague {
+  border-left-color: #ffb81c; /* Cavaliers Gold */
+}
+
+.resultCavaliers-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultCavaliers-playerNameSection {
+  flex: 1;
+}
+
+.resultCavaliers-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultCavaliers-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultCavaliers-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultCavaliers-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultCavaliers-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultCavaliers-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultCavaliers-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultCavaliers-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultCavaliers-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultCavaliers-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultCavaliers-teamLabel {
+  color: #666666;
+}
+
+.resultCavaliers-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultCavaliers-tradeNote {
+  background: rgba(255, 184, 28, 0.05); /* Cavaliers Gold with opacity */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(255, 184, 28, 0.2); /* Cavaliers Gold with opacity */
+}
+
+.resultCavaliers-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultCavaliers-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultCavaliers-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultCavaliers-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultCavaliers-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultCavaliers-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultCavaliers-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultCavaliers-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultCavaliers-actionButton--accept {
+  background: #ffb81c; /* Cavaliers Gold */
+  color: #000000;
+}
+
+.resultCavaliers-actionButton--accept:hover:not(:disabled) {
+  background: #e6a400; /* Darker Gold */
+}
+
+.resultCavaliers-actionButton--reject {
+  background: #6f263d; /* Cavaliers Burgundy */
+  color: #ffffff;
+}
+
+.resultCavaliers-actionButton--reject:hover:not(:disabled) {
+  background: #860038; /* Darker Burgundy */
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultCavaliers-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultCavaliers-closeAllButton {
+  background: #6f263d; /* Cavaliers Burgundy */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultCavaliers-closeAllButton:hover {
+  background: #860038; /* Darker Burgundy */
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultCavaliers-modal {
+    max-height: 90vh;
+  }
+
+  .resultCavaliers-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultCavaliers-tradesList {
+    padding: 16px;
+  }
+
+  .resultCavaliers-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultCavaliers-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultCavaliers-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultCavaliers-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultCavaliers-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultCavaliers-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultCavaliers-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultCavaliers-tradeSummary,
+  .resultCavaliers-tradeSection,
+  .resultCavaliers-tradeNote,
+  .resultCavaliers-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultCavaliers-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultCavaliers-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultCavaliers-modalHeader {
+    padding: 16px;
+  }
+
+  .resultCavaliers-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultCavaliers-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultCavaliers-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultCavaliers-statValue {
+    font-size: 28px;
+  }
+
+  .resultCavaliers-statLabel {
+    font-size: 12px;
+  }
+
+  .resultCavaliers-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultCavaliers-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultCavaliers-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultCavaliers-modal {
+    max-height: 95vh;
+  }
+
+  .resultCavaliers-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultCavaliers-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultCavaliers-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultCavaliers-statValue {
+    font-size: 24px;
+  }
+
+  .resultCavaliers-playerName,
+  .resultCavaliers-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultCavaliers-noteContent {
+    font-size: 13px;
+  }
+
+  .resultCavaliers-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultCavaliers-container .resultCavaliers-modal {
+    background: #1a1a1a;
+    border-color: #6f263d; /* Cavaliers Burgundy */
+  }
+
+  .resultCavaliers-container .resultCavaliers-tradeItem,
+  .resultCavaliers-container .resultCavaliers-playerCard,
+  .resultCavaliers-container .resultCavaliers-draftPickCard,
+  .resultCavaliers-container .resultCavaliers-tradeSummary,
+  .resultCavaliers-container .resultCavaliers-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultCavaliers-container .resultCavaliers-playerName,
+  .resultCavaliers-container .resultCavaliers-statLabel,
+  .resultCavaliers-container .resultCavaliers-sectionTitle,
+  .resultCavaliers-container .resultCavaliers-noteTitle,
+  .resultCavaliers-container .resultCavaliers-teamName,
+  .resultCavaliers-container .resultCavaliers-pickYearRound,
+  .resultCavaliers-container .resultCavaliers-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultCavaliers-container .resultCavaliers-playerType,
+  .resultCavaliers-container .resultCavaliers-pickType,
+  .resultCavaliers-container .resultCavaliers-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultCavaliers-container .resultCavaliers-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultCavaliers-container .resultCavaliers-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

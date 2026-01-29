@@ -1,0 +1,293 @@
+.blazers-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content-blazers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-blazers {
+  color: #e03a3e; /* Красный Trail Blazers */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.blazers-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #000000; /* Черный Trail Blazers */
+  box-shadow: 0 8px 24px rgba(224, 58, 62, 0.15); /* Красный Trail Blazers */
+}
+
+.blazers-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #e03a3e,
+    #000000
+  ); /* Красный-Черный Trail Blazers */
+}
+
+/* Контейнер для горизонтального расположения */
+.blazers-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .blazers-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .blazers-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.blazers-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(224, 58, 62, 0.2); /* Красный Trail Blazers */
+}
+
+.blazers-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(224, 58, 62, 0.1),
+    /* Красный Trail Blazers */ rgba(196, 206, 212, 0.05)
+      /* Серебряный Trail Blazers */
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(224, 58, 62, 0.1); /* Красный Trail Blazers */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.blazers-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #e03a3e; /* Красный Trail Blazers */
+  text-transform: uppercase;
+}
+
+.blazers-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.blazers-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.blazers-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.blazers-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.blazers-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(224, 58, 62, 0.1); /* Красный Trail Blazers */
+}
+
+.blazers-pick-year {
+  background: linear-gradient(
+    135deg,
+    #e03a3e,
+    #ff6b6b
+  ); /* Красный Trail Blazers */
+  color: white;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-blazers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(224, 58, 62, 0.1); /* Красный Trail Blazers */
+  transition: background 0.2s ease;
+}
+
+.pick-item-blazers:hover {
+  background: rgba(224, 58, 62, 0.05); /* Красный Trail Blazers */
+}
+
+.pick-item-blazers:last-child {
+  border-bottom: none;
+}
+
+.pick-round-blazers {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-blazers {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.blazers-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.blazers-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.blazers-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(224, 58, 62, 0.1); /* Красный Trail Blazers */
+}
+
+.coach-item-blazers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(224, 58, 62, 0.1); /* Красный Trail Blazers */
+  transition: background 0.2s ease;
+}
+
+.coach-item-blazers:hover {
+  background: rgba(0, 0, 0, 0.05); /* Черный Trail Blazers */
+}
+
+.coach-item-blazers:last-child {
+  border-bottom: none;
+}
+
+.coach-position-blazers {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-blazers {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.blazers-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(224, 58, 62, 0.1); /* Красный Trail Blazers */
+}
+
+.color-dot-blazers {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.red-dark-blazers {
+  background: #b81d24; /* Темно-красный Trail Blazers */
+}
+.red-blazers {
+  background: #e03a3e; /* Основной красный Trail Blazers */
+}
+.silver-dark-blazers {
+  background: #8c8c8c; /* Темно-серебряный */
+}
+.black-blazers {
+  background: #000000; /* Черный Trail Blazers */
+}
+.silver-blazers {
+  background: #c4ced4; /* Серебряный Trail Blazers */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .blazers-containers {
+    padding: 16px;
+  }
+
+  .header-title-blazers {
+    font-size: 2rem;
+  }
+
+  .blazers-picks-grid,
+  .blazers-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blazers-pick-column:not(:last-child)::after,
+  .blazers-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .blazers-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-blazers,
+  .coach-item-blazers {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text-blazers,
+.error-text-blazers {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text-blazers {
+  color: #ff4444;
+}

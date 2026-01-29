@@ -1,0 +1,146 @@
+.playerOptionUser {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.playerOptionUser--loading,
+.playerOptionUser--error {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+}
+
+.playerOptionUser--error {
+  color: #d32f2f;
+}
+
+.playerOptionUser__header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.playerOptionUser__title {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.playerOptionUser__subtitle {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.playerOptionUser__table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.playerOptionUser__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.playerOptionUser__th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+  background-color: #f5f5f5;
+}
+
+.playerOptionUser__td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.playerOptionUser__tr:hover {
+  background-color: #f9f9f9;
+}
+
+.playerOptionUser__team {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.playerOptionUser__result {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.playerOptionUser__result--positive {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.playerOptionUser__result--negative {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.playerOptionUser__result--neutral {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.playerOptionUser__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  color: #666;
+}
+
+.playerOptionUser__count {
+  font-size: 14px;
+}
+
+.playerOptionUser__btn {
+  padding: 8px 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.playerOptionUser__btn:hover {
+  background-color: #1565c0;
+}
+
+@media (max-width: 768px) {
+  .playerOptionUser {
+    padding: 10px;
+  }
+
+  .playerOptionUser__title {
+    font-size: 20px;
+  }
+
+  .playerOptionUser__subtitle {
+    font-size: 14px;
+  }
+
+  .playerOptionUser__footer {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .playerOptionUser__btn {
+    width: 100%;
+  }
+}

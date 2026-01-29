@@ -1,0 +1,182 @@
+.rosterKings {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerKings {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerKings h1 {
+  color: #5a2d81; /* Sacramento Kings фиолетовый */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleKings {
+  color: black;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerKings {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #5a2d81; /* Sacramento Kings фиолетовый */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableKings {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableKings thead {
+  background: #5a2d81; /* Sacramento Kings фиолетовый */
+}
+
+.roster-tableKings th {
+  padding: 15px 10px;
+  color: #fff; /* Белый текст для контраста с фиолетовым */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.roster-tableKings th.highlight {
+}
+
+.roster-tableKings tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableKings tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableKings tbody tr:hover {
+  background: white;
+}
+
+.roster-tableKings td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(90, 45, 129, 0.3); /* Sacramento Kings фиолетовый с прозрачностью */
+  color: #000;
+}
+
+.roster-tableKings .franchiseKings {
+  background: rgba(0, 0, 0, 0.637) !important;
+}
+
+.roster-tableKings .franchiseKings td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellKings {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starKings {
+  color: #5a2d81; /* Sacramento Kings фиолетовый */
+  font-size: 1.2em;
+}
+
+.player-tagKings {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingKings {
+  text-align: center;
+  color: #5a2d81; /* Sacramento Kings фиолетовый */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateKings {
+  text-align: center;
+  padding: 40px;
+  color: #5a2d81; /* Sacramento Kings фиолетовый */
+}
+
+.empty-iconKings {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleKings {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleKings {
+  opacity: 0.8;
+}
+
+.franchise-colorKings {
+  background: black;
+}
+
+.salary-colorKings {
+  background: black;
+}
+
+@media (max-width: 768px) {
+  .rosterKings {
+    padding: 10px;
+  }
+
+  .roster-headerKings h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleKings {
+    font-size: 1rem;
+  }
+
+  .roster-tableKings th,
+  .roster-tableKings td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Добавьте в rosterKings.css */
+
+.g-league-dividerKings {
+  background: rgba(
+    90,
+    45,
+    129,
+    0.1
+  ) !important; /* Sacramento Kings фиолетовый с прозрачностью */
+}
+
+.g-league-headerKings {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #5a2d81; /* Sacramento Kings фиолетовый */
+  border-top: 2px solid #5a2d81; /* Sacramento Kings фиолетовый */
+  border-bottom: 2px solid #5a2d81; /* Sacramento Kings фиолетовый */
+  background: rgba(
+    90,
+    45,
+    129,
+    0.05
+  ); /* Sacramento Kings фиолетовый с прозрачностью */
+}

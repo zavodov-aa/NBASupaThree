@@ -1,0 +1,223 @@
+.trade-list-container-hornets {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.trade-header-content-hornets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.trade-header-title-hornets {
+  color: #00788c; /* Charlotte Hornets бирюзовый */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.trade-table-container-hornets {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.trade-table-wrapper-hornets {
+  overflow-x: auto;
+}
+
+.trade-list-table-hornets {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trade-table-header-hornets {
+  background: rgba(0, 0, 0, 0.637);
+}
+
+.trade-table-th-hornets {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trade-table-th-hornets:last-child {
+  border-right: none;
+}
+
+.trade-table-body-hornets {
+}
+
+.trade-table-row-hornets {
+  transition: background-color 0.3s;
+}
+
+.trade-table-row-hornets:hover {
+  background-color: rgba(0, 120, 140, 0.1); /* Бирюзовый с прозрачностью */
+}
+
+.trade-row-even-hornets {
+  background: white;
+}
+
+.trade-row-odd-hornets {
+  background: white;
+}
+
+.trade-row-adding-hornets {
+  background: rgba(0, 120, 140, 0.2) !important; /* Бирюзовый с прозрачностью */
+}
+
+.trade-table-td-hornets {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.trade-actions-td-hornets {
+  white-space: nowrap;
+}
+
+.trade-item-text-hornets {
+  font-weight: 500;
+}
+
+.trade-list-input-hornets {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background: white;
+}
+
+.trade-list-input-hornets:focus {
+  outline: none;
+  border-color: #00788c; /* Бирюзовый */
+  box-shadow: 0 0 0 3px rgba(0, 120, 140, 0.3); /* Бирюзовый с прозрачностью */
+}
+
+.trade-list-actions-hornets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trade-list-btn-hornets {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.trade-list-btn-edit-hornets {
+  background: #00788c; /* Бирюзовый */
+  color: white;
+}
+
+.trade-list-btn-edit-hornets:hover {
+  background: #005f6b; /* Темный бирюзовый */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-save-hornets {
+  background: #1d1160; /* Charlotte Hornets фиолетовый */
+  color: white;
+}
+
+.trade-list-btn-save-hornets:hover {
+  background: #140a42;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-delete-hornets {
+  background: #dc2626;
+  color: white;
+}
+
+.trade-list-btn-delete-hornets:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-cancel-hornets {
+  background: #6b7280;
+  color: white;
+}
+
+.trade-list-btn-cancel-hornets:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-add-hornets {
+  background: #00788c; /* Бирюзовый */
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: center;
+}
+
+.trade-list-btn-add-hornets:hover {
+  background: #005f6b; /* Темный бирюзовый */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trade-add-button-container-hornets {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.trade-loading-text-hornets {
+  text-align: center;
+  color: #00788c; /* Бирюзовый */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .trade-list-container-hornets {
+    padding: 10px;
+  }
+
+  .trade-header-title-hornets {
+    font-size: 2rem;
+  }
+
+  .trade-table-th-hornets {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-table-td-hornets {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-list-actions-hornets {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .trade-list-btn-hornets {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

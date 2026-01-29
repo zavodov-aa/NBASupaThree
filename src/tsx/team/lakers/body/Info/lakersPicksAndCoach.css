@@ -1,0 +1,284 @@
+.lakers-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title {
+  color: #fdb927;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.lakers-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #fdb927;
+  box-shadow: 0 8px 24px rgba(85, 37, 131, 0.15);
+}
+
+.lakers-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #552583, #fdb927);
+}
+
+/* Контейнер для горизонтального расположения */
+.lakers-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .lakers-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .lakers-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.lakers-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(85, 37, 131, 0.2);
+}
+
+.lakers-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(85, 37, 131, 0.1),
+    rgba(253, 185, 39, 0.05)
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lakers-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #552583;
+  text-transform: uppercase;
+}
+
+.lakers-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lakers-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.lakers-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.lakers-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.lakers-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(85, 37, 131, 0.1);
+}
+
+.lakers-pick-year {
+  background: linear-gradient(135deg, #fdb927, #ffd166);
+  color: #552583;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item:hover {
+  background: rgba(85, 37, 131, 0.05);
+}
+
+.pick-item:last-child {
+  border-bottom: none;
+}
+
+.pick-round {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.lakers-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.lakers-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.lakers-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(85, 37, 131, 0.1);
+}
+
+.coach-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item:hover {
+  background: rgba(253, 185, 39, 0.05);
+}
+
+.coach-item:last-child {
+  border-bottom: none;
+}
+
+.coach-position {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.lakers-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(85, 37, 131, 0.1);
+}
+
+.color-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.purple-dark {
+  background: #2b0e4e;
+}
+.purple {
+  background: #552583;
+}
+.purple-light {
+  background: #8b5cb6;
+}
+.gold {
+  background: #fdb927;
+}
+.gold-light {
+  background: #ffd166;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .lakers-containers {
+    padding: 16px;
+  }
+
+  .header-title {
+    font-size: 2rem;
+  }
+
+  .lakers-picks-grid,
+  .lakers-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lakers-pick-column:not(:last-child)::after,
+  .lakers-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .lakers-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item,
+  .coach-item {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text {
+  color: #ff4444;
+}

@@ -1,0 +1,232 @@
+/* .hamburgerButton {
+  position: relative;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.hamburgerButton span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  
+  background-color: #552583;
+  transition: all 0.3s ease;
+  margin: 2px;
+}
+
+.hamburgerButton.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #fdb927;
+}
+.hamburgerButton.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButton.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #fdb927;
+}
+
+.fullscreenMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2d2b31;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.fullscreenMenu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menuContentH {
+  color: #fdb927;
+}
+
+.menuContent a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.menuContent a:hover {
+  color: #b68af0ea;
+}
+
+
+@media (max-width: 768px) {
+  .menuContent a {
+    font-size: 1.5rem;
+  }
+} */
+
+.hamburgerButton {
+  position: relative;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.hamburgerButton span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #552583;
+  transition: all 0.3s ease;
+  margin: 2px;
+}
+
+@media (max-width: 280px) {
+  .hamburgerButton span {
+    width: 20px;
+    height: 2.5px;
+    margin: 1.5px;
+  }
+}
+
+.hamburgerButton.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #fdb927;
+}
+.hamburgerButton.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButton.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #fdb927;
+}
+
+/* Полноэкранное меню */
+.fullscreenMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2d2b31;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.fullscreenMenu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Содержимое меню */
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 280px;
+}
+
+.menuContentH {
+  color: #fdb927;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.menuContent a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.menuContent a:hover {
+  color: #b68af0ea;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+/* Адаптив для меню */
+@media (max-width: 768px) {
+  .menuContentH {
+    font-size: 1.3rem;
+  }
+
+  .menuContent a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuContentH {
+    font-size: 1.1rem;
+  }
+
+  .menuContent a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .menuContentH {
+    font-size: 1rem;
+  }
+
+  .menuContent a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 280px) {
+  .menuContent {
+    padding: 15px;
+    gap: 1rem;
+  }
+
+  .menuContentH {
+    font-size: 0.9rem;
+  }
+
+  .menuContent a {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

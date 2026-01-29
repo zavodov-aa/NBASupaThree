@@ -1,0 +1,167 @@
+.rosterNets {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerNets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerNets h1 {
+  color: #000000;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleNets {
+  color: black;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerNets {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #000000;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableNets {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableNets thead {
+  background: #000000;
+}
+
+.roster-tableNets th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableNets tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableNets tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableNets tbody tr:hover {
+  background: white;
+}
+
+.roster-tableNets td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  color: #000;
+}
+
+.roster-tableNets .franchiseNets {
+  background: rgba(0, 0, 0, 0.637) !important;
+}
+
+.roster-tableNets .franchiseNets td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellNets {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starNets {
+  color: #000000;
+  font-size: 1.2em;
+}
+
+.player-tagNets {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingNets {
+  text-align: center;
+  color: #000000;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateNets {
+  text-align: center;
+  padding: 40px;
+  color: #000000;
+}
+
+.empty-iconNets {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleNets {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleNets {
+  opacity: 0.8;
+}
+
+.franchise-colorNets {
+  background: black;
+}
+
+.salary-colorNets {
+  background: black;
+}
+
+@media (max-width: 768px) {
+  .rosterNets {
+    padding: 10px;
+  }
+
+  .roster-headerNets h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleNets {
+    font-size: 1rem;
+  }
+
+  .roster-tableNets th,
+  .roster-tableNets td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}
+
+.g-league-dividerNets {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.g-league-headerNets {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #000000;
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  background: rgba(0, 0, 0, 0.05);
+}

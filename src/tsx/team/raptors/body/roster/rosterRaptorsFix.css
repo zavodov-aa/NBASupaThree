@@ -1,0 +1,172 @@
+.rosterRaptors {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerRaptors {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerRaptors h1 {
+  color: #ce1141; /* Toronto Raptors красный */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleRaptors {
+  color: #000000; /* Черный */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerRaptors {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #ce1141; /* Toronto Raptors красный */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableRaptors {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableRaptors thead {
+  background: #ce1141; /* Toronto Raptors красный */
+}
+
+.roster-tableRaptors th {
+  padding: 15px 10px;
+  color: #ffffff; /* Белый текст для заголовков */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableRaptors tbody tr:nth-child(even) {
+  background: #ffffff;
+}
+
+.roster-tableRaptors tbody tr:nth-child(odd) {
+  background: #f8f8f8; /* Светло-серый для чередования */
+}
+
+.roster-tableRaptors tbody tr:hover {
+  background: #e8e8e8;
+}
+
+.roster-tableRaptors td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
+.roster-tableRaptors .franchiseRaptors {
+  background: #000000 !important; /* Черный для франчайзного игрока */
+}
+
+.roster-tableRaptors .franchiseRaptors td {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.number-cellRaptors {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starRaptors {
+  color: #ce1141; /* Toronto Raptors красный */
+  font-size: 1.2em;
+}
+
+.player-tagRaptors {
+  padding: 4px 8px;
+  background: #000000; /* Черный фон */
+  color: #ffffff; /* Белый текст */
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingRaptors {
+  text-align: center;
+  color: #ce1141;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateRaptors {
+  text-align: center;
+  padding: 40px;
+  color: #ce1141;
+}
+
+.empty-iconRaptors {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleRaptors {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleRaptors {
+  opacity: 0.8;
+}
+
+/* G-League разделитель */
+.g-league-dividerRaptors {
+  background: rgba(
+    206,
+    17,
+    65,
+    0.1
+  ) !important; /* Полупрозрачный красный Raptors */
+}
+
+.g-league-headerRaptors {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #ce1141;
+  border-top: 2px solid #ce1141;
+  border-bottom: 2px solid #ce1141;
+  background: rgba(206, 17, 65, 0.05);
+}
+
+.highlightRaptors {
+  font-weight: bold;
+  color: #ce1141;
+}
+
+@media (max-width: 768px) {
+  .rosterRaptors {
+    padding: 10px;
+  }
+
+  .roster-headerRaptors h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleRaptors {
+    font-size: 1rem;
+  }
+
+  .roster-tableRaptors th,
+  .roster-tableRaptors td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

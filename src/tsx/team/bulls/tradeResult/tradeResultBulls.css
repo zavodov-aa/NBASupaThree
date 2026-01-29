@@ -1,0 +1,808 @@
+/* Стили только для компонента TradeResultBulls */
+
+.resultBulls-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultBulls-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultBulls-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #ce1141; /* Красный цвет Chicago Bulls */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultBulls-button:hover:not(:disabled) {
+  background: #000000; /* Черный цвет Chicago Bulls */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBulls-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultBulls-button--hasNotifications {
+  background: linear-gradient(
+    135deg,
+    #ce1141 0%,
+    #000000 100%
+  ); /* Градиент красный-черный */
+}
+
+.resultBulls-notificationCount {
+  background: #ffffff; /* Белый фон для контраста */
+  color: #ce1141; /* Красный текст */
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+  border: 1px solid #ce1141;
+}
+
+.resultBulls-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultBulls-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultBulls-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ce1141; /* Красный цвет Chicago Bulls */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultBulls-modalHeader {
+  background: #ce1141; /* Красный цвет Chicago Bulls */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #000000; /* Черный цвет Chicago Bulls */
+}
+
+.resultBulls-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultBulls-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultBulls-teamLogo::before {
+  content: "CHI";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ce1141; /* Красный цвет Chicago Bulls */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultBulls-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultBulls-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultBulls-tradesCount {
+  background: rgba(0, 0, 0, 0.3); /* Черный с прозрачностью */
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultBulls-tradePartner {
+  color: #000000; /* Черный цвет Chicago Bulls */
+  font-weight: 500;
+}
+
+.resultBulls-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultBulls-closeModal:hover {
+  background: rgba(0, 0, 0, 0.2); /* Черный с прозрачностью */
+}
+
+/* Контент модального окна */
+.resultBulls-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultBulls-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultBulls-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultBulls-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultBulls-tradesList {
+  padding: 24px;
+}
+
+.resultBulls-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultBulls-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultBulls-tradeHeader {
+  background: rgba(206, 17, 65, 0.05); /* Красный с прозрачностью */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultBulls-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultBulls-tradeNumber {
+  font-weight: 600;
+  color: #ce1141; /* Красный цвет Chicago Bulls */
+  font-size: 15px;
+}
+
+.resultBulls-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultBulls-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBulls-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultBulls-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultBulls-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ce1141; /* Красный цвет Chicago Bulls */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultBulls-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultBulls-exchangeArrow {
+  font-size: 28px;
+  color: #000000; /* Черный цвет Chicago Bulls */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultBulls-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultBulls-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultBulls-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultBulls-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultBulls-tradeSection--team1 {
+  border-left: 3px solid #ce1141; /* Красный цвет Chicago Bulls */
+}
+
+.resultBulls-tradeSection--team2 {
+  border-left: 3px solid #000000; /* Черный цвет Chicago Bulls */
+}
+
+.resultBulls-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultBulls-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultBulls-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultBulls-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultBulls-countBadge--players {
+  background: rgba(206, 17, 65, 0.1); /* Красный с прозрачностью */
+  color: #ce1141; /* Красный цвет Chicago Bulls */
+  border: 1px solid rgba(206, 17, 65, 0.2);
+}
+
+.resultBulls-countBadge--picks {
+  background: rgba(0, 0, 0, 0.1); /* Черный с прозрачностью */
+  color: #000000; /* Черный цвет Chicago Bulls */
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.resultBulls-sectionContent {
+  padding: 16px;
+}
+
+.resultBulls-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultBulls-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultBulls-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultBulls-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultBulls-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBulls-playerCard--active {
+  border-left-color: #ce1141; /* Красный цвет Chicago Bulls */
+}
+
+.resultBulls-playerCard--gleague {
+  border-left-color: #000000; /* Черный цвет Chicago Bulls */
+}
+
+.resultBulls-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultBulls-playerNameSection {
+  flex: 1;
+}
+
+.resultBulls-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultBulls-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultBulls-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #ce1141; /* Красный цвет Chicago Bulls вместо синего */
+  transition: all 0.2s;
+}
+
+.resultBulls-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultBulls-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultBulls-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultBulls-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultBulls-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(206, 17, 65, 0.1); /* Красный с прозрачностью */
+  color: #ce1141; /* Красный цвет Chicago Bulls */
+  border-radius: 10px;
+  border: 1px solid rgba(206, 17, 65, 0.2);
+}
+
+.resultBulls-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultBulls-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultBulls-teamLabel {
+  color: #666666;
+}
+
+.resultBulls-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultBulls-tradeNote {
+  background: rgba(0, 0, 0, 0.05); /* Черный с прозрачностью */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.resultBulls-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultBulls-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultBulls-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultBulls-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultBulls-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultBulls-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultBulls-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultBulls-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultBulls-actionButton--accept {
+  background: #000000; /* Черный цвет Chicago Bulls */
+  color: #ffffff;
+}
+
+.resultBulls-actionButton--accept:hover:not(:disabled) {
+  background: #333333; /* Темно-серый при наведении */
+}
+
+.resultBulls-actionButton--reject {
+  background: #ce1141; /* Красный цвет Chicago Bulls */
+  color: #ffffff;
+}
+
+.resultBulls-actionButton--reject:hover:not(:disabled) {
+  background: #a50e34; /* Темнее красный при наведении */
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultBulls-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultBulls-closeAllButton {
+  background: #ce1141; /* Красный цвет Chicago Bulls */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultBulls-closeAllButton:hover {
+  background: #000000; /* Черный цвет Chicago Bulls */
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultBulls-modal {
+    max-height: 90vh;
+  }
+
+  .resultBulls-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultBulls-tradesList {
+    padding: 16px;
+  }
+
+  .resultBulls-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultBulls-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultBulls-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultBulls-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultBulls-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultBulls-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultBulls-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultBulls-tradeSummary,
+  .resultBulls-tradeSection,
+  .resultBulls-tradeNote,
+  .resultBulls-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultBulls-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultBulls-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultBulls-modalHeader {
+    padding: 16px;
+  }
+
+  .resultBulls-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultBulls-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultBulls-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultBulls-statValue {
+    font-size: 28px;
+  }
+
+  .resultBulls-statLabel {
+    font-size: 12px;
+  }
+
+  .resultBulls-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultBulls-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultBulls-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultBulls-modal {
+    max-height: 95vh;
+  }
+
+  .resultBulls-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultBulls-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultBulls-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultBulls-statValue {
+    font-size: 24px;
+  }
+
+  .resultBulls-playerName,
+  .resultBulls-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultBulls-noteContent {
+    font-size: 13px;
+  }
+
+  .resultBulls-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultBulls-container .resultBulls-modal {
+    background: #1a1a1a;
+    border-color: #ce1141; /* Красный цвет Chicago Bulls */
+  }
+
+  .resultBulls-container .resultBulls-tradeItem,
+  .resultBulls-container .resultBulls-playerCard,
+  .resultBulls-container .resultBulls-draftPickCard,
+  .resultBulls-container .resultBulls-tradeSummary,
+  .resultBulls-container .resultBulls-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultBulls-container .resultBulls-playerName,
+  .resultBulls-container .resultBulls-statLabel,
+  .resultBulls-container .resultBulls-sectionTitle,
+  .resultBulls-container .resultBulls-noteTitle,
+  .resultBulls-container .resultBulls-teamName,
+  .resultBulls-container .resultBulls-pickYearRound,
+  .resultBulls-container .resultBulls-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultBulls-container .resultBulls-playerType,
+  .resultBulls-container .resultBulls-pickType,
+  .resultBulls-container .resultBulls-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultBulls-container .resultBulls-draftPickCard {
+    border-left-color: #ce1141; /* Красный цвет Chicago Bulls */
+  }
+
+  .resultBulls-container .resultBulls-pickType {
+    background: rgba(206, 17, 65, 0.15); /* Красный с прозрачностью */
+    border-color: rgba(206, 17, 65, 0.3);
+    color: #ce1141; /* Красный цвет Chicago Bulls */
+  }
+}

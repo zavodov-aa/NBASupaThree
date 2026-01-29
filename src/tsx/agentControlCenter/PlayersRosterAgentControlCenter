@@ -1,0 +1,1448 @@
+// export default PlayersRosterAgentControlCenter;
+import React, { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import "./playersRosterAgentControlCenter.css";
+import logo from "../../img/LogoLeague4kFinal.png";
+
+type Player = {
+  id: number;
+  active_roster: string;
+  position: string;
+  pos_elig: string;
+  age: string | null;
+  year_one: string | null;
+  year_two: string | null;
+  year_three: string | null;
+  year_four: string | null;
+  year_five: string | null;
+  opt: string;
+  exp: string;
+  bird: string;
+  awards: string;
+  team: string;
+  g_league: string;
+  rating: string;
+  rokie: string;
+};
+
+const supabase = createClient(
+  "https://sgbsefgldsmzbvzvpjxt.supabase.co",
+  "sb_publishable_Xl99x3YkZHWgS8l-qBSmCg_gXF_Gpcp"
+);
+
+const NBA_TEAMS = [
+  "Atlanta Hawks",
+  "Boston Celtics",
+  "Brooklyn Nets",
+  "Charlotte Hornets",
+  "Chicago Bulls",
+  "Cleveland Cavaliers",
+  "Dallas Mavericks",
+  "Denver Nuggets",
+  "Detroit Pistons",
+  "Golden State Warriors",
+  "Houston Rockets",
+  "Indiana Pacers",
+  "LA Clippers",
+  "Los Angeles Lakers",
+  "Memphis Grizzlies",
+  "Miami Heat",
+  "Milwaukee Bucks",
+  "Minnesota Timberwolves",
+  "New Orleans Pelicans",
+  "New York Knicks",
+  "Oklahoma City Thunder",
+  "Orlando Magic",
+  "Philadelphia 76ers",
+  "Phoenix Suns",
+  "Portland Trail Blazers",
+  "Sacramento Kings",
+  "San Antonio Spurs",
+  "Toronto Raptors",
+  "Utah Jazz",
+  "Washington Wizards",
+];
+
+const G_LEAGUE_TEAMS = [
+  "Atlanta Hawks",
+  "Boston Celtics",
+  "Brooklyn Nets",
+  "Charlotte Hornets",
+  "Chicago Bulls",
+  "Cleveland Cavaliers",
+  "Dallas Mavericks",
+  "Denver Nuggets",
+  "Detroit Pistons",
+  "Golden State Warriors",
+  "Houston Rockets",
+  "Indiana Pacers",
+  "LA Clippers",
+  "Los Angeles Lakers",
+  "Memphis Grizzlies",
+  "Miami Heat",
+  "Milwaukee Bucks",
+  "Minnesota Timberwolves",
+  "New Orleans Pelicans",
+  "New York Knicks",
+  "Oklahoma City Thunder",
+  "Orlando Magic",
+  "Philadelphia 76ers",
+  "Phoenix Suns",
+  "Portland Trail Blazers",
+  "Sacramento Kings",
+  "San Antonio Spurs",
+  "Toronto Raptors",
+  "Utah Jazz",
+  "Washington Wizards",
+  "None",
+];
+
+// Функция для форматирования числа с пробелами
+const formatNumberWithSpaces = (value: string | number | null): string => {
+  if (value === null || value === undefined || value === "") {
+    return "";
+  }
+
+  const stringValue = value.toString();
+  // Удаляем все нецифровые символы, кроме минуса в начале и точки
+  const cleanValue = stringValue.replace(/[^\d.-]/g, "");
+
+  if (cleanValue === "" || cleanValue === "-") {
+    return cleanValue;
+  }
+
+  // Разделяем целую и десятичную части
+  const parts = cleanValue.split(".");
+  let integerPart = parts[0];
+  const decimalPart = parts.length > 1 ? `.${parts[1]}` : "";
+
+  // Добавляем пробелы как разделители тысяч
+  integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+  const formatted = integerPart + decimalPart;
+  return cleanValue.startsWith("-") ? `-${formatted}` : formatted;
+};
+
+// Функция для преобразования отформатированного числа обратно в число для базы данных
+const parseFormattedNumber = (formattedValue: string): string => {
+  if (
+    formattedValue === null ||
+    formattedValue === undefined ||
+    formattedValue === ""
+  ) {
+    return "";
+  }
+
+  // Удаляем все пробелы (разделители тысяч)
+  const cleanValue = formattedValue.replace(/\s/g, "");
+
+  if (cleanValue === "" || cleanValue === "-") {
+    return cleanValue;
+  }
+
+  return cleanValue;
+};
+
+// Функция для применения маски ввода
+const applyNumberMask = (value: string, previousValue: string): string => {
+  // Удаляем все нецифровые символы, кроме минуса в начале и точки
+  let cleanValue = value.replace(/[^\d.-]/g, "");
+
+  // Ограничиваем минус только первым символом
+  if (cleanValue.includes("-")) {
+    if (cleanValue.charAt(0) !== "-") {
+      cleanValue = cleanValue.replace(/-/g, "");
+    } else if (cleanValue.lastIndexOf("-") > 0) {
+      cleanValue = "-" + cleanValue.replace(/-/g, "");
+    }
+  }
+
+  // Ограничиваем только одну точку для десятичных чисел
+  const dotCount = (cleanValue.match(/\./g) || []).length;
+  if (dotCount > 1) {
+    // Оставляем только первую точку
+    const firstDotIndex = cleanValue.indexOf(".");
+    cleanValue =
+      cleanValue.substring(0, firstDotIndex + 1) +
+      cleanValue.substring(firstDotIndex + 1).replace(/\./g, "");
+  }
+
+  return cleanValue;
+};
+
+// Функция для определения, является ли колонка колонкой с годом
+const isYearColumn = (column: string): boolean => {
+  return [
+    "year_one",
+    "year_two",
+    "year_three",
+    "year_four",
+    "year_five",
+  ].includes(column);
+};
+
+const PlayersRosterAgentControlCenter = () => {
+  const [players, setPlayers] = useState<Player[]>([]);
+  const [filteredPlayers, setFilteredPlayers] = useState<Player[]>([]);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editData, setEditData] = useState<Partial<Player>>({});
+  const [isAddingNew, setIsAddingNew] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+  const [showColumnSelector, setShowColumnSelector] = useState(false);
+
+  const [teamContextMenu, setTeamContextMenu] = useState<{
+    show: boolean;
+    x: number;
+    y: number;
+    playerId: number | null;
+  }>({
+    show: false,
+    x: 0,
+    y: 0,
+    playerId: null,
+  });
+
+  const [teamSearchQuery, setTeamSearchQuery] = useState("");
+
+  const [gLeagueContextMenu, setGLeagueContextMenu] = useState<{
+    show: boolean;
+    x: number;
+    y: number;
+    playerId: number | null;
+  }>({
+    show: false,
+    x: 0,
+    y: 0,
+    playerId: null,
+  });
+
+  const [gLeagueSearchQuery, setGLeagueSearchQuery] = useState("");
+
+  // Проверяем размер экрана
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const initialColumns: (keyof Player)[] = [
+    "id",
+    "active_roster",
+    "position",
+    "team",
+    "age",
+    "year_one",
+    "year_two",
+    "opt",
+    "exp",
+    "rating",
+  ];
+
+  const allColumns: (keyof Player)[] = [
+    "id",
+    "active_roster",
+    "position",
+    "pos_elig",
+    "age",
+    "year_one",
+    "year_two",
+    "year_three",
+    "year_four",
+    "year_five",
+    "opt",
+    "exp",
+    "bird",
+    "awards",
+    "team",
+    "g_league",
+    "rating",
+    "rokie",
+  ];
+
+  const [visibleColumns, setVisibleColumns] = useState<Set<keyof Player>>(
+    new Set(initialColumns)
+  );
+
+  const [newPlayer, setNewPlayer] = useState<Omit<Player, "id">>({
+    active_roster: "",
+    position: "",
+    pos_elig: "",
+    age: "",
+    year_one: "",
+    year_two: "",
+    year_three: "",
+    year_four: "",
+    year_five: "",
+    opt: "",
+    exp: "",
+    bird: "",
+    awards: "",
+    team: "",
+    g_league: "",
+    rating: "",
+    rokie: "",
+  });
+
+  const [filters, setFilters] = useState({
+    active_roster: "",
+    position: "",
+    pos_elig: "",
+    age: "",
+    year_one: "",
+    year_two: "",
+    year_three: "",
+    year_four: "",
+    year_five: "",
+    opt: "",
+    exp: "",
+    bird: "",
+    awards: "",
+    team: "",
+    g_league: "",
+    rating: "",
+    rokie: "",
+  });
+
+  useEffect(() => {
+    const fetchPlayers = async () => {
+      const { data, error } = await supabase
+        .from("Players")
+        .select("*")
+        .order("id");
+
+      if (error) {
+        console.error("Error fetching players:", error);
+        return;
+      }
+
+      setPlayers(data || []);
+      setFilteredPlayers(data || []);
+    };
+
+    fetchPlayers();
+  }, []);
+
+  const safeStringCompare = (
+    value: string | number | null | undefined,
+    filter: string
+  ): boolean => {
+    if (value === null || value === undefined) return false;
+    const stringValue = typeof value === "number" ? value.toString() : value;
+    return stringValue.toLowerCase().includes(filter.toLowerCase());
+  };
+
+  useEffect(() => {
+    let result = players;
+
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value) {
+        result = result.filter((player) =>
+          safeStringCompare(player[key as keyof Player], value)
+        );
+      }
+    });
+
+    setFilteredPlayers(result);
+  }, [filters, players]);
+
+  // Обновленная функция handleMassShift с учетом форматирования
+  const handleMassShift = async () => {
+    if (passwordInput !== "1") {
+      alert("Неверный пароль! Введите цифру '1' для подтверждения.");
+      setPasswordInput("");
+      return;
+    }
+
+    try {
+      const updatedPlayers = players.map((player) => {
+        // Создаем объект для обновления
+        const updatedPlayer = { ...player };
+
+        // Для каждого year поля сначала распарсим, а потом отформатируем для следующего года
+        const yearTwo = parseFormattedNumber(player.year_two || "");
+        const yearThree = parseFormattedNumber(player.year_three || "");
+        const yearFour = parseFormattedNumber(player.year_four || "");
+        const yearFive = parseFormattedNumber(player.year_five || "");
+
+        // Обновляем значения (они будут сохраняться без форматирования)
+        updatedPlayer.year_one = yearTwo;
+        updatedPlayer.year_two = yearThree;
+        updatedPlayer.year_three = yearFour;
+        updatedPlayer.year_four = yearFive;
+        updatedPlayer.year_five = "";
+
+        return updatedPlayer;
+      });
+
+      const { error } = await supabase.from("Players").upsert(updatedPlayers);
+
+      if (error) {
+        console.error("Error mass updating players:", error);
+        alert("Ошибка при массовом обновлении данных!");
+        return;
+      }
+
+      setPlayers(updatedPlayers);
+      setFilteredPlayers(updatedPlayers);
+
+      setShowPasswordModal(false);
+      setPasswordInput("");
+      alert("Массовый перенос данных завершен успешно!");
+    } catch (error) {
+      console.error("Error in mass shift:", error);
+      alert("Произошла ошибка при массовом переносе данных!");
+    }
+  };
+
+  const handleShiftClick = () => {
+    setShowPasswordModal(true);
+    setPasswordInput("");
+  };
+
+  const handleCancelShift = () => {
+    setShowPasswordModal(false);
+    setPasswordInput("");
+  };
+
+  const handleTeamCellClick = (e: React.MouseEvent, playerId: number) => {
+    if (editingId === playerId || isAddingNew) {
+      e.preventDefault();
+      setTeamContextMenu({
+        show: true,
+        x: e.clientX,
+        y: e.clientY,
+        playerId,
+      });
+      setTeamSearchQuery("");
+    }
+  };
+
+  const handleTeamSelect = (team: string) => {
+    if (teamContextMenu.playerId) {
+      if (isAddingNew) {
+        setNewPlayer((prev) => ({ ...prev, team }));
+      } else {
+        setEditData((prev) => ({ ...prev, team }));
+      }
+    }
+    setTeamContextMenu({ show: false, x: 0, y: 0, playerId: null });
+  };
+
+  const handleCloseTeamMenu = () => {
+    setTeamContextMenu({ show: false, x: 0, y: 0, playerId: null });
+  };
+
+  const handleGLeagueCellClick = (e: React.MouseEvent, playerId: number) => {
+    if (editingId === playerId || isAddingNew) {
+      e.preventDefault();
+      setGLeagueContextMenu({
+        show: true,
+        x: e.clientX,
+        y: e.clientY,
+        playerId,
+      });
+      setGLeagueSearchQuery("");
+    }
+  };
+
+  const handleGLeagueSelect = (g_league: string) => {
+    if (gLeagueContextMenu.playerId) {
+      if (isAddingNew) {
+        setNewPlayer((prev) => ({ ...prev, g_league }));
+      } else {
+        setEditData((prev) => ({ ...prev, g_league }));
+      }
+    }
+    setGLeagueContextMenu({ show: false, x: 0, y: 0, playerId: null });
+  };
+
+  const handleCloseGLeagueMenu = () => {
+    setGLeagueContextMenu({ show: false, x: 0, y: 0, playerId: null });
+  };
+
+  const filteredTeams = NBA_TEAMS.filter((team) =>
+    team.toLowerCase().includes(teamSearchQuery.toLowerCase())
+  );
+
+  const filteredGLeagueTeams = G_LEAGUE_TEAMS.filter((team) =>
+    team.toLowerCase().includes(gLeagueSearchQuery.toLowerCase())
+  );
+
+  const handleFilterChange = (field: keyof typeof filters, value: string) => {
+    setFilters((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleResetFilters = () => {
+    setFilters({
+      active_roster: "",
+      position: "",
+      pos_elig: "",
+      age: "",
+      year_one: "",
+      year_two: "",
+      year_three: "",
+      year_four: "",
+      year_five: "",
+      opt: "",
+      exp: "",
+      bird: "",
+      awards: "",
+      team: "",
+      g_league: "",
+      rating: "",
+      rokie: "",
+    });
+  };
+
+  // Обновленная функция handleEdit с форматированием year колонок
+  const handleEdit = (player: Player) => {
+    setEditingId(player.id);
+
+    // Создаем копию данных игрока с отформатированными числами
+    const formattedEditData: Partial<Player> = { ...player };
+
+    // Форматируем year колонки для отображения при редактировании
+    (
+      ["year_one", "year_two", "year_three", "year_four", "year_five"] as const
+    ).forEach((col) => {
+      if (player[col]) {
+        formattedEditData[col] = formatNumberWithSpaces(player[col]);
+      }
+    });
+
+    setEditData(formattedEditData);
+    setIsAddingNew(false);
+  };
+
+  // Обновленная функция handleSave с распарсиванием чисел
+  const handleSave = async () => {
+    if (!editingId) return;
+
+    // Создаем копию editData с распарсенными числами
+    const dataToSave = { ...editData };
+
+    // Преобразуем отформатированные числа обратно в обычные
+    (
+      ["year_one", "year_two", "year_three", "year_four", "year_five"] as const
+    ).forEach((col) => {
+      if (dataToSave[col] !== undefined) {
+        dataToSave[col] = parseFormattedNumber(dataToSave[col] as string);
+      }
+    });
+
+    const { error } = await supabase
+      .from("Players")
+      .update(dataToSave)
+      .eq("id", editingId);
+
+    if (error) {
+      console.error("Error updating player:", error);
+      return;
+    }
+
+    // Обновляем локальное состояние
+    setPlayers(
+      players.map((p) => {
+        if (p.id === editingId) {
+          const updatedPlayer = { ...p, ...dataToSave };
+          return updatedPlayer;
+        }
+        return p;
+      })
+    );
+    setEditingId(null);
+    setEditData({});
+  };
+
+  // Обработчик изменения для editData с форматированием
+  const handleEditDataChange = (field: keyof Player, value: string) => {
+    let formattedValue = value;
+
+    // Если это year колонка, форматируем число
+    if (isYearColumn(field)) {
+      // Применяем маску ввода
+      const maskedValue = applyNumberMask(
+        value,
+        (editData[field] as string) || ""
+      );
+      formattedValue = formatNumberWithSpaces(maskedValue);
+    }
+
+    setEditData({
+      ...editData,
+      [field]: formattedValue,
+    });
+  };
+
+  // Обработчик изменения для newPlayer с форматированием
+  const handleNewPlayerChange = (
+    field: keyof typeof newPlayer,
+    value: string
+  ) => {
+    let formattedValue = value;
+
+    // Если это year колонка, форматируем число
+    if (isYearColumn(field)) {
+      // Применяем маску ввода
+      const maskedValue = applyNumberMask(
+        value,
+        (newPlayer[field] as string) || ""
+      );
+      formattedValue = formatNumberWithSpaces(maskedValue);
+    }
+
+    setNewPlayer({
+      ...newPlayer,
+      [field]: formattedValue,
+    } as Omit<Player, "id">);
+  };
+
+  // Обновленная функция handleAddNew с распарсиванием чисел
+  const handleAddNew = async () => {
+    // Создаем копию newPlayer с распарсенными числами
+    const playerToAdd = { ...newPlayer };
+
+    // Преобразуем отформатированные числа обратно в обычные
+    (
+      ["year_one", "year_two", "year_three", "year_four", "year_five"] as const
+    ).forEach((col) => {
+      if (playerToAdd[col] !== undefined) {
+        playerToAdd[col] = parseFormattedNumber(playerToAdd[col] as string);
+      }
+    });
+
+    const { data, error } = await supabase
+      .from("Players")
+      .insert([playerToAdd])
+      .select();
+
+    if (error) {
+      console.error("Error adding new player:", error);
+      return;
+    }
+
+    if (data && data[0]) {
+      setPlayers([...players, data[0]]);
+    }
+
+    setNewPlayer({
+      active_roster: "",
+      position: "",
+      pos_elig: "",
+      age: "",
+      year_one: "",
+      year_two: "",
+      year_three: "",
+      year_four: "",
+      year_five: "",
+      opt: "",
+      exp: "",
+      bird: "",
+      awards: "",
+      team: "",
+      g_league: "",
+      rating: "",
+      rokie: "",
+    });
+    setIsAddingNew(false);
+  };
+
+  const handleCancel = () => {
+    setEditingId(null);
+    setEditData({});
+  };
+
+  const handleCancelAdd = () => {
+    setIsAddingNew(false);
+    setNewPlayer({
+      active_roster: "",
+      position: "",
+      pos_elig: "",
+      age: "",
+      year_one: "",
+      year_two: "",
+      year_three: "",
+      year_four: "",
+      year_five: "",
+      opt: "",
+      exp: "",
+      bird: "",
+      awards: "",
+      team: "",
+      g_league: "",
+      rating: "",
+      rokie: "",
+    });
+  };
+
+  const toggleColumnVisibility = (column: keyof Player) => {
+    setVisibleColumns((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(column)) {
+        newSet.delete(column);
+      } else {
+        newSet.add(column);
+      }
+      return newSet;
+    });
+  };
+
+  const selectAllColumns = () => {
+    setVisibleColumns(new Set(allColumns));
+  };
+
+  const deselectAllColumns = () => {
+    setVisibleColumns(new Set());
+  };
+
+  const columnGroups: Record<string, (keyof Player)[]> = {
+    "Basic Info": [
+      "id",
+      "active_roster",
+      "position",
+      "pos_elig",
+      "age",
+      "team",
+      "rating",
+      "g_league",
+    ],
+    "Contract Years": [
+      "year_one",
+      "year_two",
+      "year_three",
+      "year_four",
+      "year_five",
+    ],
+    "Player Details": ["opt", "exp", "bird", "awards", "rokie"],
+  };
+
+  const selectGroupColumns = (columns: (keyof Player)[]) => {
+    setVisibleColumns((prev) => {
+      const newSet = new Set(prev);
+      columns.forEach((column) => newSet.add(column));
+      return newSet;
+    });
+  };
+
+  const deselectGroupColumns = (columns: (keyof Player)[]) => {
+    setVisibleColumns((prev) => {
+      const newSet = new Set(prev);
+      columns.forEach((column) => newSet.delete(column));
+      return newSet;
+    });
+  };
+
+  type NewPlayerType = Omit<Player, "id">;
+
+  const getContextMenuStyle = (x: number, y: number) => {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const menuWidth = isMobile ? Math.min(viewportWidth - 20, 280) : 300;
+    const menuHeight = isMobile ? 300 : 400;
+
+    let adjustedX = x;
+    let adjustedY = y;
+
+    if (x + menuWidth > viewportWidth) {
+      adjustedX = viewportWidth - menuWidth - 10;
+    }
+
+    if (y + menuHeight > viewportHeight) {
+      adjustedY = viewportHeight - menuHeight - 10;
+    }
+
+    return {
+      left: adjustedX,
+      top: adjustedY,
+      width: menuWidth,
+    };
+  };
+
+  return (
+    <div className="playersRosterAgentControlCenter-container">
+      {showPasswordModal && (
+        <div className="playersRosterAgentControlCenter-modalOverlay">
+          <div className="playersRosterAgentControlCenter-modalContent">
+            <div className="playersRosterAgentControlCenter-modalTitle">
+              {isMobile
+                ? "Confirm Mass Transfer"
+                : "Подтверждение массового переноса данных"}
+            </div>
+            <p className="playersRosterAgentControlCenter-modalDescription">
+              {isMobile ? (
+                <>
+                  Enter password "1" to confirm MASS contract data transfer for
+                  ALL players.
+                  <br />
+                  <br />
+                  <strong>This action cannot be undone!</strong>
+                </>
+              ) : (
+                <>
+                  Введите пароль для подтверждения МАССОВОГО переноса данных
+                  контракта для ВСЕХ игроков.
+                  <br />
+                  <br />
+                  <strong>Будет выполнено:</strong>
+                  <br />
+                  • YEAR TWO → YEAR ONE
+                  <br />
+                  • YEAR THREE → YEAR TWO
+                  <br />
+                  • YEAR FOUR → YEAR THREE
+                  <br />
+                  • YEAR FIVE → YEAR FOUR
+                  <br />
+                  • YEAR FIVE станет пустым
+                  <br />
+                  <br />
+                  <strong className="playersRosterAgentControlCenter-warningText">
+                    ВНИМАНИЕ: Это действие затронет всех игроков и не может быть
+                    отменено!
+                  </strong>
+                </>
+              )}
+            </p>
+            <input
+              type="password"
+              value={passwordInput}
+              onChange={(e) => setPasswordInput(e.target.value)}
+              placeholder={isMobile ? "Enter password..." : "Введите пароль..."}
+              className="playersRosterAgentControlCenter-modalInput"
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  handleMassShift();
+                }
+              }}
+            />
+            <div className="playersRosterAgentControlCenter-modalButtons">
+              <button
+                onClick={handleCancelShift}
+                className="playersRosterAgentControlCenter-button"
+              >
+                {isMobile ? "Cancel" : "Отмена"}
+              </button>
+              <button
+                onClick={handleMassShift}
+                className="playersRosterAgentControlCenter-button playersRosterAgentControlCenter-primaryButton"
+              >
+                {isMobile ? "Confirm" : "Подтвердить массовый перенос"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {teamContextMenu.show && (
+        <div
+          style={getContextMenuStyle(teamContextMenu.x, teamContextMenu.y)}
+          className="playersRosterAgentControlCenter-contextMenu"
+          onClick={handleCloseTeamMenu}
+        >
+          <div
+            className="playersRosterAgentControlCenter-contextMenuContent"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="playersRosterAgentControlCenter-contextMenuHeader">
+              <input
+                type="text"
+                value={teamSearchQuery}
+                onChange={(e) => setTeamSearchQuery(e.target.value)}
+                placeholder="Search NBA teams..."
+                className="playersRosterAgentControlCenter-contextSearchInput"
+                autoFocus
+              />
+            </div>
+            <div className="playersRosterAgentControlCenter-contextMenuList">
+              {filteredTeams.length > 0 ? (
+                filteredTeams.map((team) => (
+                  <div
+                    key={team}
+                    className="playersRosterAgentControlCenter-contextMenuItem"
+                    onClick={() => handleTeamSelect(team)}
+                  >
+                    {team}
+                  </div>
+                ))
+              ) : (
+                <div className="playersRosterAgentControlCenter-contextMenuItem playersRosterAgentControlCenter-noResults">
+                  No teams found
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {gLeagueContextMenu.show && (
+        <div
+          style={getContextMenuStyle(
+            gLeagueContextMenu.x,
+            gLeagueContextMenu.y
+          )}
+          className="playersRosterAgentControlCenter-contextMenu"
+          onClick={handleCloseGLeagueMenu}
+        >
+          <div
+            className="playersRosterAgentControlCenter-contextMenuContent"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="playersRosterAgentControlCenter-contextMenuHeader">
+              <input
+                type="text"
+                value={gLeagueSearchQuery}
+                onChange={(e) => setGLeagueSearchQuery(e.target.value)}
+                placeholder="Search G League teams..."
+                className="playersRosterAgentControlCenter-contextSearchInput"
+                autoFocus
+              />
+            </div>
+            <div className="playersRosterAgentControlCenter-contextMenuList">
+              {filteredGLeagueTeams.length > 0 ? (
+                filteredGLeagueTeams.map((team) => (
+                  <div
+                    key={team}
+                    className="playersRosterAgentControlCenter-contextMenuItem"
+                    onClick={() => handleGLeagueSelect(team)}
+                  >
+                    {team}
+                  </div>
+                ))
+              ) : (
+                <div className="playersRosterAgentControlCenter-contextMenuItem playersRosterAgentControlCenter-noResults">
+                  No teams found
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Мобильный заголовок */}
+      {isMobile && (
+        <div className="playersRosterAgentControlCenter-mobile-header">
+          <div className="playersRosterAgentControlCenter-mobile-header-top">
+            <a
+              href="/"
+              className="playersRosterAgentControlCenter-mobile-logo-link"
+            >
+              <img
+                className="playersRosterAgentControlCenter-mobile-logo"
+                src={logo}
+                alt="League Logo"
+              />
+            </a>
+            <button
+              className="playersRosterAgentControlCenter-mobile-menu-button"
+              onClick={() => setShowColumnSelector(!showColumnSelector)}
+            >
+              {showColumnSelector ? "✕" : "☰"}
+            </button>
+          </div>
+          <h1 className="playersRosterAgentControlCenter-mobile-title">
+            PLAYERS
+          </h1>
+          <div className="playersRosterAgentControlCenter-mobile-status">
+            {filteredPlayers.length} PLAYERS • {visibleColumns.size} COLUMNS
+          </div>
+          <div className="playersRosterAgentControlCenter-mobile-nav">
+            <a
+              className="playersRosterAgentControlCenter-mobile-nav-link"
+              href="/headInfoAgentControlCenter"
+            >
+              TEAMS
+            </a>
+            <a
+              className="playersRosterAgentControlCenter-mobile-nav-link"
+              href="/deadCapRosterAgentControl"
+            >
+              DEAD CAP
+            </a>
+            <a
+              className="playersRosterAgentControlCenter-mobile-nav-link"
+              href="/logs"
+            >
+              LOGS CONSOLE
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* Десктопный заголовок */}
+      {!isMobile && (
+        <div className="playersRosterAgentControlCenter-header">
+          <a href="/">
+            <img className="logo" src={logo} alt="League Logo" />
+          </a>
+          <a
+            className="HeadInfoAgent-A-Href"
+            href="/headInfoAgentControlCenter"
+          >
+            <h3>TEAM MANAGEMENT CONSOLE</h3>
+          </a>
+          <h1 className="playersRosterAgentControlCenter-title">
+            PLAYER MANAGEMENT CONSOLE
+          </h1>
+          <a className="HeadInfoAgent-A-Href" href="/deadCapRosterAgentControl">
+            <h3>DEAD CAP MANAGEMENT CONSOLE</h3>
+          </a>
+          <a className="HeadInfoAgent-A-Href" href="/logs">
+            LOGS CONSOLE
+          </a>
+          <div className="playersRosterAgentControlCenter-statusBadge">
+            {filteredPlayers.length} PLAYERS • {visibleColumns.size} COLUMNS
+          </div>
+        </div>
+      )}
+
+      {/* Мобильный контроллер представления */}
+      {isMobile && (
+        <div className="playersRosterAgentControlCenter-mobile-view-controls">
+          <button
+            className="playersRosterAgentControlCenter-view-button"
+            onClick={() => setShowFilters(!showFilters)}
+          >
+            {showFilters ? "Hide Filters" : "Show Filters"}
+          </button>
+          <button
+            className="playersRosterAgentControlCenter-view-button playersRosterAgentControlCenter-successButton"
+            onClick={() => setIsAddingNew(true)}
+          >
+            + Add
+          </button>
+        </div>
+      )}
+
+      {/* Column Selector */}
+      {(showColumnSelector || !isMobile) && (
+        <div className="playersRosterAgentControlCenter-columnSelector">
+          <div className="playersRosterAgentControlCenter-columnSelectorHeader">
+            <h3 className="playersRosterAgentControlCenter-columnSelectorTitle">
+              COLUMN VISIBILITY
+            </h3>
+            {!isMobile && (
+              <div className="playersRosterAgentControlCenter-massSelectionButtons">
+                <button
+                  onClick={selectAllColumns}
+                  className="playersRosterAgentControlCenter-smallButton"
+                >
+                  Select All
+                </button>
+                <button
+                  onClick={deselectAllColumns}
+                  className="playersRosterAgentControlCenter-smallButton"
+                >
+                  Deselect All
+                </button>
+              </div>
+            )}
+          </div>
+
+          {isMobile ? (
+            <div className="playersRosterAgentControlCenter-mobile-column-groups">
+              {/* Кнопки выбора всех/удаления всех для мобильной версии */}
+              <div className="playersRosterAgentControlCenter-mobile-mass-selection">
+                <button
+                  onClick={selectAllColumns}
+                  className="playersRosterAgentControlCenter-button playersRosterAgentControlCenter-successButton"
+                >
+                  Select All Columns
+                </button>
+                <button
+                  onClick={deselectAllColumns}
+                  className="playersRosterAgentControlCenter-button"
+                >
+                  Deselect All Columns
+                </button>
+              </div>
+              {Object.entries(columnGroups).map(([groupName, columns]) => (
+                <div
+                  key={groupName}
+                  className="playersRosterAgentControlCenter-mobile-column-group"
+                >
+                  <div className="playersRosterAgentControlCenter-mobile-column-group-title">
+                    {groupName} ({columns.length})
+                  </div>
+                  <div className="playersRosterAgentControlCenter-mobile-column-checkboxes">
+                    {columns.map((column) => (
+                      <label
+                        key={column}
+                        className="playersRosterAgentControlCenter-mobile-checkbox-label"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={visibleColumns.has(column)}
+                          onChange={() => toggleColumnVisibility(column)}
+                          className="playersRosterAgentControlCenter-mobile-checkbox-input"
+                        />
+                        <span className="playersRosterAgentControlCenter-mobile-checkbox-text">
+                          {column.replace(/_/g, " ")}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            Object.entries(columnGroups).map(([groupName, columns]) => (
+              <div
+                key={groupName}
+                className="playersRosterAgentControlCenter-columnGroup"
+              >
+                <div className="playersRosterAgentControlCenter-columnGroupTitle">
+                  <span>
+                    {groupName} ({columns.length})
+                  </span>
+                  <div>
+                    <button
+                      onClick={() => selectGroupColumns(columns)}
+                      className="playersRosterAgentControlCenter-smallButton"
+                    >
+                      Select All
+                    </button>
+                    <button
+                      onClick={() => deselectGroupColumns(columns)}
+                      className="playersRosterAgentControlCenter-smallButton"
+                    >
+                      Deselect All
+                    </button>
+                  </div>
+                </div>
+                <div className="playersRosterAgentControlCenter-columnCheckboxes">
+                  {columns.map((column) => (
+                    <label
+                      key={column}
+                      className="playersRosterAgentControlCenter-checkboxLabel"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={visibleColumns.has(column)}
+                        onChange={() => toggleColumnVisibility(column)}
+                        className="playersRosterAgentControlCenter-checkbox"
+                      />
+                      {column.replace(/_/g, " ")}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      )}
+
+      {/* Кнопка добавления для десктопа */}
+      {!isMobile && (
+        <div className="playersRosterAgentControlCenter-actionButtons">
+          <button
+            onClick={() => setIsAddingNew(true)}
+            className="playersRosterAgentControlCenter-button playersRosterAgentControlCenter-successButton"
+          >
+            + ADD NEW PLAYER
+          </button>
+        </div>
+      )}
+
+      {/* Filters Panel */}
+      {(showFilters || !isMobile) && (
+        <div className="playersRosterAgentControlCenter-controlPanel">
+          <div
+            className="playersRosterAgentControlCenter-panelHeader"
+            onClick={() => setShowFilters(!showFilters)}
+          >
+            <div className="playersRosterAgentControlCenter-panelHeaderText">
+              FILTER CONTROLS
+            </div>
+            <div className="playersRosterAgentControlCenter-panelHeaderIcon">
+              {showFilters ? "▲" : "▼"}
+            </div>
+          </div>
+
+          {showFilters && (
+            <>
+              <div className="playersRosterAgentControlCenter-panelContent">
+                {Object.keys(filters)
+                  .slice(0, isMobile ? 4 : Object.keys(filters).length)
+                  .map((field) => (
+                    <div
+                      key={field}
+                      className="playersRosterAgentControlCenter-filterGroup"
+                    >
+                      <label className="playersRosterAgentControlCenter-label">
+                        {field.replace(/_/g, " ")}
+                      </label>
+                      <input
+                        type="text"
+                        value={filters[field as keyof typeof filters]}
+                        onChange={(e) =>
+                          handleFilterChange(
+                            field as keyof typeof filters,
+                            e.target.value
+                          )
+                        }
+                        placeholder={`Filter ${field}...`}
+                        className="playersRosterAgentControlCenter-input"
+                      />
+                    </div>
+                  ))}
+                {isMobile && Object.keys(filters).length > 4 && (
+                  <div className="playersRosterAgentControlCenter-mobile-more-filters">
+                    <button
+                      className="playersRosterAgentControlCenter-button"
+                      onClick={() => {
+                        /* Можно добавить модалку с полными фильтрами */
+                      }}
+                    >
+                      Show All Filters
+                    </button>
+                  </div>
+                )}
+              </div>
+              <div className="playersRosterAgentControlCenter-buttonGroup">
+                <button
+                  onClick={handleResetFilters}
+                  className="playersRosterAgentControlCenter-button"
+                >
+                  Reset Filters
+                </button>
+                <div className="playersRosterAgentControlCenter-filterStatus">
+                  Displaying {filteredPlayers.length} of {players.length}{" "}
+                  records
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* Data Table - всегда показывается на мобильных */}
+      <div className="playersRosterAgentControlCenter-tableContainer">
+        <table className="playersRosterAgentControlCenter-table">
+          <thead>
+            <tr className="playersRosterAgentControlCenter-tableHeader">
+              {Array.from(visibleColumns).map((column) => (
+                <th
+                  key={column}
+                  className="playersRosterAgentControlCenter-tableHeaderCell"
+                >
+                  {column.replace(/_/g, " ").toUpperCase()}
+                  {column === "year_two" && (
+                    <button
+                      onClick={handleShiftClick}
+                      className="playersRosterAgentControlCenter-shiftButton"
+                      title={
+                        isMobile
+                          ? "Mass contract transfer"
+                          : "Массовый перенос данных контрактов для всех игроков"
+                      }
+                    >
+                      {isMobile ? "Shift" : "Перенести"}
+                    </button>
+                  )}
+                </th>
+              ))}
+              <th className="playersRosterAgentControlCenter-tableHeaderCell">
+                ACTIONS
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {isAddingNew && (
+              <tr className="playersRosterAgentControlCenter-newRow">
+                <td className="playersRosterAgentControlCenter-tableCell">
+                  <div className="playersRosterAgentControlCenter-newPlayerId">
+                    NEW
+                  </div>
+                </td>
+                {Array.from(visibleColumns)
+                  .filter((col) => col !== "id")
+                  .map((column) => (
+                    <td
+                      key={column}
+                      className="playersRosterAgentControlCenter-tableCell"
+                    >
+                      {column === "team" ? (
+                        <div
+                          className="playersRosterAgentControlCenter-teamCell playersRosterAgentControlCenter-editableCell"
+                          onClick={(e) => handleTeamCellClick(e, 0)}
+                        >
+                          {newPlayer.team ||
+                            (isMobile ? "Select team" : "Click to select team")}
+                        </div>
+                      ) : column === "g_league" ? (
+                        <div
+                          className="playersRosterAgentControlCenter-gLeagueCell playersRosterAgentControlCenter-editableCell"
+                          onClick={(e) => handleGLeagueCellClick(e, 0)}
+                        >
+                          {newPlayer.g_league ||
+                            (isMobile
+                              ? "Select G League"
+                              : "Click to select G League team")}
+                        </div>
+                      ) : (
+                        <input
+                          value={newPlayer[column as keyof NewPlayerType] || ""}
+                          onChange={(e) =>
+                            handleNewPlayerChange(
+                              column as keyof NewPlayerType,
+                              e.target.value
+                            )
+                          }
+                          className="playersRosterAgentControlCenter-editInput"
+                          placeholder={column.replace(/_/g, " ")}
+                          style={
+                            isMobile ? { fontSize: "11px", padding: "4px" } : {}
+                          }
+                        />
+                      )}
+                    </td>
+                  ))}
+                <td className="playersRosterAgentControlCenter-tableCell">
+                  <div className="playersRosterAgentControlCenter-actionButtonsContainer">
+                    <button
+                      onClick={handleAddNew}
+                      className="playersRosterAgentControlCenter-button playersRosterAgentControlCenter-successButton"
+                      style={
+                        isMobile ? { padding: "6px 8px", fontSize: "11px" } : {}
+                      }
+                    >
+                      Save
+                    </button>
+                    <button
+                      onClick={handleCancelAdd}
+                      className="playersRosterAgentControlCenter-button"
+                      style={
+                        isMobile ? { padding: "6px 8px", fontSize: "11px" } : {}
+                      }
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            )}
+
+            {filteredPlayers.map((player) => (
+              <tr
+                key={player.id}
+                className="playersRosterAgentControlCenter-tableRow"
+              >
+                {Array.from(visibleColumns).map((column) => {
+                  const value = player[column] || "—";
+
+                  return (
+                    <td
+                      key={column}
+                      className="playersRosterAgentControlCenter-tableCell"
+                    >
+                      {editingId === player.id ? (
+                        column === "team" ? (
+                          <div
+                            className="playersRosterAgentControlCenter-teamCell playersRosterAgentControlCenter-editableCell"
+                            onClick={(e) => handleTeamCellClick(e, player.id)}
+                          >
+                            {editData.team ||
+                              (isMobile
+                                ? "Select team"
+                                : "Click to select team")}
+                          </div>
+                        ) : column === "g_league" ? (
+                          <div
+                            className="playersRosterAgentControlCenter-gLeagueCell playersRosterAgentControlCenter-editableCell"
+                            onClick={(e) =>
+                              handleGLeagueCellClick(e, player.id)
+                            }
+                          >
+                            {editData.g_league ||
+                              (isMobile
+                                ? "Select G League"
+                                : "Click to select G League team")}
+                          </div>
+                        ) : (
+                          <input
+                            value={editData[column] || ""}
+                            onChange={(e) =>
+                              handleEditDataChange(column, e.target.value)
+                            }
+                            className="playersRosterAgentControlCenter-editInput"
+                            style={
+                              isMobile
+                                ? { fontSize: "11px", padding: "4px" }
+                                : {}
+                            }
+                          />
+                        )
+                      ) : (
+                        <div className="playersRosterAgentControlCenter-cellValue">
+                          {isYearColumn(column)
+                            ? formatNumberWithSpaces(value)
+                            : value}
+                        </div>
+                      )}
+                    </td>
+                  );
+                })}
+                <td className="playersRosterAgentControlCenter-tableCell">
+                  {editingId === player.id ? (
+                    <div className="playersRosterAgentControlCenter-actionButtonsContainer">
+                      <button
+                        onClick={handleSave}
+                        className="playersRosterAgentControlCenter-button playersRosterAgentControlCenter-primaryButton"
+                        style={
+                          isMobile
+                            ? { padding: "6px 8px", fontSize: "11px" }
+                            : {}
+                        }
+                      >
+                        Save
+                      </button>
+                      <button
+                        onClick={handleCancel}
+                        className="playersRosterAgentControlCenter-button"
+                        style={
+                          isMobile
+                            ? { padding: "6px 8px", fontSize: "11px" }
+                            : {}
+                        }
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => handleEdit(player)}
+                      className="playersRosterAgentControlCenter-button"
+                      style={
+                        isMobile ? { padding: "6px 8px", fontSize: "11px" } : {}
+                      }
+                    >
+                      Edit
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {filteredPlayers.length === 0 && !isAddingNew && (
+        <div className="playersRosterAgentControlCenter-emptyState">
+          NO PLAYERS FOUND MATCHING CURRENT FILTERS
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default PlayersRosterAgentControlCenter;

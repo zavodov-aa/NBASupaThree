@@ -1,0 +1,121 @@
+.grizzlies-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-grizzlies {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-grizzlies {
+  color: #5d76a9; /* Memphis Grizzlies синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-grizzlies {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-grizzlies {
+  overflow-x: auto;
+}
+
+.players-table-grizzlies {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-grizzlies {
+  background: black;
+}
+
+.table-th-grizzlies {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-grizzlies:last-child {
+}
+
+.table-body-grizzlies {
+  background: white;
+}
+
+.tables-row-grizzlies {
+}
+
+.row-even-grizzlies {
+  background: black;
+}
+
+.row-odd-grizzlies {
+}
+
+.table-tdw-grizzlies {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-td-grizzlies {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-grizzlies {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-grizzlies {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-grizzlies {
+  color: #5d76a9; /* Memphis Grizzlies синий */
+  font-weight: bold;
+}
+
+.roster-badge-grizzlies {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-grizzlies {
+  color: white;
+}
+
+.badge-inactive-grizzlies {
+  color: black;
+}
+
+.loading-text-grizzlies {
+  text-align: center;
+  color: #5d76a9; /* Memphis Grizzlies синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-grizzlies {
+  background-color: #12173f; /* Memphis Grizzlies темно-синий */
+  color: white;
+}
+
+.tables-row-grizzlies {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

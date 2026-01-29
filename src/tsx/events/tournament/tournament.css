@@ -1,0 +1,1223 @@
+:root {
+  --west: #1d428a;
+  --west-light: #2a5bba;
+  --east: #c9082a;
+  --east-light: #e63946;
+  --yellow-light: #fff8e1;
+  --yellow: #ffeaa7;
+  --orange: #f39c12;
+  --orange-dark: #e67e22;
+  --gray-light: #f8f9fa;
+  --gray: #dee2e6;
+  --gray-dark: #6c757d;
+  --white: #fff;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* Основные контейнеры */
+.tournament-wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+}
+.tournament-container {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+.tournament-container::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+}
+.tournament-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+  margin: 0 40px;
+}
+.tournament-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--west) 0%, var(--east) 100%);
+  border-radius: 6px;
+}
+.tournament-content {
+  min-width: 1800px;
+  width: max-content;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Заголовок с логотипом */
+.tournament-header {
+  margin-bottom: 40px;
+  padding: 0 40px;
+  width: 100%;
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.tournament-logo {
+  height: auto;
+  object-fit: contain;
+}
+
+.header-title {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.header-title h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #ccc;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+/* Кнопки сохранения */
+.save-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.save-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.save-button {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.save-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.save-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.save-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.saved-indicator {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #28a745;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.saved-indicator:before {
+  content: "✓";
+  font-size: 16px;
+}
+
+/* Сетка */
+.playoff-bracket {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  min-height: 1000px;
+  position: relative;
+  width: 1720px;
+  margin: 0 auto;
+}
+
+/* Конференции */
+.conference {
+  flex: 0 0 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 80px;
+}
+.conference h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px 25px;
+  border-radius: var(--radius);
+  color: var(--white);
+  margin-bottom: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.conference.west h2 {
+  background: linear-gradient(135deg, var(--west) 0%, var(--west-light) 100%);
+  border: 2px solid #163265;
+}
+.conference.east h2 {
+  background: linear-gradient(135deg, var(--east) 0%, var(--east-light) 100%);
+  border: 2px solid #a00621;
+}
+
+/* Брекет */
+.bracket {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+/* Раунды */
+.round {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+.round h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  text-align: center;
+  background: var(--gray-light);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #e9ecef;
+}
+.round-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.round-1 .round-content {
+  justify-content: space-between;
+  height: 100%;
+  padding: 20px 0;
+}
+.round-2 .round-content {
+  justify-content: space-around;
+  padding: 80px 0;
+}
+.round-3 .round-content {
+  justify-content: center;
+  padding: 160px 0;
+}
+.round-4 .round-content {
+  justify-content: flex-end;
+  padding-bottom: 40px;
+}
+
+/* Матчи */
+.matchup {
+  background: var(--white);
+  border: 2px solid #e0e0e0;
+  border-radius: var(--radius);
+  padding: 15px;
+  width: auto;
+  min-width: 320px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+.matchup:hover {
+  border-color: #007bff;
+  transform: translateY(-2px);
+}
+.matchup-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+}
+
+/* Слоты команд */
+.team-slot-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.team-slot {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 90px;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.team-slot:hover {
+  background: var(--gray-light);
+  border-color: #adb5bd;
+}
+.team-slot.active {
+  background: #e3f2fd;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+.finals-slot {
+  min-width: 200px;
+  min-height: 110px;
+}
+
+.team-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+}
+.team-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: var(--white);
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid var(--gray);
+}
+.finals-logo {
+  width: 80px;
+  height: 80px;
+}
+.placeholder {
+  color: var(--gray-dark);
+  font-size: 13px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Управление счетом */
+.matchup-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.score-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.score-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--west) 0%, var(--east) 100%);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.score-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+.score-btn:disabled {
+  background: #adb5bd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.score-btn.increment {
+  background: linear-gradient(135deg, var(--west) 0%, var(--west-light) 100%);
+}
+.score-btn.decrement {
+  background: linear-gradient(135deg, var(--east) 0%, var(--east-light) 100%);
+}
+
+.score-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  background: var(--gray-light);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 2px solid var(--gray);
+  min-width: 80px;
+  text-align: center;
+}
+.finals-score {
+  font-size: 20px;
+  padding: 8px 16px;
+  border: 2px solid var(--orange);
+  background: var(--yellow-light);
+}
+
+.score-team {
+  min-width: 24px;
+  text-align: center;
+}
+.score-separator {
+  color: var(--gray-dark);
+}
+.score-label {
+  font-size: 11px;
+  color: var(--gray-dark);
+  text-align: center;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Финалы */
+.finals {
+  flex: 0 0 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+}
+.finals-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.finals h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--orange-dark);
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(
+    135deg,
+    var(--yellow-light) 0%,
+    var(--yellow) 100%
+  );
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: 3px solid var(--orange);
+  width: 100%;
+}
+.finals-matchup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--yellow-light) 0%,
+    var(--yellow) 100%
+  );
+  border: 3px solid var(--orange);
+  border-radius: 12px;
+  padding: 25px;
+  width: 100%;
+  min-height: 350px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(243, 156, 18, 0.15);
+}
+
+.finals-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+}
+
+.finals-matchup .vs {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--orange-dark);
+  text-align: center;
+  padding: 10px 0;
+  text-transform: uppercase;
+}
+.nba-champion {
+  text-align: center;
+  margin-top: 20px;
+}
+.nba-champion .trophy {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+.nba-champion .champion-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--orange-dark);
+  background: var(--yellow-light);
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid var(--orange);
+  text-transform: uppercase;
+}
+
+/* Чемпион конференции */
+.champion-slot {
+  background: linear-gradient(135deg, var(--yellow-light) 0%, #ffecb3 100%);
+  border: 3px solid #ffc107;
+  border-radius: 10px;
+  padding: 25px;
+  width: auto;
+  min-width: 280px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(255, 193, 7, 0.2);
+}
+.champion-slot .team-slot {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+.champion-slot .team-logo {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #ffc107;
+}
+.champion-slot .badge {
+  background: #ffc107;
+  color: #212529;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+/* Выпадающий список */
+.dropdown-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+.dropdown-fixed {
+  position: fixed !important;
+  z-index: 10000 !important;
+  background: var(--white) !important;
+  border: 2px solid var(--gray) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  max-height: min(400px, 70vh) !important;
+  overflow-y: auto !important;
+  padding: 12px !important;
+  pointer-events: auto !important;
+}
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gray);
+}
+.dropdown-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+.dropdown-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--gray-dark);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+.dropdown-close:hover {
+  background: var(--gray-light);
+  color: #333;
+}
+.dropdown-fixed .dropdown-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 10px !important;
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  aspect-ratio: 1;
+}
+.dropdown-item:hover {
+  background: var(--gray-light);
+  transform: scale(1.05);
+}
+.item-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 2px solid var(--gray);
+  padding: 6px;
+  background: var(--white);
+}
+
+/* Мобильная навигация */
+.mobile-nav {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mobile-nav-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: var(--white);
+  border: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.mobile-nav-button:hover {
+  transform: scale(0.95);
+  opacity: 1;
+}
+.mobile-nav-button.up {
+  background: linear-gradient(135deg, var(--west) 0%, var(--west-light) 100%);
+}
+.mobile-nav-button.down {
+  background: linear-gradient(135deg, var(--east) 0%, var(--east-light) 100%);
+}
+
+.loading {
+  text-align: center;
+  padding: 100px 20px;
+  color: #666;
+  font-size: 18px;
+  width: 100%;
+}
+
+/* Настройки логотипа для разных разрешений */
+@media (min-width: 1920px) {
+  .tournament-logo {
+    width: 250px;
+    max-height: 120px;
+  }
+  .header-content {
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1919px) {
+  .tournament-logo {
+    width: 200px;
+    max-height: 100px;
+  }
+  .header-content {
+    gap: 30px;
+  }
+  .header-title h1 {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .tournament-logo {
+    width: 180px;
+    max-height: 90px;
+  }
+  .header-content {
+    gap: 25px;
+  }
+  .header-title h1 {
+    font-size: 28px;
+  }
+}
+
+/* Адаптивность контейнера заголовка */
+@media (min-width: 768px) {
+  .header-content {
+    justify-content: space-between;
+  }
+
+  .header-title {
+    text-align: right;
+  }
+
+  .header-title h1 {
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+  }
+}
+
+/* Медиа-запросы для остальных элементов */
+@media (max-width: 1599px) {
+  .tournament-content {
+    min-width: 1500px;
+    padding: 0 30px;
+  }
+  .playoff-bracket {
+    width: 1440px;
+  }
+  .tournament-header {
+    max-width: 1500px;
+    padding: 0 30px;
+  }
+  .conference {
+    flex: 0 0 500px;
+  }
+  .finals {
+    flex: 0 0 350px;
+    padding: 0 30px;
+  }
+  .team-slot {
+    min-width: 140px;
+    min-height: 85px;
+    padding: 12px;
+  }
+  .finals-slot {
+    min-width: 180px;
+    min-height: 100px;
+  }
+  .team-logo {
+    width: 50px;
+    height: 50px;
+  }
+  .finals-logo {
+    width: 65px;
+    height: 65px;
+  }
+  .matchup {
+    height: 170px;
+  }
+  .champion-slot {
+    height: 180px;
+  }
+  .champion-slot .team-logo {
+    width: 65px;
+    height: 65px;
+  }
+  .item-logo {
+    padding: 5px;
+    border: 2px solid var(--gray);
+  }
+}
+
+@media (max-width: 1199px) {
+  .tournament-content {
+    min-width: 1200px;
+    padding: 0 20px;
+  }
+  .playoff-bracket {
+    width: 1160px;
+    min-height: 900px;
+  }
+  .tournament-header {
+    max-width: 1200px;
+    padding: 0 20px;
+  }
+  .conference {
+    flex: 0 0 450px;
+    padding-top: 70px;
+  }
+  .conference h2 {
+    font-size: 20px;
+    padding: 12px 20px;
+  }
+  .finals {
+    flex: 0 0 300px;
+    padding: 0 20px;
+  }
+  .finals h2 {
+    font-size: 22px;
+    padding: 12px 20px;
+  }
+  .team-slot {
+    min-width: 120px;
+    min-height: 80px;
+    padding: 10px;
+  }
+  .finals-slot {
+    min-width: 160px;
+    min-height: 95px;
+  }
+  .team-logo {
+    width: 45px;
+    height: 45px;
+  }
+  .finals-logo {
+    width: 55px;
+    height: 55px;
+  }
+  .matchup {
+    height: 160px;
+  }
+  .champion-slot {
+    height: 160px;
+  }
+  .champion-slot .team-logo {
+    width: 55px;
+    height: 55px;
+  }
+  .score-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+  .score-display {
+    font-size: 16px;
+    min-width: 70px;
+  }
+  .finals-score {
+    font-size: 18px;
+  }
+  .item-logo {
+    padding: 4px;
+    border: 1px solid var(--gray);
+  }
+}
+
+/* Мобильная версия */
+@media (max-width: 767px) {
+  .tournament-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 10px 0;
+    height: auto;
+  }
+  .tournament-content {
+    min-width: 100%;
+    width: 100%;
+    padding: 0 15px;
+  }
+  .tournament-header {
+    padding: 0 15px;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .tournament-logo {
+    width: 180px;
+    max-height: 80px;
+  }
+
+  .header-title {
+    min-width: 100%;
+  }
+
+  .header-title h1 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+  }
+
+  .save-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .save-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .saved-indicator {
+    font-size: 12px;
+  }
+
+  .playoff-bracket {
+    width: 100%;
+    min-height: auto;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .conference {
+    flex: 0 0 auto;
+    width: 100%;
+    padding-top: 50px;
+    margin-bottom: 20px;
+  }
+  .conference h2 {
+    font-size: 18px;
+    padding: 12px 15px;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(5px);
+  }
+  .bracket.mobile-bracket {
+    flex-direction: column;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+  }
+  .bracket.mobile-bracket .round {
+    border-bottom: 1px solid #eee;
+    padding: 0;
+    cursor: pointer;
+  }
+  .bracket.mobile-bracket .round:last-child {
+    border-bottom: none;
+  }
+  .bracket.mobile-bracket .round h3 {
+    background: var(--gray-light);
+    margin: 0;
+    padding: 15px;
+    font-size: 14px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+  }
+  .bracket.mobile-bracket .round.expanded h3 {
+    background: #e9ecef;
+  }
+  .expand-icon {
+    font-size: 16px;
+    font-weight: bold;
+    color: #495057;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e9ecef;
+  }
+  .bracket.mobile-bracket .round-content {
+    display: none;
+    padding: 15px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .bracket.mobile-bracket .round.expanded .round-content {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+  .matchup {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    flex-direction: column;
+    padding: 15px;
+    min-height: 200px;
+  }
+  .matchup-teams {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .team-slot-container {
+    flex-direction: row;
+    width: 100%;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .team-slot {
+    width: 100%;
+    height: auto;
+    min-height: 75px;
+    padding: 12px;
+  }
+  .team-logo {
+    width: 50px;
+    height: 50px;
+  }
+  .finals-logo {
+    width: 60px;
+    height: 60px;
+  }
+  .champion-slot .team-logo {
+    width: 60px;
+    height: 60px;
+  }
+  .placeholder {
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .matchup-controls {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .score-controls {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .score-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+  .score-display {
+    font-size: 18px;
+    min-width: 60px;
+  }
+  .finals {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0;
+    margin: 20px 0;
+  }
+  .finals-container {
+    background: linear-gradient(
+      135deg,
+      var(--yellow-light) 0%,
+      var(--yellow) 100%
+    );
+    border-radius: 12px;
+    padding: 20px 15px;
+    border: 2px solid var(--orange);
+  }
+  .finals h2 {
+    font-size: 18px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+  }
+  .finals-matchup {
+    padding: 15px;
+    min-height: auto;
+    gap: 15px;
+    min-height: 300px;
+  }
+  .finals-matchup .vs {
+    font-size: 16px;
+  }
+  .finals-controls {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .mobile-nav-button {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    bottom: 15px;
+    right: 15px;
+  }
+  .dropdown-overlay {
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(2px);
+  }
+  .dropdown-fixed {
+    width: min(320px, 90vw) !important;
+    max-height: min(400px, 70vh) !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  .dropdown-fixed .dropdown-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .item-logo {
+    padding: 5px;
+    border: 1px solid var(--gray);
+  }
+}
+
+@media (min-width: 768px) {
+  .dropdown-fixed {
+    width: 280px !important;
+    max-height: 400px !important;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+  .tournament-logo {
+    width: 150px;
+    max-height: 70px;
+  }
+
+  .header-title h1 {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .tournament-content {
+    min-width: 2000px;
+  }
+  .playoff-bracket {
+    width: 1920px;
+    min-height: 1100px;
+  }
+  .tournament-header {
+    max-width: 2000px;
+  }
+  .conference {
+    flex: 0 0 700px;
+  }
+  .finals {
+    flex: 0 0 450px;
+  }
+  .team-slot {
+    min-width: 180px;
+    min-height: 100px;
+    padding: 18px;
+  }
+  .finals-slot {
+    min-width: 240px;
+    min-height: 120px;
+  }
+  .team-logo {
+    width: 70px;
+    height: 70px;
+  }
+  .finals-logo {
+    width: 90px;
+    height: 90px;
+  }
+  .matchup {
+    height: 190px;
+  }
+  .champion-slot {
+    height: 220px;
+  }
+  .champion-slot .team-logo {
+    width: 90px;
+    height: 90px;
+  }
+  .score-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+  .score-display {
+    font-size: 20px;
+    min-width: 90px;
+  }
+  .finals-score {
+    font-size: 22px;
+  }
+  .dropdown-fixed {
+    width: 320px;
+  }
+  .dropdown-fixed .dropdown-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .item-logo {
+    padding: 8px;
+    border: 2px solid var(--gray);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

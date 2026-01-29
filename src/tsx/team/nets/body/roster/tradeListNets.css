@@ -1,0 +1,223 @@
+.trade-list-container-nets {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.trade-header-content-nets {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.trade-header-title-nets {
+  color: #000000; /* Черный цвет Brooklyn Nets */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.trade-table-container-nets {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  border: 2px solid #000000;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.trade-table-wrapper-nets {
+  overflow-x: auto;
+}
+
+.trade-list-table-nets {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trade-table-header-nets {
+  background: #000000; /* Черный фон заголовка */
+}
+
+.trade-table-th-nets {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.trade-table-th-nets:last-child {
+  border-right: none;
+}
+
+.trade-table-body-nets {
+}
+
+.trade-table-row-nets {
+  transition: background-color 0.3s;
+}
+
+.trade-table-row-nets:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.trade-row-even-nets {
+  background: #ffffff;
+}
+
+.trade-row-odd-nets {
+  background: #f8f9fa;
+}
+
+.trade-row-adding-nets {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.trade-table-td-nets {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #000000;
+}
+
+.trade-actions-td-nets {
+  white-space: nowrap;
+}
+
+.trade-item-text-nets {
+  font-weight: 500;
+}
+
+.trade-list-input-nets {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background: white;
+}
+
+.trade-list-input-nets:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.trade-list-actions-nets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trade-list-btn-nets {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.trade-list-btn-edit-nets {
+  background: #000000;
+  color: white;
+}
+
+.trade-list-btn-edit-nets:hover {
+  background: #333333;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-save-nets {
+  background: #000000;
+  color: white;
+}
+
+.trade-list-btn-save-nets:hover {
+  background: #333333;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-delete-nets {
+  background: #000000;
+  color: white;
+}
+
+.trade-list-btn-delete-nets:hover {
+  background: #333333;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-cancel-nets {
+  background: #6b7280;
+  color: white;
+}
+
+.trade-list-btn-cancel-nets:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-add-nets {
+  background: #000000;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: center;
+}
+
+.trade-list-btn-add-nets:hover {
+  background: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trade-add-button-container-nets {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.trade-loading-text-nets {
+  text-align: center;
+  color: #000000;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .trade-list-container-nets {
+    padding: 10px;
+  }
+
+  .trade-header-title-nets {
+    font-size: 2rem;
+  }
+
+  .trade-table-th-nets {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-table-td-nets {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-list-actions-nets {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .trade-list-btn-nets {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

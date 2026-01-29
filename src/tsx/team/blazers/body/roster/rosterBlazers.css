@@ -1,0 +1,156 @@
+.rosterBlazers {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerBlazers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerBlazers h1 {
+  color: #e03a3e; /* Красный Trail Blazers */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleBlazers {
+  color: #000000; /* Черный Trail Blazers */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerBlazers {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #e03a3e; /* Красный Trail Blazers */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableBlazers {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableBlazers thead {
+  background: #e03a3e; /* Красный Trail Blazers */
+}
+
+.roster-tableBlazers th {
+  padding: 15px 10px;
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.roster-tableBlazers th.highlight {
+}
+
+.roster-tableBlazers tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableBlazers tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableBlazers tbody tr:hover {
+  background: white;
+}
+
+.roster-tableBlazers td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(224, 58, 62, 0.3); /* Красный Trail Blazers с прозрачностью */
+  color: #000;
+}
+
+.roster-tableBlazers .franchiseBlazers {
+  background: #000000 !important; /* Черный Trail Blazers */
+}
+
+.roster-tableBlazers .franchiseBlazers td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellBlazers {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starBlazers {
+  color: #e03a3e; /* Красный Trail Blazers */
+  font-size: 1.2em;
+}
+
+.player-tagBlazers {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingBlazers {
+  text-align: center;
+  color: #e03a3e; /* Красный Trail Blazers */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateBlazers {
+  text-align: center;
+  padding: 40px;
+  color: #e03a3e; /* Красный Trail Blazers */
+}
+
+.empty-iconBlazers {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleBlazers {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleBlazers {
+  opacity: 0.8;
+}
+
+.franchise-colorBlazers {
+  background: #000000; /* Черный Trail Blazers */
+}
+
+.salary-colorBlazers {
+  background: #000000; /* Черный Trail Blazers */
+}
+
+@media (max-width: 768px) {
+  .rosterBlazers {
+    padding: 10px;
+  }
+
+  .roster-headerBlazers h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleBlazers {
+    font-size: 1rem;
+  }
+
+  .roster-tableBlazers th,
+  .roster-tableBlazers td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

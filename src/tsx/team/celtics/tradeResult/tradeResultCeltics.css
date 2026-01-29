@@ -1,0 +1,803 @@
+/* Стили только для компонента TradeResultCeltics */
+
+.resultCeltics-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultCeltics-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultCeltics-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #007a33; /* Зеленый Boston Celtics */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultCeltics-button:hover:not(:disabled) {
+  background: #005522; /* Темно-зеленый Boston Celtics */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultCeltics-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultCeltics-button--hasNotifications {
+  background: linear-gradient(135deg, #007a33 0%, #005522 100%);
+}
+
+.resultCeltics-notificationCount {
+  background: #ba9653; /* Золотой Boston Celtics */
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultCeltics-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultCeltics-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultCeltics-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #007a33; /* Зеленый Boston Celtics */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultCeltics-modalHeader {
+  background: #007a33; /* Зеленый Boston Celtics */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #ba9653; /* Золотой Boston Celtics */
+}
+
+.resultCeltics-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultCeltics-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultCeltics-teamLogo::before {
+  content: "BOS";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #007a33; /* Зеленый Boston Celtics */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultCeltics-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultCeltics-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultCeltics-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultCeltics-tradePartner {
+  color: #ba9653; /* Золотой Boston Celtics */
+  font-weight: 500;
+}
+
+.resultCeltics-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultCeltics-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultCeltics-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultCeltics-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultCeltics-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultCeltics-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultCeltics-tradesList {
+  padding: 24px;
+}
+
+.resultCeltics-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultCeltics-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultCeltics-tradeHeader {
+  background: rgba(0, 122, 51, 0.05);
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultCeltics-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultCeltics-tradeNumber {
+  font-weight: 600;
+  color: #007a33; /* Зеленый Boston Celtics */
+  font-size: 15px;
+}
+
+.resultCeltics-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultCeltics-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultCeltics-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultCeltics-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultCeltics-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #007a33; /* Зеленый Boston Celtics */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultCeltics-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultCeltics-exchangeArrow {
+  font-size: 28px;
+  color: #ba9653; /* Золотой Boston Celtics */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultCeltics-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultCeltics-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultCeltics-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultCeltics-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultCeltics-tradeSection--team1 {
+  border-left: 3px solid #007a33; /* Зеленый Boston Celtics */
+}
+
+.resultCeltics-tradeSection--team2 {
+  border-left: 3px solid #ba9653; /* Золотой Boston Celtics */
+}
+
+.resultCeltics-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultCeltics-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultCeltics-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultCeltics-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultCeltics-countBadge--players {
+  background: rgba(0, 122, 51, 0.1);
+  color: #007a33; /* Зеленый Boston Celtics */
+  border: 1px solid rgba(0, 122, 51, 0.2);
+}
+
+.resultCeltics-countBadge--picks {
+  background: rgba(186, 150, 83, 0.1);
+  color: #ba9653; /* Золотой Boston Celtics */
+  border: 1px solid rgba(186, 150, 83, 0.2);
+}
+
+.resultCeltics-sectionContent {
+  padding: 16px;
+}
+
+.resultCeltics-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultCeltics-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultCeltics-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultCeltics-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultCeltics-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultCeltics-playerCard--active {
+  border-left-color: #007a33; /* Зеленый Boston Celtics */
+}
+
+.resultCeltics-playerCard--gleague {
+  border-left-color: #ba9653; /* Золотой Boston Celtics */
+}
+
+.resultCeltics-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultCeltics-playerNameSection {
+  flex: 1;
+}
+
+.resultCeltics-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultCeltics-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultCeltics-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultCeltics-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultCeltics-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultCeltics-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultCeltics-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultCeltics-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultCeltics-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultCeltics-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultCeltics-teamLabel {
+  color: #666666;
+}
+
+.resultCeltics-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultCeltics-tradeNote {
+  background: rgba(186, 150, 83, 0.05);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(186, 150, 83, 0.2);
+}
+
+.resultCeltics-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultCeltics-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultCeltics-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultCeltics-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultCeltics-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultCeltics-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultCeltics-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultCeltics-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultCeltics-actionButton--accept {
+  background: #ba9653; /* Золотой Boston Celtics */
+  color: #000000;
+}
+
+.resultCeltics-actionButton--accept:hover:not(:disabled) {
+  background: #a78342;
+}
+
+.resultCeltics-actionButton--reject {
+  background: #007a33; /* Зеленый Boston Celtics */
+  color: #ffffff;
+}
+
+.resultCeltics-actionButton--reject:hover:not(:disabled) {
+  background: #005522;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultCeltics-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultCeltics-closeAllButton {
+  background: #007a33; /* Зеленый Boston Celtics */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultCeltics-closeAllButton:hover {
+  background: #005522;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultCeltics-modal {
+    max-height: 90vh;
+  }
+
+  .resultCeltics-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultCeltics-tradesList {
+    padding: 16px;
+  }
+
+  .resultCeltics-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultCeltics-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultCeltics-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultCeltics-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultCeltics-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultCeltics-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultCeltics-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultCeltics-tradeSummary,
+  .resultCeltics-tradeSection,
+  .resultCeltics-tradeNote,
+  .resultCeltics-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultCeltics-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultCeltics-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultCeltics-modalHeader {
+    padding: 16px;
+  }
+
+  .resultCeltics-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultCeltics-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultCeltics-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultCeltics-statValue {
+    font-size: 28px;
+  }
+
+  .resultCeltics-statLabel {
+    font-size: 12px;
+  }
+
+  .resultCeltics-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultCeltics-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultCeltics-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultCeltics-modal {
+    max-height: 95vh;
+  }
+
+  .resultCeltics-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultCeltics-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultCeltics-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultCeltics-statValue {
+    font-size: 24px;
+  }
+
+  .resultCeltics-playerName,
+  .resultCeltics-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultCeltics-noteContent {
+    font-size: 13px;
+  }
+
+  .resultCeltics-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultCeltics-container .resultCeltics-modal {
+    background: #1a1a1a;
+    border-color: #007a33; /* Зеленый Boston Celtics */
+  }
+
+  .resultCeltics-container .resultCeltics-tradeItem,
+  .resultCeltics-container .resultCeltics-playerCard,
+  .resultCeltics-container .resultCeltics-draftPickCard,
+  .resultCeltics-container .resultCeltics-tradeSummary,
+  .resultCeltics-container .resultCeltics-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultCeltics-container .resultCeltics-playerName,
+  .resultCeltics-container .resultCeltics-statLabel,
+  .resultCeltics-container .resultCeltics-sectionTitle,
+  .resultCeltics-container .resultCeltics-noteTitle,
+  .resultCeltics-container .resultCeltics-teamName,
+  .resultCeltics-container .resultCeltics-pickYearRound,
+  .resultCeltics-container .resultCeltics-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultCeltics-container .resultCeltics-playerType,
+  .resultCeltics-container .resultCeltics-pickType,
+  .resultCeltics-container .resultCeltics-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultCeltics-container .resultCeltics-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultCeltics-container .resultCeltics-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

@@ -1,0 +1,121 @@
+.thunder-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-contents-thunder {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-titles-thunder {
+  color: #007ac1; /* Oklahoma City Thunder синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containers-thunder {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrappers-thunder {
+  overflow-x: auto;
+}
+
+.players-tables-thunder {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headers-thunder {
+  background: black;
+}
+
+.table-ths-thunder {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-ths-thunder:last-child {
+  border-right: none;
+}
+
+.table-bodys-thunder {
+}
+
+.table-rows-thunder {
+  transition: background-color 0.3s;
+}
+
+.table-rows-thunder:hover {
+}
+
+.row-evens-thunder {
+  background: white;
+}
+
+.row-odds-thunder {
+  background: white;
+}
+
+.table-tds-thunder {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-ids-thunder {
+  color: black;
+  font-weight: bold;
+}
+
+.player-positions-thunder {
+  font-weight: bold;
+  color: black;
+}
+
+.player-ages-thunder {
+  color: black;
+  font-weight: bold;
+}
+
+.roster-badges-thunder {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-actives-thunder {
+  color: black;
+}
+
+.badge-inactives-thunder {
+  background: #6b7280;
+  color: white;
+}
+
+.loading-texts-thunder {
+  text-align: center;
+  color: #007ac1; /* Oklahoma City Thunder синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.special-players-thunder {
+  background: #002d62 !important; /* Oklahoma City Thunder темно-синий */
+}
+
+.special-players-thunder .table-tds-thunder {
+  color: #ef3b24 !important; /* Oklahoma City Thunder оранжевый/красный */
+  font-weight: bold;
+}

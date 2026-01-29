@@ -1,0 +1,802 @@
+/* tradeResultTimberwolves.css */
+.resultTimberwolves-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultTimberwolves-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultTimberwolves-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #0c2340; /* Timberwolves синий */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultTimberwolves-button:hover:not(:disabled) {
+  background: #236192; /* Более светлый синий для hover */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultTimberwolves-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultTimberwolves-button--hasNotifications {
+  background: linear-gradient(135deg, #0c2340 0%, #236192 100%);
+}
+
+.resultTimberwolves-notificationCount {
+  background: #78be20; /* Timberwolves зеленый */
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultTimberwolves-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultTimberwolves-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultTimberwolves-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #0c2340; /* Timberwolves синий */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultTimberwolves-modalHeader {
+  background: #0c2340; /* Timberwolves синий */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #78be20; /* Timberwolves зеленый */
+}
+
+.resultTimberwolves-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultTimberwolves-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultTimberwolves-teamLogo::before {
+  content: "MIN";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #0c2340; /* Timberwolves синий */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultTimberwolves-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultTimberwolves-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultTimberwolves-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultTimberwolves-tradePartner {
+  color: #78be20; /* Timberwolves зеленый */
+  font-weight: 500;
+}
+
+.resultTimberwolves-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultTimberwolves-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultTimberwolves-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultTimberwolves-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultTimberwolves-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultTimberwolves-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultTimberwolves-tradesList {
+  padding: 24px;
+}
+
+.resultTimberwolves-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultTimberwolves-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultTimberwolves-tradeHeader {
+  background: rgba(12, 35, 64, 0.05);
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultTimberwolves-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultTimberwolves-tradeNumber {
+  font-weight: 600;
+  color: #0c2340; /* Timberwolves синий */
+  font-size: 15px;
+}
+
+.resultTimberwolves-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultTimberwolves-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultTimberwolves-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultTimberwolves-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultTimberwolves-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0c2340; /* Timberwolves синий */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultTimberwolves-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultTimberwolves-exchangeArrow {
+  font-size: 28px;
+  color: #78be20; /* Timberwolves зеленый */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultTimberwolves-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultTimberwolves-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultTimberwolves-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultTimberwolves-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultTimberwolves-tradeSection--team1 {
+  border-left: 3px solid #0c2340; /* Timberwolves синий */
+}
+
+.resultTimberwolves-tradeSection--team2 {
+  border-left: 3px solid #78be20; /* Timberwolves зеленый */
+}
+
+.resultTimberwolves-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultTimberwolves-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultTimberwolves-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultTimberwolves-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultTimberwolves-countBadge--players {
+  background: rgba(12, 35, 64, 0.1);
+  color: #0c2340; /* Timberwolves синий */
+  border: 1px solid rgba(12, 35, 64, 0.2);
+}
+
+.resultTimberwolves-countBadge--picks {
+  background: rgba(120, 190, 32, 0.1);
+  color: #78be20; /* Timberwolves зеленый */
+  border: 1px solid rgba(120, 190, 32, 0.2);
+}
+
+.resultTimberwolves-sectionContent {
+  padding: 16px;
+}
+
+.resultTimberwolves-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultTimberwolves-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultTimberwolves-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultTimberwolves-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultTimberwolves-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultTimberwolves-playerCard--active {
+  border-left-color: #0c2340; /* Timberwolves синий */
+}
+
+.resultTimberwolves-playerCard--gleague {
+  border-left-color: #78be20; /* Timberwolves зеленый */
+}
+
+.resultTimberwolves-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultTimberwolves-playerNameSection {
+  flex: 1;
+}
+
+.resultTimberwolves-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultTimberwolves-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultTimberwolves-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultTimberwolves-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultTimberwolves-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultTimberwolves-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultTimberwolves-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultTimberwolves-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultTimberwolves-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultTimberwolves-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultTimberwolves-teamLabel {
+  color: #666666;
+}
+
+.resultTimberwolves-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultTimberwolves-tradeNote {
+  background: rgba(120, 190, 32, 0.05);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(120, 190, 32, 0.2);
+}
+
+.resultTimberwolves-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultTimberwolves-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultTimberwolves-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultTimberwolves-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultTimberwolves-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultTimberwolves-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultTimberwolves-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultTimberwolves-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultTimberwolves-actionButton--accept {
+  background: #78be20; /* Timberwolves зеленый */
+  color: #000000;
+}
+
+.resultTimberwolves-actionButton--accept:hover:not(:disabled) {
+  background: #68a41c;
+}
+
+.resultTimberwolves-actionButton--reject {
+  background: #0c2340; /* Timberwolves синий */
+  color: #ffffff;
+}
+
+.resultTimberwolves-actionButton--reject:hover:not(:disabled) {
+  background: #236192;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultTimberwolves-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultTimberwolves-closeAllButton {
+  background: #0c2340; /* Timberwolves синий */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultTimberwolves-closeAllButton:hover {
+  background: #236192;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultTimberwolves-modal {
+    max-height: 90vh;
+  }
+
+  .resultTimberwolves-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultTimberwolves-tradesList {
+    padding: 16px;
+  }
+
+  .resultTimberwolves-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultTimberwolves-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultTimberwolves-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultTimberwolves-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultTimberwolves-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultTimberwolves-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultTimberwolves-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultTimberwolves-tradeSummary,
+  .resultTimberwolves-tradeSection,
+  .resultTimberwolves-tradeNote,
+  .resultTimberwolves-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultTimberwolves-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultTimberwolves-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultTimberwolves-modalHeader {
+    padding: 16px;
+  }
+
+  .resultTimberwolves-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultTimberwolves-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultTimberwolves-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultTimberwolves-statValue {
+    font-size: 28px;
+  }
+
+  .resultTimberwolves-statLabel {
+    font-size: 12px;
+  }
+
+  .resultTimberwolves-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultTimberwolves-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultTimberwolves-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultTimberwolves-modal {
+    max-height: 95vh;
+  }
+
+  .resultTimberwolves-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultTimberwolves-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultTimberwolves-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultTimberwolves-statValue {
+    font-size: 24px;
+  }
+
+  .resultTimberwolves-playerName,
+  .resultTimberwolves-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultTimberwolves-noteContent {
+    font-size: 13px;
+  }
+
+  .resultTimberwolves-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultTimberwolves-container .resultTimberwolves-modal {
+    background: #1a1a1a;
+    border-color: #0c2340;
+  }
+
+  .resultTimberwolves-container .resultTimberwolves-tradeItem,
+  .resultTimberwolves-container .resultTimberwolves-playerCard,
+  .resultTimberwolves-container .resultTimberwolves-draftPickCard,
+  .resultTimberwolves-container .resultTimberwolves-tradeSummary,
+  .resultTimberwolves-container .resultTimberwolves-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultTimberwolves-container .resultTimberwolves-playerName,
+  .resultTimberwolves-container .resultTimberwolves-statLabel,
+  .resultTimberwolves-container .resultTimberwolves-sectionTitle,
+  .resultTimberwolves-container .resultTimberwolves-noteTitle,
+  .resultTimberwolves-container .resultTimberwolves-teamName,
+  .resultTimberwolves-container .resultTimberwolves-pickYearRound,
+  .resultTimberwolves-container .resultTimberwolves-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultTimberwolves-container .resultTimberwolves-playerType,
+  .resultTimberwolves-container .resultTimberwolves-pickType,
+  .resultTimberwolves-container .resultTimberwolves-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultTimberwolves-container .resultTimberwolves-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultTimberwolves-container .resultTimberwolves-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

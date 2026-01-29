@@ -1,0 +1,233 @@
+.trade-list-container-raptors {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.trade-header-content-raptors {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.trade-header-title-raptors {
+  color: #ce1141; /* Toronto Raptors красный */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.trade-table-container-raptors {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.trade-table-wrapper-raptors {
+  overflow-x: auto;
+}
+
+.trade-list-table-raptors {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trade-table-header-raptors {
+  background: #000000; /* Toronto Raptors черный */
+}
+
+.trade-table-th-raptors {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trade-table-th-raptors:last-child {
+  border-right: none;
+}
+
+.trade-table-body-raptors {
+}
+
+.trade-table-row-raptors {
+  transition: background-color 0.3s;
+}
+
+.trade-table-row-raptors:hover {
+  background-color: rgba(
+    206,
+    17,
+    65,
+    0.1
+  ); /* Toronto Raptors красный с прозрачностью */
+}
+
+.trade-row-even-raptors {
+  background: white;
+}
+
+.trade-row-odd-raptors {
+  background: white;
+}
+
+.trade-row-adding-raptors {
+  background: rgba(
+    206,
+    17,
+    65,
+    0.2
+  ) !important; /* Toronto Raptors красный с прозрачностью */
+}
+
+.trade-table-td-raptors {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.trade-actions-td-raptors {
+  white-space: nowrap;
+}
+
+.trade-item-text-raptors {
+  font-weight: 500;
+}
+
+.trade-list-input-raptors {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background: white;
+}
+
+.trade-list-input-raptors:focus {
+  outline: none;
+  border-color: #ce1141; /* Toronto Raptors красный */
+  box-shadow: 0 0 0 3px rgba(206, 17, 65, 0.3); /* Toronto Raptors красный с прозрачностью */
+}
+
+.trade-list-actions-raptors {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trade-list-btn-raptors {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.trade-list-btn-edit-raptors {
+  background: #ce1141; /* Toronto Raptors красный */
+  color: white;
+}
+
+.trade-list-btn-edit-raptors:hover {
+  background: #a80d35; /* Более темный оттенок красного Raptors */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-save-raptors {
+  background: #000000; /* Toronto Raptors черный */
+  color: white;
+}
+
+.trade-list-btn-save-raptors:hover {
+  background: #333333; /* Более светлый оттенок черного */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-delete-raptors {
+  background: #000000; /* Toronto Raptors черный */
+  color: white;
+}
+
+.trade-list-btn-delete-raptors:hover {
+  background: #333333; /* Более светлый оттенок черного */
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-cancel-raptors {
+  background: #6b7280;
+  color: white;
+}
+
+.trade-list-btn-cancel-raptors:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.trade-list-btn-add-raptors {
+  background: #ce1141; /* Toronto Raptors красный */
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: center;
+}
+
+.trade-list-btn-add-raptors:hover {
+  background: #a80d35; /* Более темный оттенок красного Raptors */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trade-add-button-container-raptors {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.trade-loading-text-raptors {
+  text-align: center;
+  color: #ce1141; /* Toronto Raptors красный */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .trade-list-container-raptors {
+    padding: 10px;
+  }
+
+  .trade-header-title-raptors {
+    font-size: 2rem;
+  }
+
+  .trade-table-th-raptors {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-table-td-raptors {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .trade-list-actions-raptors {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .trade-list-btn-raptors {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

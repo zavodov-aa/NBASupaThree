@@ -1,0 +1,131 @@
+.penalties-header {
+  background-color: #000;
+  color: #fff;
+  min-width: 280px;
+  width: 100%;
+  border-bottom: 2px solid #fff;
+}
+
+.penalties-header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.penalties-header__logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: 1rem;
+  filter: invert(1);
+}
+
+.penalties-header__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.penalties-header__link {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  min-width: fit-content;
+  flex: 1;
+  max-width: 300px;
+}
+
+.penalties-header__link:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.penalties-header__link--active {
+  background-color: #fff;
+  color: #000;
+  font-weight: 700;
+}
+
+/* Стили для больших экранов (768px и выше) */
+@media (min-width: 768px) {
+  .penalties-header__container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+  }
+
+  .penalties-header__logo {
+    margin-bottom: 0;
+    margin-right: 2rem;
+    height: 50px;
+  }
+
+  .penalties-header__nav {
+    justify-content: flex-end;
+    width: auto;
+    flex-grow: 1;
+  }
+
+  .penalties-header__link {
+    flex: none;
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+/* Стили для мобильных устройств (до 768px) */
+@media (max-width: 767px) {
+  .penalties-header__nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .penalties-header__link {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.75rem;
+  }
+
+  .penalties-header__logo {
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .penalties-header__container {
+    padding: 0.75rem;
+  }
+
+  .penalties-header__logo {
+    height: 40px;
+  }
+
+  .penalties-header__link {
+    font-size: 0.75rem;
+    padding: 0.6rem;
+  }
+}
+
+/* Дополнительные стили для очень больших экранов */
+@media (min-width: 1200px) {
+  .penalties-header__logo {
+    height: 70px;
+  }
+
+  .penalties-header__link {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+  }
+}

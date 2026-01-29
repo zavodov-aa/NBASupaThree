@@ -1,0 +1,121 @@
+.suns-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-suns {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-suns {
+  color: #e56020; /* Phoenix Suns оранжевый */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-suns {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-suns {
+  overflow-x: auto;
+}
+
+.players-table-suns {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-suns {
+  background: #1d1160; /* Phoenix Suns фиолетовый */
+}
+
+.table-th-suns {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-body-suns {
+  background: white;
+}
+
+.tables-row-suns {
+  /* базовые стили строк */
+}
+
+.row-even-suns {
+  background: #f9ad1b; /* Phoenix Suns желтый */
+}
+
+.row-odd-suns {
+  background: #63727a; /* Phoenix Suns серый */
+}
+
+.table-tdw-suns {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-td-suns {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-suns {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-suns {
+  font-weight: bold;
+  color: #1d1160; /* Phoenix Suns фиолетовый */
+}
+
+.player-age-suns {
+  color: #e56020; /* Phoenix Suns оранжевый */
+  font-weight: bold;
+}
+
+.roster-badge-suns {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-suns {
+  background-color: #1d1160; /* Phoenix Suns фиолетовый */
+  color: white;
+}
+
+.badge-inactive-suns {
+  background-color: #e56020; /* Phoenix Suns оранжевый */
+  color: black;
+}
+
+.loading-text-suns {
+  text-align: center;
+  color: #e56020; /* Phoenix Suns оранжевый */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-suns {
+  background-color: #1d1160; /* Phoenix Suns фиолетовый */
+  color: white;
+}
+
+.tables-row-suns {
+  background-color: transparent;
+}

@@ -1,0 +1,181 @@
+.rosterGrizzlies {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerGrizzlies {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerGrizzlies h1 {
+  color: #5d76a9; /* Memphis Grizzlies синий */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleGrizzlies {
+  color: #12173f; /* Memphis Grizzlies темно-синий */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerGrizzlies {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #5d76a9; /* Memphis Grizzlies синий */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableGrizzlies {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableGrizzlies thead {
+  background: #5d76a9; /* Memphis Grizzlies синий */
+}
+
+.roster-tableGrizzlies th {
+  padding: 15px 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roster-tableGrizzlies th.highlight {
+}
+
+.roster-tableGrizzlies tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableGrizzlies tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableGrizzlies tbody tr:hover {
+  background: white;
+}
+
+.roster-tableGrizzlies td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(93, 118, 169, 0.3); /* Memphis Grizzlies синий с прозрачностью */
+  color: #000;
+}
+
+.roster-tableGrizzlies .franchiseGrizzlies {
+  background: rgba(0, 0, 0, 0.637) !important;
+}
+
+.roster-tableGrizzlies .franchiseGrizzlies td {
+  color: white;
+  font-weight: bold;
+}
+
+.number-cellGrizzlies {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starGrizzlies {
+  color: #5d76a9; /* Memphis Grizzlies синий */
+  font-size: 1.2em;
+}
+
+.player-tagGrizzlies {
+  padding: 4px 8px;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loadingGrizzlies {
+  text-align: center;
+  color: #5d76a9; /* Memphis Grizzlies синий */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateGrizzlies {
+  text-align: center;
+  padding: 40px;
+  color: #5d76a9; /* Memphis Grizzlies синий */
+}
+
+.empty-iconGrizzlies {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleGrizzlies {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleGrizzlies {
+  opacity: 0.8;
+}
+
+.franchise-colorGrizzlies {
+  background: black;
+}
+
+.salary-colorGrizzlies {
+  background: black;
+}
+
+@media (max-width: 768px) {
+  .rosterGrizzlies {
+    padding: 10px;
+  }
+
+  .roster-headerGrizzlies h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleGrizzlies {
+    font-size: 1rem;
+  }
+
+  .roster-tableGrizzlies th,
+  .roster-tableGrizzlies td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}
+/* Добавьте в rosterGrizzlies.css */
+
+.g-league-dividerGrizzlies {
+  background: rgba(
+    93,
+    118,
+    169,
+    0.1
+  ) !important; /* Memphis Grizzlies синий с прозрачностью */
+}
+
+.g-league-headerGrizzlies {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #5d76a9; /* Memphis Grizzlies синий */
+  border-top: 2px solid #5d76a9; /* Memphis Grizzlies синий */
+  border-bottom: 2px solid #5d76a9; /* Memphis Grizzlies синий */
+  background: rgba(
+    93,
+    118,
+    169,
+    0.05
+  ); /* Memphis Grizzlies синий с прозрачностью */
+}

@@ -1,0 +1,837 @@
+/* Стили только для компонента TradeResultNuggets */
+
+.resultNuggets-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultNuggets-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultNuggets-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #0d2240; /* Denver Nuggets темно-синий */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultNuggets-button:hover:not(:disabled) {
+  background: #8b2131; /* Denver Nuggets красный */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultNuggets-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultNuggets-button--hasNotifications {
+  background: linear-gradient(
+    135deg,
+    #0d2240 0%,
+    #8b2131 100%
+  ); /* Denver Nuggets градиент */
+}
+
+.resultNuggets-notificationCount {
+  background: #fdb927; /* Denver Nuggets золотой */
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultNuggets-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultNuggets-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultNuggets-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #0d2240; /* Denver Nuggets темно-синий */
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultNuggets-modalHeader {
+  background: #0d2240; /* Denver Nuggets темно-синий */
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #fdb927; /* Denver Nuggets золотой */
+}
+
+.resultNuggets-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultNuggets-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultNuggets-teamLogo::before {
+  content: "DEN";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #0d2240; /* Denver Nuggets темно-синий */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultNuggets-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultNuggets-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultNuggets-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultNuggets-tradePartner {
+  color: #fdb927; /* Denver Nuggets золотой */
+  font-weight: 500;
+}
+
+.resultNuggets-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultNuggets-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultNuggets-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultNuggets-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultNuggets-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultNuggets-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultNuggets-tradesList {
+  padding: 24px;
+}
+
+.resultNuggets-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultNuggets-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultNuggets-tradeHeader {
+  background: rgba(
+    13,
+    34,
+    64,
+    0.05
+  ); /* Denver Nuggets темно-синий с прозрачностью */
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultNuggets-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultNuggets-tradeNumber {
+  font-weight: 600;
+  color: #0d2240; /* Denver Nuggets темно-синий */
+  font-size: 15px;
+}
+
+.resultNuggets-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultNuggets-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultNuggets-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultNuggets-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultNuggets-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0d2240; /* Denver Nuggets темно-синий */
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultNuggets-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultNuggets-exchangeArrow {
+  font-size: 28px;
+  color: #fdb927; /* Denver Nuggets золотой */
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultNuggets-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultNuggets-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultNuggets-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultNuggets-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultNuggets-tradeSection--team1 {
+  border-left: 3px solid #0d2240; /* Denver Nuggets темно-синий */
+}
+
+.resultNuggets-tradeSection--team2 {
+  border-left: 3px solid #fdb927; /* Denver Nuggets золотой */
+}
+
+.resultNuggets-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultNuggets-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultNuggets-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultNuggets-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultNuggets-countBadge--players {
+  background: rgba(
+    13,
+    34,
+    64,
+    0.1
+  ); /* Denver Nuggets темно-синий с прозрачностью */
+  color: #0d2240; /* Denver Nuggets темно-синий */
+  border: 1px solid rgba(13, 34, 64, 0.2);
+}
+
+.resultNuggets-countBadge--picks {
+  background: rgba(
+    253,
+    185,
+    39,
+    0.1
+  ); /* Denver Nuggets золотой с прозрачностью */
+  color: #fdb927; /* Denver Nuggets золотой */
+  border: 1px solid rgba(253, 185, 39, 0.2);
+}
+
+.resultNuggets-sectionContent {
+  padding: 16px;
+}
+
+.resultNuggets-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultNuggets-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultNuggets-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultNuggets-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultNuggets-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultNuggets-playerCard--active {
+  border-left-color: #0d2240; /* Denver Nuggets темно-синий */
+}
+
+.resultNuggets-playerCard--gleague {
+  border-left-color: #fdb927; /* Denver Nuggets золотой */
+}
+
+.resultNuggets-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultNuggets-playerNameSection {
+  flex: 1;
+}
+
+.resultNuggets-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultNuggets-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultNuggets-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0d2240; /* Denver Nuggets темно-синий */
+  transition: all 0.2s;
+}
+
+.resultNuggets-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultNuggets-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultNuggets-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultNuggets-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultNuggets-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(
+    13,
+    34,
+    64,
+    0.1
+  ); /* Denver Nuggets темно-синий с прозрачностью */
+  color: #0d2240; /* Denver Nuggets темно-синий */
+  border-radius: 10px;
+  border: 1px solid rgba(13, 34, 64, 0.2);
+}
+
+.resultNuggets-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultNuggets-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultNuggets-teamLabel {
+  color: #666666;
+}
+
+.resultNuggets-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultNuggets-tradeNote {
+  background: rgba(
+    253,
+    185,
+    39,
+    0.05
+  ); /* Denver Nuggets золотой с прозрачностью */
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(253, 185, 39, 0.2);
+}
+
+.resultNuggets-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultNuggets-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultNuggets-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultNuggets-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultNuggets-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultNuggets-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultNuggets-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultNuggets-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultNuggets-actionButton--accept {
+  background: #fdb927; /* Denver Nuggets золотой */
+  color: #000000;
+}
+
+.resultNuggets-actionButton--accept:hover:not(:disabled) {
+  background: #e6a81f; /* Более темный золотой */
+}
+
+.resultNuggets-actionButton--reject {
+  background: #8b2131; /* Denver Nuggets красный */
+  color: #ffffff;
+}
+
+.resultNuggets-actionButton--reject:hover:not(:disabled) {
+  background: #751a27; /* Более темный красный */
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultNuggets-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultNuggets-closeAllButton {
+  background: #0d2240; /* Denver Nuggets темно-синий */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultNuggets-closeAllButton:hover {
+  background: #8b2131; /* Denver Nuggets красный */
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultNuggets-modal {
+    max-height: 90vh;
+  }
+
+  .resultNuggets-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultNuggets-tradesList {
+    padding: 16px;
+  }
+
+  .resultNuggets-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultNuggets-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultNuggets-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultNuggets-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultNuggets-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultNuggets-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultNuggets-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultNuggets-tradeSummary,
+  .resultNuggets-tradeSection,
+  .resultNuggets-tradeNote,
+  .resultNuggets-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultNuggets-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultNuggets-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultNuggets-modalHeader {
+    padding: 16px;
+  }
+
+  .resultNuggets-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultNuggets-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultNuggets-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultNuggets-statValue {
+    font-size: 28px;
+  }
+
+  .resultNuggets-statLabel {
+    font-size: 12px;
+  }
+
+  .resultNuggets-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultNuggets-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultNuggets-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultNuggets-modal {
+    max-height: 95vh;
+  }
+
+  .resultNuggets-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultNuggets-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultNuggets-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultNuggets-statValue {
+    font-size: 24px;
+  }
+
+  .resultNuggets-playerName,
+  .resultNuggets-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultNuggets-noteContent {
+    font-size: 13px;
+  }
+
+  .resultNuggets-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultNuggets-container .resultNuggets-modal {
+    background: #1a1a1a;
+    border-color: #0d2240; /* Denver Nuggets темно-синий */
+  }
+
+  .resultNuggets-container .resultNuggets-tradeItem,
+  .resultNuggets-container .resultNuggets-playerCard,
+  .resultNuggets-container .resultNuggets-draftPickCard,
+  .resultNuggets-container .resultNuggets-tradeSummary,
+  .resultNuggets-container .resultNuggets-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultNuggets-container .resultNuggets-playerName,
+  .resultNuggets-container .resultNuggets-statLabel,
+  .resultNuggets-container .resultNuggets-sectionTitle,
+  .resultNuggets-container .resultNuggets-noteTitle,
+  .resultNuggets-container .resultNuggets-teamName,
+  .resultNuggets-container .resultNuggets-pickYearRound,
+  .resultNuggets-container .resultNuggets-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultNuggets-container .resultNuggets-playerType,
+  .resultNuggets-container .resultNuggets-pickType,
+  .resultNuggets-container .resultNuggets-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultNuggets-container .resultNuggets-draftPickCard {
+    border-left-color: #0d2240; /* Denver Nuggets темно-синий */
+  }
+
+  .resultNuggets-container .resultNuggets-pickType {
+    background: rgba(
+      13,
+      34,
+      64,
+      0.15
+    ); /* Denver Nuggets темно-синий с прозрачностью */
+    border-color: rgba(13, 34, 64, 0.3);
+    color: #0d2240; /* Denver Nuggets темно-синий */
+  }
+}

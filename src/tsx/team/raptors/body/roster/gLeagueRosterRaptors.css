@@ -1,0 +1,119 @@
+.raptors-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-raptors {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-raptors {
+  color: #ce1141; /* Красный цвет Toronto Raptors */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-raptors {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-raptors {
+  overflow-x: auto;
+}
+
+.players-table-raptors {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-raptors {
+  background: black;
+}
+
+.table-th-raptors {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-raptors:last-child {
+}
+
+.table-body-raptors {
+  background: white;
+}
+
+.tables-row-raptors {
+}
+
+.row-even-raptors {
+  background: black;
+}
+
+.row-odd-raptors {
+}
+
+.table-tdw-raptors {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+.table-tdw-raptors {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-raptors {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-raptors {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-raptors {
+  color: #ce1141; /* Красный цвет Toronto Raptors */
+  font-weight: bold;
+}
+
+.roster-badge-raptors {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-raptors {
+  color: white;
+}
+
+.badge-inactive-raptors {
+  color: black;
+}
+
+.loading-text-raptors {
+  text-align: center;
+  color: #ce1141; /* Красный цвет Toronto Raptors */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-raptors {
+  background-color: rgba(0, 0, 0, 0.637);
+  color: white;
+}
+
+.tables-row-raptors {
+  background-color: transparent;
+}

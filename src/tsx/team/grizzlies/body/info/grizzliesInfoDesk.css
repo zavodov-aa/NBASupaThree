@@ -1,0 +1,311 @@
+.desk-card-wrapper-grizzlies {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.grizzlies-desk-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 46, 93, 0.15),
+    0 4px 12px rgba(241, 184, 45, 0.1);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.desk-accent-top-grizzlies {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #002e5d 0%,
+    #5d76a9 25%,
+    #73b1c1 50%,
+    #f1b82d 75%,
+    #cba052 100%
+  );
+}
+
+.desk-sections-horizontal-grizzlies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.desk-section-grizzlies {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.desk-section-grizzlies:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 20px rgba(0, 46, 93, 0.15);
+}
+
+.desk-header-grizzlies {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 46, 93, 0.1) 0%,
+    rgba(241, 184, 45, 0.05) 100%
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desk-title-icon-grizzlies {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #002e5d, #f1b82d);
+  flex-shrink: 0;
+}
+
+.desk-title-grizzlies {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+  color: #002e5d;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.desk-content-grizzlies {
+  padding: 0;
+}
+
+.desk-items-vertical-grizzlies {
+  display: flex;
+  flex-direction: column;
+}
+
+.desk-item-grizzlies {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 46, 93, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  justify-content: center;
+}
+
+.desk-item-grizzlies:last-child {
+  border-bottom: none;
+}
+
+.desk-item-grizzlies::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 46, 93, 0.05) 50%,
+    transparent 100%
+  );
+  transition: left 0.4s ease;
+}
+
+.desk-item-grizzlies:hover::before {
+  left: 100%;
+}
+
+.desk-item-grizzlies:hover {
+  background: rgba(255, 255, 255, 0.8);
+  padding-left: 20px;
+}
+
+.desk-label-grizzlies {
+  font-size: 0.8em;
+  color: #666;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.desk-value-grizzlies {
+  font-size: 1em;
+  color: #333;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+/* Highlight Styles */
+.highlight-positive-grizzlies {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.1) 0%,
+    rgba(34, 197, 94, 0.05) 100%
+  );
+}
+
+.highlight-positive-grizzlies .desk-value-grizzlies {
+  color: #16a34a;
+}
+
+.highlight-negative-grizzlies {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.1) 0%,
+    rgba(239, 68, 68, 0.05) 100%
+  );
+}
+
+.highlight-negative-grizzlies .desk-value-grizzlies {
+  color: #e03a3e;
+}
+
+.highlight-playoffs-grizzlies {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 46, 93, 0.1) 0%,
+    rgba(0, 46, 93, 0.05) 100%
+  );
+}
+
+.highlight-playoffs-grizzlies .desk-value-grizzlies {
+  color: #002e5d;
+}
+
+.highlight-championship-grizzlies {
+  background: linear-gradient(
+    135deg,
+    rgba(241, 184, 45, 0.15) 0%,
+    rgba(241, 184, 45, 0.08) 100%
+  );
+}
+
+.highlight-championship-grizzlies .desk-value-grizzlies {
+  color: #002e5d;
+  font-weight: 800;
+}
+
+.desk-colors-grizzlies {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+}
+
+.color-dot-grizzlies {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.color-dot-grizzlies:hover {
+  transform: scale(1.4);
+}
+
+.color-dot-grizzlies.navy-grizzlies {
+  background: #002e5d;
+}
+
+.color-dot-grizzlies.blue-grizzlies {
+  background: #5d76a9;
+}
+
+.color-dot-grizzlies.light-blue-grizzlies {
+  background: #73b1c1;
+}
+
+.color-dot-grizzlies.yellow-grizzlies {
+  background: #f1b82d;
+}
+
+.color-dot-grizzlies.gold-grizzlies {
+  background: #cba052;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .desk-sections-horizontal-grizzlies {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .desk-header-grizzlies {
+    padding: 14px 16px;
+  }
+
+  .desk-item-grizzlies {
+    padding: 12px 14px;
+    min-height: 55px;
+  }
+}
+
+@media (max-width: 992px) {
+  .desk-sections-horizontal-grizzlies {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .grizzlies-desk-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grizzlies-desk-card {
+    padding: 16px;
+  }
+
+  .desk-header-grizzlies {
+    padding: 12px 14px;
+  }
+
+  .desk-item-grizzlies {
+    padding: 10px 12px;
+    min-height: 50px;
+  }
+
+  .desk-item-grizzlies:hover {
+    padding-left: 16px;
+  }
+
+  .desk-colors-grizzlies {
+    bottom: 12px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-title-grizzlies {
+    font-size: 0.9em;
+  }
+
+  .desk-label-grizzlies {
+    font-size: 0.75em;
+  }
+
+  .desk-value-grizzlies {
+    font-size: 0.9em;
+  }
+}

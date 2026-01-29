@@ -1,0 +1,152 @@
+.hamburgerButtonNuggets {
+  position: relative;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.hamburgerButtonNuggets span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #fdb927; /* Denver Nuggets золотой */
+  transition: all 0.3s ease;
+  margin: 2px;
+}
+
+@media (max-width: 280px) {
+  .hamburgerButtonNuggets span {
+    width: 20px;
+    height: 2.5px;
+    margin: 1.5px;
+  }
+}
+
+.hamburgerButtonNuggets.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #fdb927; /* Denver Nuggets золотой */
+}
+.hamburgerButtonNuggets.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButtonNuggets.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #fdb927; /* Denver Nuggets золотой */
+}
+
+/* Полноэкранное меню */
+.fullscreenMenuNuggets {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2d2b31;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.fullscreenMenuNuggets.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Содержимое меню */
+.menuContentNuggets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 280px;
+}
+
+.menuContentHNuggets {
+  color: #fdb927; /* Denver Nuggets золотой */
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.menuContentNuggets a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.menuContentNuggets a:hover {
+  color: #fdb927; /* Denver Nuggets золотой при наведении */
+  background-color: rgba(
+    253,
+    185,
+    39,
+    0.1
+  ); /* Светлый золотой фон при наведении */
+  border-radius: 5px;
+}
+
+/* Адаптив для меню */
+@media (max-width: 768px) {
+  .menuContentHNuggets {
+    font-size: 1.3rem;
+  }
+
+  .menuContentNuggets a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuContentHNuggets {
+    font-size: 1.1rem;
+  }
+
+  .menuContentNuggets a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .menuContentHNuggets {
+    font-size: 1rem;
+  }
+
+  .menuContentNuggets a {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 280px) {
+  .menuContentNuggets {
+    padding: 15px;
+    gap: 1rem;
+  }
+
+  .menuContentHNuggets {
+    font-size: 0.9rem;
+  }
+
+  .menuContentNuggets a {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

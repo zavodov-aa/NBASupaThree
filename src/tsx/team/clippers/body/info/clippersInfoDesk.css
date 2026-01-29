@@ -1,0 +1,311 @@
+.desk-card-wrapper-clippers {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.clippers-desk-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(200, 16, 46, 0.15),
+    0 4px 12px rgba(0, 107, 182, 0.1);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.desk-accent-top-clippers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #c0102e 0%,
+    #ed174c 25%,
+    #006bb6 50%,
+    #bec0c2 75%,
+    #000000 100%
+  );
+}
+
+.desk-sections-horizontal-clippers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.desk-section-clippers {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.desk-section-clippers:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 20px rgba(200, 16, 46, 0.15);
+}
+
+.desk-header-clippers {
+  background: linear-gradient(
+    135deg,
+    rgba(200, 16, 46, 0.1) 0%,
+    rgba(0, 107, 182, 0.05) 100%
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desk-title-icon-clippers {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c0102e, #006bb6);
+  flex-shrink: 0;
+}
+
+.desk-title-clippers {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.desk-content-clippers {
+  padding: 0;
+}
+
+.desk-items-vertical-clippers {
+  display: flex;
+  flex-direction: column;
+}
+
+.desk-item-clippers {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(200, 16, 46, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  justify-content: center;
+}
+
+.desk-item-clippers:last-child {
+  border-bottom: none;
+}
+
+.desk-item-clippers::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 16, 46, 0.05) 50%,
+    transparent 100%
+  );
+  transition: left 0.4s ease;
+}
+
+.desk-item-clippers:hover::before {
+  left: 100%;
+}
+
+.desk-item-clippers:hover {
+  background: rgba(255, 255, 255, 0.8);
+  padding-left: 20px;
+}
+
+.desk-label-clippers {
+  font-size: 0.8em;
+  color: #666;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.desk-value-clippers {
+  font-size: 1em;
+  color: #333;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+/* Highlight Styles */
+.highlight-positive-clippers {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.1) 0%,
+    rgba(34, 197, 94, 0.05) 100%
+  );
+}
+
+.highlight-positive-clippers .desk-value-clippers {
+  color: #16a34a;
+}
+
+.highlight-negative-clippers {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.1) 0%,
+    rgba(239, 68, 68, 0.05) 100%
+  );
+}
+
+.highlight-negative-clippers .desk-value-clippers {
+  color: #c0102e;
+}
+
+.highlight-playoffs-clippers {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
+}
+
+.highlight-playoffs-clippers .desk-value-clippers {
+  color: #006bb6;
+}
+
+.highlight-championship-clippers {
+  background: linear-gradient(
+    135deg,
+    rgba(237, 23, 76, 0.15) 0%,
+    rgba(237, 23, 76, 0.08) 100%
+  );
+}
+
+.highlight-championship-clippers .desk-value-clippers {
+  color: #c0102e;
+  font-weight: 800;
+}
+
+.desk-colors-clippers {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+}
+
+.color-dot-clippers {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.color-dot-clippers:hover {
+  transform: scale(1.4);
+}
+
+.color-dot-clippers.red-dark-clippers {
+  background: #c0102e;
+}
+
+.color-dot-clippers.blue-clippers {
+  background: #006bb6;
+}
+
+.color-dot-clippers.red-clippers {
+  background: #ed174c;
+}
+
+.color-dot-clippers.silver-clippers {
+  background: #bec0c2;
+}
+
+.color-dot-clippers.black-clippers {
+  background: #000000;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .desk-sections-horizontal-clippers {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .desk-header-clippers {
+    padding: 14px 16px;
+  }
+
+  .desk-item-clippers {
+    padding: 12px 14px;
+    min-height: 55px;
+  }
+}
+
+@media (max-width: 992px) {
+  .desk-sections-horizontal-clippers {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .clippers-desk-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .clippers-desk-card {
+    padding: 16px;
+  }
+
+  .desk-header-clippers {
+    padding: 12px 14px;
+  }
+
+  .desk-item-clippers {
+    padding: 10px 12px;
+    min-height: 50px;
+  }
+
+  .desk-item-clippers:hover {
+    padding-left: 16px;
+  }
+
+  .desk-colors-clippers {
+    bottom: 12px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-title-clippers {
+    font-size: 0.9em;
+  }
+
+  .desk-label-clippers {
+    font-size: 0.75em;
+  }
+
+  .desk-value-clippers {
+    font-size: 0.9em;
+  }
+}

@@ -1,0 +1,176 @@
+.rosterLakers {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roster-headerLakers {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.roster-headerLakers h1 {
+  color: #552583; /* Lakers фиолетовый */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.roster-subtitleLakers {
+  color: #000000; /* Черный цвет */
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.table-containerLakers {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px solid #552583; /* Lakers фиолетовый */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.roster-tableLakers {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.roster-tableLakers thead {
+  background: #552583; /* Lakers фиолетовый */
+}
+
+.roster-tableLakers th {
+  padding: 15px 10px;
+  color: #fdb927; /* Lakers золотой */
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(253, 185, 39, 0.3); /* Золотой с прозрачностью */
+}
+
+.roster-tableLakers tbody tr:nth-child(even) {
+  background: white;
+}
+
+.roster-tableLakers tbody tr:nth-child(odd) {
+  background: white;
+}
+
+.roster-tableLakers tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.roster-tableLakers td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(85, 37, 131, 0.3); /* Фиолетовый с прозрачностью */
+  color: #000;
+}
+
+.roster-tableLakers .franchiseLakers {
+  background: rgba(
+    85,
+    37,
+    131,
+    0.1
+  ) !important; /* Фиолетовый с прозрачностью */
+}
+
+.roster-tableLakers .franchiseLakers td {
+  color: #552583; /* Фиолетовый */
+  font-weight: bold;
+}
+
+.number-cellLakers {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.starLakers {
+  color: #fdb927; /* Lakers золотой */
+  font-size: 1.2em;
+}
+
+.player-tagLakers {
+  padding: 4px 8px;
+  background: #fdb927; /* Lakers золотой */
+  color: #000;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.loading {
+  text-align: center;
+  color: #552583; /* Lakers фиолетовый */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.empty-stateLakers {
+  text-align: center;
+  padding: 40px;
+  color: #552583; /* Lakers фиолетовый */
+}
+
+.empty-iconLakers {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.empty-titleLakers {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-subtitleLakers {
+  opacity: 0.8;
+}
+
+.g-league-dividerLakers {
+  background: rgba(
+    85,
+    37,
+    131,
+    0.1
+  ) !important; /* Фиолетовый с прозрачностью */
+}
+
+.g-league-headerLakers {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #552583; /* Lakers фиолетовый */
+  border-top: 2px solid #552583; /* Lakers фиолетовый */
+  border-bottom: 2px solid #552583; /* Lakers фиолетовый */
+  background: rgba(85, 37, 131, 0.05);
+}
+
+.highlightLakers {
+  font-weight: bold;
+  color: #552583; /* Lakers фиолетовый */
+}
+
+@media (max-width: 768px) {
+  .rosterLakers {
+    padding: 10px;
+  }
+
+  .roster-headerLakers h1 {
+    font-size: 1.8rem;
+  }
+
+  .roster-subtitleLakers {
+    font-size: 1rem;
+  }
+
+  .roster-tableLakers th,
+  .roster-tableLakers td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+}

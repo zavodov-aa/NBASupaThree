@@ -1,0 +1,313 @@
+.headerCavaliers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  background: #860038; /* Cleveland Cavaliers основной цвет */
+  min-width: 280px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(134, 0, 56, 0.3); /* Обновленный цвет тени */
+  position: relative;
+  z-index: 1000;
+  padding: 12px 20px;
+  border-bottom: 3px solid black;
+  animation: headerAppear 0.6s ease-out;
+}
+
+.headerCavaliers::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #860038 0%,
+    #9c0042 100%
+  ); /* Градиент Cavaliers */
+  z-index: -1;
+}
+
+.headerLogoCavaliers {
+  width: 20%;
+  max-width: 200px;
+  min-width: 60px;
+  height: auto;
+  flex-shrink: 0;
+  transition: width 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(
+    2px 2px 4px rgba(134, 0, 56, 0.3)
+  ); /* Обновленный цвет тени */
+  transform: translateY(0);
+}
+
+.headerLogoCavaliers:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(
+    3px 3px 6px rgba(134, 0, 56, 0.4)
+  ); /* Обновленный цвет тени */
+}
+
+.headerNavCavaliers {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.headerNavLinkCavaliers {
+  background: transparent;
+  border: 2px solid black;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(134, 0, 56, 0.2); /* Обновленный цвет тени */
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.headerNavLinkCavaliers::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  border-radius: 50%;
+}
+
+.headerNavLinkCavaliers:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.headerNavLinkCavaliers::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: black;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.headerNavLinkCavaliers:hover {
+  background: #860038; /* Cleveland Cavaliers основной цвет */
+  color: black;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(134, 0, 56, 0.4); /* Обновленный цвет тени */
+  text-decoration: none;
+}
+
+.headerNavLinkCavaliers:hover::after {
+  width: 70%;
+}
+
+.headerNavLinkCavaliers:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s ease;
+}
+
+.headerNavLinkCavaliers.active {
+  background: #860038; /* Cleveland Cavaliers основной цвет */
+  color: black;
+}
+
+.headerNavLinkCavaliers.active::after {
+  width: 70%;
+}
+
+@media (max-width: 1024px) {
+  .headerLogoCavaliers {
+    width: 25%;
+  }
+
+  .headerNavLinkCavaliers {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Для планшетов в портретной ориентации */
+@media (max-width: 768px) {
+  .headerCavaliers {
+    padding: 10px 15px;
+    border-bottom-width: 2px;
+  }
+
+  .headerCavaliers::before {
+    background: linear-gradient(
+      135deg,
+      #860038 0%,
+      #9c0042 100%
+    ); /* Градиент Cavaliers */
+  }
+
+  .headerLogoCavaliers {
+    width: 30%;
+    min-width: 70px;
+  }
+
+  .headerNavCavaliers {
+    gap: 10px;
+  }
+
+  .headerNavLinkCavaliers {
+    padding: 5px 10px;
+    font-size: 13px;
+    border-width: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerCavaliers {
+    padding: 8px 10px;
+    border-bottom-width: 1px;
+  }
+
+  .headerLogoCavaliers {
+    width: 35%;
+    min-width: 60px;
+  }
+
+  .headerNavCavaliers {
+    gap: 5px;
+  }
+
+  .headerNavLinkCavaliers {
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 15px;
+    border-width: 1px;
+  }
+
+  .headerNavLinkCavaliers:hover::before {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .headerCavaliers {
+    flex-wrap: nowrap;
+    padding: 6px 8px;
+  }
+
+  .headerNavCavaliers {
+    gap: 3px;
+  }
+
+  .headerNavLinkCavaliers {
+    padding: 3px 5px;
+    font-size: 10px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .headerCavaliers {
+    padding: 5px 6px;
+    min-width: 280px;
+  }
+
+  .headerLogoCavaliers {
+    width: 25%;
+    min-width: 50px;
+  }
+
+  .headerNavCavaliers {
+    gap: 2px;
+  }
+
+  .headerNavLinkCavaliers {
+    padding: 2px 4px;
+    font-size: 9px;
+    border-radius: 10px;
+    border-width: 1px;
+  }
+}
+
+@media (max-width: 260px) {
+  .headerCavaliers {
+    padding: 4px 5px;
+    min-width: 280px;
+    overflow: hidden;
+  }
+
+  .headerLogoCavaliers {
+    width: 20%;
+    min-width: 45px;
+    max-width: 50px;
+  }
+
+  .headerNavCavaliers {
+    gap: 1px;
+    flex-wrap: nowrap;
+  }
+
+  .headerNavLinkCavaliers {
+    padding: 2px 3px;
+    font-size: 8px;
+    border-radius: 8px;
+    letter-spacing: -0.3px;
+    min-width: 50px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .headerCavaliers {
+    padding: 15px 30px;
+    box-shadow: 0 6px 30px rgba(134, 0, 56, 0.4); /* Обновленный цвет тени */
+  }
+
+  .headerLogoCavaliers {
+    width: 18%;
+    max-width: 250px;
+  }
+
+  .headerNavLinkCavaliers {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .headerLogoCavaliers {
+    width: 15%;
+    max-width: 300px;
+  }
+
+  .headerNavLinkCavaliers {
+    padding: 12px 24px;
+    font-size: 20px;
+  }
+}
+
+@keyframes headerAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

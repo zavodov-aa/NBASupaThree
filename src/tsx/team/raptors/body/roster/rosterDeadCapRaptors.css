@@ -1,0 +1,123 @@
+.raptors-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-contents-raptors {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-titles-raptors {
+  color: #ce1141; /* Toronto Raptors red */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containers-raptors {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrappers-raptors {
+  overflow-x: auto;
+}
+
+.players-tables-raptors {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headers-raptors {
+  background: black;
+}
+
+.table-ths-raptors {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-ths-raptors:last-child {
+  border-right: none;
+}
+
+.table-bodys-raptors {
+}
+
+.table-rows-raptors {
+  transition: background-color 0.3s;
+}
+
+.table-rows-raptors:hover {
+}
+
+.row-evens-raptors {
+  background: white;
+}
+
+.row-odds-raptors {
+  /* background-color: #000000; Toronto Raptors black */
+  background: white;
+}
+
+.table-tds-raptors {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-ids-raptors {
+  color: black;
+  font-weight: bold;
+}
+
+.player-positions-raptors {
+  font-weight: bold;
+  color: black;
+}
+
+.player-ages-raptors {
+  color: black;
+  font-weight: bold;
+}
+
+.roster-badges-raptors {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-actives-raptors {
+  color: black;
+}
+
+.badge-inactives-raptors {
+  background: #6b7280;
+  color: white;
+}
+
+.loading-texts-raptors {
+  text-align: center;
+  color: #ce1141; /* Toronto Raptors red */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.special-players-raptors {
+  /* background: linear-gradient(135deg, #000000, #CE1141) !important; Toronto Raptors black to red */
+  background: rgba(0, 0, 0, 0.637) !important;
+}
+
+.special-players-raptors .table-tds-raptors {
+  color: white;
+  font-weight: bold;
+}

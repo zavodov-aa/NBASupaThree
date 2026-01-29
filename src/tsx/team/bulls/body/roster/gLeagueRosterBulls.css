@@ -1,0 +1,118 @@
+.bulls-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-bulls {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-bulls {
+  color: #ce1141; /* Chicago Bulls red */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-bulls {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-bulls {
+  overflow-x: auto;
+}
+
+.players-table-bulls {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-bulls {
+  background: black;
+}
+
+.table-th-bulls {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-body-bulls {
+  background: white;
+}
+
+.table-tdw-bulls {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-td-bulls {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-bulls {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-bulls {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-bulls {
+  color: #ce1141; /* Chicago Bulls red */
+  font-weight: bold;
+}
+
+.roster-badge-bulls {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-bulls {
+  color: white;
+  background-color: #ce1141; /* Chicago Bulls red */
+}
+
+.badge-inactive-bulls {
+  color: black;
+  background-color: #c4ced4; /* Chicago Bulls gray */
+}
+
+.loading-text-bulls {
+  text-align: center;
+  color: #ce1141; /* Chicago Bulls red */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-bulls {
+  background-color: #000000; /* Chicago Bulls black */
+  color: white;
+}
+
+.tables-row-bulls {
+  background-color: transparent;
+}
+
+/* Alternating row colors */
+.row-even-bulls {
+  background: #f8f9fa;
+}
+
+.row-odd-bulls {
+  background: #ffffff;
+}

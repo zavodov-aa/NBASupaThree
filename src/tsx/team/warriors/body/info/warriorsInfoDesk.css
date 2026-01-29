@@ -1,0 +1,312 @@
+.desk-card-wrapper-warriors {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.warriors-desk-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(29, 66, 138, 0.15),
+    0 4px 12px rgba(255, 199, 44, 0.1);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.desk-accent-top-warriors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #1d428a 0%,
+    #006bb6 25%,
+    #ffc72c 50%,
+    #fdb927 75%,
+    #1d428a 100%
+  );
+}
+
+.desk-sections-horizontal-warriors {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.desk-section-warriors {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.desk-section-warriors:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 20px rgba(29, 66, 138, 0.15);
+}
+
+.desk-header-warriors {
+  background: linear-gradient(
+    135deg,
+    rgba(29, 66, 138, 0.1) 0%,
+    rgba(255, 199, 44, 0.05) 100%
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desk-title-icon-warriors {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1d428a, #ffc72c);
+  flex-shrink: 0;
+}
+
+.desk-title-warriors {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+  color: #1d428a;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.desk-content-warriors {
+  padding: 0;
+}
+
+.desk-items-vertical-warriors {
+  display: flex;
+  flex-direction: column;
+}
+
+.desk-item-warriors {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(29, 66, 138, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+  justify-content: center;
+}
+
+.desk-item-warriors:last-child {
+  border-bottom: none;
+}
+
+.desk-item-warriors::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(29, 66, 138, 0.05) 50%,
+    transparent 100%
+  );
+  transition: left 0.4s ease;
+}
+
+.desk-item-warriors:hover::before {
+  left: 100%;
+}
+
+.desk-item-warriors:hover {
+  background: rgba(255, 255, 255, 0.8);
+  padding-left: 20px;
+}
+
+.desk-label-warriors {
+  font-size: 0.8em;
+  color: #666;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.desk-value-warriors {
+  font-size: 1em;
+  color: #333;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+/* Highlight Styles */
+.highlight-positive-warriors {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.1) 0%,
+    rgba(34, 197, 94, 0.05) 100%
+  );
+}
+
+.highlight-positive-warriors .desk-value-warriors {
+  color: #16a34a;
+}
+
+.highlight-negative-warriors {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.1) 0%,
+    rgba(239, 68, 68, 0.05) 100%
+  );
+}
+
+.highlight-negative-warriors .desk-value-warriors {
+  color: #dc2626;
+}
+
+.highlight-playoffs-warriors {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
+}
+
+.highlight-playoffs-warriors .desk-value-warriors {
+  color: #2563eb;
+}
+
+.highlight-championship-warriors {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 199, 44, 0.15) 0%,
+    rgba(255, 199, 44, 0.08) 100%
+  );
+}
+
+.highlight-championship-warriors .desk-value-warriors {
+  color: #1d428a;
+  font-weight: 800;
+}
+
+.desk-colors-warriors {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+}
+
+.color-dot-warriors {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.color-dot-warriors:hover {
+  transform: scale(1.4);
+}
+
+.color-dot-warriors.navy-warriors {
+  background: #1d428a;
+}
+
+.color-dot-warriors.blue-warriors {
+  background: #006bb6;
+}
+
+.color-dot-warriors.yellow-warriors {
+  background: #ffc72c;
+}
+
+.color-dot-warriors.gold-warriors {
+  background: #fdb927;
+}
+
+.color-dot-warriors.white-warriors {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .desk-sections-horizontal-warriors {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .desk-header-warriors {
+    padding: 14px 16px;
+  }
+
+  .desk-item-warriors {
+    padding: 12px 14px;
+    min-height: 55px;
+  }
+}
+
+@media (max-width: 992px) {
+  .desk-sections-horizontal-warriors {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .warriors-desk-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .warriors-desk-card {
+    padding: 16px;
+  }
+
+  .desk-header-warriors {
+    padding: 12px 14px;
+  }
+
+  .desk-item-warriors {
+    padding: 10px 12px;
+    min-height: 50px;
+  }
+
+  .desk-item-warriors:hover {
+    padding-left: 16px;
+  }
+
+  .desk-colors-warriors {
+    bottom: 12px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .desk-title-warriors {
+    font-size: 0.9em;
+  }
+
+  .desk-label-warriors {
+    font-size: 0.75em;
+  }
+
+  .desk-value-warriors {
+    font-size: 0.9em;
+  }
+}

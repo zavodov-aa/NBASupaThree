@@ -1,0 +1,126 @@
+.magic-containers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content-magic {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-magic {
+  color: #0077c0; /* Orlando Magic синий цвет */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-containersss-magic {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.table-wrapper-magic {
+  overflow-x: auto;
+}
+
+.players-table-magic {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-headerss-magic {
+  background: black;
+}
+
+.table-th-magic {
+  padding: 15px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table-th-magic:last-child {
+}
+
+.table-body-magic {
+  background: white;
+}
+
+.tables-row-magic {
+}
+
+.row-even-magic {
+  background: black;
+}
+
+.row-odd-magic {
+}
+
+.table-tdw-magic {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: white;
+}
+
+.table-tdw-magic {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: black;
+}
+
+.player-id-magic {
+  color: black;
+  font-weight: bold;
+}
+
+.player-position-magic {
+  font-weight: bold;
+  color: white;
+}
+
+.player-age-magic {
+  color: #0077c0; /* Orlando Magic синий цвет */
+  font-weight: bold;
+}
+
+.roster-badge-magic {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-active-magic {
+  color: white;
+}
+
+.badge-inactive-magic {
+  color: black;
+}
+
+.loading-text-magic {
+  text-align: center;
+  color: #0077c0; /* Orlando Magic синий цвет */
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.first-row-highlight-magic {
+  background-color: rgba(
+    0,
+    119,
+    192,
+    0.8
+  ); /* Orlando Magic синий с прозрачностью */
+  color: white; /* Белый текст для контраста */
+}
+
+.tables-row-magic {
+  /* Стили для обычных строк */
+  background-color: transparent;
+}

@@ -1,0 +1,803 @@
+/* Стили только для компонента TradeResultSpurs */
+
+.resultSpurs-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== КОНТРОЛЬНАЯ ПАНЕЛЬ ===== */
+.resultSpurs-controls {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.resultSpurs-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 44px;
+}
+
+.resultSpurs-button:hover:not(:disabled) {
+  background: #333333;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultSpurs-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultSpurs-button--hasNotifications {
+  background: linear-gradient(135deg, #000000 0%, #333333 100%);
+}
+
+.resultSpurs-notificationCount {
+  background: #c4ced4;
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.resultSpurs-errorMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-radius: 4px;
+  border-left: 3px solid #d32f2f;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.resultSpurs-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.resultSpurs-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #000000;
+  overflow: hidden;
+}
+
+/* Шапка модального окна */
+.resultSpurs-modalHeader {
+  background: #000000;
+  color: #ffffff;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #c4ced4;
+}
+
+.resultSpurs-headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultSpurs-teamLogo {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resultSpurs-teamLogo::before {
+  content: "SAS";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000000;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.resultSpurs-headerInfo h2 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.resultSpurs-headerSubtitle {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.resultSpurs-tradesCount {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.resultSpurs-tradePartner {
+  color: #c4ced4;
+  font-weight: 500;
+}
+
+.resultSpurs-closeModal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.resultSpurs-closeModal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Контент модального окна */
+.resultSpurs-modalContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.resultSpurs-noTrades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666666;
+}
+
+.resultSpurs-noTradesIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.resultSpurs-noTrades p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ===== СПИСОК СДЕЛОК ===== */
+.resultSpurs-tradesList {
+  padding: 24px;
+}
+
+.resultSpurs-tradeItem {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.resultSpurs-tradeItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultSpurs-tradeHeader {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultSpurs-tradeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.resultSpurs-tradeNumber {
+  font-weight: 600;
+  color: #000000;
+  font-size: 15px;
+}
+
+.resultSpurs-tradeTeams {
+  font-weight: 500;
+  color: #000000;
+  font-size: 14px;
+}
+
+/* ===== СОДЕРЖАНИЕ СДЕЛКИ ===== */
+.resultSpurs-tradeSummary {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultSpurs-summaryStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.resultSpurs-statItem {
+  text-align: center;
+  flex: 1;
+}
+
+.resultSpurs-statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.resultSpurs-statLabel {
+  font-size: 13px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultSpurs-exchangeArrow {
+  font-size: 28px;
+  color: #c4ced4;
+  margin: 0 10px;
+}
+
+/* Разделитель */
+.resultSpurs-tradeDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 20px;
+}
+
+.resultSpurs-dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.resultSpurs-dividerText {
+  font-size: 12px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0 12px;
+}
+
+/* Секции трейда */
+.resultSpurs-tradeSection {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin: 0 20px 20px;
+}
+
+.resultSpurs-tradeSection--team1 {
+  border-left: 3px solid #000000;
+}
+
+.resultSpurs-tradeSection--team2 {
+  border-left: 3px solid #c4ced4;
+}
+
+.resultSpurs-sectionHeader {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 14px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultSpurs-sectionTitle {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.resultSpurs-sectionCounts {
+  display: flex;
+  gap: 8px;
+}
+
+.resultSpurs-countBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resultSpurs-countBadge--players {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.resultSpurs-countBadge--picks {
+  background: rgba(196, 206, 212, 0.1);
+  color: #c4ced4;
+  border: 1px solid rgba(196, 206, 212, 0.2);
+}
+
+.resultSpurs-sectionContent {
+  padding: 16px;
+}
+
+.resultSpurs-sectionContent--players {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.resultSpurs-contentLabel {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resultSpurs-cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* ===== КАРТОЧКИ ИГРОКОВ ===== */
+.resultSpurs-playerCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.resultSpurs-playerCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultSpurs-playerCard--active {
+  border-left-color: #000000;
+}
+
+.resultSpurs-playerCard--gleague {
+  border-left-color: #c4ced4;
+}
+
+.resultSpurs-playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.resultSpurs-playerNameSection {
+  flex: 1;
+}
+
+.resultSpurs-playerName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.resultSpurs-playerType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* ===== КАРТОЧКИ ДРАФТ-ПИКОВ ===== */
+.resultSpurs-draftPickCard {
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 3px solid #0077cc;
+  transition: all 0.2s;
+}
+
+.resultSpurs-draftPickCard:hover {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultSpurs-pickHeader {
+  margin-bottom: 10px;
+}
+
+.resultSpurs-pickInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultSpurs-pickYearRound {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultSpurs-pickType {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(0, 119, 204, 0.1);
+  color: #0077cc;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 119, 204, 0.2);
+}
+
+.resultSpurs-pickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultSpurs-pickTeam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.resultSpurs-teamLabel {
+  color: #666666;
+}
+
+.resultSpurs-teamName {
+  font-weight: 500;
+  color: #000000;
+}
+
+/* ===== ПРИМЕЧАНИЕ К СДЕЛКЕ ===== */
+.resultSpurs-tradeNote {
+  background: rgba(196, 206, 212, 0.05);
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 20px 20px;
+  border: 1px solid rgba(196, 206, 212, 0.2);
+}
+
+.resultSpurs-noteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resultSpurs-noteTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+}
+
+.resultSpurs-noteLength {
+  font-size: 12px;
+  color: #666666;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.resultSpurs-noteContent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+.resultSpurs-tradeActions {
+  display: flex;
+  gap: 12px;
+  margin: 0 20px 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultSpurs-actionButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-height: 44px;
+}
+
+.resultSpurs-actionButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resultSpurs-actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resultSpurs-actionButton--accept {
+  background: #c4ced4;
+  color: #000000;
+}
+
+.resultSpurs-actionButton--accept:hover:not(:disabled) {
+  background: #b0bbc1;
+}
+
+.resultSpurs-actionButton--reject {
+  background: #000000;
+  color: #ffffff;
+}
+
+.resultSpurs-actionButton--reject:hover:not(:disabled) {
+  background: #333333;
+}
+
+/* ===== ФУТЕР МОДАЛЬНОГО ОКНА ===== */
+.resultSpurs-modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.resultSpurs-closeAllButton {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultSpurs-closeAllButton:hover {
+  background: #333333;
+  transform: translateY(-1px);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и маленькие ноутбуки (768px и меньше) */
+@media (max-width: 768px) {
+  .resultSpurs-modal {
+    max-height: 90vh;
+  }
+
+  .resultSpurs-headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resultSpurs-tradesList {
+    padding: 16px;
+  }
+
+  .resultSpurs-tradeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultSpurs-tradeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultSpurs-cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultSpurs-summaryStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultSpurs-exchangeArrow {
+    transform: rotate(90deg);
+  }
+
+  .resultSpurs-headerSubtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resultSpurs-tradeActions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resultSpurs-tradeSummary,
+  .resultSpurs-tradeSection,
+  .resultSpurs-tradeNote,
+  .resultSpurs-tradeActions {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .resultSpurs-tradeDivider {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+  .resultSpurs-modal {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .resultSpurs-modalHeader {
+    padding: 16px;
+  }
+
+  .resultSpurs-headerInfo h2 {
+    font-size: 18px;
+  }
+
+  .resultSpurs-sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resultSpurs-sectionCounts {
+    align-self: flex-end;
+  }
+
+  .resultSpurs-statValue {
+    font-size: 28px;
+  }
+
+  .resultSpurs-statLabel {
+    font-size: 12px;
+  }
+
+  .resultSpurs-tradeNumber {
+    font-size: 14px;
+  }
+
+  .resultSpurs-tradeTeams {
+    font-size: 13px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .resultSpurs-modalOverlay {
+    padding: 10px;
+  }
+
+  .resultSpurs-modal {
+    max-height: 95vh;
+  }
+
+  .resultSpurs-headerInfo h2 {
+    font-size: 16px;
+  }
+
+  .resultSpurs-teamLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .resultSpurs-teamLogo::before {
+    font-size: 10px;
+  }
+
+  .resultSpurs-statValue {
+    font-size: 24px;
+  }
+
+  .resultSpurs-playerName,
+  .resultSpurs-pickYearRound {
+    font-size: 13px;
+  }
+
+  .resultSpurs-noteContent {
+    font-size: 13px;
+  }
+
+  .resultSpurs-actionButton {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .resultSpurs-container .resultSpurs-modal {
+    background: #1a1a1a;
+    border-color: #000000;
+  }
+
+  .resultSpurs-container .resultSpurs-tradeItem,
+  .resultSpurs-container .resultSpurs-playerCard,
+  .resultSpurs-container .resultSpurs-draftPickCard,
+  .resultSpurs-container .resultSpurs-tradeSummary,
+  .resultSpurs-container .resultSpurs-tradeSection {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .resultSpurs-container .resultSpurs-playerName,
+  .resultSpurs-container .resultSpurs-statLabel,
+  .resultSpurs-container .resultSpurs-sectionTitle,
+  .resultSpurs-container .resultSpurs-noteTitle,
+  .resultSpurs-container .resultSpurs-teamName,
+  .resultSpurs-container .resultSpurs-pickYearRound,
+  .resultSpurs-container .resultSpurs-tradeTeams {
+    color: #f0f0f0;
+  }
+
+  .resultSpurs-container .resultSpurs-playerType,
+  .resultSpurs-container .resultSpurs-pickType,
+  .resultSpurs-container .resultSpurs-noteLength {
+    background: #3d3d3d;
+    border-color: #555;
+  }
+
+  .resultSpurs-container .resultSpurs-draftPickCard {
+    border-left-color: #4d9fe3;
+  }
+
+  .resultSpurs-container .resultSpurs-pickType {
+    background: rgba(77, 159, 227, 0.15);
+    border-color: rgba(77, 159, 227, 0.3);
+    color: #4d9fe3;
+  }
+}

@@ -1,0 +1,293 @@
+.suns-containers {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content-suns {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title-suns {
+  color: #e56020; /* Suns orange */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Основной контейнер карточки */
+.suns-picks-coach-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  border: 2px solid #f9ad1b; /* Suns yellow */
+  box-shadow: 0 8px 24px rgba(29, 17, 96, 0.15); /* Suns purple */
+}
+
+.suns-pc-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #1d1160,
+    #e56020
+  ); /* Suns purple to orange */
+}
+
+/* Контейнер для горизонтального расположения */
+.suns-pc-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .suns-pc-sections-container {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .suns-pc-section {
+    flex: 1;
+  }
+}
+
+/* Общие стили для секций */
+.suns-pc-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(29, 17, 96, 0.2); /* Suns purple */
+}
+
+.suns-pc-header {
+  background: linear-gradient(
+    135deg,
+    rgba(29, 17, 96, 0.1),
+    /* Suns purple */ rgba(229, 96, 32, 0.05) /* Suns orange */
+  );
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(29, 17, 96, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.suns-pc-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #1d1160; /* Suns purple */
+  text-transform: uppercase;
+}
+
+.suns-coach-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.suns-coach-name {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Стили для драфт пиков */
+.suns-picks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.suns-pick-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.suns-pick-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(29, 17, 96, 0.1); /* Suns purple */
+}
+
+.suns-pick-year {
+  background: linear-gradient(
+    135deg,
+    #e56020,
+    #f9ad1b
+  ); /* Suns orange to yellow */
+  color: black;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.pick-item-suns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(29, 17, 96, 0.1);
+  transition: background 0.2s ease;
+}
+
+.pick-item-suns:hover {
+  background: rgba(29, 17, 96, 0.05); /* Suns purple */
+}
+
+.pick-item-suns:last-child {
+  border-bottom: none;
+}
+
+.pick-round-suns {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pick-value-suns {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Стили для тренера */
+.suns-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.suns-coach-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.suns-coach-column:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 1px;
+  background: rgba(29, 17, 96, 0.1); /* Suns purple */
+}
+
+.coach-item-suns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(29, 17, 96, 0.1);
+  transition: background 0.2s ease;
+}
+
+.coach-item-suns:hover {
+  background: rgba(229, 96, 32, 0.05); /* Suns orange */
+}
+
+.coach-item-suns:last-child {
+  border-bottom: none;
+}
+
+.coach-position-suns {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.coach-value-suns {
+  font-size: 0.95em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Цветные точки */
+.suns-pc-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(29, 17, 96, 0.1);
+}
+
+.color-dot-suns {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Phoenix Suns цвета */
+.purple-dark-suns {
+  background: #1d1160; /* Dark purple */
+}
+.purple-suns {
+  background: #552583; /* Purple */
+}
+.orange-suns {
+  background: #e56020; /* Orange */
+}
+.yellow-suns {
+  background: #f9ad1b; /* Yellow */
+}
+.gray-suns {
+  background: #63727a; /* Gray */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .suns-containers {
+    padding: 16px;
+  }
+
+  .header-title-suns {
+    font-size: 2rem;
+  }
+
+  .suns-picks-grid,
+  .suns-coach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .suns-pick-column:not(:last-child)::after,
+  .suns-coach-column:not(:last-child)::after {
+    display: none;
+  }
+
+  .suns-pc-header {
+    padding: 14px 16px;
+  }
+
+  .pick-item-suns,
+  .coach-item-suns {
+    padding: 10px 14px;
+  }
+}
+
+.loading-text-suns,
+.error-text-suns {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.error-text-suns {
+  color: #ff4444;
+}
