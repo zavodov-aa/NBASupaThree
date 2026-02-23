@@ -1,0 +1,2928 @@
+/* .rfaUserFirstRoundSpaceViewOffers-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 10px;
+  background: linear-gradient(135deg, #c6c6ce 0%, #101016 100%);
+  min-width: 250px;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #6464ff 0%, #8a8aff 100%);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(138, 138, 255, 0.3);
+  min-width: 200px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 138, 255, 0.4);
+  background: linear-gradient(135deg, #8a8aff 0%, #6464ff 100%);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-button-text {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-button-arrow {
+  font-size: 10px;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  color: #ff6b6b;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-logout-button:hover {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.5);
+  transform: translateY(-1px);
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95vw;
+  max-width: 320px;
+  background: rgba(20, 20, 40, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  animation: rfaUserFirstRoundSpaceViewOffers-fadeIn 0.3s ease-out;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-menu-header {
+  padding: 15px 15px 10px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-menu-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-menu-subtitle {
+  font-size: 12px;
+  color: #8a8aff;
+  opacity: 0.8;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #8a8aff 50%,
+    transparent 100%
+  );
+  margin: 10px auto;
+  width: 80%;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-team-search-container {
+  position: relative;
+  padding: 0 15px 10px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-search-input {
+  width: 100%;
+  padding: 12px 35px 12px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(138, 138, 255, 0.2);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-search-input:focus {
+  outline: none;
+  border-color: rgba(138, 138, 255, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  font-size: 13px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-clear-search-button {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-clear-search-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-teams-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px 10px;
+  min-height: 150px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-item {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-item:hover {
+  background: rgba(138, 138, 255, 0.1);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-name {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-search-results-info {
+  padding: 10px 15px;
+  font-size: 12px;
+  color: #8a8aff;
+  opacity: 0.7;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-password-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(12, 12, 42, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+  padding: 10px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-form-container {
+  background: rgba(20, 20, 40, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  width: 95vw;
+  max-width: 400px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: rfaUserFirstRoundSpaceViewOffers-scaleIn 0.3s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+@keyframes rfaUserFirstRoundSpaceViewOffers-scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-header {
+  text-align: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-subtitle {
+  font-size: 13px;
+  color: #8a8aff;
+  opacity: 0.8;
+  margin: 0;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-selected-team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px;
+  background: rgba(138, 138, 255, 0.1);
+  border: 2px solid rgba(138, 138, 255, 0.2);
+  border-radius: 10px;
+  margin: 5px 0;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-name-large {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 5px;
+  word-break: break-word;
+  width: 100%;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-hint {
+  font-size: 12px;
+  color: #8a8aff;
+  opacity: 0.8;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-password-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-input {
+  width: 100%;
+  padding: 14px 45px 14px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(138, 138, 255, 0.2);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 3px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-input:focus {
+  outline: none;
+  border-color: rgba(138, 138, 255, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-input::placeholder {
+  letter-spacing: normal;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-input-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-password-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 6px;
+  color: #ff6b6b;
+  font-size: 13px;
+  animation: rfaUserFirstRoundSpaceViewOffers-fadeIn 0.3s ease-out;
+  width: 100%;
+  text-align: center;
+  word-break: break-word;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #8a8aff 0%, #6464ff 100%);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 138, 255, 0.4);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-cancel {
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-cancel:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-mini-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: rfaUserFirstRoundSpaceViewOffers-spin 1s linear infinite;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offers-container {
+  background: rgba(20, 20, 40, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offers-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(138, 138, 255, 0.2);
+  text-align: center;
+  gap: 10px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offers-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(138, 138, 255, 0.1);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 16px;
+  color: #8a8aff;
+  font-size: 13px;
+  font-weight: 500;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-offers-stats {
+  display: none;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-stat-card {
+  padding: 15px;
+  background: rgba(138, 138, 255, 0.05);
+  border: 1px solid rgba(138, 138, 255, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #8a8aff;
+  margin-bottom: 5px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-table-wrapper {
+  display: none;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-offers-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-card {
+  background: rgba(138, 138, 255, 0.05);
+  border: 1px solid rgba(138, 138, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-card:hover {
+  background: rgba(138, 138, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(138, 138, 255, 0.1);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-player {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-status {
+  margin-left: 10px;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-status-pending {
+  background: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-status-processed {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  flex: 1;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-value {
+  color: #ffffff;
+  font-weight: 600;
+  text-align: right;
+  flex: 1;
+  word-break: break-word;
+  padding-left: 10px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-value.salary {
+  color: #8a8aff;
+  font-family: monospace;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-value.bonus {
+  color: #64ffda;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-card-delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 6px;
+  color: #ff6b6b;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-card-delete-button:hover:not(:disabled) {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.5);
+  transform: translateY(-1px);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-card-delete-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-delete-error {
+  margin-bottom: 15px;
+  animation: rfaUserFirstRoundSpaceViewOffers-fadeIn 0.3s ease-out;
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 6px;
+  color: #ff6b6b;
+  font-size: 13px;
+  word-break: break-word;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-loading-offers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offers-error {
+  padding: 15px;
+  text-align: center;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 10px;
+  color: #ff6b6b;
+  font-size: 13px;
+  word-break: break-word;
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-no-offers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-empty-subtext {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+@keyframes rfaUserFirstRoundSpaceViewOffers-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rfaUserFirstRoundSpaceViewOffers-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.rfaUserFirstRoundSpaceViewOffers-teams-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-teams-list::-webkit-scrollbar-track {
+  background: rgba(20, 20, 40, 0.5);
+  border-radius: 2px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-teams-list::-webkit-scrollbar-thumb {
+  background: rgba(138, 138, 255, 0.5);
+  border-radius: 2px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-teams-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(138, 138, 255, 0.7);
+}
+
+
+@media (min-width: 601px) {
+  .rfaUserFirstRoundSpaceViewOffers-container {
+    padding: 30px 20px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button {
+    padding: 14px 24px;
+    font-size: 16px;
+    min-width: 280px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button-text {
+    font-size: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-logout-button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    max-height: none;
+    max-width: 320px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-header {
+    padding: 20px 20px 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-title {
+    font-size: 18px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-subtitle {
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-search-container {
+    padding: 0 20px 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-search-input {
+    padding: 14px 40px 14px 20px;
+    font-size: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-clear-search-button {
+    right: 30px;
+    width: 22px;
+    height: 22px;
+    font-size: 16px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-item {
+    padding: 14px 15px;
+    margin-bottom: 5px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name {
+    font-size: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-search-results-info {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-form-container {
+    padding: 30px;
+    width: 90%;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-form {
+    gap: 20px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-title {
+    font-size: 22px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-subtitle {
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-selected-team-card {
+    padding: 20px;
+    gap: 10px;
+    margin: 10px 0;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name-large {
+    font-size: 20px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-hint {
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-input-group {
+    gap: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-input {
+    padding: 16px 50px 16px 20px;
+    font-size: 16px;
+    letter-spacing: 4px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-error {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-buttons {
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-submit {
+    padding: 16px 24px;
+    font-size: 16px;
+    min-width: 150px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-cancel {
+    padding: 16px 24px;
+    font-size: 16px;
+    min-width: 100px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-container {
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 16px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    gap: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-title {
+    font-size: 22px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-badge {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-cards {
+    display: none;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-table-wrapper {
+    display: block;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(138, 138, 255, 0.2);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-stats {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-stat-card {
+    padding: 20px;
+    min-width: 150px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-stat-value {
+    font-size: 32px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-stat-label {
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(12, 12, 42, 0.5);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-table th {
+    padding: 16px 12px;
+    background: rgba(138, 138, 255, 0.1);
+    color: #8a8aff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border-bottom: 2px solid rgba(138, 138, 255, 0.2);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-table td {
+    padding: 14px 12px;
+    color: #ffffff;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-table-row:hover {
+    background: rgba(138, 138, 255, 0.05);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-player-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-player-name {
+    font-weight: 500;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-salary-cell {
+    color: #8a8aff;
+    font-weight: 600;
+    font-family: monospace;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-type-cell,
+  .rfaUserFirstRoundSpaceViewOffers-period-cell,
+  .rfaUserFirstRoundSpaceViewOffers-option-cell {
+    font-size: 13px;
+    opacity: 0.9;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-bonus-cell {
+    color: #64ffda;
+    font-weight: 500;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-condition-cell {
+    position: relative;
+    max-width: 120px;
+    margin: 0 auto;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-condition-tooltip {
+    cursor: help;
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(20, 20, 40, 0.95);
+    backdrop-filter: blur(20px);
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(138, 138, 255, 0.3);
+    font-size: 12px;
+    white-space: normal;
+    width: 200px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: left;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-condition-tooltip:hover
+    .rfaUserFirstRoundSpaceViewOffers-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-status-cell {
+    font-size: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-status-pending {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-status-processed {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-date-cell {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 8px;
+    color: #ff6b6b;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    margin: 0 auto;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-delete-button:hover:not(:disabled) {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: rgba(255, 107, 107, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-delete-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-delete-error {
+    margin-bottom: 20px;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-loading-offers {
+    padding: 40px 20px;
+    gap: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-error {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-no-offers {
+    padding: 50px 20px;
+    gap: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-empty-subtext {
+    font-size: 13px;
+  }
+}
+
+
+@media (max-width: 300px) {
+  .rfaUserFirstRoundSpaceViewOffers-container {
+    padding: 10px 5px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button {
+    padding: 10px 12px;
+    font-size: 12px;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button-text {
+    font-size: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-logout-button {
+    padding: 8px 10px;
+    font-size: 11px;
+    width: 100%;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu {
+    width: 100vw;
+    max-width: none;
+    border-radius: 8px;
+    margin: 0 5px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-title {
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-subtitle {
+    font-size: 11px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-search-input {
+    padding: 10px 30px 10px 10px;
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name {
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-form-container {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-title {
+    font-size: 16px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name-large {
+    font-size: 16px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-input {
+    padding: 12px 40px 12px 15px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-submit,
+  .rfaUserFirstRoundSpaceViewOffers-password-cancel {
+    padding: 12px 15px;
+    font-size: 13px;
+    min-width: auto;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-container {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-title {
+    font-size: 16px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-player {
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-label,
+  .rfaUserFirstRoundSpaceViewOffers-offer-value {
+    font-size: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-card-delete-button {
+    padding: 6px 12px;
+    font-size: 11px;
+    min-width: 70px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-date {
+    font-size: 11px;
+  }
+}
+
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .rfaUserFirstRoundSpaceViewOffers-teams-list {
+    max-height: 200px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu {
+    max-height: 90vh;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-form-container {
+    max-height: 95vh;
+  }
+}
+
+
+@media (min-resolution: 192dpi) and (max-width: 600px) {
+  .rfaUserFirstRoundSpaceViewOffers-button,
+  .rfaUserFirstRoundSpaceViewOffers-logout-button,
+  .rfaUserFirstRoundSpaceViewOffers-card-delete-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-item,
+  .rfaUserFirstRoundSpaceViewOffers-offer-card {
+    border-width: 0.5px;
+  }
+} */
+ 
+.rfaUserFirstRoundSpaceViewOffers-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 10px;
+  background: #ffffff;
+  min-width: 250px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+/* Основная кнопка */
+.rfaUserFirstRoundSpaceViewOffers-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #6464ff 0%, #8a8aff 100%);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(138, 138, 255, 0.3);
+  min-width: 200px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 48px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 138, 255, 0.4);
+  background: linear-gradient(135deg, #8a8aff 0%, #6464ff 100%);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-button-text {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-button-arrow {
+  font-size: 10px;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Кнопка выхода */
+.rfaUserFirstRoundSpaceViewOffers-logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  color: #ff6b6b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-height: 44px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-logout-button:hover {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Меню выбора команды */
+.rfaUserFirstRoundSpaceViewOffers-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95vw;
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: rfaUserFirstRoundSpaceViewOffers-fadeIn 0.3s ease-out;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-menu-header {
+  padding: 20px 15px 15px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-menu-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-menu-subtitle {
+  font-size: 13px;
+  color: #6464ff;
+  opacity: 0.8;
+  line-height: 1.3;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #8a8aff 50%,
+    transparent 100%
+  );
+  margin: 15px auto;
+  width: 80%;
+}
+
+/* Поиск команды */
+.rfaUserFirstRoundSpaceViewOffers-team-search-container {
+  position: relative;
+  padding: 0 15px 15px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-search-input {
+  width: 100%;
+  padding: 14px 40px 14px 15px;
+  background: rgba(138, 138, 255, 0.05);
+  border: 2px solid rgba(138, 138, 255, 0.2);
+  border-radius: 8px;
+  color: #333333;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-align: left;
+  box-sizing: border-box;
+  min-height: 48px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-search-input:focus {
+  outline: none;
+  border-color: rgba(138, 138, 255, 0.6);
+  background: rgba(138, 138, 255, 0.08);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-search-input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-size: 14px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-clear-search-button {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: #333333;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  min-height: 24px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-clear-search-button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Список команд */
+.rfaUserFirstRoundSpaceViewOffers-teams-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px 10px;
+  min-height: 150px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-item {
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  text-align: center;
+  box-sizing: border-box;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-item:hover {
+  background: rgba(138, 138, 255, 0.1);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-name {
+  color: #333333;
+  font-size: 15px;
+  font-weight: 500;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Информация о поиске */
+.rfaUserFirstRoundSpaceViewOffers-search-results-info {
+  padding: 12px 15px;
+  font-size: 13px;
+  color: #6464ff;
+  opacity: 0.7;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.02);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Форма пароля */
+.rfaUserFirstRoundSpaceViewOffers-password-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+  padding: 10px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-form-container {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  width: 95vw;
+  max-width: 320px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: rfaUserFirstRoundSpaceViewOffers-scaleIn 0.3s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+@keyframes rfaUserFirstRoundSpaceViewOffers-scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-header {
+  text-align: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-subtitle {
+  font-size: 14px;
+  color: #6464ff;
+  opacity: 0.8;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Карточка команды */
+.rfaUserFirstRoundSpaceViewOffers-selected-team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  background: rgba(138, 138, 255, 0.1);
+  border: 2px solid rgba(138, 138, 255, 0.2);
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-name-large {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 5px;
+  word-break: break-word;
+  width: 100%;
+  line-height: 1.3;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-hint {
+  font-size: 13px;
+  color: #6464ff;
+  opacity: 0.8;
+  line-height: 1.3;
+}
+
+/* Поле пароля */
+.rfaUserFirstRoundSpaceViewOffers-password-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-input {
+  width: 100%;
+  padding: 16px 50px 16px 20px;
+  background: rgba(138, 138, 255, 0.05);
+  border: 2px solid rgba(138, 138, 255, 0.2);
+  border-radius: 8px;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 3px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  min-height: 52px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-input:focus {
+  outline: none;
+  border-color: rgba(138, 138, 255, 0.6);
+  background: rgba(138, 138, 255, 0.08);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-input::placeholder {
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-input-clear {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: #333333;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  min-height: 24px;
+}
+
+/* Ошибка пароля */
+.rfaUserFirstRoundSpaceViewOffers-password-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 15px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 6px;
+  color: #ff6b6b;
+  font-size: 14px;
+  animation: rfaUserFirstRoundSpaceViewOffers-fadeIn 0.3s ease-out;
+  width: 100%;
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Кнопки формы */
+.rfaUserFirstRoundSpaceViewOffers-password-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #8a8aff 0%, #6464ff 100%);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+  flex: 1;
+  box-sizing: border-box;
+  min-height: 52px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 138, 255, 0.4);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-cancel {
+  padding: 16px 24px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  flex: 1;
+  box-sizing: border-box;
+  min-height: 52px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-password-cancel:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Мини спиннер */
+.rfaUserFirstRoundSpaceViewOffers-mini-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-top-color: #333333;
+  border-radius: 50%;
+  animation: rfaUserFirstRoundSpaceViewOffers-spin 1s linear infinite;
+}
+
+/* Контейнер предложений */
+.rfaUserFirstRoundSpaceViewOffers-offers-container {
+  background: #ffffff;
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offers-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(138, 138, 255, 0.2);
+  text-align: center;
+  gap: 12px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offers-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-team-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(138, 138, 255, 0.1);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 20px;
+  color: #6464ff;
+  font-size: 14px;
+  font-weight: 500;
+  word-break: break-word;
+  max-width: 100%;
+  line-height: 1.3;
+}
+
+/* Статистика - Мобильная версия карточек */
+.rfaUserFirstRoundSpaceViewOffers-offers-stats {
+  display: none;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-stat-card {
+  padding: 20px;
+  background: rgba(138, 138, 255, 0.05);
+  border: 1px solid rgba(138, 138, 255, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #6464ff;
+  margin-bottom: 5px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-stat-label {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Таблица - скрываем на мобильных */
+.rfaUserFirstRoundSpaceViewOffers-table-wrapper {
+  display: none;
+}
+
+/* Карточки предложений для мобильных */
+.rfaUserFirstRoundSpaceViewOffers-offers-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-card {
+  background: rgba(138, 138, 255, 0.05);
+  border: 1px solid rgba(138, 138, 255, 0.1);
+  border-radius: 10px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-card:hover {
+  background: rgba(138, 138, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(138, 138, 255, 0.1);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-player {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-status {
+  display: none; /* Скрываем статус */
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 14px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-label {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  flex: 1;
+  min-width: 100px;
+  line-height: 1.4;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-value {
+  color: #333333;
+  font-weight: 600;
+  text-align: right;
+  flex: 2;
+  word-break: break-word;
+  padding-left: 10px;
+  line-height: 1.4;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-value.salary {
+  color: #6464ff;
+  font-family: monospace;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-value.bonus {
+  color: #00a86b;
+}
+
+/* Зарплаты по годам в карточке */
+.rfaUserFirstRoundSpaceViewOffers-salary-years-list {
+  width: 100%;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-salary-year {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 0;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-salary-year:last-child {
+  border-bottom: none;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-salary-year-label {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-salary-year-value {
+  color: #6464ff;
+  font-weight: 600;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offer-date {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+}
+
+/* Кнопка удаления в карточке */
+.rfaUserFirstRoundSpaceViewOffers-card-delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  color: #ff6b6b;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  min-height: 44px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-card-delete-button:hover:not(:disabled) {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.5);
+  transform: translateY(-1px);
+}
+
+.rfaUserFirstRoundSpaceViewOffers-card-delete-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Ошибки */
+.rfaUserFirstRoundSpaceViewOffers-delete-error {
+  margin-bottom: 20px;
+  animation: rfaUserFirstRoundSpaceViewOffers-fadeIn 0.3s ease-out;
+  text-align: center;
+  padding: 12px 15px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  color: #ff6b6b;
+  font-size: 14px;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Состояния загрузки */
+.rfaUserFirstRoundSpaceViewOffers-loading-offers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-offers-error {
+  padding: 20px;
+  text-align: center;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 10px;
+  color: #ff6b6b;
+  font-size: 14px;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Нет предложений */
+.rfaUserFirstRoundSpaceViewOffers-no-offers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-empty-subtext {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+}
+
+/* Анимации */
+@keyframes rfaUserFirstRoundSpaceViewOffers-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rfaUserFirstRoundSpaceViewOffers-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Прокрутка */
+.rfaUserFirstRoundSpaceViewOffers-teams-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-teams-list::-webkit-scrollbar-track {
+  background: rgba(138, 138, 255, 0.1);
+  border-radius: 2px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-teams-list::-webkit-scrollbar-thumb {
+  background: rgba(138, 138, 255, 0.5);
+  border-radius: 2px;
+}
+
+.rfaUserFirstRoundSpaceViewOffers-teams-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(138, 138, 255, 0.7);
+}
+
+/* ========== МОБИЛЬНЫЕ УСТРОЙСТВА (max-width: 600px) ========== */
+@media (max-width: 600px) {
+  .rfaUserFirstRoundSpaceViewOffers-container {
+    padding: 12px 8px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button {
+    padding: 12px 14px;
+    font-size: 13px;
+    min-width: 250px;
+    max-width: 100%;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button-text {
+    font-size: 13px;
+    white-space: normal;
+    line-height: 1.3;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-logout-button {
+    padding: 10px 14px;
+    font-size: 12px;
+    width: 100%;
+    max-width: 250px;
+    min-height: 44px;
+  }
+
+  /* Улучшенное меню для мобильных */
+  .rfaUserFirstRoundSpaceViewOffers-menu {
+    width: 90vw;
+    max-width: 280px;
+    max-height: 70vh;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-header {
+    padding: 16px 12px 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-title {
+    font-size: 16px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-subtitle {
+    font-size: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-search-container {
+    padding: 0 12px 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-search-input {
+    padding: 12px 35px 12px 12px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-clear-search-button {
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-item {
+    padding: 12px 10px;
+    min-height: 44px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name {
+    font-size: 14px;
+  }
+
+  /* Улучшенная форма пароля для мобильных */
+  .rfaUserFirstRoundSpaceViewOffers-password-form-container {
+    padding: 16px;
+    max-width: 280px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-title {
+    font-size: 18px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-subtitle {
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-selected-team-card {
+    padding: 16px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name-large {
+    font-size: 18px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-hint {
+    font-size: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-input {
+    padding: 14px 40px 14px 16px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    min-height: 48px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-input-clear {
+    right: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-error {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-submit,
+  .rfaUserFirstRoundSpaceViewOffers-password-cancel {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    min-height: 48px;
+  }
+
+  /* Улучшенные карточки предложений для мобильных */
+  .rfaUserFirstRoundSpaceViewOffers-offers-container {
+    padding: 16px;
+    margin-top: 12px;
+    max-width: 280px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-header {
+    margin-bottom: 16px;
+    gap: 10px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-title {
+    font-size: 18px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-badge {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-card {
+    padding: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-player {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-status {
+    display: none; /* Скрываем статус */
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-details {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-label {
+    min-width: auto;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-value {
+    text-align: left;
+    padding-left: 0;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-salary-year {
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-date {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-card-delete-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-mini-spinner {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ========== ОЧЕНЬ МАЛЕНЬКИЕ УСТРОЙСТВА (max-width: 320px) ========== */
+@media (max-width: 320px) {
+  .rfaUserFirstRoundSpaceViewOffers-container {
+    padding: 8px 5px;
+    min-width: 250px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button {
+    padding: 10px 12px;
+    font-size: 12px;
+    min-width: 250px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button-text {
+    font-size: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-logout-button {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu {
+    width: 95vw;
+    max-width: 260px;
+    border-radius: 10px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-title {
+    font-size: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-subtitle {
+    font-size: 11px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-search-input {
+    padding: 10px 30px 10px 12px;
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name {
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-form-container {
+    padding: 14px;
+    max-width: 260px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-title {
+    font-size: 17px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name-large {
+    font-size: 17px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-input {
+    padding: 12px 35px 12px 14px;
+    font-size: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-container {
+    padding: 14px;
+    max-width: 260px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-title {
+    font-size: 17px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-badge {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-card {
+    padding: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-player {
+    font-size: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-label {
+    font-size: 12px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offer-value {
+    font-size: 13px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-card-delete-button {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+
+/* ========== ПЛАНШЕТЫ И ДЕСКТОПЫ (min-width: 601px) ========== */
+@media (min-width: 601px) {
+  .rfaUserFirstRoundSpaceViewOffers-container {
+    padding: 30px 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button {
+    padding: 14px 24px;
+    font-size: 16px;
+    min-width: 280px;
+    max-width: 280px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button-text {
+    font-size: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-logout-button {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-width: 120px;
+    align-self: center;
+    margin-top: 0;
+    order: 1; /* Помещаем кнопку выхода после основной кнопки */
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    max-height: none;
+    max-width: 320px;
+    background: #ffffff;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-header {
+    padding: 20px 20px 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-title {
+    font-size: 18px;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu-subtitle {
+    font-size: 13px;
+    color: #6464ff;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-search-container {
+    padding: 0 20px 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-search-input {
+    padding: 14px 40px 14px 20px;
+    font-size: 15px;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-clear-search-button {
+    right: 30px;
+    width: 22px;
+    height: 22px;
+    font-size: 16px;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-item {
+    padding: 14px 15px;
+    margin-bottom: 5px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name {
+    font-size: 15px;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-search-results-info {
+    padding: 12px 20px;
+    font-size: 13px;
+    color: #6464ff;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-form-container {
+    padding: 30px;
+    width: 90%;
+    background: #ffffff;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-form {
+    gap: 20px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-title {
+    font-size: 22px;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-subtitle {
+    font-size: 14px;
+    color: #6464ff;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-selected-team-card {
+    padding: 20px;
+    gap: 10px;
+    margin: 10px 0;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-name-large {
+    font-size: 20px;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-hint {
+    font-size: 13px;
+    color: #6464ff;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-input-group {
+    gap: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-input {
+    padding: 16px 50px 16px 20px;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-error {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-buttons {
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-submit {
+    padding: 16px 24px;
+    font-size: 16px;
+    min-width: 150px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-cancel {
+    padding: 16px 24px;
+    font-size: 16px;
+    min-width: 100px;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-container {
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 16px;
+    max-width: 800px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    gap: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-title {
+    font-size: 22px;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-badge {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #6464ff;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-cards {
+    display: none;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-table-wrapper {
+    display: block;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(138, 138, 255, 0.2);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-stats {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-stat-card {
+    padding: 20px;
+    min-width: 150px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-stat-value {
+    font-size: 32px;
+    color: #6464ff;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-stat-label {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-table th {
+    padding: 16px 12px;
+    background: rgba(138, 138, 255, 0.1);
+    color: #6464ff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border-bottom: 2px solid rgba(138, 138, 255, 0.2);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-table td {
+    padding: 14px 12px;
+    color: #333333;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-table-row:hover {
+    background: rgba(138, 138, 255, 0.05);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-player-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-player-name {
+    font-weight: 500;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-salary-cell {
+    color: #6464ff;
+    font-weight: 600;
+    font-family: monospace;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-type-cell,
+  .rfaUserFirstRoundSpaceViewOffers-period-cell,
+  .rfaUserFirstRoundSpaceViewOffers-option-cell {
+    font-size: 13px;
+    opacity: 0.9;
+    color: #333333;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-bonus-cell {
+    color: #00a86b;
+    font-weight: 500;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-condition-cell {
+    position: relative;
+    max-width: 120px;
+    margin: 0 auto;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-condition-tooltip {
+    cursor: help;
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    color: #333333;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(138, 138, 255, 0.3);
+    font-size: 12px;
+    white-space: normal;
+    width: 200px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-condition-tooltip:hover
+    .rfaUserFirstRoundSpaceViewOffers-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Скрываем столбец статуса в таблице */
+  .rfaUserFirstRoundSpaceViewOffers-offers-table th:nth-child(8),
+  .rfaUserFirstRoundSpaceViewOffers-offers-table td:nth-child(8) {
+    display: none;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-date-cell {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 8px;
+    color: #ff6b6b;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    margin: 0 auto;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-delete-button:hover:not(:disabled) {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: rgba(255, 107, 107, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-delete-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-delete-error {
+    margin-bottom: 20px;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-loading-offers {
+    padding: 40px 20px;
+    gap: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-error {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-no-offers {
+    padding: 50px 20px;
+    gap: 15px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-empty-subtext {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ========== ГОРИЗОНТАЛЬНАЯ ОРИЕНТАЦИЯ МОБИЛЬНЫХ УСТРОЙСТВ ========== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .rfaUserFirstRoundSpaceViewOffers-teams-list {
+    max-height: 40vh;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-menu {
+    max-height: 90vh;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-password-form-container {
+    max-height: 95vh;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-offers-container {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+/* ========== TOUCH-УСТРОЙСТВА ========== */
+@media (hover: none) and (pointer: coarse) {
+  .rfaUserFirstRoundSpaceViewOffers-button,
+  .rfaUserFirstRoundSpaceViewOffers-logout-button,
+  .rfaUserFirstRoundSpaceViewOffers-team-item,
+  .rfaUserFirstRoundSpaceViewOffers-password-submit,
+  .rfaUserFirstRoundSpaceViewOffers-password-cancel,
+  .rfaUserFirstRoundSpaceViewOffers-card-delete-button,
+  .rfaUserFirstRoundSpaceViewOffers-delete-button {
+    min-height: 44px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-search-input,
+  .rfaUserFirstRoundSpaceViewOffers-password-input {
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-button:hover,
+  .rfaUserFirstRoundSpaceViewOffers-logout-button:hover,
+  .rfaUserFirstRoundSpaceViewOffers-team-item:hover,
+  .rfaUserFirstRoundSpaceViewOffers-password-submit:hover:not(:disabled),
+  .rfaUserFirstRoundSpaceViewOffers-password-cancel:hover,
+  .rfaUserFirstRoundSpaceViewOffers-card-delete-button:hover:not(:disabled),
+  .rfaUserFirstRoundSpaceViewOffers-delete-button:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* ========== ПРЕДОТВРАЩЕНИЕ ZOOM В iOS ========== */
+@supports (-webkit-touch-callout: none) {
+  .rfaUserFirstRoundSpaceViewOffers-password-input,
+  .rfaUserFirstRoundSpaceViewOffers-team-search-input {
+    font-size: 16px !important;
+  }
+}
+
+/* ========== УЛУЧШЕНИЯ ДЛЯ ВЫСОКОПИКСЕЛЬНЫХ ЭКРАНОВ ========== */
+@media (min-resolution: 192dpi) and (max-width: 600px) {
+  .rfaUserFirstRoundSpaceViewOffers-button,
+  .rfaUserFirstRoundSpaceViewOffers-logout-button,
+  .rfaUserFirstRoundSpaceViewOffers-card-delete-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rfaUserFirstRoundSpaceViewOffers-team-item,
+  .rfaUserFirstRoundSpaceViewOffers-offer-card {
+    border-width: 0.5px;
+  }
+}

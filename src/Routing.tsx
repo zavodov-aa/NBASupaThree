@@ -47,6 +47,26 @@ import TradesAll from "./tsx/events/trades/TreadesAllHeader/TradesAll";
 import PlayerOption from "./tsx/market/playerOption/playerOptionAdmin/PlayerOption";
 import PlayerOptionMain from "./tsx/market/playerOption/playerOptionAdmin/PlayerOptionMain";
 import PlayerOptionUserMain from "./tsx/market/playerOption/playerOptionUser/PlayerOptionUserMain";
+import TeamOptionUser from "./tsx/market/teamOption/teamOptionUser/TeamOptionUser";
+import TeamOptionUserMain from "./tsx/market/teamOption/teamOptionUser/TeamOptionUserMain";
+import TeamOptionAdminMain from "./tsx/market/teamOption/teamOptionAdmin/TeamOptionAdminMain";
+import RFAUserFirstRoundMain from "./tsx/market/rfa/rfaUser/RFAUserFirstRoundFull/RFAUserMain";
+import RFAAdminMain from "./tsx/market/rfa/rfaAdmin/RFAAdminMain";
+import RFAUserResultMain from "./tsx/market/rfa/rfaUser/rfaUserResult/RFAUserResultMain";
+import RFAUserSecondMain from "./tsx/market/rfa/rfaUser/RFAUserSecondRoundFull/RFAUserSecondMain";
+import UFAUFRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundFirstStage/UFAUFRFirstStageMain";
+import UFAUFRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundSecondStage/UFAUFRSecondStageMain";
+import UFAAdminFirstRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminFirstRound/UFAAdminFirstRoundMain";
+import UFAUserFirstRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRoundResult/UFAUserFirstRoundResultMain";
+import UFAUSRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundFirstStage/UFAUSRFirstStageMain";
+import UFAUSRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundSecondStage/UFAUSRSecondStageMain";
+import UFAAdminSecondRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminSecondRound/UFAAdminSecondRoundMain";
+import UFAUserSecondRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRoundResult/UFAUserSecondRoundResultMain";
+import UFAUTRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundFirstStage/UFAUTRFirstStageMain";
+import UFAUTRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundSecondStage/UFAUTRSecondStageMain";
+import UFAAdminThirdRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminThirdRound/UFAAdminThirdRoundMain";
+import UFAUserThirdRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRoundResult/UFAUserThirdRoundResultMain";
+import DraftLotteryMain from "./tsx/events/draftLottery/DraftLotteryMain";
 
 // import TradesMain from "./tsx/events/trades/TreadesAllHeader/TradesMain";
 
@@ -105,18 +125,77 @@ function Routing() {
         <Route path="/logs" element={<LogsMain />} />
         <Route path="/penalties" element={<Penalties />} />
         <Route path="/playerOptionMain" element={<PlayerOptionMain />} />
+        <Route path="/teamOptionMain" element={<TeamOptionAdminMain />} />
+        <Route path="/rfaAdminMain" element={<RFAAdminMain />} />
+        <Route
+          path="/ufaAdminFirstRoundMain"
+          element={<UFAAdminFirstRoundMain />}
+        />
+        <Route
+          path="/ufaAdminSecondRoundMain"
+          element={<UFAAdminSecondRoundMain />}
+        />
+        <Route
+          path="/ufaAdminThirdRoundMain"
+          element={<UFAAdminThirdRoundMain />}
+        />
 
         {/* {events} */}
 
         <Route path="/maintournament" element={<MainTournament />} />
         <Route path="/tradesAll" element={<TradesAll />} />
         {/* <Route path="/tradesAll" element={<TradesMain />} /> */}
+        <Route path="/draftLotteryMain" element={<DraftLotteryMain />} />
 
         {/* market */}
 
         <Route
           path="/playerOptionUserMain"
           element={<PlayerOptionUserMain />}
+        />
+        {/* <Route path="/teamOptionUser" element={<TeamOptionUser />} /> */}
+        <Route path="/teamOptionUserMain" element={<TeamOptionUserMain />} />
+        <Route
+          path="/rfaUserFirstRoundMain"
+          element={<RFAUserFirstRoundMain />}
+        />
+        <Route path="/rfaUserSecondMain" element={<RFAUserSecondMain />} />
+        <Route path="/rfaUserResultMain" element={<RFAUserResultMain />} />
+        <Route
+          path="/ufaufrFirstStageMain"
+          element={<UFAUFRFirstStageMain />}
+        />
+        <Route
+          path="/ufaufrSecondStageMain"
+          element={<UFAUFRSecondStageMain />}
+        />
+        <Route
+          path="/ufaUserFirstRoundResultMain"
+          element={<UFAUserFirstRoundResultMain />}
+        />
+        <Route
+          path="/ufaUSRFirstStageMain"
+          element={<UFAUSRFirstStageMain />}
+        />
+        <Route
+          path="/ufaUSRSecondStageMain"
+          element={<UFAUSRSecondStageMain />}
+        />
+        <Route
+          path="/ufaUserSecondRoundResultMain"
+          element={<UFAUserSecondRoundResultMain />}
+        />
+        <Route
+          path="/ufaUTRFirstStageMain"
+          element={<UFAUTRFirstStageMain />}
+        />
+        <Route
+          path="/ufaUTRSecondStageMain"
+          element={<UFAUTRSecondStageMain />}
+        />
+        <Route
+          path="/ufaUserThirdRoundResultMain"
+          element={<UFAUserThirdRoundResultMain />}
         />
       </Routes>
     </BrowserRouter>

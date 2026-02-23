@@ -500,11 +500,33 @@ const Main: React.FC = () => {
     { id: "logs", name: "Logs", route: "/logs" },
     { id: "penalties", name: "Penalties", route: "/penalties" },
     { id: "playerOption", name: "Player Option", route: "/playerOptionMain" },
+    { id: "teamOption", name: "Team Option", route: "/teamOptionMain" },
+    { id: "rfaAdminMain", name: "RFAAdmin", route: "/rfaAdminMain" },
+    {
+      id: "ufaAdminFirstRoundMain",
+      name: "UFA 1R",
+      route: "/ufaAdminFirstRoundMain",
+    },
+    {
+      id: "ufaAdminSecondRoundMain",
+      name: "UFA 2R",
+      route: "/ufaAdminSecondRoundMain",
+    },
+    {
+      id: "ufaAdminThirdRoundMain",
+      name: "UFA 3R",
+      route: "/ufaAdminThirdRoundMain",
+    },
   ];
 
   const eventsLeague: EventsLeague[] = [
     { id: "mainTournament", name: "Tournament", route: "/mainTournament" },
     { id: "tradesAll", name: "Trades", route: "/tradesAll" },
+    {
+      id: "draftLotteryMain",
+      name: "Draft Lottery",
+      route: "/draftLotteryMain",
+    },
   ];
 
   const marketData: MarketItem[] = [
@@ -513,7 +535,72 @@ const Main: React.FC = () => {
       name: "Опции игроков",
       route: "/playerOptionUserMain",
     },
-    { id: "freeagents", name: "Free Agents", route: "/freeagents" },
+    {
+      id: "teamOptionUser",
+      name: "Опции команды",
+      route: "/teamOptionUserMain",
+    },
+    {
+      id: "rfaUserFirstRoundMain",
+      name: "RFA 1 раунд",
+      route: "/rfaUserFirstRoundMain",
+    },
+    {
+      id: "rfaUserSecondMain",
+      name: "RFA 2 раунд",
+      route: "/rfaUserSecondMain",
+    },
+    {
+      id: "rfaUserResultMain",
+      name: "RFA Результаты",
+      route: "/rfaUserResultMain",
+    },
+
+    {
+      id: "ufaufrFirstStageMain",
+      name: "UFA 1 Раунд 1 Этап",
+      route: "/ufaufrFirstStageMain",
+    },
+    {
+      id: "ufaufrSecondStageMain",
+      name: "UFA 1 Раунд 2 Этап",
+      route: "/ufaufrSecondStageMain",
+    },
+    {
+      id: "ufaUserFirstRoundResultMain",
+      name: "Результаты UFA 1 раунда",
+      route: "/ufaUserFirstRoundResultMain",
+    },
+    {
+      id: "ufaUSRFirstStageMain",
+      name: "UFA 2 раунд 3 Этап",
+      route: "/ufaUSRFirstStageMain",
+    },
+    {
+      id: "ufaUSRSecondStageMain",
+      name: "UFA 2 раунд 4 Этап",
+      route: "/ufaUSRSecondStageMain",
+    },
+    {
+      id: "ufaUserSecondRoundResultMain",
+      name: "Результаты UFA 2 раунда",
+      route: "/ufaUserSecondRoundResultMain",
+    },
+    {
+      id: "ufaUTRFirstStageMain",
+      name: "UFA 3 раунд 5 Этап",
+      route: "/ufaUTRFirstStageMain",
+    },
+    {
+      id: "ufaUTRSecondStageMain",
+      name: "UFA 3 раунд 6 Этап",
+      route: "/ufaUTRSecondStageMain",
+    },
+    {
+      id: "ufaUserThirdRoundResultMain",
+      name: "Результаты UFA 3 раунда",
+      route: "/ufaUserThirdRoundResultMain",
+    },
   ];
 
   const [activeTab, setActiveTab] = useState<TabType>("teams");

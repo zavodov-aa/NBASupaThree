@@ -12,8 +12,13 @@ interface PlayerOptionHeaderProps {
 }
 
 const defaultMenuItems: MenuItem[] = [
-  { label: "Главная", href: "/" },
-  { label: "Опции команд", href: "/" },
+  { label: "Main", href: "/" },
+  { label: "Player Option", href: "/playerOptionMain" },
+  { label: "Team Option", href: "/teamOptionMain" },
+  { label: "RFA Admin", href: "/rfaAdminMain" },
+  { label: "UFA 1R", href: "/ufaAdminFirstRoundMain" },
+  { label: "UFA 2R", href: "/ufaAdminSecondRoundMain" },
+  { label: "UFA 3R", href: "/ufaAdminSecondRoundMain" },
 ];
 
 const PlayerOptionHeader: React.FC<PlayerOptionHeaderProps> = ({
@@ -66,7 +71,7 @@ const PlayerOptionHeader: React.FC<PlayerOptionHeaderProps> = ({
         <a href="/" className="poh-header-link">
           <img src={logo} alt="League Logo" className="poh-header-logo" />
         </a>
-        <h2 className="poh-header-title">Player Option</h2>
+        <h2 className="poh-header-title">Market</h2>
         <div
           className={`poh-hamburger-menu ${isMenuOpen ? "poh-active" : ""}`}
           onClick={toggleMenu}

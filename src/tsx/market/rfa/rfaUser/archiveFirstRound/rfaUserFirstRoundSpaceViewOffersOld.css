@@ -1,0 +1,339 @@
+.view-offers-container {
+  position: relative;
+  display: inline-block;
+}
+
+.view-offers-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.view-offers-button:hover {
+  background-color: #0056b3;
+}
+
+.logout-button {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+.context-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 200px;
+  margin-top: 5px;
+}
+
+.menu-header {
+  padding: 10px 15px;
+  font-weight: bold;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #f8f9fa;
+}
+
+.menu-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+/* Стили для формы пароля */
+.password-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.password-form-container {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  min-width: 300px;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.password-form h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 18px;
+}
+
+.selected-team {
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 20px;
+  padding: 8px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.password-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.password-input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.password-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.password-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.password-submit-button {
+  flex: 1;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.password-submit-button:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.password-submit-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.password-cancel-button {
+  flex: 1;
+  padding: 10px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.password-cancel-button:hover {
+  background-color: #5a6268;
+}
+
+.password-error {
+  color: #dc3545;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+/* ------------------------------------------------------------- */
+
+/* rfaUserFirstRoundSpaceViewOffers.css */
+
+.offers-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.loading-offers,
+.offers-error,
+.no-offers {
+  padding: 10px;
+  text-align: center;
+  color: #666;
+}
+
+.offers-count {
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.offers-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.offers-table th,
+.offers-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+}
+
+.offers-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.offers-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.offers-table tr:hover {
+  background-color: #f0f8ff;
+}
+
+/* ------------------------------------------------- */
+
+/* rfaUserFirstRoundSpaceViewOffers.css */
+
+.delete-offer-button {
+  padding: 5px 10px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+
+.delete-offer-button:hover {
+  background-color: #cc0000;
+}
+
+.delete-offer-button:disabled {
+  background-color: #ff9999;
+  cursor: not-allowed;
+}
+
+.delete-error {
+  color: #ff4444;
+  background-color: #ffeaea;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid #ffaaaa;
+}
+
+/* Остальные существующие стили остаются без изменений */
+
+/* ------------------------------------------ */
+
+/* Стили для поиска команд */
+.team-search-container {
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.team-search-input {
+  width: 100%;
+  padding: 8px 30px 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.team-search-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.clear-search-button {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-search-button:hover {
+  color: #333;
+}
+
+.teams-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-results-info {
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #666;
+  border-top: 1px solid #eee;
+  background-color: #f8f9fa;
+}
+
+/* Дополнительные стили для улучшенного меню */
+.menu-header {
+  padding: 0;
+}
+
+.menu-header-title {
+  padding: 10px 10px 5px;
+  font-weight: 600;
+  color: #333;
+}

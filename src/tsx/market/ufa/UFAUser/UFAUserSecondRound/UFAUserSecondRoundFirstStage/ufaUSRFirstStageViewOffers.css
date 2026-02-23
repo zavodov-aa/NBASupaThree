@@ -1,0 +1,1624 @@
+.ufausrFirstStageViewOffers-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 10px;
+  background: #ffffff;
+  min-width: 250px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+/* Основная кнопка */
+.ufausrFirstStageViewOffers-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #6464ff 0%, #8a8aff 100%);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(138, 138, 255, 0.3);
+  min-width: 200px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 48px;
+}
+
+.ufausrFirstStageViewOffers-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 138, 255, 0.4);
+  background: linear-gradient(135deg, #8a8aff 0%, #6464ff 100%);
+}
+
+.ufausrFirstStageViewOffers-button-text {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ufausrFirstStageViewOffers-button-arrow {
+  font-size: 10px;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Кнопка выхода */
+.ufausrFirstStageViewOffers-logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  color: #ff6b6b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-height: 44px;
+}
+
+.ufausrFirstStageViewOffers-logout-button:hover {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Меню выбора команды */
+.ufausrFirstStageViewOffers-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95vw;
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: ufausrFirstStageViewOffers-fadeIn 0.3s ease-out;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ufausrFirstStageViewOffers-menu-header {
+  padding: 20px 15px 15px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.ufausrFirstStageViewOffers-menu-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.ufausrFirstStageViewOffers-menu-subtitle {
+  font-size: 13px;
+  color: #6464ff;
+  opacity: 0.8;
+  line-height: 1.3;
+}
+
+.ufausrFirstStageViewOffers-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #8a8aff 50%,
+    transparent 100%
+  );
+  margin: 15px auto;
+  width: 80%;
+}
+
+/* Поиск команды */
+.ufausrFirstStageViewOffers-team-search-container {
+  position: relative;
+  padding: 0 15px 15px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ufausrFirstStageViewOffers-team-search-input {
+  width: 100%;
+  padding: 14px 40px 14px 15px;
+  background: rgba(138, 138, 255, 0.05);
+  border: 2px solid rgba(138, 138, 255, 0.2);
+  border-radius: 8px;
+  color: #333333;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-align: left;
+  box-sizing: border-box;
+  min-height: 48px;
+}
+
+.ufausrFirstStageViewOffers-team-search-input:focus {
+  outline: none;
+  border-color: rgba(138, 138, 255, 0.6);
+  background: rgba(138, 138, 255, 0.08);
+}
+
+.ufausrFirstStageViewOffers-team-search-input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-size: 14px;
+}
+
+.ufausrFirstStageViewOffers-clear-search-button {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: #333333;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  min-height: 24px;
+}
+
+.ufausrFirstStageViewOffers-clear-search-button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Список команд */
+.ufausrFirstStageViewOffers-teams-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px 10px;
+  min-height: 150px;
+}
+
+.ufausrFirstStageViewOffers-team-item {
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  text-align: center;
+  box-sizing: border-box;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ufausrFirstStageViewOffers-team-item:hover {
+  background: rgba(138, 138, 255, 0.1);
+}
+
+.ufausrFirstStageViewOffers-team-name {
+  color: #333333;
+  font-size: 15px;
+  font-weight: 500;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Информация о поиске */
+.ufausrFirstStageViewOffers-search-results-info {
+  padding: 12px 15px;
+  font-size: 13px;
+  color: #6464ff;
+  opacity: 0.7;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.02);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Форма пароля */
+.ufausrFirstStageViewOffers-password-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+  padding: 10px;
+}
+
+.ufausrFirstStageViewOffers-password-form-container {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  width: 95vw;
+  max-width: 320px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: ufausrFirstStageViewOffers-scaleIn 0.3s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+@keyframes ufausrFirstStageViewOffers-scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ufausrFirstStageViewOffers-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.ufausrFirstStageViewOffers-password-header {
+  text-align: center;
+}
+
+.ufausrFirstStageViewOffers-password-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
+}
+
+.ufausrFirstStageViewOffers-password-subtitle {
+  font-size: 14px;
+  color: #6464ff;
+  opacity: 0.8;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Карточка команды */
+.ufausrFirstStageViewOffers-selected-team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  background: rgba(138, 138, 255, 0.1);
+  border: 2px solid rgba(138, 138, 255, 0.2);
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.ufausrFirstStageViewOffers-team-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ufausrFirstStageViewOffers-team-name-large {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 5px;
+  word-break: break-word;
+  width: 100%;
+  line-height: 1.3;
+}
+
+.ufausrFirstStageViewOffers-team-hint {
+  font-size: 13px;
+  color: #6464ff;
+  opacity: 0.8;
+  line-height: 1.3;
+}
+
+/* Поле пароля */
+.ufausrFirstStageViewOffers-password-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+.ufausrFirstStageViewOffers-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.ufausrFirstStageViewOffers-password-input {
+  width: 100%;
+  padding: 16px 50px 16px 20px;
+  background: rgba(138, 138, 255, 0.05);
+  border: 2px solid rgba(138, 138, 255, 0.2);
+  border-radius: 8px;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 3px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  min-height: 52px;
+}
+
+.ufausrFirstStageViewOffers-password-input:focus {
+  outline: none;
+  border-color: rgba(138, 138, 255, 0.6);
+  background: rgba(138, 138, 255, 0.08);
+}
+
+.ufausrFirstStageViewOffers-password-input::placeholder {
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+}
+
+.ufausrFirstStageViewOffers-input-clear {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: #333333;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  min-height: 24px;
+}
+
+/* Ошибка пароля */
+.ufausrFirstStageViewOffers-password-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 15px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 6px;
+  color: #ff6b6b;
+  font-size: 14px;
+  animation: ufausrFirstStageViewOffers-fadeIn 0.3s ease-out;
+  width: 100%;
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Кнопки формы */
+.ufausrFirstStageViewOffers-password-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ufausrFirstStageViewOffers-password-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #8a8aff 0%, #6464ff 100%);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+  flex: 1;
+  box-sizing: border-box;
+  min-height: 52px;
+}
+
+.ufausrFirstStageViewOffers-password-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 138, 255, 0.4);
+}
+
+.ufausrFirstStageViewOffers-password-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.ufausrFirstStageViewOffers-password-cancel {
+  padding: 16px 24px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  flex: 1;
+  box-sizing: border-box;
+  min-height: 52px;
+}
+
+.ufausrFirstStageViewOffers-password-cancel:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Мини спиннер */
+.ufausrFirstStageViewOffers-mini-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-top-color: #333333;
+  border-radius: 50%;
+  animation: ufausrFirstStageViewOffers-spin 1s linear infinite;
+}
+
+/* Контейнер предложений */
+.ufausrFirstStageViewOffers-offers-container {
+  background: #ffffff;
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ufausrFirstStageViewOffers-offers-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(138, 138, 255, 0.2);
+  text-align: center;
+  gap: 12px;
+}
+
+.ufausrFirstStageViewOffers-offers-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.ufausrFirstStageViewOffers-team-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(138, 138, 255, 0.1);
+  border: 1px solid rgba(138, 138, 255, 0.3);
+  border-radius: 20px;
+  color: #6464ff;
+  font-size: 14px;
+  font-weight: 500;
+  word-break: break-word;
+  max-width: 100%;
+  line-height: 1.3;
+}
+
+/* Статистика - Мобильная версия карточек */
+.ufausrFirstStageViewOffers-offers-stats {
+  display: none;
+}
+
+.ufausrFirstStageViewOffers-stat-card {
+  padding: 20px;
+  background: rgba(138, 138, 255, 0.05);
+  border: 1px solid rgba(138, 138, 255, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ufausrFirstStageViewOffers-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #6464ff;
+  margin-bottom: 5px;
+}
+
+.ufausrFirstStageViewOffers-stat-label {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Таблица - скрываем на мобильных */
+.ufausrFirstStageViewOffers-table-wrapper {
+  display: none;
+}
+
+/* Карточки предложений для мобильных */
+.ufausrFirstStageViewOffers-offers-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ufausrFirstStageViewOffers-offer-card {
+  background: rgba(138, 138, 255, 0.05);
+  border: 1px solid rgba(138, 138, 255, 0.1);
+  border-radius: 10px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.ufausrFirstStageViewOffers-offer-card:hover {
+  background: rgba(138, 138, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(138, 138, 255, 0.1);
+}
+
+.ufausrFirstStageViewOffers-offer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ufausrFirstStageViewOffers-offer-player {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.ufausrFirstStageViewOffers-offer-status {
+  display: none; /* Скрываем статус */
+}
+
+.ufausrFirstStageViewOffers-offer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ufausrFirstStageViewOffers-offer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 14px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.ufausrFirstStageViewOffers-offer-label {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  flex: 1;
+  min-width: 100px;
+  line-height: 1.4;
+}
+
+.ufausrFirstStageViewOffers-offer-value {
+  color: #333333;
+  font-weight: 600;
+  text-align: right;
+  flex: 2;
+  word-break: break-word;
+  padding-left: 10px;
+  line-height: 1.4;
+}
+
+.ufausrFirstStageViewOffers-offer-value.salary {
+  color: #6464ff;
+  font-family: monospace;
+}
+
+.ufausrFirstStageViewOffers-offer-value.bonus {
+  color: #00a86b;
+}
+
+/* Зарплаты по годам в карточке */
+.ufausrFirstStageViewOffers-salary-years-list {
+  width: 100%;
+}
+
+.ufausrFirstStageViewOffers-salary-year {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 0;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ufausrFirstStageViewOffers-salary-year:last-child {
+  border-bottom: none;
+}
+
+.ufausrFirstStageViewOffers-salary-year-label {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.ufausrFirstStageViewOffers-salary-year-value {
+  color: #6464ff;
+  font-weight: 600;
+}
+
+.ufausrFirstStageViewOffers-offer-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ufausrFirstStageViewOffers-offer-date {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+}
+
+/* Кнопка удаления в карточке */
+.ufausrFirstStageViewOffers-card-delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  color: #ff6b6b;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  min-height: 44px;
+}
+
+.ufausrFirstStageViewOffers-card-delete-button:hover:not(:disabled) {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.5);
+  transform: translateY(-1px);
+}
+
+.ufausrFirstStageViewOffers-card-delete-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Ошибки */
+.ufausrFirstStageViewOffers-delete-error {
+  margin-bottom: 20px;
+  animation: ufausrFirstStageViewOffers-fadeIn 0.3s ease-out;
+  text-align: center;
+  padding: 12px 15px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  color: #ff6b6b;
+  font-size: 14px;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Состояния загрузки */
+.ufausrFirstStageViewOffers-loading-offers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.ufausrFirstStageViewOffers-offers-error {
+  padding: 20px;
+  text-align: center;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 10px;
+  color: #ff6b6b;
+  font-size: 14px;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* Нет предложений */
+.ufausrFirstStageViewOffers-no-offers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.ufausrFirstStageViewOffers-empty-subtext {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+}
+
+/* Анимации */
+@keyframes ufausrFirstStageViewOffers-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ufausrFirstStageViewOffers-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Прокрутка */
+.ufausrFirstStageViewOffers-teams-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.ufausrFirstStageViewOffers-teams-list::-webkit-scrollbar-track {
+  background: rgba(138, 138, 255, 0.1);
+  border-radius: 2px;
+}
+
+.ufausrFirstStageViewOffers-teams-list::-webkit-scrollbar-thumb {
+  background: rgba(138, 138, 255, 0.5);
+  border-radius: 2px;
+}
+
+.ufausrFirstStageViewOffers-teams-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(138, 138, 255, 0.7);
+}
+
+/* ========== МОБИЛЬНЫЕ УСТРОЙСТВА (max-width: 600px) ========== */
+@media (max-width: 600px) {
+  .ufausrFirstStageViewOffers-container {
+    padding: 12px 8px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ufausrFirstStageViewOffers-button {
+    padding: 12px 14px;
+    font-size: 13px;
+    min-width: 250px;
+    max-width: 100%;
+  }
+
+  .ufausrFirstStageViewOffers-button-text {
+    font-size: 13px;
+    white-space: normal;
+    line-height: 1.3;
+  }
+
+  .ufausrFirstStageViewOffers-logout-button {
+    padding: 10px 14px;
+    font-size: 12px;
+    width: 100%;
+    max-width: 250px;
+    min-height: 44px;
+  }
+
+  /* Улучшенное меню для мобильных */
+  .ufausrFirstStageViewOffers-menu {
+    width: 90vw;
+    max-width: 280px;
+    max-height: 70vh;
+  }
+
+  .ufausrFirstStageViewOffers-menu-header {
+    padding: 16px 12px 12px;
+  }
+
+  .ufausrFirstStageViewOffers-menu-title {
+    font-size: 16px;
+  }
+
+  .ufausrFirstStageViewOffers-menu-subtitle {
+    font-size: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-team-search-container {
+    padding: 0 12px 12px;
+  }
+
+  .ufausrFirstStageViewOffers-team-search-input {
+    padding: 12px 35px 12px 12px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+
+  .ufausrFirstStageViewOffers-clear-search-button {
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+
+  .ufausrFirstStageViewOffers-team-item {
+    padding: 12px 10px;
+    min-height: 44px;
+  }
+
+  .ufausrFirstStageViewOffers-team-name {
+    font-size: 14px;
+  }
+
+  /* Улучшенная форма пароля для мобильных */
+  .ufausrFirstStageViewOffers-password-form-container {
+    padding: 16px;
+    max-width: 280px;
+  }
+
+  .ufausrFirstStageViewOffers-password-title {
+    font-size: 18px;
+  }
+
+  .ufausrFirstStageViewOffers-password-subtitle {
+    font-size: 13px;
+  }
+
+  .ufausrFirstStageViewOffers-selected-team-card {
+    padding: 16px;
+  }
+
+  .ufausrFirstStageViewOffers-team-name-large {
+    font-size: 18px;
+  }
+
+  .ufausrFirstStageViewOffers-team-hint {
+    font-size: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-password-input {
+    padding: 14px 40px 14px 16px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    min-height: 48px;
+  }
+
+  .ufausrFirstStageViewOffers-input-clear {
+    right: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-password-error {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .ufausrFirstStageViewOffers-password-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ufausrFirstStageViewOffers-password-submit,
+  .ufausrFirstStageViewOffers-password-cancel {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    min-height: 48px;
+  }
+
+  /* Улучшенные карточки предложений для мобильных */
+  .ufausrFirstStageViewOffers-offers-container {
+    padding: 16px;
+    margin-top: 12px;
+    max-width: 280px;
+  }
+
+  .ufausrFirstStageViewOffers-offers-header {
+    margin-bottom: 16px;
+    gap: 10px;
+  }
+
+  .ufausrFirstStageViewOffers-offers-title {
+    font-size: 18px;
+  }
+
+  .ufausrFirstStageViewOffers-team-badge {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-card {
+    padding: 14px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-player {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .ufausrFirstStageViewOffers-offer-status {
+    display: none; /* Скрываем статус */
+  }
+
+  .ufausrFirstStageViewOffers-offer-details {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-label {
+    min-width: auto;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .ufausrFirstStageViewOffers-offer-value {
+    text-align: left;
+    padding-left: 0;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .ufausrFirstStageViewOffers-salary-year {
+    font-size: 13px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-date {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-card-delete-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-mini-spinner {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ========== ОЧЕНЬ МАЛЕНЬКИЕ УСТРОЙСТВА (max-width: 320px) ========== */
+@media (max-width: 320px) {
+  .ufausrFirstStageViewOffers-container {
+    padding: 8px 5px;
+    min-width: 250px;
+  }
+
+  .ufausrFirstStageViewOffers-button {
+    padding: 10px 12px;
+    font-size: 12px;
+    min-width: 250px;
+  }
+
+  .ufausrFirstStageViewOffers-button-text {
+    font-size: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-logout-button {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .ufausrFirstStageViewOffers-menu {
+    width: 95vw;
+    max-width: 260px;
+    border-radius: 10px;
+  }
+
+  .ufausrFirstStageViewOffers-menu-title {
+    font-size: 15px;
+  }
+
+  .ufausrFirstStageViewOffers-menu-subtitle {
+    font-size: 11px;
+  }
+
+  .ufausrFirstStageViewOffers-team-search-input {
+    padding: 10px 30px 10px 12px;
+    font-size: 13px;
+  }
+
+  .ufausrFirstStageViewOffers-team-name {
+    font-size: 13px;
+  }
+
+  .ufausrFirstStageViewOffers-password-form-container {
+    padding: 14px;
+    max-width: 260px;
+  }
+
+  .ufausrFirstStageViewOffers-password-title {
+    font-size: 17px;
+  }
+
+  .ufausrFirstStageViewOffers-team-name-large {
+    font-size: 17px;
+  }
+
+  .ufausrFirstStageViewOffers-password-input {
+    padding: 12px 35px 12px 14px;
+    font-size: 15px;
+  }
+
+  .ufausrFirstStageViewOffers-offers-container {
+    padding: 14px;
+    max-width: 260px;
+  }
+
+  .ufausrFirstStageViewOffers-offers-title {
+    font-size: 17px;
+  }
+
+  .ufausrFirstStageViewOffers-team-badge {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-card {
+    padding: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-player {
+    font-size: 15px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-label {
+    font-size: 12px;
+  }
+
+  .ufausrFirstStageViewOffers-offer-value {
+    font-size: 13px;
+  }
+
+  .ufausrFirstStageViewOffers-card-delete-button {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+
+/* ========== ПЛАНШЕТЫ И ДЕСКТОПЫ (min-width: 601px) ========== */
+@media (min-width: 601px) {
+  .ufausrFirstStageViewOffers-container {
+    padding: 30px 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ufausrFirstStageViewOffers-button {
+    padding: 14px 24px;
+    font-size: 16px;
+    min-width: 280px;
+    max-width: 280px;
+  }
+
+  .ufausrFirstStageViewOffers-button-text {
+    font-size: 15px;
+  }
+
+  .ufausrFirstStageViewOffers-logout-button {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-width: 120px;
+    align-self: center;
+    margin-top: 0;
+    order: 1; /* Помещаем кнопку выхода после основной кнопки */
+  }
+
+  .ufausrFirstStageViewOffers-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    max-height: none;
+    max-width: 320px;
+    background: #ffffff;
+  }
+
+  .ufausrFirstStageViewOffers-menu-header {
+    padding: 20px 20px 15px;
+  }
+
+  .ufausrFirstStageViewOffers-menu-title {
+    font-size: 18px;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-menu-subtitle {
+    font-size: 13px;
+    color: #6464ff;
+  }
+
+  .ufausrFirstStageViewOffers-team-search-container {
+    padding: 0 20px 15px;
+  }
+
+  .ufausrFirstStageViewOffers-team-search-input {
+    padding: 14px 40px 14px 20px;
+    font-size: 15px;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-clear-search-button {
+    right: 30px;
+    width: 22px;
+    height: 22px;
+    font-size: 16px;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-team-item {
+    padding: 14px 15px;
+    margin-bottom: 5px;
+  }
+
+  .ufausrFirstStageViewOffers-team-name {
+    font-size: 15px;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-search-results-info {
+    padding: 12px 20px;
+    font-size: 13px;
+    color: #6464ff;
+  }
+
+  .ufausrFirstStageViewOffers-password-form-container {
+    padding: 30px;
+    width: 90%;
+    background: #ffffff;
+  }
+
+  .ufausrFirstStageViewOffers-password-form {
+    gap: 20px;
+  }
+
+  .ufausrFirstStageViewOffers-password-title {
+    font-size: 22px;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-password-subtitle {
+    font-size: 14px;
+    color: #6464ff;
+  }
+
+  .ufausrFirstStageViewOffers-selected-team-card {
+    padding: 20px;
+    gap: 10px;
+    margin: 10px 0;
+  }
+
+  .ufausrFirstStageViewOffers-team-name-large {
+    font-size: 20px;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-team-hint {
+    font-size: 13px;
+    color: #6464ff;
+  }
+
+  .ufausrFirstStageViewOffers-password-input-group {
+    gap: 15px;
+  }
+
+  .ufausrFirstStageViewOffers-password-input {
+    padding: 16px 50px 16px 20px;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-password-error {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .ufausrFirstStageViewOffers-password-buttons {
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .ufausrFirstStageViewOffers-password-submit {
+    padding: 16px 24px;
+    font-size: 16px;
+    min-width: 150px;
+  }
+
+  .ufausrFirstStageViewOffers-password-cancel {
+    padding: 16px 24px;
+    font-size: 16px;
+    min-width: 100px;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-offers-container {
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 16px;
+    max-width: 800px;
+  }
+
+  .ufausrFirstStageViewOffers-offers-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    gap: 15px;
+  }
+
+  .ufausrFirstStageViewOffers-offers-title {
+    font-size: 22px;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-team-badge {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #6464ff;
+  }
+
+  .ufausrFirstStageViewOffers-offers-cards {
+    display: none;
+  }
+
+  .ufausrFirstStageViewOffers-table-wrapper {
+    display: block;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(138, 138, 255, 0.2);
+  }
+
+  .ufausrFirstStageViewOffers-offers-stats {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .ufausrFirstStageViewOffers-stat-card {
+    padding: 20px;
+    min-width: 150px;
+  }
+
+  .ufausrFirstStageViewOffers-stat-value {
+    font-size: 32px;
+    color: #6464ff;
+  }
+
+  .ufausrFirstStageViewOffers-stat-label {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .ufausrFirstStageViewOffers-offers-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+  }
+
+  .ufausrFirstStageViewOffers-offers-table th {
+    padding: 16px 12px;
+    background: rgba(138, 138, 255, 0.1);
+    color: #6464ff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border-bottom: 2px solid rgba(138, 138, 255, 0.2);
+  }
+
+  .ufausrFirstStageViewOffers-offers-table td {
+    padding: 14px 12px;
+    color: #333333;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+
+  .ufausrFirstStageViewOffers-table-row:hover {
+    background: rgba(138, 138, 255, 0.05);
+  }
+
+  .ufausrFirstStageViewOffers-player-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ufausrFirstStageViewOffers-player-name {
+    font-weight: 500;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-salary-cell {
+    color: #6464ff;
+    font-weight: 600;
+    font-family: monospace;
+  }
+
+  .ufausrFirstStageViewOffers-type-cell,
+  .ufausrFirstStageViewOffers-period-cell,
+  .ufausrFirstStageViewOffers-option-cell {
+    font-size: 13px;
+    opacity: 0.9;
+    color: #333333;
+  }
+
+  .ufausrFirstStageViewOffers-bonus-cell {
+    color: #00a86b;
+    font-weight: 500;
+  }
+
+  .ufausrFirstStageViewOffers-condition-cell {
+    position: relative;
+    max-width: 120px;
+    margin: 0 auto;
+  }
+
+  .ufausrFirstStageViewOffers-condition-tooltip {
+    cursor: help;
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+  }
+
+  .ufausrFirstStageViewOffers-tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    color: #333333;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(138, 138, 255, 0.3);
+    font-size: 12px;
+    white-space: normal;
+    width: 200px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .ufausrFirstStageViewOffers-condition-tooltip:hover
+    .ufausrFirstStageViewOffers-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Скрываем столбец статуса в таблице */
+  .ufausrFirstStageViewOffers-offers-table th:nth-child(8),
+  .ufausrFirstStageViewOffers-offers-table td:nth-child(8) {
+    display: none;
+  }
+
+  .ufausrFirstStageViewOffers-date-cell {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+  }
+
+  .ufausrFirstStageViewOffers-delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 8px;
+    color: #ff6b6b;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    margin: 0 auto;
+  }
+
+  .ufausrFirstStageViewOffers-delete-button:hover:not(:disabled) {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: rgba(255, 107, 107, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .ufausrFirstStageViewOffers-delete-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .ufausrFirstStageViewOffers-delete-error {
+    margin-bottom: 20px;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .ufausrFirstStageViewOffers-loading-offers {
+    padding: 40px 20px;
+    gap: 15px;
+  }
+
+  .ufausrFirstStageViewOffers-offers-error {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .ufausrFirstStageViewOffers-no-offers {
+    padding: 50px 20px;
+    gap: 15px;
+  }
+
+  .ufausrFirstStageViewOffers-empty-subtext {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ========== ГОРИЗОНТАЛЬНАЯ ОРИЕНТАЦИЯ МОБИЛЬНЫХ УСТРОЙСТВ ========== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ufausrFirstStageViewOffers-teams-list {
+    max-height: 40vh;
+  }
+
+  .ufausrFirstStageViewOffers-menu {
+    max-height: 90vh;
+  }
+
+  .ufausrFirstStageViewOffers-password-form-container {
+    max-height: 95vh;
+  }
+
+  .ufausrFirstStageViewOffers-offers-container {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+/* ========== TOUCH-УСТРОЙСТВА ========== */
+@media (hover: none) and (pointer: coarse) {
+  .ufausrFirstStageViewOffers-button,
+  .ufausrFirstStageViewOffers-logout-button,
+  .ufausrFirstStageViewOffers-team-item,
+  .ufausrFirstStageViewOffers-password-submit,
+  .ufausrFirstStageViewOffers-password-cancel,
+  .ufausrFirstStageViewOffers-card-delete-button,
+  .ufausrFirstStageViewOffers-delete-button {
+    min-height: 44px;
+  }
+
+  .ufausrFirstStageViewOffers-team-search-input,
+  .ufausrFirstStageViewOffers-password-input {
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .ufausrFirstStageViewOffers-button:hover,
+  .ufausrFirstStageViewOffers-logout-button:hover,
+  .ufausrFirstStageViewOffers-team-item:hover,
+  .ufausrFirstStageViewOffers-password-submit:hover:not(:disabled),
+  .ufausrFirstStageViewOffers-password-cancel:hover,
+  .ufausrFirstStageViewOffers-card-delete-button:hover:not(:disabled),
+  .ufausrFirstStageViewOffers-delete-button:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* ========== ПРЕДОТВРАЩЕНИЕ ZOOM В iOS ========== */
+@supports (-webkit-touch-callout: none) {
+  .ufausrFirstStageViewOffers-password-input,
+  .ufausrFirstStageViewOffers-team-search-input {
+    font-size: 16px !important;
+  }
+}
+
+/* ========== УЛУЧШЕНИЯ ДЛЯ ВЫСОКОПИКСЕЛЬНЫХ ЭКРАНОВ ========== */
+@media (min-resolution: 192dpi) and (max-width: 600px) {
+  .ufausrFirstStageViewOffers-button,
+  .ufausrFirstStageViewOffers-logout-button,
+  .ufausrFirstStageViewOffers-card-delete-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .ufausrFirstStageViewOffers-team-item,
+  .ufausrFirstStageViewOffers-offer-card {
+    border-width: 0.5px;
+  }
+}

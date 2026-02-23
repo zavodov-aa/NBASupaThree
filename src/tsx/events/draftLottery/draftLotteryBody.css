@@ -1,0 +1,53 @@
+.draft-lottery-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.lottery-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.lottery-table th,
+.lottery-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.lottery-table th {
+  background-color: #f4f4f4;
+}
+
+select {
+  width: 100%;
+  padding: 5px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.lottery-results {
+  margin-top: 20px;
+  border-top: 2px solid #333;
+  padding-top: 10px;
+}
+
+.lottery-results ol {
+  padding-left: 20px;
+}

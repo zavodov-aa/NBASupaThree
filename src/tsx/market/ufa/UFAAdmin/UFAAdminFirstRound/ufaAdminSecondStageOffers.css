@@ -1,0 +1,355 @@
+/* Основной контейнер */
+.ufaAdminSecondStageOffers {
+  padding: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  overflow: hidden;
+  min-width: 250px;
+  box-sizing: border-box;
+}
+
+/* Заголовок */
+.ufaAdminSecondStageOffers-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eaeaea;
+  word-break: break-word;
+}
+
+/* Панель фильтров */
+.ufaAdminSecondStageOffers-filtersPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+/* Группа фильтров */
+.ufaAdminSecondStageOffers-filterGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Метка фильтра */
+.ufaAdminSecondStageOffers-filterLabel {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #495057;
+  font-size: 13px;
+}
+
+/* Поле ввода фильтра */
+.ufaAdminSecondStageOffers-filterInput {
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #212529;
+  background-color: #ffffff;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ufaAdminSecondStageOffers-filterInput:focus {
+  outline: none;
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.1);
+}
+
+/* Кнопка сброса фильтров */
+.ufaAdminSecondStageOffers-clearFiltersBtn {
+  padding: 10px 16px;
+  background-color: #868e96;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.ufaAdminSecondStageOffers-clearFiltersBtn:hover {
+  background-color: #727b84;
+}
+
+/* Счетчик результатов */
+.ufaAdminSecondStageOffers-resultsCount {
+  padding: 10px 12px;
+  background-color: #e7f5ff;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #1971c2;
+  font-weight: 500;
+  border: 1px solid #a5d8ff;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Обертка таблицы */
+.ufaAdminSecondStageOffers-tableWrapper {
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  overflow-x: auto;
+  background-color: #ffffff;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Таблица */
+.ufaAdminSecondStageOffers-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 800px;
+}
+
+/* Заголовок таблицы */
+.ufaAdminSecondStageOffers-table thead {
+  background-color: #f1f3f5;
+}
+
+.ufaAdminSecondStageOffers-table th {
+  padding: 12px 8px;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.ufaAdminSecondStageOffers-headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.sortIcon {
+  font-size: 10px;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* Заголовок с возможностью сортировки */
+.ufaAdminSecondStageOffers-sortableHeader {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s;
+}
+
+.ufaAdminSecondStageOffers-sortableHeader:hover {
+  background-color: #e9ecef;
+}
+
+/* Строки таблицы */
+.ufaAdminSecondStageOffers-tableRow {
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.ufaAdminSecondStageOffers-tableRow:last-child {
+  border-bottom: none;
+}
+
+/* Ячейки таблицы */
+.ufaAdminSecondStageOffers-tableCell {
+  padding: 12px 8px;
+  color: #212529;
+  border-bottom: 1px solid #f8f9fa;
+  background-color: #ffffff;
+  font-size: 13px;
+  word-break: break-word;
+  min-width: 70px;
+}
+
+.ufaAdminSecondStageOffers-tableRow:nth-child(even)
+  .ufaAdminSecondStageOffers-tableCell {
+  background-color: #f8f9fa;
+}
+
+/* Ячейка без данных */
+.ufaAdminSecondStageOffers-noDataCell {
+  padding: 32px 16px;
+  text-align: center;
+  color: #868e96;
+  font-style: italic;
+  background-color: #f8f9fa;
+  font-size: 14px;
+}
+
+/* Состояние загрузки */
+.ufaAdminSecondStageOffers-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 14px;
+  color: #495057;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Состояние ошибки */
+.ufaAdminSecondStageOffers-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 14px;
+  color: #e03131;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ffc9c9;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (min-width: 400px) {
+  .ufaAdminSecondStageOffers {
+    padding: 20px;
+  }
+
+  .ufaAdminSecondStageOffers-title {
+    font-size: 20px;
+  }
+
+  .ufaAdminSecondStageOffers-filtersPanel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  .ufaAdminSecondStageOffers-filterGroup {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .ufaAdminSecondStageOffers-clearFiltersBtn,
+  .ufaAdminSecondStageOffers-resultsCount {
+    width: auto;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 576px) {
+  .ufaAdminSecondStageOffers-title {
+    font-size: 22px;
+  }
+
+  .ufaAdminSecondStageOffers-filterLabel {
+    font-size: 14px;
+  }
+
+  .ufaAdminSecondStageOffers-filterInput {
+    font-size: 15px;
+  }
+
+  .ufaAdminSecondStageOffers-table {
+    font-size: 14px;
+    min-width: 900px;
+  }
+
+  .ufaAdminSecondStageOffers-table th,
+  .ufaAdminSecondStageOffers-tableCell {
+    padding: 14px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .ufaAdminSecondStageOffers {
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  .ufaAdminSecondStageOffers-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .ufaAdminSecondStageOffers-filtersPanel {
+    margin-bottom: 28px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .ufaAdminSecondStageOffers-table {
+    min-width: 1000px;
+    font-size: 14px;
+  }
+
+  .ufaAdminSecondStageOffers-table th,
+  .ufaAdminSecondStageOffers-tableCell {
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+
+  .sortIcon {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .ufaAdminSecondStageOffers {
+    padding: 12px;
+  }
+
+  .ufaAdminSecondStageOffers-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .ufaAdminSecondStageOffers-filtersPanel {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .ufaAdminSecondStageOffers-filterLabel {
+    font-size: 12px;
+  }
+
+  .ufaAdminSecondStageOffers-filterInput {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .ufaAdminSecondStageOffers-clearFiltersBtn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .ufaAdminSecondStageOffers-resultsCount {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .ufaAdminSecondStageOffers-table th,
+  .ufaAdminSecondStageOffers-tableCell {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  .ufaAdminSecondStageOffers-table {
+    min-width: 800px;
+  }
+}

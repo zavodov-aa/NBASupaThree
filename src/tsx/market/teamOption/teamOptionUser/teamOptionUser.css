@@ -1,0 +1,615 @@
+/* Основные стили */
+.playerTeamOption-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 24px;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* Заголовок и текст */
+.playerTeamOption-header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.playerTeamOption-main-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.playerTeamOption-subtitle {
+  color: #6b7280;
+}
+
+/* Ошибки */
+.playerTeamOption-error-container {
+  max-width: 672px;
+  margin: 0 auto 24px;
+  padding: 16px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+}
+
+.playerTeamOption-error-message {
+  color: #dc2626;
+  font-weight: 500;
+  margin: 0;
+}
+
+.playerTeamOption-error-dismiss {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #dc2626;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.playerTeamOption-error-dismiss:hover {
+  text-decoration: underline;
+}
+
+/* Выбор команды */
+.playerTeamOption-team-selector-container {
+  max-width: 672px;
+  margin: 0 auto 32px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+}
+
+.playerTeamOption-team-selector-label {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 16px;
+}
+
+.playerTeamOption-team-select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 20px;
+}
+
+.playerTeamOption-team-select:focus {
+  border-color: #3b82f6;
+}
+
+.playerTeamOption-team-select:disabled {
+  background-color: #f9fafb;
+  cursor: not-allowed;
+}
+
+.playerTeamOption-selected-team-info {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.playerTeamOption-selected-team-name {
+  font-weight: 600;
+  font-size: 18px;
+  color: #3b82f6;
+}
+
+.playerTeamOption-reset-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #dc2626;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.playerTeamOption-reset-btn:hover {
+  background-color: #fee2e2;
+}
+
+/* Контейнер игроков - ФИКС ГЛАВНЫЙ */
+.playerTeamOption-players-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 400px; /* Минимальная высота чтобы не схлопывалось */
+}
+
+.playerTeamOption-players-content {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  min-height: 400px; /* Добавляем минимальную высоту */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Заголовок игроков */
+.playerTeamOption-players-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  flex-shrink: 0; /* Не сжимать заголовок */
+}
+
+.playerTeamOption-players-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.playerTeamOption-team-highlight {
+  color: #3b82f6;
+}
+
+.playerTeamOption-players-subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+}
+
+/* Статистика */
+.playerTeamOption-players-stats-info {
+  padding: 12px 16px;
+  background-color: #f0f9ff;
+  border-radius: 8px;
+  border: 1px solid #bae6fd;
+  margin-bottom: 16px;
+}
+
+.playerTeamOption-stats-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.playerTeamOption-stats-indicator {
+  width: 12px;
+  height: 12px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+}
+
+.playerTeamOption-stats-text {
+  font-size: 16px;
+  color: #374151;
+}
+
+/* Статус загрузки */
+.playerTeamOption-players-status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.playerTeamOption-loading-players {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.playerTeamOption-loading-players span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.playerTeamOption-decisions-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.playerTeamOption-accepted-count {
+  font-size: 14px;
+  color: #10b981;
+}
+
+.playerTeamOption-declined-count {
+  font-size: 14px;
+  color: #ef4444;
+}
+
+/* Сетка карточек */
+.playerTeamOption-players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  flex: 1; /* Занимает доступное пространство */
+}
+
+/* Карточка игрока */
+.playerTeamOption-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: white;
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+
+.playerTeamOption-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Бейдж TO */
+.playerTeamOption-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Имя игрока */
+.playerTeamOption-card-name {
+  margin: 0 0 12px 0;
+  font-weight: bold;
+  font-size: 18px;
+  color: #1f2937;
+}
+
+/* Детали игрока */
+.playerTeamOption-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.playerTeamOption-details p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.playerTeamOption-detail-label {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.playerTeamOption-opt-detail {
+  color: #3b82f6 !important;
+  font-weight: 600;
+}
+
+.playerTeamOption-year-one-to {
+  color: #3b82f6 !important;
+  font-weight: 600;
+}
+
+.playerTeamOption-extracted-value {
+  color: #059669 !important;
+  font-weight: 600;
+  background-color: #d1fae5;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-top: 12px !important;
+  border: 1px solid #a7f3d0;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Секция решений */
+.playerTeamOption-decision-section {
+  margin-top: auto; /* Прижимаем кнопки к низу карточки */
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.playerTeamOption-decision-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.playerTeamOption-decision-result {
+  padding: 6px 12px;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.playerTeamOption-decision-result-accepted {
+  background-color: #10b981;
+}
+
+.playerTeamOption-decision-result-declined {
+  background-color: #ef4444;
+}
+
+.playerTeamOption-decision-salary {
+  padding: 6px 10px;
+  background-color: #f3f4f6;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+}
+
+.playerTeamOption-change-decision-btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #6b7280;
+  background-color: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.playerTeamOption-change-decision-btn:hover:not(:disabled) {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.playerTeamOption-change-decision-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Кнопки решений */
+.playerTeamOption-decision-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.playerTeamOption-accept-btn,
+.playerTeamOption-decline-btn {
+  flex: 1;
+  padding: 10px 12px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.playerTeamOption-accept-btn {
+  background-color: #10b981;
+}
+
+.playerTeamOption-accept-btn:hover:not(:disabled) {
+  background-color: #059669;
+}
+
+.playerTeamOption-decline-btn {
+  background-color: #ef4444;
+}
+
+.playerTeamOption-decline-btn:hover:not(:disabled) {
+  background-color: #dc2626;
+}
+
+.playerTeamOption-accept-btn:disabled,
+.playerTeamOption-decline-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.playerTeamOption-spinner-container {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+/* Скелетоны */
+.playerTeamOption-player-card-skeleton {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  animation: playerTeamOption-pulse 2s infinite;
+}
+
+.playerTeamOption-skeleton-line {
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  animation: playerTeamOption-pulse 2s infinite;
+}
+
+.playerTeamOption-name-skeleton {
+  height: 24px;
+  width: 75%;
+  margin-bottom: 12px;
+}
+
+.playerTeamOption-skeleton-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.playerTeamOption-detail-skeleton {
+  height: 16px;
+}
+
+.playerTeamOption-detail-skeleton:first-child {
+  width: 50%;
+}
+
+.playerTeamOption-detail-skeleton:last-child {
+  width: 66%;
+}
+
+/* Нет игроков - ИСПРАВЛЕНО */
+.playerTeamOption-no-players {
+  text-align: center;
+  padding: 60px 20px; /* Увеличил отступы для лучшего визуального баланса */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1; /* Занимает доступное пространство */
+  min-height: 300px; /* Минимальная высота для контента */
+}
+
+.playerTeamOption-no-players-icon {
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.playerTeamOption-no-players-icon svg {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+}
+
+.playerTeamOption-no-players-title {
+  color: #6b7280;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.playerTeamOption-no-players-subtitle {
+  color: #9ca3af;
+  font-size: 14px;
+  max-width: 400px;
+  line-height: 1.4;
+}
+
+/* Футер */
+.playerTeamOption-footer-info {
+  max-width: 672px;
+  margin: 32px auto 0;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  padding: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.playerTeamOption-footer-info p {
+  margin: 4px 0;
+}
+
+.playerTeamOption-footer-note {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+
+/* Утилитарные классы */
+.playerTeamOption-flex-center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.playerTeamOption-flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.playerTeamOption-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.playerTeamOption-text-center {
+  text-align: center;
+}
+
+.playerTeamOption-text-muted {
+  color: #6b7280;
+}
+
+.playerTeamOption-text-bold {
+  font-weight: 600;
+}
+
+.playerTeamOption-text-success {
+  color: #10b981;
+}
+
+.playerTeamOption-text-error {
+  color: #ef4444;
+}
+
+/* Спиннер */
+.playerTeamOption-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: playerTeamOption-spin 1s linear infinite;
+}
+
+.playerTeamOption-spinner-large {
+  width: 40px;
+  height: 40px;
+  border-width: 3px;
+}
+
+/* Анимации */
+@keyframes playerTeamOption-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes playerTeamOption-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Загрузка команд */
+.playerTeamOption-loading-teams {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+/* Изменения для селектора */
+.playerTeamOption-selector-wrapper {
+  position: relative;
+}
+
+.playerTeamOption-no-teams {
+  text-align: center;
+  padding: 32px 0;
+  color: #6b7280;
+}

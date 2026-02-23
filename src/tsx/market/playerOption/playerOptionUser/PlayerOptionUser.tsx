@@ -171,7 +171,7 @@ const PlayerOptionUser = () => {
   return (
     <div className="playerOptionUser">
       <div className="playerOptionUser__header">
-        <h1 className="playerOptionUser__title">Player Options Market</h1>
+        <h1 className="playerOptionUser__title">Опции игроков</h1>
         <p className="playerOptionUser__subtitle">
           Обзор зарплат и результатов игроков
         </p>

@@ -13,7 +13,20 @@ interface PlayerOptionHeaderProps {
 
 const defaultMenuItems: MenuItem[] = [
   { label: "Главная", href: "/" },
-  { label: "Опции к", href: "/" },
+  { label: "Опции игроков", href: "/playerOptionUserMain" },
+  { label: "Опции команд", href: "/teamOptionUserMain" },
+  { label: "RFA 1R", href: "/rfaUserFirstRoundMain" },
+  { label: "RFA 2R", href: "/rfaUserSecondMain" },
+  { label: "RFA Результаты", href: "/rfaUserResultMain" },
+  { label: "UFA 1R 1 Этап", href: "/ufaufrFirstStageMain" },
+  { label: "UFA 1R 2 Этап", href: "/ufaufrSecondStageMain" },
+  { label: "Результаты 1 раунда", href: "/ufaUserFirstRoundResultMain" },
+  { label: "UFA 2R 3 Этап", href: "/ufaUSRFirstStageMain" },
+  { label: "UFA 2R 4 Этап", href: "/ufaUSRSecondStageMain" },
+  { label: "Результаты 2 раунда", href: "/ufaUserSecondRoundResultMain" },
+  { label: "UFA 3R 5 Этап", href: "/ufaUTRFirstStageMain" },
+  { label: "UFA 3R 6 Этап ", href: "/ufaUTRSecondStageMain" },
+  { label: "Результаты 3 раунда", href: "/ufaUserThirdRoundResultMain" },
 ];
 
 const PlayerOptionHeaderUser: React.FC<PlayerOptionHeaderProps> = ({
@@ -66,7 +79,7 @@ const PlayerOptionHeaderUser: React.FC<PlayerOptionHeaderProps> = ({
         <a href="/" className="poh-header-link">
           <img src={logo} alt="League Logo" className="poh-header-logo" />
         </a>
-        <h2 className="poh-header-title">Player Option</h2>
+        <h2 className="poh-header-title">Рынок</h2>
         <div
           className={`poh-hamburger-menu ${isMenuOpen ? "poh-active" : ""}`}
           onClick={toggleMenu}
