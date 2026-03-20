@@ -488,6 +488,62 @@ const Main: React.FC = () => {
     { id: "raptors", name: "Toronto Raptors", route: "/raptors" },
     { id: "jazz", name: "Utah Jazz", route: "/jazz" },
     { id: "wizards", name: "Washington Wizards", route: "/wizards" },
+
+    // Team NEW
+    { id: "hawksMain", name: "Atlanta Hawks", route: "/hawksMain" },
+    { id: "celticsMain", name: "Boston Celtics", route: "/celticsMain" },
+    { id: "netsMain", name: "Brooklyn Nets", route: "/netsMain" },
+    { id: "hornetsMain", name: "Charlotte Hornets", route: "/hornetsMain" },
+    { id: "bullsMain", name: "Chicago Bulls", route: "/bullsMain" },
+    {
+      id: "cavaliersMain",
+      name: "Cleveland Cavaliers",
+      route: "/cavaliersMain",
+    },
+    { id: "mavericksMain", name: "Dallas Mavericks", route: "/mavericksMain" },
+    { id: "nuggetsMain", name: "Denver Nuggets", route: "/nuggetsMain" },
+    { id: "pistonsMain", name: "Detroit Pistons", route: "/pistonsMain" },
+    {
+      id: "warriorsMain",
+      name: "Golden State Warriors",
+      route: "/warriorsMain",
+    },
+    { id: "rocketsMain", name: "Houston Rockets", route: "/rocketsMain" },
+    { id: "pacersMain", name: "Indiana Pacers", route: "/pacersMain" },
+    {
+      id: "clippersMain",
+      name: "Los Angeles Clippers",
+      route: "/clippersMain",
+    },
+    { id: "lakersMain", name: "Los Angeles Lakers", route: "/lakersMain" },
+    { id: "grizzliesMain", name: "Memphis Grizzlies", route: "/grizzliesMain" },
+    { id: "heatMain", name: "Miami Heat", route: "/heatMain" },
+    { id: "bucksMain", name: "Milwaukee Bucks", route: "/bucksMain" },
+    {
+      id: "timberwolvesMain",
+      name: "Minnesota Timberwolves",
+      route: "/timberwolvesMain",
+    },
+    {
+      id: "pelicansMain",
+      name: "New Orleans Pelicans",
+      route: "/pelicansMain",
+    },
+    { id: "knicksMain", name: "New York Knicks", route: "/knicksMain" },
+    { id: "thunderMain", name: "Oklahoma City Thunder", route: "/thunderMain" },
+    { id: "magicMain", name: "Orlando Magic", route: "/magicMain" },
+    { id: "sevsixMain", name: "Philadelphia 76ers", route: "/sevsixMain" },
+    { id: "sunsMain", name: "Phoenix Suns", route: "/sunsMain" },
+    {
+      id: "blazersMain",
+      name: "Portland Trail Blazers",
+      route: "/blazersMain",
+    },
+    { id: "kingsMain", name: "Sacramento Kings", route: "/kingsMain" },
+    { id: "spursMan", name: "San Antonio Spurs", route: "/spursMan" },
+    { id: "raptorsMain", name: "Toronto Raptors", route: "/raptorsMain" },
+    { id: "jazzMain", name: " Utah Jazz", route: "/jazzMain" },
+    { id: "wizardsMain", name: "Washington Wizards", route: "/wizardsMain" },
   ];
   const consoleCom: ConsoleItem[] = [
     { id: "head", name: "Head Info", route: "/headInfoAgentControlCenter" },
@@ -496,6 +552,15 @@ const Main: React.FC = () => {
       name: "Team Roster",
       route: "/playersRosterAgentControlCenter",
     },
+
+    // players new
+    {
+      id: "roster_new",
+      name: "Team Roster New",
+      route: "/playerConsoleAdminMain",
+    },
+    // players new
+    { id: "picks", name: "Picks", route: "/picksMain" },
     { id: "dead", name: "Dead Cap", route: "/deadCapRosterAgentControl" },
     { id: "logs", name: "Logs", route: "/logs" },
     { id: "penalties", name: "Penalties", route: "/penalties" },

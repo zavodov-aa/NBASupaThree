@@ -1,0 +1,59 @@
+/* MassShiftModal.css */
+
+.playersRosterAgentControlCenter-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.playersRosterAgentControlCenter-modalContent {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  max-width: 500px;
+  width: 100%;
+}
+
+.playersRosterAgentControlCenter-modalTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.playersRosterAgentControlCenter-modalDescription {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.playersRosterAgentControlCenter-warningText {
+  color: #ff6b6b;
+}
+
+.playersRosterAgentControlCenter-modalInput {
+  width: 100%;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

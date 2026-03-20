@@ -23,28 +23,6 @@
   margin: 0;
 }
 
-.logo {
-  width: 180px;
-  height: auto;
-  filter: invert(100%);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.HeadInfoAgent-A-Href {
-  text-decoration: none;
-  color: wheat;
-}
-
-.playersRosterAgentControlCenter-statusBadge {
-  display: inline-block;
-  padding: 4px 8px;
-  background-color: #252525;
-  border-radius: 4px;
-  font-size: 12px;
-  color: #888;
-}
-
 /* Мобильный заголовок */
 .playersRosterAgentControlCenter-mobile-header {
   margin-bottom: 15px;
@@ -55,12 +33,6 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.playersRosterAgentControlCenter-mobile-logo {
-  width: 100px;
-  height: auto;
-  filter: invert(100%);
 }
 
 .playersRosterAgentControlCenter-mobile-menu-button {
@@ -81,34 +53,8 @@
   font-size: 18px;
   font-weight: 300;
   color: #fff;
-  margin: 0 0 10px 0;
+  margin: 0;
   text-align: center;
-}
-
-.playersRosterAgentControlCenter-mobile-status {
-  text-align: center;
-  font-size: 12px;
-  color: #888;
-  margin-bottom: 15px;
-}
-
-.playersRosterAgentControlCenter-mobile-nav {
-  display: flex;
-  justify-content: space-around;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.playersRosterAgentControlCenter-mobile-nav-link {
-  flex: 1;
-  text-align: center;
-  padding: 8px 12px;
-  background-color: #252525;
-  border-radius: 4px;
-  font-size: 12px;
-  color: wheat;
-  text-decoration: none;
-  border: 1px solid #333;
 }
 
 .playersRosterAgentControlCenter-mobile-view-controls {
@@ -825,11 +771,6 @@
     padding: 8px;
   }
 
-  .playersRosterAgentControlCenter-mobile-nav {
-    flex-direction: column;
-    gap: 8px;
-  }
-
   .playersRosterAgentControlCenter-mobile-view-controls {
     flex-wrap: wrap;
   }
@@ -854,10 +795,6 @@
 
   .playersRosterAgentControlCenter-mobile-title {
     font-size: 16px;
-  }
-
-  .playersRosterAgentControlCenter-mobile-logo {
-    width: 80px;
   }
 
   .playersRosterAgentControlCenter-mobile-menu-button {
@@ -894,4 +831,85 @@
   .playersRosterAgentControlCenter-contextMenuList {
     max-height: 200px;
   }
+}
+/* Редактор позиций (position / pos_elig) */
+.playersRosterAgentControlCenter-POS-positionEditor {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.playersRosterAgentControlCenter-POS-positionTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.playersRosterAgentControlCenter-POS-positionTag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  gap: 4px;
+  color: gray;
+}
+
+.playersRosterAgentControlCenter-POS-removeTag {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+  color: #666;
+}
+
+.playersRosterAgentControlCenter-POS-removeTag:hover {
+  color: #000;
+}
+
+.playersRosterAgentControlCenter-POS-addPositionButton {
+  background: none;
+  border: 1px dashed #aaa;
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+}
+
+.playersRosterAgentControlCenter-POS-addPositionButton:hover {
+  border-color: #000;
+  color: #000;
+}
+
+.playersRosterAgentControlCenter-POS-positionDropdown {
+  position: relative;
+  margin-top: 4px;
+}
+
+.playersRosterAgentControlCenter-POS-positionDropdown select {
+  width: 100%;
+}
+
+/* СТИЛИ ДЛЯ ПИКОВ */
+
+.fixed-picks-button {
+  position: fixed;
+  bottom: 20px; /* отступ от нижнего края */
+  left: 20px; /* отступ от левого края */
+  z-index: 1000; /* чтобы элемент был поверх остального контента */
+}
+
+/* Если сам PicksBody не выглядит как кнопка, можно добавить стили для его содержимого */
+.fixed-picks-button button,
+.fixed-picks-button .picks-body-button {
+  /* ваши стили для кнопки */
 }

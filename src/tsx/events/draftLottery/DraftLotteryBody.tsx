@@ -6,7 +6,7 @@ interface RowData {
   id: number;
   team: string | null;
   percentage: number;
-  info: string; // новое поле для доп. информации
+  info: string;
 }
 
 interface TeamRecord {
@@ -15,17 +15,12 @@ interface TeamRecord {
 
 const DraftLotteryBody: React.FC = () => {
   const [teams, setTeams] = useState<string[]>([]);
-  const [rows, setRows] = useState<RowData[]>(
-    Array.from({ length: 14 }, (_, index) => ({
-      id: index + 1,
-      team: null,
-      percentage: 0,
-      info: "", // по умолчанию пустая строка
-    })),
-  );
+  const [rows, setRows] = useState<RowData[]>([]);
   const [lotteryResult, setLotteryResult] = useState<string[]>([]);
   const [error, setError] = useState<string>("");
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
+  // Загрузка списка команд из таблицы Head
   useEffect(() => {
     const fetchTeams = async (): Promise<void> => {
       const { data, error } = await supabase.from("Head").select("team_name");
@@ -38,6 +33,56 @@ const DraftLotteryBody: React.FC = () => {
     };
     fetchTeams();
   }, []);
+
+  // Функция загрузки данных лотереи из draft_lottery
+  const loadLotteryData = async (): Promise<void> => {
+    const { data, error } = await supabase
+      .from("draft_lottery")
+      .select("*")
+      .order("id", { ascending: true });
+
+    if (error) {
+      console.error("Ошибка загрузки данных лотереи:", error);
+      setRows(createEmptyRows());
+      return;
+    }
+
+    if (data && data.length > 0) {
+      const loadedRows: RowData[] = data.map((item: any) => ({
+        id: item.id,
+        team: item.team,
+        percentage: item.percent,
+        info: item.info || "",
+      }));
+
+      const fullRows: RowData[] = [];
+      for (let i = 1; i <= 14; i++) {
+        const existing = loadedRows.find((r) => r.id === i);
+        if (existing) {
+          fullRows.push(existing);
+        } else {
+          fullRows.push({ id: i, team: null, percentage: 0, info: "" });
+        }
+      }
+      setRows(fullRows);
+    } else {
+      setRows(createEmptyRows());
+    }
+  };
+
+  // Загрузка сохранённых данных лотереи при монтировании
+  useEffect(() => {
+    loadLotteryData();
+  }, []);
+
+  // Вспомогательная функция для создания пустых строк
+  const createEmptyRows = (): RowData[] =>
+    Array.from({ length: 14 }, (_, index) => ({
+      id: index + 1,
+      team: null,
+      percentage: 0,
+      info: "",
+    }));
 
   const handleTeamChange = (rowId: number, teamName: string): void => {
     setRows((prev) =>
@@ -57,7 +102,6 @@ const DraftLotteryBody: React.FC = () => {
     setError("");
   };
 
-  // Новый обработчик для поля доп. информации
   const handleInfoChange = (rowId: number, info: string): void => {
     setRows((prev) =>
       prev.map((row) => (row.id === rowId ? { ...row, info } : row)),
@@ -65,7 +109,6 @@ const DraftLotteryBody: React.FC = () => {
     setError("");
   };
 
-  // Проверка заполненности команд
   const validateInputs = (): boolean => {
     if (rows.some((row) => !row.team)) {
       setError("Не все команды выбраны");
@@ -74,7 +117,6 @@ const DraftLotteryBody: React.FC = () => {
     return true;
   };
 
-  // Сохранение данных в Supabase
   const saveToDatabase = async (): Promise<void> => {
     const password = prompt("Введите пароль для сохранения:");
     if (password !== "1") {
@@ -90,11 +132,11 @@ const DraftLotteryBody: React.FC = () => {
           {
             id: row.id,
             team: row.team,
-            info: row.info || "", // если пусто, сохраняем пустую строку
+            info: row.info || "",
             percent: row.percentage,
             created_at: new Date().toISOString(),
           },
-          { onConflict: "id" }, // при конфликте по id обновляем запись
+          { onConflict: "id" },
         );
 
         if (error) {
@@ -104,10 +146,27 @@ const DraftLotteryBody: React.FC = () => {
         }
       }
       alert("Данные успешно сохранены!");
+      setIsEditing(false); // После сохранения выходим из режима редактирования
     } catch (err) {
       console.error(err);
       alert("Произошла ошибка");
     }
+  };
+
+  // Вход в режим редактирования с проверкой пароля
+  const handleEditClick = (): void => {
+    const password = prompt("Введите пароль для редактирования:");
+    if (password === "1") {
+      setIsEditing(true);
+    } else {
+      alert("Неверный пароль");
+    }
+  };
+
+  // Выход из режима редактирования без сохранения (перезагрузка данных)
+  const handleCancelClick = async (): Promise<void> => {
+    await loadLotteryData(); // сброс к последнему сохранённому состоянию
+    setIsEditing(false);
   };
 
   const weightedRandomSample = (
@@ -163,7 +222,7 @@ const DraftLotteryBody: React.FC = () => {
           <tr>
             <th>№</th>
             <th>Команда</th>
-            <th>Доп. инфо</th> {/* новый заголовок */}
+            <th>Доп. инфо</th>
             <th>Процент</th>
           </tr>
         </thead>
@@ -177,6 +236,7 @@ const DraftLotteryBody: React.FC = () => {
                   onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                     handleTeamChange(row.id, e.target.value)
                   }
+                  disabled={!isEditing}
                 >
                   <option value="" disabled>
                     Выберите команду
@@ -189,7 +249,6 @@ const DraftLotteryBody: React.FC = () => {
                 </select>
               </td>
               <td>
-                {/* поле для доп. информации */}
                 <input
                   type="text"
                   value={row.info}
@@ -197,6 +256,7 @@ const DraftLotteryBody: React.FC = () => {
                     handleInfoChange(row.id, e.target.value)
                   }
                   placeholder="Примечание"
+                  disabled={!isEditing}
                 />
               </td>
               <td>
@@ -205,6 +265,7 @@ const DraftLotteryBody: React.FC = () => {
                   onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                     handlePercentageChange(row.id, e.target.value)
                   }
+                  disabled={!isEditing}
                 >
                   <option value={0} disabled>
                     Выберите процент
@@ -224,10 +285,16 @@ const DraftLotteryBody: React.FC = () => {
       {error && <div className="error-message">{error}</div>}
 
       <div className="buttons">
+        {!isEditing ? (
+          <button onClick={handleEditClick}>Редактировать</button>
+        ) : (
+          <button onClick={handleCancelClick}>Отмена</button>
+        )}
         <button onClick={runLottery}>Провести лотерею</button>
         <button onClick={resetLottery}>Сбросить результаты</button>
-        <button onClick={saveToDatabase}>Сохранить в БД</button>{" "}
-        {/* новая кнопка */}
+        <button onClick={saveToDatabase} disabled={!isEditing}>
+          Сохранить в БД
+        </button>
       </div>
 
       {lotteryResult.length > 0 && (

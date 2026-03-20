@@ -1,0 +1,206 @@
+/* Базовые цвета: яркие и насыщенные */
+.tbg-team-info-compact {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px 24px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+
+.tbg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.tbg-header-title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #5b677d;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.tbg-collapse-btn {
+  background: #1e88e5;
+  border: none;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+}
+
+.tbg-collapse-btn:hover {
+  background: #0b5e9e;
+  transform: scale(0.98);
+}
+
+.tbg-info-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  transition: opacity 0.2s ease;
+}
+
+.tbg-info-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.tbg-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #1e88e5;
+  border-bottom: 2px solid #e0e7ff;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.tbg-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tbg-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background: #eef3ff;
+  padding: 10px 14px;
+  border-radius: 14px;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+.tbg-info-item:hover {
+  background: #e0ebff;
+  transform: translateX(2px);
+}
+
+.tbg-info-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #3b4e6b;
+}
+
+.tbg-info-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #0f2b3d;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-family: inherit;
+}
+
+/* Яркие цвета для Cap Space */
+.tbg-cap-positive {
+  color: #2e7d32;
+  font-weight: 700;
+}
+.tbg-cap-negative {
+  color: #d32f2f;
+  font-weight: 700;
+}
+.tbg-cap-neutral {
+  color: #5f6c80;
+}
+
+/* Загрузка, ошибки, нет данных */
+.tbg-loading,
+.tbg-error,
+.tbg-no-data {
+  text-align: center;
+  padding: 32px;
+  font-size: 0.875rem;
+  background: #f4f9ff;
+  border-radius: 20px;
+  color: #2c3e66;
+}
+
+.tbg-error {
+  color: #d32f2f;
+  background: #ffeae9;
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 450px) {
+  .tbg-team-info-compact {
+    padding: 12px;
+    border-radius: 16px;
+  }
+  .tbg-info-sections {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .tbg-info-section {
+    min-width: auto;
+  }
+  .tbg-info-item {
+    padding: 8px 10px;
+  }
+  .tbg-info-label {
+    font-size: 0.7rem;
+  }
+  .tbg-info-value {
+    font-size: 0.8rem;
+  }
+  .tbg-collapse-btn {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+  }
+  .tbg-header-title {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 250px) {
+  .tbg-team-info-compact {
+    padding: 8px;
+  }
+  .tbg-info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 8px;
+  }
+  .tbg-info-label {
+    font-size: 0.65rem;
+  }
+  .tbg-info-value {
+    font-size: 0.75rem;
+    word-break: break-word;
+  }
+  .tbg-section-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+  .tbg-collapse-btn {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+  .tbg-header-title {
+    font-size: 0.6rem;
+  }
+}

@@ -67,6 +67,38 @@ import UFAUTRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UF
 import UFAAdminThirdRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminThirdRound/UFAAdminThirdRoundMain";
 import UFAUserThirdRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRoundResult/UFAUserThirdRoundResultMain";
 import DraftLotteryMain from "./tsx/events/draftLottery/DraftLotteryMain";
+import PlayerConsoleAdminMain from "./tsx/agentControlCenter/playerConsole/PlayerConsoleAdminMain";
+import PicksMain from "./tsx/agentControlCenter/picks/PicksMain";
+import HawksMain from "./tsx/team_new/hawks/HawksMain";
+import CelticsMain from "./tsx/team_new/celtics/CelticsMain";
+import NetsMain from "./tsx/team_new/nets/NetsMain";
+import HornetsMain from "./tsx/team_new/hornets/HornetsMain";
+import BullsMain from "./tsx/team_new/bulls/BullsMain";
+import CavaliersMain from "./tsx/team_new/cavaliers/CavaliersMain";
+import MavericksMain from "./tsx/team_new/mavericks/MavericksMain";
+import NuggetsMain from "./tsx/team_new/nuggets/NuggetsMain";
+import PistonsMain from "./tsx/team_new/pistons/PistonsMain";
+import WarriorsMain from "./tsx/team_new/warriors/WarriorsMain";
+import RocketsMain from "./tsx/team_new/rockets/RocketsMain";
+import PacersMain from "./tsx/team_new/pacers/PacersMain";
+import ClippersMain from "./tsx/team_new/clippers/ClippersMain";
+import LakersMain from "./tsx/team_new/lakers/LakersMain";
+import GrizzliesMain from "./tsx/team_new/grizzlies/GrizzliesMain";
+import HeatMain from "./tsx/team_new/heat/HeatMain";
+import BucksMain from "./tsx/team_new/bucks/BucksMain";
+import TimberwolvesMain from "./tsx/team_new/timberwolves/TimberwolvesMain";
+import PelicansMain from "./tsx/team_new/pelicans/PelicansMain";
+import KnicksMain from "./tsx/team_new/knicks/KnicksMain";
+import ThunderMain from "./tsx/team_new/thunder/ThunderMain";
+import MagicMain from "./tsx/team_new/magic/MagicMain";
+import SevsixMain from "./tsx/team_new/sevsix/SevsixMain";
+import SunsMain from "./tsx/team_new/suns/SunsMain";
+import BlazersMain from "./tsx/team_new/blazers/BlazersMain";
+import KingsMain from "./tsx/team_new/kings/KingsMain";
+import SpursMan from "./tsx/team_new/spurs/SpursMain";
+import RaptorsMain from "./tsx/team_new/raptors/RaptorsMain";
+import JazzMain from "./tsx/team_new/jazz/JazzMain";
+import WizardsMain from "./tsx/team_new/wizards/WizardsMain";
 
 // import TradesMain from "./tsx/events/trades/TreadesAllHeader/TradesMain";
 
@@ -108,6 +140,38 @@ function Routing() {
         <Route path="/jazz" element={<Jazz />} />
         <Route path="/wizards" element={<Wizards />} />
 
+        {/* team NEW */}
+        <Route path="/hawksMain" element={<HawksMain />} />
+        <Route path="/celticsMain" element={<CelticsMain />} />
+        <Route path="/netsMain" element={<NetsMain />} />
+        <Route path="/hornetsMain" element={<HornetsMain />} />
+        <Route path="/bullsMain" element={<BullsMain />} />
+        <Route path="cavaliersMain" element={<CavaliersMain />} />
+        <Route path="/mavericksMain" element={<MavericksMain />} />
+        <Route path="/nuggetsMain" element={<NuggetsMain />} />
+        <Route path="/pistonsMain" element={<PistonsMain />} />
+        <Route path="/warriorsMain" element={<WarriorsMain />} />
+        <Route path="/rocketsMain" element={<RocketsMain />} />
+        <Route path="/pacersMain" element={<PacersMain />} />
+        <Route path="/clippersMain" element={<ClippersMain />} />
+        <Route path="/lakersMain" element={<LakersMain />} />
+        <Route path="/grizzliesMain" element={<GrizzliesMain />} />
+        <Route path="/heatMain" element={<HeatMain />} />
+        <Route path="/bucksMain" element={<BucksMain />} />
+        <Route path="/timberwolvesMain" element={<TimberwolvesMain />} />
+        <Route path="/pelicansMain" element={<PelicansMain />} />
+        <Route path="/knicksMain" element={<KnicksMain />} />
+        <Route path="/thunderMain" element={<ThunderMain />} />
+        <Route path="/magicMain" element={<MagicMain />} />
+        <Route path="/sevsixMain" element={<SevsixMain />} />
+        <Route path="/sunsMain" element={<SunsMain />} />
+        <Route path="/blazersMain" element={<BlazersMain />} />
+        <Route path="/kingsMain" element={<KingsMain />} />
+        <Route path="/spursMan" element={<SpursMan />} />
+        <Route path="/raptorsMain" element={<RaptorsMain />} />
+        <Route path="/jazzMain" element={<JazzMain />} />
+        <Route path="/wizardsMain" element={<WizardsMain />} />
+
         {/* agentConsole */}
         <Route
           path="/headInfoAgentControlCenter"
@@ -117,6 +181,16 @@ function Routing() {
           path="/playersRosterAgentControlCenter"
           element={<PlayersRosterAgentControlCenterFixThreeArchive />}
         />
+        {/* players new  */}
+        <Route
+          path="/playerConsoleAdminMain"
+          element={<PlayerConsoleAdminMain />}
+        />
+
+        {/* players new  */}
+
+        <Route path="/picksMain" element={<PicksMain />} />
+
         <Route
           path="/deadCapRosterAgentControl"
           element={<DeadCapRosterAgentControl />}

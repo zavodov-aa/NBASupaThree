@@ -1,0 +1,190 @@
+/* ColumnSelector.css */
+
+/* Общие стили (дублируются из основного файла) */
+.playersRosterAgentControlCenter-button {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.playersRosterAgentControlCenter-button:hover {
+  background-color: #3a3a3a;
+  border-color: #555;
+}
+
+.playersRosterAgentControlCenter-successButton {
+  background-color: #4caf50;
+  color: #fff;
+  border: 1px solid #45a049;
+}
+
+.playersRosterAgentControlCenter-successButton:hover {
+  background-color: #45a049;
+}
+
+.playersRosterAgentControlCenter-smallButton {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  margin-left: 5px;
+}
+
+.playersRosterAgentControlCenter-smallButton:hover {
+  background-color: #3a3a3a;
+}
+
+/* Стили селектора колонок */
+.playersRosterAgentControlCenter-columnSelector {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.playersRosterAgentControlCenter-columnSelectorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-columnSelectorTitle {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.playersRosterAgentControlCenter-massSelectionButtons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-columnGroup {
+  margin-bottom: 15px;
+}
+
+.playersRosterAgentControlCenter-columnGroupTitle {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.playersRosterAgentControlCenter-columnCheckboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.playersRosterAgentControlCenter-checkboxLabel {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.playersRosterAgentControlCenter-checkbox {
+  margin-right: 5px;
+}
+
+/* Мобильные стили */
+.playersRosterAgentControlCenter-mobile-column-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.playersRosterAgentControlCenter-mobile-column-group {
+  background-color: #252525;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.playersRosterAgentControlCenter-mobile-column-group-title {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #444;
+}
+
+.playersRosterAgentControlCenter-mobile-column-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.playersRosterAgentControlCenter-mobile-checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 3px;
+  background-color: #2a2a2a;
+}
+
+.playersRosterAgentControlCenter-mobile-checkbox-label:hover {
+  background-color: #333;
+}
+
+.playersRosterAgentControlCenter-mobile-checkbox-input {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.playersRosterAgentControlCenter-mobile-checkbox-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+.playersRosterAgentControlCenter-mobile-mass-selection {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+/* Медиа-запросы для мобильной версии */
+@media (max-width: 768px) {
+  .playersRosterAgentControlCenter-columnSelector {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .playersRosterAgentControlCenter-mobile-column-checkboxes {
+    grid-template-columns: 1fr;
+  }
+
+  .playersRosterAgentControlCenter-mobile-mass-selection {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .playersRosterAgentControlCenter-mobile-mass-selection
+    .playersRosterAgentControlCenter-button {
+    min-width: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,41 @@
+import { Player } from "../types/Player";
+
+export const initialNewPlayer: Omit<Player, "id"> = {
+  active_roster: "",
+  position: "",
+  pos_elig: "",
+  age: "",
+  year_one: "",
+  year_two: "",
+  year_three: "",
+  year_four: "",
+  year_five: "",
+  opt: "",
+  exp: "",
+  bird: "",
+  awards: "",
+  team: "",
+  g_league: "",
+  rating: "",
+  rokie: "",
+};
+
+export const initialFilters: Record<keyof Omit<Player, "id">, string> = {
+  active_roster: "",
+  position: "",
+  pos_elig: "",
+  age: "",
+  year_one: "",
+  year_two: "",
+  year_three: "",
+  year_four: "",
+  year_five: "",
+  opt: "",
+  exp: "",
+  bird: "",
+  awards: "",
+  team: "",
+  g_league: "",
+  rating: "",
+  rokie: "",
+};
