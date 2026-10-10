@@ -14,6 +14,7 @@ type Player = {
   year_four: string | null;
   year_five: string | null;
   opt: string;
+  status: string;
   exp: string;
   bird: string;
   awards: string;
@@ -21,6 +22,14 @@ type Player = {
   g_league: string;
   rating: string;
   rokie: string;
+  // ---------
+  retention: string;
+  dead_cap_team: string;
+  dc_year_one: string;
+  dc_year_two: string;
+  dc_year_three: string;
+  dc_year_four: string;
+  dc_year_five: string;
 };
 
 interface ColumnSelectorProps {

@@ -3,6 +3,8 @@ import { supabase } from "../../../Supabase";
 import "./tournament.css";
 import logo from "../../../img/LogoLeague4kFinal.png";
 
+/* ============================ Типы ============================ */
+
 interface Team {
   path: string;
 }
@@ -21,14 +23,18 @@ interface ConferenceData {
   expandedRounds: number[];
 }
 
+type ConferenceKey = "west" | "east";
+type SlotKey = "team1" | "team2" | "west" | "east";
+
 interface DropdownInfo {
-  conference: "west" | "east" | "finals";
+  conference: ConferenceKey | "finals";
   matchupId?: number;
-  slot: "team1" | "team2" | "west" | "east";
+  slot: SlotKey;
   position: { top: number; left: number } | null;
 }
 
 interface TournamentData {
+  version: 2;
   conferences: {
     west: ConferenceData;
     east: ConferenceData;
@@ -42,9 +48,11 @@ interface TournamentData {
   savedAt: string;
 }
 
+/* ============================ Константы ============================ */
+
 const CONFERENCE_CONFIG = {
-  west: { title: "Western Conference", color: "blue", startId: 1 },
-  east: { title: "Eastern Conference", color: "red", startId: 17 },
+  west: { title: "Western Conference", startId: 1 },
+  east: { title: "Eastern Conference", startId: 17 },
 } as const;
 
 const ROUND_CONFIG = [
@@ -54,58 +62,185 @@ const ROUND_CONFIG = [
   { round: 4, title: "Conference Champion" },
 ] as const;
 
+const ROUND_MATCH_COUNTS = [4, 2, 1, 1] as const;
+
 const MAX_SCORE = 4;
+const MOBILE_BREAKPOINT = 767;
+const DATA_VERSION = 2 as const;
+
+const BASE_BRACKET_WIDTH = 1400;
+const CONTENT_HORIZONTAL_PADDING = 60;
+
+/* ============================ Утилиты ============================ */
+
+const teamLabel = (path: string) => path.replace(".png", "").replace(/_/g, " ");
+
+const clampScore = (value: number) => Math.max(0, Math.min(MAX_SCORE, value));
+
+const isValidTournamentData = (data: unknown): data is TournamentData => {
+  if (!data || typeof data !== "object") return false;
+  const d = data as any;
+  return (
+    d.version === DATA_VERSION &&
+    d.conferences?.west?.matchups &&
+    d.conferences?.east?.matchups &&
+    d.finals
+  );
+};
+
+/* ============================ Компоненты ============================ */
 
 const ScoreDisplay: React.FC<{
   score1: number;
   score2: number;
   isFinals?: boolean;
 }> = ({ score1, score2, isFinals = false }) => (
-  <div className={`score-display ${isFinals ? "finals-score" : ""}`}>
-    <div className="score-team">{score1}</div>
-    <div className="score-separator">-</div>
-    <div className="score-team">{score2}</div>
+  <div
+    className={`tournamentMainn-score-display ${
+      isFinals ? "tournamentMainn-finals-score" : ""
+    }`}
+  >
+    <div className="tournamentMainn-score-team">{score1}</div>
+    <div className="tournamentMainn-score-separator">-</div>
+    <div className="tournamentMainn-score-team">{score2}</div>
   </div>
 );
 
 const TeamSlot: React.FC<{
   type: "west" | "east" | "finals";
-  matchupId: number;
-  slot: "team1" | "team2" | "west" | "east";
   team: Team | null;
   placeholder: string;
   isActive: boolean;
   onClick: (e: React.MouseEvent) => void;
-}> = ({ type, team, placeholder, isActive, onClick }) => (
-  <div className="team-slot-container">
-    <div
-      className={`team-slot ${isActive ? "active" : ""} ${
-        type === "finals" ? "finals-slot" : ""
-      }`}
-      onClick={onClick}
-    >
-      <div className="team-content">
-        {team ? (
-          <img
-            src={`/img/${team.path}`}
-            alt=""
-            className={`team-logo ${type === "finals" ? "finals-logo" : ""}`}
-            onError={(e) => (e.currentTarget.src = "/img/placeholder.png")}
-          />
-        ) : (
-          <span className="placeholder">{placeholder}</span>
-        )}
+}> = ({ type, team, placeholder, isActive, onClick }) => {
+  const handleKey = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onClick(e as unknown as React.MouseEvent);
+    }
+  };
+
+  return (
+    <div className="tournamentMainn-team-slot-container">
+      <div
+        className={`tournamentMainn-team-slot ${
+          isActive ? "tournamentMainn-active" : ""
+        } ${type === "finals" ? "tournamentMainn-finals-slot" : ""}`}
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={handleKey}
+      >
+        <div className="tournamentMainn-team-content">
+          {team ? (
+            <img
+              src={`/img/${team.path}`}
+              alt={teamLabel(team.path)}
+              className={`tournamentMainn-team-logo ${
+                type === "finals" ? "tournamentMainn-finals-logo" : ""
+              }`}
+              onError={(e) => (e.currentTarget.src = "/img/placeholder.png")}
+            />
+          ) : (
+            <span className="tournamentMainn-placeholder">{placeholder}</span>
+          )}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+const EditableScore: React.FC<{
+  score: number;
+  onChange: (value: number) => void;
+  disabled?: boolean;
+  label?: string;
+}> = ({ score, onChange, disabled = false, label }) => {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(String(score));
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (editing) {
+      inputRef.current?.focus();
+      inputRef.current?.select();
+    }
+  }, [editing]);
+
+  useEffect(() => {
+    if (!editing) setDraft(String(score));
+  }, [score, editing]);
+
+  const startEditing = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (disabled) return;
+    setDraft(String(score));
+    setEditing(true);
+  };
+
+  const commit = () => {
+    const parsed = parseInt(draft, 10);
+    const next = Number.isNaN(parsed) ? 0 : clampScore(parsed);
+    onChange(next);
+    setEditing(false);
+  };
+
+  const cancel = () => {
+    setDraft(String(score));
+    setEditing(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      commit();
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      cancel();
+    }
+  };
+
+  return (
+    <div className="tournamentMainn-score-row">
+      {editing ? (
+        <input
+          ref={inputRef}
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          className="tournamentMainn-score-input"
+          value={draft}
+          onChange={(e) => setDraft(e.target.value.replace(/[^0-9]/g, ""))}
+          onBlur={commit}
+          onKeyDown={handleKeyDown}
+          onClick={(e) => e.stopPropagation()}
+          disabled={disabled}
+        />
+      ) : (
+        <div
+          className={`tournamentMainn-score-value ${
+            disabled ? "tournamentMainn-score-value-disabled" : ""
+          }`}
+          onClick={startEditing}
+          role="button"
+          tabIndex={0}
+          title={disabled ? "" : "Нажмите, чтобы изменить счёт"}
+        >
+          {score}
+        </div>
+      )}
+      {label && <div className="tournamentMainn-score-label">{label}</div>}
+    </div>
+  );
+};
+
+/* ============================ Начальное состояние ============================ */
 
 const createInitialMatchups = (startId: number): Matchup[] => {
   const matchups: Matchup[] = [];
   let id = startId;
-  const rounds = [4, 2, 1, 1];
 
-  rounds.forEach((count, roundIndex) => {
+  ROUND_MATCH_COUNTS.forEach((count, roundIndex) => {
     for (let i = 0; i < count; i++) {
       matchups.push({
         id: id++,
@@ -121,6 +256,25 @@ const createInitialMatchups = (startId: number): Matchup[] => {
   return matchups;
 };
 
+const createConference = (startId: number): ConferenceData => ({
+  matchups: createInitialMatchups(startId),
+  expandedRounds: [1],
+});
+
+const createInitialConferences = () => ({
+  west: createConference(CONFERENCE_CONFIG.west.startId),
+  east: createConference(CONFERENCE_CONFIG.east.startId),
+});
+
+const createInitialFinals = () => ({
+  west: null as Team | null,
+  east: null as Team | null,
+  scoreWest: 0,
+  scoreEast: 0,
+});
+
+/* ============================ Основной компонент ============================ */
+
 const Tournament = () => {
   const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState(true);
@@ -128,43 +282,45 @@ const Tournament = () => {
   const [dropdownInfo, setDropdownInfo] = useState<DropdownInfo | null>(null);
   const [saving, setSaving] = useState(false);
   const [hasLoadedSavedData, setHasLoadedSavedData] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const [conferences, setConferences] = useState({
-    west: {
-      matchups: createInitialMatchups(CONFERENCE_CONFIG.west.startId),
-      expandedRounds: [1],
-    },
-    east: {
-      matchups: createInitialMatchups(CONFERENCE_CONFIG.east.startId),
-      expandedRounds: [1],
-    },
-  });
+  const [conferences, setConferences] = useState(createInitialConferences);
+  const [finals, setFinals] = useState(createInitialFinals);
 
-  const [finals, setFinals] = useState({
-    west: null as Team | null,
-    east: null as Team | null,
-    scoreWest: 0,
-    scoreEast: 0,
-  });
+  const [scale, setScale] = useState(1);
+  const bracketRef = useRef<HTMLDivElement>(null);
 
+  /* ---------- Загрузка данных ---------- */
   useEffect(() => {
     const loadData = async () => {
       await fetchTeams();
       await loadSavedTournament();
-      setIsMobile(window.innerWidth <= 767);
     };
     loadData();
-    window.addEventListener("resize", () =>
-      setIsMobile(window.innerWidth <= 767)
-    );
-    return () =>
-      window.removeEventListener("resize", () =>
-        setIsMobile(window.innerWidth <= 767)
-      );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /* ---------- Единый слушатель resize ---------- */
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= MOBILE_BREAKPOINT;
+      setIsMobile(mobile);
+
+      if (mobile) {
+        setScale(1);
+        return;
+      }
+
+      const available = window.innerWidth - CONTENT_HORIZONTAL_PADDING;
+      const next = Math.min(1, available / BASE_BRACKET_WIDTH);
+      setScale(next > 0 ? next : 1);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  /* ---------- Блокировка скролла body при открытом dropdown на мобилке ---------- */
   useEffect(() => {
     if (isMobile && dropdownInfo) {
       document.body.style.overflow = "hidden";
@@ -176,6 +332,7 @@ const Tournament = () => {
     };
   }, [dropdownInfo, isMobile]);
 
+  /* ---------- Загрузка команд ---------- */
   const fetchTeams = async () => {
     try {
       const { data, error } = await supabase
@@ -184,14 +341,13 @@ const Tournament = () => {
         .order("path", { ascending: true });
 
       if (error) throw error;
-
-      const teamData = (data || []).map((item) => ({ path: item.path }));
-      setTeams(teamData);
+      setTeams((data || []).map((item) => ({ path: item.path })));
     } catch (error) {
       console.error("Ошибка при загрузке команд:", error);
     }
   };
 
+  /* ---------- Загрузка сохранённого турнира ---------- */
   const loadSavedTournament = async () => {
     try {
       const { data, error } = await supabase
@@ -201,29 +357,26 @@ const Tournament = () => {
 
       if (error) throw error;
 
-      if (data && data.length > 0 && data[0].data) {
-        try {
-          const savedData = JSON.parse(data[0].data) as TournamentData;
+      if (!data || data.length === 0 || !data[0].data) {
+        console.log("Сохранённый турнир не найден");
+        return;
+      }
 
-          // Восстанавливаем конференции
-          if (savedData.conferences) {
-            setConferences(savedData.conferences);
-          }
+      let parsed: unknown;
+      try {
+        parsed = JSON.parse(data[0].data);
+      } catch (parseError) {
+        console.error("Ошибка при парсинге сохранённых данных:", parseError);
+        return;
+      }
 
-          // Восстанавливаем финал
-          if (savedData.finals) {
-            setFinals(savedData.finals);
-          }
-
-          setHasLoadedSavedData(true);
-          console.log("Турнир успешно загружен из базы данных");
-        } catch (parseError) {
-          console.error("Ошибка при парсинге сохраненных данных:", parseError);
-          // Пробуем загрузить старый формат
-          await loadOldFormat(data[0]);
-        }
+      if (isValidTournamentData(parsed)) {
+        setConferences(parsed.conferences);
+        setFinals(parsed.finals);
+        setHasLoadedSavedData(true);
+        console.log("Турнир успешно загружен из базы данных");
       } else {
-        console.log("Сохраненный турнир не найден");
+        console.warn("Неизвестный формат данных турнира, пропускаем загрузку");
       }
     } catch (error) {
       console.error("Ошибка при загрузке турнира:", error);
@@ -232,201 +385,82 @@ const Tournament = () => {
     }
   };
 
-  // Функция для загрузки старого формата данных (если есть)
-  const loadOldFormat = async (savedData: any) => {
-    try {
-      const westMatchups = [...conferences.west.matchups];
-      const eastMatchups = [...conferences.east.matchups];
-      const newFinals = { ...finals };
-
-      // Старый формат колонок
-      const oldColumnMapping = {
-        westOneFirstRound: 1,
-        westTwoFirstRound: 2,
-        westThreeFirstRound: 3,
-        westFourFirstRound: 4,
-        westFiveFirstRound: 5,
-        westSixFirstRound: 6,
-        westSevenFirstRound: 7,
-        westEightFirstRound: 8,
-        westOneSecondRound: 9,
-        westTwoSecondRound: 10,
-        westThreeSecondRound: 11,
-        westFourSecondRound: 12,
-        westOneThirdRound: 13,
-        westTwoThirdRound: 14,
-        easternOneFirstRound: 17,
-        easternTwoFirstRound: 18,
-        easternThreeFirstRound: 19,
-        easternFourFirstRound: 20,
-        easternFiveFirstRound: 21,
-        easternSixFirstRound: 22,
-        easternSevenFirstRound: 23,
-        easternEightFirstRound: 24,
-        easternOneSecondRound: 25,
-        easternTwoSecondRound: 26,
-        easternThreeSecondRound: 27,
-        easternFourSecondRound: 28,
-        easternOneThirdRound: 29,
-        easternTwoThirdRound: 30,
-      };
-
-      Object.entries(oldColumnMapping).forEach(([columnName, matchupId]) => {
-        const teamPath = savedData[columnName];
-        if (teamPath) {
-          const team = { path: teamPath };
-
-          if (matchupId <= 16) {
-            const matchupIndex = westMatchups.findIndex(
-              (m) => m.id === matchupId
-            );
-            if (matchupIndex !== -1) {
-              westMatchups[matchupIndex] = {
-                ...westMatchups[matchupIndex],
-                team1: team,
-              };
-            }
-          } else {
-            const matchupIndex = eastMatchups.findIndex(
-              (m) => m.id === matchupId
-            );
-            if (matchupIndex !== -1) {
-              eastMatchups[matchupIndex] = {
-                ...eastMatchups[matchupIndex],
-                team1: team,
-              };
-            }
-          }
-        }
-      });
-
-      // Загружаем чемпионов
-      if (savedData.westFinalChampions) {
-        const westChampionIndex = westMatchups.findIndex((m) => m.round === 4);
-        if (westChampionIndex !== -1) {
-          westMatchups[westChampionIndex] = {
-            ...westMatchups[westChampionIndex],
-            team1: { path: savedData.westFinalChampions },
-          };
-        }
-      }
-
-      if (savedData.easternFinalChampions) {
-        const eastChampionIndex = eastMatchups.findIndex((m) => m.round === 4);
-        if (eastChampionIndex !== -1) {
-          eastMatchups[eastChampionIndex] = {
-            ...eastMatchups[eastChampionIndex],
-            team1: { path: savedData.easternFinalChampions },
-          };
-        }
-      }
-
-      if (savedData.finalsWestChamp) {
-        newFinals.west = { path: savedData.finalsWestChamp };
-      }
-      if (savedData.finalsEasternChamp) {
-        newFinals.east = { path: savedData.finalsEasternChamp };
-      }
-
-      setConferences({
-        west: { ...conferences.west, matchups: westMatchups },
-        east: { ...conferences.east, matchups: eastMatchups },
-      });
-      setFinals(newFinals);
-      setHasLoadedSavedData(true);
-      console.log("Турнир загружен в старом формате");
-    } catch (error) {
-      console.error("Ошибка при загрузке старого формата:", error);
-    }
-  };
-
-  const updateMatchupScore = useCallback(
+  /* ---------- Установка счёта матча конференции ---------- */
+  const setMatchupScore = useCallback(
     (
-      conference: "west" | "east",
+      conference: ConferenceKey,
       matchupId: number,
       teamSlot: "team1" | "team2",
-      delta: number
+      value: number,
     ) => {
       setConferences((prev) => ({
         ...prev,
         [conference]: {
           ...prev[conference],
-          matchups: prev[conference].matchups.map((matchup) => {
-            if (matchup.id === matchupId) {
-              if (teamSlot === "team1") {
-                const newScore = Math.max(
-                  0,
-                  Math.min(MAX_SCORE, matchup.score1 + delta)
-                );
-                return { ...matchup, score1: newScore };
-              } else {
-                const newScore = Math.max(
-                  0,
-                  Math.min(MAX_SCORE, matchup.score2 + delta)
-                );
-                return { ...matchup, score2: newScore };
-              }
-            }
-            return matchup;
+          matchups: prev[conference].matchups.map((m) => {
+            if (m.id !== matchupId) return m;
+            const scoreKey = teamSlot === "team1" ? "score1" : "score2";
+            return { ...m, [scoreKey]: clampScore(value) };
           }),
         },
       }));
     },
-    []
+    [],
   );
 
-  const updateFinalsScore = useCallback(
-    (teamSlot: "west" | "east", delta: number) => {
+  /* ---------- Установка счёта финала ---------- */
+  const setFinalsScore = useCallback(
+    (teamSlot: "west" | "east", value: number) => {
       setFinals((prev) => {
-        if (teamSlot === "west") {
-          const newScore = Math.max(
-            0,
-            Math.min(MAX_SCORE, prev.scoreWest + delta)
-          );
-          return { ...prev, scoreWest: newScore };
-        } else {
-          const newScore = Math.max(
-            0,
-            Math.min(MAX_SCORE, prev.scoreEast + delta)
-          );
-          return { ...prev, scoreEast: newScore };
-        }
+        const key = teamSlot === "west" ? "scoreWest" : "scoreEast";
+        return { ...prev, [key]: clampScore(value) };
       });
     },
-    []
+    [],
   );
 
+  /* ---------- Выбор команды (со сбросом счёта) ---------- */
   const handleTeamSelect = useCallback(
     (
-      conference: "west" | "east" | "finals",
+      conference: ConferenceKey | "finals",
       matchupId: number,
-      slot: "team1" | "team2" | "west" | "east",
-      team: Team
+      slot: SlotKey,
+      team: Team,
     ) => {
-      if (conference === "west" || conference === "east") {
-        setConferences((prev) => ({
+      if (conference === "finals") {
+        setFinals((prev) => ({
           ...prev,
-          [conference]: {
-            ...prev[conference],
-            matchups: prev[conference].matchups.map((m) =>
-              m.id === matchupId ? { ...m, [slot]: team } : m
-            ),
-          },
+          [slot]: team,
+          ...(slot === "west" ? { scoreWest: 0 } : { scoreEast: 0 }),
         }));
-      } else if (conference === "finals") {
-        setFinals((prev) => ({ ...prev, [slot]: team }));
+        setDropdownInfo(null);
+        return;
       }
+
+      setConferences((prev) => ({
+        ...prev,
+        [conference]: {
+          ...prev[conference],
+          matchups: prev[conference].matchups.map((m) => {
+            if (m.id !== matchupId) return m;
+            return slot === "team1"
+              ? { ...m, team1: team, score1: 0 }
+              : { ...m, team2: team, score2: 0 };
+          }),
+        },
+      }));
       setDropdownInfo(null);
     },
-    []
+    [],
   );
 
+  /* ---------- Клик по слоту команды ---------- */
   const handleTeamSlotClick = useCallback(
     (
       e: React.MouseEvent,
-      conference: "west" | "east" | "finals",
+      conference: ConferenceKey | "finals",
       matchupId: number,
-      slot: "team1" | "team2" | "west" | "east"
+      slot: SlotKey,
     ) => {
       e.stopPropagation();
       const buttonRect = e.currentTarget.getBoundingClientRect();
@@ -437,7 +471,7 @@ const Tournament = () => {
       }
 
       const dropdownWidth = 280;
-      const dropdownHeight = 400;
+      const dropdownHeight = 380;
       let top = buttonRect.bottom + 8;
       let left = buttonRect.left;
 
@@ -445,17 +479,19 @@ const Tournament = () => {
         top = buttonRect.top - dropdownHeight - 8;
         if (top < 0) top = 8;
       }
-      if (left + dropdownWidth > window.innerWidth)
+      if (left + dropdownWidth > window.innerWidth) {
         left = window.innerWidth - dropdownWidth - 8;
+      }
       if (left < 0) left = 8;
 
       setDropdownInfo({ conference, matchupId, slot, position: { top, left } });
     },
-    [isMobile]
+    [isMobile],
   );
 
+  /* ---------- Разворачивание/сворачивание раунда (мобилка) ---------- */
   const toggleRound = useCallback(
-    (conference: "west" | "east", round: number) => {
+    (conference: ConferenceKey, round: number) => {
       setConferences((prev) => ({
         ...prev,
         [conference]: {
@@ -466,19 +502,20 @@ const Tournament = () => {
         },
       }));
     },
-    []
+    [],
   );
 
+  /* ---------- Сохранение турнира ---------- */
   const saveTournament = async () => {
     setSaving(true);
     try {
       const tournamentData: TournamentData = {
+        version: DATA_VERSION,
         conferences,
         finals,
         savedAt: new Date().toISOString(),
       };
 
-      // Проверяем, есть ли уже сохраненные данные
       const { data: existingData, error: fetchError } = await supabase
         .from("Tournament27")
         .select("id")
@@ -486,26 +523,21 @@ const Tournament = () => {
 
       if (fetchError) throw fetchError;
 
-      let upsertError;
+      const payload = { data: JSON.stringify(tournamentData) };
 
       if (existingData && existingData.length > 0) {
-        // Обновляем существующую запись
         const { error } = await supabase
           .from("Tournament27")
-          .update({ data: JSON.stringify(tournamentData) })
+          .update(payload)
           .eq("id", existingData[0].id);
-        upsertError = error;
+        if (error) throw error;
       } else {
-        // Создаем новую запись
-        const { error } = await supabase
-          .from("Tournament27")
-          .insert([{ data: JSON.stringify(tournamentData) }]);
-        upsertError = error;
+        const { error } = await supabase.from("Tournament27").insert([payload]);
+        if (error) throw error;
       }
 
-      if (upsertError) throw upsertError;
-
-      alert("Турнир успешно сохранен!");
+      setHasLoadedSavedData(true);
+      alert("Турнир успешно сохранён!");
     } catch (error) {
       console.error("Ошибка при сохранении турнира:", error);
       alert("Произошла ошибка при сохранении турнира");
@@ -514,24 +546,17 @@ const Tournament = () => {
     }
   };
 
+  /* ---------- Рендер одного матча ---------- */
   const renderMatchup = useCallback(
-    (
-      matchup: Matchup,
-      conference: "west" | "east",
-      isMirrored: boolean = false
-    ) => {
-      const isChampion = matchup.round === 4;
-
-      if (isChampion) {
+    (matchup: Matchup, conference: ConferenceKey) => {
+      if (matchup.round === 4) {
         return (
           <div
             key={matchup.id}
-            className={`champion-slot champion-${conference}`}
+            className={`tournamentMainn-champion-slot tournamentMainn-champion-${conference}`}
           >
             <TeamSlot
               type={conference}
-              matchupId={matchup.id}
-              slot="team1"
               team={matchup.team1}
               placeholder="Выберите чемпиона"
               isActive={
@@ -543,7 +568,7 @@ const Tournament = () => {
                 handleTeamSlotClick(e, conference, matchup.id, "team1")
               }
             />
-            <div className="badge">Champion</div>
+            <div className="tournamentMainn-badge">Champion</div>
           </div>
         );
       }
@@ -551,187 +576,148 @@ const Tournament = () => {
       return (
         <div
           key={matchup.id}
-          className={`matchup round-${matchup.round} ${
-            isMirrored ? "mirrored" : ""
-          }`}
+          className={`tournamentMainn-matchup tournamentMainn-round-${matchup.round}`}
         >
-          <div className="matchup-teams">
-            <TeamSlot
-              type={conference}
-              matchupId={matchup.id}
-              slot="team1"
-              team={matchup.team1}
-              placeholder="Выберите команду..."
-              isActive={
-                dropdownInfo?.conference === conference &&
-                dropdownInfo?.matchupId === matchup.id &&
-                dropdownInfo?.slot === "team1"
-              }
-              onClick={(e) =>
-                handleTeamSlotClick(e, conference, matchup.id, "team1")
-              }
-            />
-
-            <div className="matchup-controls">
-              <div className="score-controls">
-                <button
-                  className="score-btn decrement"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    updateMatchupScore(conference, matchup.id, "team1", -1);
-                  }}
-                  disabled={matchup.score1 <= 0}
-                >
-                  -
-                </button>
-                <ScoreDisplay score1={matchup.score1} score2={matchup.score2} />
-                <button
-                  className="score-btn increment"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    updateMatchupScore(conference, matchup.id, "team2", -1);
-                  }}
-                  disabled={matchup.score2 <= 0}
-                >
-                  -
-                </button>
-              </div>
-              <div className="score-controls">
-                <button
-                  className="score-btn increment"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    updateMatchupScore(conference, matchup.id, "team1", 1);
-                  }}
-                  disabled={matchup.score1 >= MAX_SCORE}
-                >
-                  +
-                </button>
-                <div className="score-label">Счет</div>
-                <button
-                  className="score-btn increment"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    updateMatchupScore(conference, matchup.id, "team2", 1);
-                  }}
-                  disabled={matchup.score2 >= MAX_SCORE}
-                >
-                  +
-                </button>
-              </div>
+          <div className="tournamentMainn-matchup-teams">
+            <div className="tournamentMainn-matchup-row">
+              <TeamSlot
+                type={conference}
+                team={matchup.team1}
+                placeholder="—"
+                isActive={
+                  dropdownInfo?.conference === conference &&
+                  dropdownInfo?.matchupId === matchup.id &&
+                  dropdownInfo?.slot === "team1"
+                }
+                onClick={(e) =>
+                  handleTeamSlotClick(e, conference, matchup.id, "team1")
+                }
+              />
+              <EditableScore
+                score={matchup.score1}
+                onChange={(value) =>
+                  setMatchupScore(conference, matchup.id, "team1", value)
+                }
+                disabled={!matchup.team1}
+              />
             </div>
 
-            <TeamSlot
-              type={conference}
-              matchupId={matchup.id}
-              slot="team2"
-              team={matchup.team2}
-              placeholder="Выберите команду..."
-              isActive={
-                dropdownInfo?.conference === conference &&
-                dropdownInfo?.matchupId === matchup.id &&
-                dropdownInfo?.slot === "team2"
-              }
-              onClick={(e) =>
-                handleTeamSlotClick(e, conference, matchup.id, "team2")
-              }
-            />
+            <div className="tournamentMainn-matchup-row">
+              <TeamSlot
+                type={conference}
+                team={matchup.team2}
+                placeholder="—"
+                isActive={
+                  dropdownInfo?.conference === conference &&
+                  dropdownInfo?.matchupId === matchup.id &&
+                  dropdownInfo?.slot === "team2"
+                }
+                onClick={(e) =>
+                  handleTeamSlotClick(e, conference, matchup.id, "team2")
+                }
+              />
+              <EditableScore
+                score={matchup.score2}
+                onChange={(value) =>
+                  setMatchupScore(conference, matchup.id, "team2", value)
+                }
+                disabled={!matchup.team2}
+              />
+            </div>
           </div>
         </div>
       );
     },
-    [dropdownInfo, handleTeamSlotClick, updateMatchupScore]
+    [dropdownInfo, handleTeamSlotClick, setMatchupScore],
   );
 
-  const renderConference = useCallback(
-    (conference: "west" | "east", isMirrored: boolean) => {
-      const config = CONFERENCE_CONFIG[conference];
+  /* ---------- Рендер раундов (общий для mobile/desktop) ---------- */
+  const renderRounds = useCallback(
+    (conference: ConferenceKey) => {
       const { matchups, expandedRounds } = conferences[conference];
 
-      if (isMobile) {
+      return ROUND_CONFIG.map(({ round, title }) => {
+        const isExpanded = expandedRounds.includes(round);
+        const roundMatchups = matchups.filter((m) => m.round === round);
+
+        if (isMobile) {
+          return (
+            <div
+              key={round}
+              className={`tournamentMainn-round tournamentMainn-round-${round} ${
+                isExpanded ? "tournamentMainn-expanded" : ""
+              }`}
+              onClick={() => toggleRound(conference, round)}
+            >
+              <h3>
+                {title}
+                <span className="tournamentMainn-match-count">
+                  ({roundMatchups.length})
+                </span>
+                <span className="tournamentMainn-expand-icon">
+                  {isExpanded ? "−" : "+"}
+                </span>
+              </h3>
+              <div
+                className="tournamentMainn-round-content"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {roundMatchups.map((m) => renderMatchup(m, conference))}
+              </div>
+            </div>
+          );
+        }
+
         return (
           <div
-            className={`conference ${conference} ${
-              isMirrored ? "mirrored" : ""
-            }`}
+            key={round}
+            className={`tournamentMainn-round tournamentMainn-round-${round}`}
           >
-            <h2>{config.title}</h2>
-            <div
-              className={`bracket mobile-bracket ${
-                isMirrored ? "mirrored" : ""
-              }`}
-            >
-              {ROUND_CONFIG.map(({ round, title }) => {
-                const isExpanded = expandedRounds.includes(round);
-                const matchupsCount = matchups.filter(
-                  (m) => m.round === round
-                ).length;
-
-                return (
-                  <div
-                    key={round}
-                    className={`round round-${round} ${
-                      isExpanded ? "expanded" : ""
-                    }`}
-                    onClick={() => toggleRound(conference, round)}
-                  >
-                    <h3>
-                      {title}
-                      <span className="match-count">({matchupsCount})</span>
-                      <span className="expand-icon">
-                        {isExpanded ? "−" : "+"}
-                      </span>
-                    </h3>
-                    <div className="round-content">
-                      {matchups
-                        .filter((m) => m.round === round)
-                        .map((m) => renderMatchup(m, conference, isMirrored))}
-                    </div>
-                  </div>
-                );
-              })}
+            <h3>{title}</h3>
+            <div className="tournamentMainn-round-content">
+              {roundMatchups.map((m) => renderMatchup(m, conference))}
             </div>
           </div>
         );
-      }
+      });
+    },
+    [conferences, isMobile, toggleRound, renderMatchup],
+  );
+
+  /* ---------- Рендер конференции ---------- */
+  const renderConference = useCallback(
+    (conference: ConferenceKey) => {
+      const config = CONFERENCE_CONFIG[conference];
 
       return (
         <div
-          className={`conference ${conference} ${isMirrored ? "mirrored" : ""}`}
+          className={`tournamentMainn-conference tournamentMainn-${conference}`}
         >
           <h2>{config.title}</h2>
-          <div className={`bracket ${isMirrored ? "mirrored" : ""}`}>
-            {ROUND_CONFIG.map(({ round, title }) => (
-              <div
-                key={round}
-                className={`round round-${round}`}
-                style={isMirrored ? { order: 5 - round } : {}}
-              >
-                <h3>{title}</h3>
-                <div className="round-content">
-                  {matchups
-                    .filter((m) => m.round === round)
-                    .map((m) => renderMatchup(m, conference, isMirrored))}
-                </div>
-              </div>
-            ))}
+          <div
+            className={`tournamentMainn-bracket ${
+              isMobile
+                ? "tournamentMainn-mobile-bracket"
+                : "tournamentMainn-bracket-horizontal"
+            }`}
+          >
+            {renderRounds(conference)}
           </div>
         </div>
       );
     },
-    [isMobile, conferences, toggleRound, renderMatchup]
+    [isMobile, renderRounds],
   );
 
+  /* ---------- Рендер финала ---------- */
   const renderFinals = useCallback(
     () => (
-      <div className="finals">
-        <div className="finals-container">
+      <div className="tournamentMainn-finals">
+        <div className="tournamentMainn-finals-container">
           <h2>NBA Finals</h2>
-          <div className="finals-matchup">
+          <div className="tournamentMainn-finals-matchup">
             <TeamSlot
               type="finals"
-              matchupId={0}
-              slot="west"
               team={finals.west}
               placeholder="West Champion"
               isActive={
@@ -741,63 +727,28 @@ const Tournament = () => {
               onClick={(e) => handleTeamSlotClick(e, "finals", 0, "west")}
             />
 
-            <div className="finals-controls">
-              <div className="score-controls">
-                <button
-                  className="score-btn decrement"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    updateFinalsScore("west", -1);
-                  }}
-                  disabled={finals.scoreWest <= 0}
-                >
-                  -
-                </button>
-                <ScoreDisplay
-                  score1={finals.scoreWest}
-                  score2={finals.scoreEast}
-                  isFinals
-                />
-                <button
-                  className="score-btn increment"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    updateFinalsScore("east", -1);
-                  }}
-                  disabled={finals.scoreEast <= 0}
-                >
-                  -
-                </button>
-              </div>
-              <div className="score-controls">
-                <button
-                  className="score-btn increment"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    updateFinalsScore("west", 1);
-                  }}
-                  disabled={finals.scoreWest >= MAX_SCORE}
-                >
-                  +
-                </button>
-                <div className="score-label">Финальный счет</div>
-                <button
-                  className="score-btn increment"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    updateFinalsScore("east", 1);
-                  }}
-                  disabled={finals.scoreEast >= MAX_SCORE}
-                >
-                  +
-                </button>
-              </div>
+            <div className="tournamentMainn-finals-controls">
+              <EditableScore
+                score={finals.scoreWest}
+                onChange={(value) => setFinalsScore("west", value)}
+                label="West"
+                disabled={!finals.west}
+              />
+              <ScoreDisplay
+                score1={finals.scoreWest}
+                score2={finals.scoreEast}
+                isFinals
+              />
+              <EditableScore
+                score={finals.scoreEast}
+                onChange={(value) => setFinalsScore("east", value)}
+                label="East"
+                disabled={!finals.east}
+              />
             </div>
 
             <TeamSlot
               type="finals"
-              matchupId={0}
-              slot="east"
               team={finals.east}
               placeholder="East Champion"
               isActive={
@@ -807,40 +758,44 @@ const Tournament = () => {
               onClick={(e) => handleTeamSlotClick(e, "finals", 0, "east")}
             />
           </div>
-          <div className="nba-champion">
-            <div className="trophy">🏆</div>
-            <div className="champion-label">NBA Champion</div>
+          <div className="tournamentMainn-nba-champion">
+            <div className="tournamentMainn-trophy">🏆</div>
+            <div className="tournamentMainn-champion-label">NBA Champion</div>
           </div>
         </div>
       </div>
     ),
-    [dropdownInfo, finals, handleTeamSlotClick, updateFinalsScore]
+    [dropdownInfo, finals, handleTeamSlotClick, setFinalsScore],
   );
 
+  /* ---------- Мобильная навигация ---------- */
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const scrollToBottom = () =>
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
 
-  if (loading) return <div className="loading">Загрузка команд...</div>;
+  if (loading)
+    return <div className="tournamentMainn-loading">Загрузка команд...</div>;
 
   return (
-    <div className="tournament-wrapper">
+    <div className="tournamentMainn-wrapper">
       <div
-        className="tournament-container"
-        ref={containerRef}
+        className="tournamentMainn-container"
         onClick={() => setDropdownInfo(null)}
       >
-        <div className="tournament-header">
-          <div className="header-content">
-            <a href="/" className="logo-link">
-              <img src={logo} alt="NBA Logo" className="tournament-logo" />
+        <div className="tournamentMainn-header">
+          <div className="tournamentMainn-header-content">
+            <a href="/" className="tournamentMainn-logo-link">
+              <img src={logo} alt="NBA Logo" className="tournamentMainn-logo" />
             </a>
-            <div className="header-title">
+            <div className="tournamentMainn-header-title">
               <h1>NBA Playoffs Bracket</h1>
-              <div className="save-container">
-                <div className="save-buttons">
+              <div className="tournamentMainn-save-container">
+                <div className="tournamentMainn-save-buttons">
                   <button
-                    className="save-button"
+                    className="tournamentMainn-save-button"
                     onClick={saveTournament}
                     disabled={saving}
                   >
@@ -848,28 +803,39 @@ const Tournament = () => {
                   </button>
                 </div>
                 {hasLoadedSavedData && (
-                  <div className="saved-indicator">
-                    ✓ Загружены сохраненные данные
+                  <div className="tournamentMainn-saved-indicator">
+                    Загружены сохранённые данные
                   </div>
                 )}
               </div>
             </div>
           </div>
         </div>
-        <div className="tournament-content">
-          <div className="playoff-bracket">
-            {renderConference("west", false)}
-            {renderFinals()}
-            {renderConference("east", true)}
+
+        <div className="tournamentMainn-content">
+          <div className="tournamentMainn-scaler">
+            <div
+              className="tournamentMainn-scaler-inner"
+              ref={bracketRef}
+              style={{ transform: `scale(${scale})` }}
+            >
+              <div className="tournamentMainn-playoff-bracket">
+                {renderConference("west")}
+                {renderFinals()}
+                {renderConference("east")}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {dropdownInfo && (
-        <div className="dropdown-overlay" onClick={() => setDropdownInfo(null)}>
+        <div
+          className="tournamentMainn-dropdown-overlay"
+          onClick={() => setDropdownInfo(null)}
+        >
           <div
-            ref={dropdownRef}
-            className="dropdown-fixed"
+            className="tournamentMainn-dropdown-fixed"
             style={
               !isMobile && dropdownInfo.position
                 ? {
@@ -880,34 +846,35 @@ const Tournament = () => {
             }
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="dropdown-header">
+            <div className="tournamentMainn-dropdown-header">
               <h4>Выберите команду</h4>
               <button
-                className="dropdown-close"
+                className="tournamentMainn-dropdown-close"
                 onClick={() => setDropdownInfo(null)}
+                aria-label="Закрыть"
               >
                 ×
               </button>
             </div>
-            <div className="dropdown-grid">
+            <div className="tournamentMainn-dropdown-grid">
               {teams.map((team, index) => (
                 <div
                   key={index}
-                  className="dropdown-item"
+                  className="tournamentMainn-dropdown-item"
                   onClick={() =>
                     handleTeamSelect(
                       dropdownInfo.conference,
                       dropdownInfo.matchupId || 0,
                       dropdownInfo.slot,
-                      team
+                      team,
                     )
                   }
-                  title={team.path.replace(".png", "").replace(/_/g, " ")}
+                  title={teamLabel(team.path)}
                 >
                   <img
                     src={`/img/${team.path}`}
-                    alt=""
-                    className="item-logo"
+                    alt={teamLabel(team.path)}
+                    className="tournamentMainn-item-logo"
                     onError={(e) =>
                       (e.currentTarget.src = "/img/placeholder.png")
                     }
@@ -920,16 +887,16 @@ const Tournament = () => {
       )}
 
       {isMobile && (
-        <div className="mobile-nav">
+        <div className="tournamentMainn-mobile-nav">
           <button
-            className="mobile-nav-button up"
+            className="tournamentMainn-mobile-nav-button tournamentMainn-up"
             onClick={scrollToTop}
             aria-label="Scroll to top"
           >
             ↑
           </button>
           <button
-            className="mobile-nav-button down"
+            className="tournamentMainn-mobile-nav-button tournamentMainn-down"
             onClick={scrollToBottom}
             aria-label="Scroll to bottom"
           >

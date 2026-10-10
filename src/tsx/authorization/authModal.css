@@ -1,0 +1,571 @@
+/* ============================================================
+   AUTH MODAL — стилистика шапки (header.css)
+   ============================================================ */
+
+/* --- Оверлей --- */
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(49, 45, 45, 0.75); /* #312d2d с прозрачностью */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  animation: auth-overlay-fade 0.2s ease;
+  backdrop-filter: blur(2px);
+}
+
+@keyframes auth-overlay-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Модальное окно --- */
+.auth-modal {
+  position: relative;
+  background-color: #312d2d;
+  border: 2px solid #9ea3b0;
+  border-radius: 12px;
+  padding: 32px 28px 28px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  animation: auth-modal-pop 0.25s ease;
+}
+
+@keyframes auth-modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- Кнопка закрытия --- */
+.auth-modal__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #9ea3b0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.auth-modal__close:hover {
+  color: #312d2d;
+  background-color: #9ea3b0;
+  border-color: #9ea3b0;
+  transform: translateY(-1px);
+}
+
+.auth-modal__close:focus-visible {
+  outline: 2px solid #fff5e3;
+  outline-offset: 2px;
+}
+
+/* --- Форма --- */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 8px; /* отступ от верхнего края окна под крестик */
+}
+
+.auth-form__title {
+  margin: 0 0 8px;
+  padding-right: 36px; /* чтобы текст не залезал под крестик */
+  color: #fff5e3;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.auth-form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Инпуты --- */
+.auth-form__input {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: #fff5e3;
+  border: 2px solid #9ea3b0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.auth-form__input::placeholder {
+  color: #9ea3b0;
+  opacity: 0.8;
+}
+
+.auth-form__input:hover {
+  border-color: #a6abb5;
+}
+
+.auth-form__input:focus {
+  outline: none;
+  border-color: #fff5e3;
+  background-color: rgba(255, 245, 227, 0.05);
+}
+
+/* Автозаполнение в тёмной теме */
+.auth-form__input:-webkit-autofill,
+.auth-form__input:-webkit-autofill:hover,
+.auth-form__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff5e3;
+  -webkit-box-shadow: 0 0 0 1000px #312d2d inset;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #fff5e3;
+}
+
+/* ============================================================
+   COMBOBOX (выпадающий список логинов с поиском)
+   ============================================================ */
+
+.auth-combobox {
+  position: relative;
+  width: 100%;
+}
+
+/* Инпут внутри комбобокса: оставляем место под стрелку */
+.auth-combobox__input {
+  padding-right: 40px;
+}
+
+/* Кнопка-стрелка */
+.auth-combobox__toggle {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #9ea3b0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.auth-combobox__toggle:hover {
+  color: #fff5e3;
+  background-color: rgba(255, 245, 227, 0.08);
+}
+
+/* Список опций */
+.auth-combobox__list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  background-color: #312d2d;
+  border: 2px solid #9ea3b0;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  animation: auth-combobox-open 0.15s ease;
+}
+
+@keyframes auth-combobox-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Скроллбар в тёмной теме */
+.auth-combobox__list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.auth-combobox__list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.auth-combobox__list::-webkit-scrollbar-thumb {
+  background-color: #9ea3b0;
+  border-radius: 4px;
+  border: 2px solid #312d2d;
+}
+
+.auth-combobox__list::-webkit-scrollbar-thumb:hover {
+  background-color: #a6abb5;
+}
+
+/* Опция */
+.auth-combobox__option {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #fff5e3;
+  letter-spacing: 0.3px;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.auth-combobox__option--highlighted {
+  background-color: rgba(255, 245, 227, 0.08);
+}
+
+.auth-combobox__option--selected {
+  font-weight: 600;
+  color: #fff5e3;
+}
+
+.auth-combobox__option--selected.auth-combobox__option--highlighted {
+  background-color: rgba(255, 245, 227, 0.12);
+}
+
+/* Пустой результат */
+.auth-combobox__empty {
+  padding: 10px 16px;
+  color: #9ea3b0;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* --- Ошибка --- */
+.auth-form__error {
+  margin: 0;
+  padding: 8px 12px;
+  color: #ffb4b4;
+  background-color: rgba(255, 80, 80, 0.12);
+  border: 1px solid rgba(255, 80, 80, 0.4);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* --- Кнопка отправки (как кнопки в header) --- */
+.auth-form__submit {
+  margin-top: 6px;
+  background-color: transparent;
+  color: #fff5e3;
+  border: 2px solid #9ea3b0;
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.auth-form__submit:hover:not(:disabled) {
+  background-color: #9ea3b0;
+  color: #312d2d;
+  border-color: #9ea3b0;
+  transform: translateY(-1px);
+}
+
+.auth-form__submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-form__submit:focus-visible {
+  outline: 2px solid #fff5e3;
+  outline-offset: 2px;
+}
+
+.auth-form__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-form__link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 6px;
+  color: #8a8f98;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  align-self: flex-start;
+  transition: color 0.15s ease;
+}
+
+.auth-form__link-button:hover {
+  color: #c9cdd3;
+}
+
+.auth-form__link-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.auth-form__hint {
+  margin: -8px 0 12px;
+  font-size: 14px;
+  color: #8a8f98;
+}
+
+.auth-form__success {
+  margin: 0;
+  color: #4caf50;
+  font-size: 14px;
+}
+
+.auth-form__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.auth-form__actions .auth-form__submit {
+  flex: 1;
+}
+
+/* ============================================================
+   АДАПТИВ
+   ============================================================ */
+
+/* Планшеты */
+@media (max-width: 768px) {
+  .auth-modal {
+    max-width: 340px;
+    padding: 28px 22px 22px;
+  }
+
+  .auth-form__title {
+    font-size: 1.35rem;
+  }
+}
+
+/* Большие телефоны */
+@media (max-width: 480px) {
+  .auth-overlay {
+    padding: 16px;
+  }
+
+  .auth-modal {
+    max-width: 100%;
+    padding: 26px 18px 20px;
+    border-radius: 10px;
+  }
+
+  .auth-form__title {
+    font-size: 1.25rem;
+  }
+
+  .auth-form__input,
+  .auth-form__submit {
+    padding: 11px 14px;
+    font-size: 0.9rem;
+  }
+
+  .auth-combobox__input {
+    padding-right: 36px;
+  }
+
+  .auth-combobox__option {
+    padding: 9px 14px;
+    font-size: 0.9rem;
+  }
+
+  .auth-combobox__list {
+    max-height: 180px;
+  }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 360px) {
+  .auth-modal {
+    padding: 22px 14px 16px;
+  }
+
+  .auth-form__title {
+    font-size: 1.15rem;
+  }
+
+  .auth-form__input,
+  .auth-form__submit {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .auth-combobox__input {
+    padding-right: 32px;
+  }
+
+  .auth-combobox__toggle {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+    right: 4px;
+  }
+
+  .auth-combobox__option {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .auth-combobox__list {
+    max-height: 160px;
+  }
+
+  .auth-modal__close {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+}
+
+/* Экстремально узкие экраны (вплоть до 200px) */
+@media (max-width: 240px) {
+  .auth-overlay {
+    padding: 6px;
+  }
+
+  .auth-modal {
+    padding: 18px 10px 12px;
+    border-radius: 8px;
+    border-width: 1.5px;
+  }
+
+  .auth-form {
+    gap: 10px;
+    padding-top: 6px;
+  }
+
+  .auth-form__title {
+    font-size: 1rem;
+    margin-bottom: 4px;
+    padding-right: 28px;
+  }
+
+  .auth-form__input,
+  .auth-form__submit {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    border-width: 1.5px;
+    border-radius: 6px;
+  }
+
+  .auth-combobox__input {
+    padding-right: 26px;
+  }
+
+  .auth-combobox__toggle {
+    width: 20px;
+    height: 20px;
+    font-size: 9px;
+    right: 3px;
+  }
+
+  .auth-combobox__list {
+    max-height: 140px;
+    border-width: 1.5px;
+    border-radius: 6px;
+  }
+
+  .auth-combobox__option {
+    padding: 7px 10px;
+    font-size: 0.75rem;
+  }
+
+  .auth-combobox__empty {
+    padding: 7px 10px;
+    font-size: 0.75rem;
+  }
+
+  .auth-form__error {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+
+  .auth-modal__close {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    top: 6px;
+    right: 6px;
+  }
+}
+
+/* Очень низкие экраны по высоте (ландшафт на телефоне) */
+@media (max-height: 420px) {
+  .auth-overlay {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 12px;
+  }
+
+  .auth-modal {
+    margin: auto 0;
+  }
+
+  .auth-form {
+    gap: 10px;
+  }
+
+  .auth-form__title {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .auth-combobox__list {
+    max-height: 140px;
+  }
+}

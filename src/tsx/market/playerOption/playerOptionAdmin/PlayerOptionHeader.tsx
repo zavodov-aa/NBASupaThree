@@ -13,8 +13,11 @@ interface PlayerOptionHeaderProps {
 
 const defaultMenuItems: MenuItem[] = [
   { label: "Main", href: "/" },
+  { label: "Head Info New", href: "/headAdminConsoleMain" },
   { label: "Team Roster New", href: "/playerConsoleAdminMain" },
   { label: "Picks", href: "/picksMain" },
+  { label: "Logs", href: "/logs" },
+  { label: "Penalties", href: "/penalties" },
   { label: "Player Option", href: "/playerOptionMain" },
   { label: "Team Option", href: "/teamOptionMain" },
   { label: "RFA Admin", href: "/rfaAdminMain" },

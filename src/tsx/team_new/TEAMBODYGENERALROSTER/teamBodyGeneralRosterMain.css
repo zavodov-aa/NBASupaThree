@@ -1,0 +1,221 @@
+/* Основной контейнер – скруглённые углы, пустые поля по бокам */
+.general-roster {
+  max-width: 1500px;
+  margin: 32px auto;
+  background: #ffffff;
+  border-radius: 24px; /* закруглённые углы */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  overflow: hidden; /* чтобы внутренние элементы не вылезали за скругление */
+}
+
+/* Внутренний контент – боковые отступы от краёв контейнера */
+.general-roster__content {
+  padding: 0 20px;
+}
+
+/* Заголовок – без лишних отступов сверху, подстроен под скругление */
+.general-roster__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+  padding: 20px 0 8px 0; /* увеличен верхний отступ для компенсации скругления */
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Сообщение о сохранении */
+.general-roster__saving {
+  background: #f0f0f0;
+  color: #2c3e50;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+/* Обёртка таблицы – скругление снизу, чтобы таблица не торчала */
+.general-roster__table-wrapper {
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 16px; /* лёгкое скругление */
+  margin-bottom: 4px; /* небольшой отступ снизу для эстетики */
+}
+
+/* Таблица */
+.general-roster__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  min-width: 800px;
+}
+
+/* Ячейки – низкие строки, вертикальные разделители */
+.general-roster__table th,
+.general-roster__table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #ececec;
+  border-right: 1px solid #ececec;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.general-roster__table th:last-child,
+.general-roster__table td:last-child {
+  border-right: none;
+}
+
+/* ===== Новая цветовая схема ===== */
+
+/* Заголовки — светлые, нейтральные */
+.general-roster__table th {
+  font-weight: 700;
+  color: #1f2937;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  background: #f9fafb;
+  border-bottom: 2px solid #d0d0d0;
+}
+
+/* Обычные строки (игроки) — чистый белый фон */
+.general-roster__table tbody tr {
+  background-color: #ffffff;
+}
+
+/* Строка специального игрока (id=1) — мягкий голубой фон и акцентная граница */
+.general-roster__special-row {
+  background-color: #eff6ff !important; /* спокойный голубоватый */
+  border-left: 3px solid #3b82f6; /* синий акцент */
+}
+
+/* Итоговые строки — разные оттенки серого для иерархии */
+.general-roster__total-row td,
+.general-roster__cap-space-row td {
+  background: #f9fafb !important;
+  font-weight: 700;
+  border-top: 1px solid #d0d0d0;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.general-roster__grand-total td {
+  background: #f3f4f6 !important;
+  font-weight: 800;
+  border-top: 1px solid #d0d0d0;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.general-roster__total-label {
+  text-align: right;
+  font-weight: 700;
+  color: #3a3a3a;
+  padding-right: 12px;
+}
+
+/* Свободное пространство — читаемо */
+.general-roster__cap-space-row td {
+  background: #f9fafb !important;
+  font-weight: 700;
+}
+.general-roster__cap-space-row .general-roster__numeric {
+  font-size: 0.9rem;
+  color: #2c3e50;
+}
+
+/* Разделители секций (Dead cap, G-league) – лёгкий голубоватый оттенок */
+.general-roster__deadcap-separator td,
+.general-roster__gleague-separator td {
+  background: #eef2ff;
+  padding: 8px 8px;
+  /* text-align: center; */
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  color: #2c3e50;
+  border-top: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+/* Номера строк */
+.general-roster__row-number {
+  text-align: center;
+  font-weight: 500;
+  color: #7f8c8d;
+  width: 36px;
+  background-color: #fcfcfc;
+}
+
+/* Числовые ячейки */
+.general-roster__numeric {
+  text-align: right;
+  font-family: "SF Mono", "Courier New", monospace;
+  font-weight: 500;
+}
+
+/* Сообщения состояний – скруглённые углы */
+.general-roster__loading,
+.general-roster__error,
+.general-roster__empty {
+  text-align: center;
+  padding: 48px 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  color: #4a4a4a;
+  font-size: 0.9rem;
+}
+.general-roster__error {
+  color: #b00020;
+  background: #fff0f0;
+}
+
+/* Адаптивность – на десктопе отступы по бокам сохраняются, на мобильных уменьшаются */
+@media (max-width: 768px) {
+  .general-roster {
+    /* margin: 16px; */
+    border-radius: 20px;
+  }
+  .general-roster__content {
+    padding: 0 12px;
+  }
+  .general-roster__title {
+    padding-top: 16px;
+  }
+  .general-roster__table {
+    font-size: 0.7rem;
+  }
+  .general-roster__table th,
+  .general-roster__table td {
+    padding: 4px 6px;
+  }
+  .general-roster__row-number {
+    width: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .general-roster {
+    /* margin: 12px; */
+    border-radius: 16px;
+  }
+  .general-roster__content {
+    padding: 0 8px;
+  }
+  .general-roster__title {
+    padding-top: 12px;
+  }
+  .general-roster__table th,
+  .general-roster__table td {
+    padding: 3px 4px;
+  }
+  .general-roster__total-label {
+    padding-right: 8px;
+  }
+}

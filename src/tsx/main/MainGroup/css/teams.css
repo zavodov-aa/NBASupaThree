@@ -1,0 +1,318 @@
+/* teams.css - Стили для команд и конференций */
+.teams-content {
+  display: flex;
+  gap: 30px;
+  padding: 10px 0;
+}
+
+.conference-section {
+  background: transparent;
+  border-radius: 12px;
+  padding: 20px 20px 25px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+  width: 100%;
+  position: relative;
+  background-color: #bdbaab;
+}
+
+.conference-section:hover {
+  border-color: #312d2d;
+  box-shadow: 0 0 30px rgba(166, 171, 181, 0.356);
+}
+
+.conference-section:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.conference-section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.conference-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #312d2d;
+  margin: 0 0 18px 0;
+  padding: 0 0 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.conference-title::before {
+  font-size: 1.6rem;
+  margin-right: 8px;
+}
+
+.conference-section:first-child .conference-title::before {
+  content: "🌅";
+}
+.conference-section:last-child .conference-title::before {
+  content: "🌄";
+}
+
+.conference-title::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #9ea3b0, transparent);
+  border-radius: 2px;
+  animation: slideLine 3s ease-in-out infinite;
+}
+
+.conference-section:last-child .conference-title::after {
+  background: linear-gradient(90deg, #a6abb5, transparent);
+}
+
+.conference-count {
+  font-size: 0.8rem;
+  color: #312d2d;
+  font-weight: 400;
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #312d2d;
+}
+
+.conference-teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+/* Стили для карточки команды */
+.conference-teams-grid .team-card {
+  padding: 14px 16px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  color: #fff5e3;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Контент карточки команды */
+.tab-team-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Контейнер для логотипа */
+.tab-team-logo-container {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 50%;
+  padding: 0;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .tab-team-logo-container {
+  transform: scale(1.1);
+}
+
+/* Изображение логотипа */
+.tab-team-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Плейсхолдер для логотипа */
+.tab-team-logo-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 245, 227, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff5e3;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 245, 227, 0.1);
+}
+
+.team-card:hover .tab-team-logo-placeholder {
+  transform: scale(1.1);
+  background: rgba(255, 245, 227, 0.25);
+}
+
+/* Заголовок команды */
+.conference-teams-grid .team-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.3px;
+  text-align: center;
+  line-height: 1.3;
+  color: #fff5e3;
+}
+
+/* Цветовая точка */
+.tab-team-color-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 245, 227, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover .tab-team-color-dot {
+  transform: scale(1.4);
+}
+
+/* Псевдоэлементы карточки */
+.conference-teams-grid .team-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 245, 227, 0.05) 0%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.conference-teams-grid .team-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 245, 227, 0.04) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.conference-teams-grid .team-card:hover::before {
+  opacity: 1;
+}
+.conference-teams-grid .team-card:hover::after {
+  opacity: 1;
+}
+
+.conference-teams-grid .team-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25) !important;
+  border-color: rgba(255, 245, 227, 0.15) !important;
+}
+
+.conference-teams-grid .team-card:active {
+  transform: scale(0.97);
+  transition-duration: 0.1s;
+}
+
+/* Стили для ссылки */
+.conference-teams-grid .team-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Анимации появления */
+.conference-teams-grid .team-card {
+  animation: cardFadeIn 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.conference-teams-grid .team-card:nth-child(1) {
+  animation-delay: 0.03s;
+}
+.conference-teams-grid .team-card:nth-child(2) {
+  animation-delay: 0.06s;
+}
+.conference-teams-grid .team-card:nth-child(3) {
+  animation-delay: 0.09s;
+}
+.conference-teams-grid .team-card:nth-child(4) {
+  animation-delay: 0.12s;
+}
+.conference-teams-grid .team-card:nth-child(5) {
+  animation-delay: 0.15s;
+}
+.conference-teams-grid .team-card:nth-child(6) {
+  animation-delay: 0.18s;
+}
+.conference-teams-grid .team-card:nth-child(7) {
+  animation-delay: 0.21s;
+}
+.conference-teams-grid .team-card:nth-child(8) {
+  animation-delay: 0.24s;
+}
+.conference-teams-grid .team-card:nth-child(9) {
+  animation-delay: 0.27s;
+}
+.conference-teams-grid .team-card:nth-child(10) {
+  animation-delay: 0.3s;
+}
+.conference-teams-grid .team-card:nth-child(11) {
+  animation-delay: 0.33s;
+}
+.conference-teams-grid .team-card:nth-child(12) {
+  animation-delay: 0.36s;
+}
+.conference-teams-grid .team-card:nth-child(13) {
+  animation-delay: 0.39s;
+}
+.conference-teams-grid .team-card:nth-child(14) {
+  animation-delay: 0.42s;
+}
+.conference-teams-grid .team-card:nth-child(15) {
+  animation-delay: 0.45s;
+}

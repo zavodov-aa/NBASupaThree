@@ -6,11 +6,23 @@ export const initialColumns: (keyof Player)[] = [
   "position",
   "team",
   "age",
+  "opt",
+  "status",
   "year_one",
   "year_two",
-  "opt",
+
   "exp",
   "rating",
+  "g_league",
+
+  // -----
+  "retention",
+  "dead_cap_team",
+  "dc_year_one",
+  "dc_year_two",
+  // "dc_year_three",
+  // "dc_year_four",
+  // "dc_year_five",
 ];
 
 export const allColumns: (keyof Player)[] = [
@@ -25,6 +37,7 @@ export const allColumns: (keyof Player)[] = [
   "year_four",
   "year_five",
   "opt",
+  "status",
   "exp",
   "bird",
   "awards",
@@ -32,18 +45,29 @@ export const allColumns: (keyof Player)[] = [
   "g_league",
   "rating",
   "rokie",
+
+  // -----------
+  "retention",
+  "dead_cap_team",
+  "dc_year_one",
+  "dc_year_two",
+  "dc_year_three",
+  "dc_year_four",
+  "dc_year_five",
 ];
 
 export const columnGroups: Record<string, (keyof Player)[]> = {
   "Basic Info": [
     "id",
     "active_roster",
+    "team",
+    "dead_cap_team",
+    "g_league",
     "position",
     "pos_elig",
     "age",
-    "team",
+
     "rating",
-    "g_league",
   ],
   "Contract Years": [
     "year_one",
@@ -51,6 +75,19 @@ export const columnGroups: Record<string, (keyof Player)[]> = {
     "year_three",
     "year_four",
     "year_five",
+    "dc_year_one",
+    "dc_year_two",
+    "dc_year_three",
+    "dc_year_four",
+    "dc_year_five",
   ],
-  "Player Details": ["opt", "exp", "bird", "awards", "rokie"],
+  "Player Details": [
+    "opt",
+    "status",
+    "exp",
+    "bird",
+    "awards",
+    "rokie",
+    "retention",
+  ],
 };

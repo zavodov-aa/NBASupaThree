@@ -1,0 +1,771 @@
+/* ============================================================
+   responsiveAdaptive.css
+   Единый файл адаптивности: header + tabs + responsive
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   DESKTOP ONLY (>= 1025px) — увеличенный читаемый текст
+   и растянутый по горизонтали триггер/дропдаун.
+   Применяется ТОЛЬКО на десктопе, не затрагивая планшеты
+   и мобильные (у них свои max-width медиа-запросы ниже).
+   ------------------------------------------------------------ */
+@media (min-width: 1025px) {
+  /* Кнопка-триггер — крупнее и длиннее */
+  .tab-trigger {
+    padding: 14px 56px 14px 32px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    gap: 16px;
+    letter-spacing: 0.4px;
+    border-radius: 10px;
+    min-width: 320px;
+    justify-content: flex-start;
+  }
+
+  .tab-trigger .tab-number {
+    font-size: 0.85rem;
+    letter-spacing: 1.2px;
+  }
+
+  .tab-trigger .tab-label {
+    font-size: 1.05rem;
+  }
+
+  /* Стрелка чуть крупнее и прижата к правому краю */
+  .tab-trigger .tab-chevron {
+    margin-left: auto;
+  }
+
+  .tab-chevron svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Выпадающий список — шире и с более крупным текстом */
+  .tab-dropdown {
+    top: calc(100% + 10px);
+    min-width: 100%;
+    width: max-content;
+    max-width: min(520px, 90vw);
+    padding: 8px;
+    border-radius: 10px;
+    gap: 6px;
+  }
+
+  .tab-option {
+    padding: 14px 20px;
+    font-size: 1rem;
+    gap: 16px;
+    border-radius: 8px;
+    letter-spacing: 0.4px;
+  }
+
+  .tab-option .tab-number {
+    font-size: 0.8rem;
+    letter-spacing: 1.2px;
+  }
+
+  .tab-option .tab-label {
+    font-size: 1rem;
+  }
+
+  /* Галочка активного пункта чуть крупнее */
+  .tab-check svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Подчёркивание — чуть толще на десктопе */
+  .tab-underline {
+    height: 2px;
+  }
+
+  /* Auth */
+  .auth-block button,
+  .headerMain > button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  .auth-user {
+    font-size: 1rem;
+    max-width: 200px;
+  }
+}
+
+/* ------------------------------------------------------------
+   1024px — Планшеты и маленькие ноутбуки
+   ------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  /* Header */
+  .logo {
+    width: 140px;
+  }
+  .quest {
+    width: 120px;
+  }
+
+  /* Tabs (новый селектор) */
+  .tab-trigger {
+    padding: 9px 36px 9px 20px;
+    font-size: 0.85rem;
+    gap: 10px;
+  }
+  .tab-option {
+    padding: 9px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Общий контент */
+  h1 {
+    font-size: 2rem;
+  }
+
+  .console-content,
+  .reserve-content,
+  .market-content {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .conference-title {
+    font-size: 1.5rem;
+  }
+
+  .conference-teams-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .conference-teams-grid .team-card h3 {
+    font-size: 0.95rem;
+  }
+
+  /* Логотипы команд */
+  .tab-team-logo-container {
+    width: 45px;
+    height: 45px;
+  }
+  .tab-team-logo-placeholder {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+
+  /* Auth */
+  .auth-block {
+    gap: 10px;
+  }
+
+  .auth-block button,
+  .headerMain > button {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+
+  .auth-user {
+    font-size: 0.85rem;
+    max-width: 130px;
+  }
+}
+
+/* ------------------------------------------------------------
+   768px — Горизонтальная мобильная ориентация
+   ВАЖНО: НЕ ставим overflow на .tabs-container, иначе
+   абсолютно спозиционированный .tab-dropdown обрезается.
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  /* Header */
+  .headerMain {
+    padding: 12px 16px;
+    gap: 12px;
+    min-height: 60px;
+    justify-content: space-between;
+  }
+  .logo {
+    width: 110px;
+  }
+  .quest {
+    width: 90px;
+  }
+  h1 {
+    display: none;
+  }
+
+  /* Tabs (новый селектор) — только триггер и опции.
+     Контейнер .tabs-container оставляем с overflow: visible,
+     чтобы дропдаун мог вылезать за пределы хедера. */
+  .tab-trigger {
+    padding: 8px 32px 8px 16px;
+    font-size: 0.8rem;
+    gap: 8px;
+    border-radius: 6px;
+  }
+  .tab-number {
+    font-size: 0.6rem;
+  }
+  .tab-dropdown {
+    border-radius: 6px;
+  }
+  .tab-option {
+    font-size: 0.78rem;
+    border-radius: 5px;
+  }
+
+  /* Общий контент */
+  .body {
+    padding: 20px 15px;
+  }
+
+  .console-content,
+  .reserve-content,
+  .market-content {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .console-card,
+  .reserve-card,
+  .market-card {
+    padding: 12px;
+  }
+
+  .teams-content {
+    gap: 20px;
+    padding: 5px 0;
+  }
+
+  .conference-section {
+    padding: 10px 10px 15px;
+    border-radius: 10px;
+  }
+
+  .conference-title {
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+  }
+  .conference-title::before {
+    font-size: 1.3rem;
+  }
+
+  .conference-teams-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 10px;
+  }
+
+  .conference-teams-grid .team-card {
+    padding: 12px 14px;
+    min-height: 80px;
+  }
+  .conference-teams-grid .team-card h3 {
+    font-size: 0.9rem;
+  }
+
+  /* Логотипы команд */
+  .tab-team-logo-container {
+    width: 40px;
+    height: 40px;
+  }
+  .tab-team-logo-placeholder {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  .tab-team-color-dot {
+    width: 7px;
+    height: 7px;
+    top: 5px;
+    right: 5px;
+  }
+
+  .conference-count {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+  /* Auth */
+  .auth-block {
+    gap: 8px;
+  }
+
+  .auth-block button,
+  .headerMain > button {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+    border-width: 1.5px;
+  }
+
+  .auth-user {
+    font-size: 0.78rem;
+    max-width: 100px;
+  }
+}
+
+/* ------------------------------------------------------------
+   768px landscape — Горизонтальная ориентация на мобильных
+   ------------------------------------------------------------ */
+@media (max-width: 768px) and (orientation: landscape) {
+  .headerMain {
+    min-height: 50px;
+    padding: 8px 15px;
+  }
+  h1 {
+    display: none;
+  }
+  .logo {
+    width: 90px;
+  }
+  .quest {
+    width: 100px;
+  }
+
+  .teams-content {
+    gap: 20px;
+  }
+
+  .conference-teams-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+  .conference-title {
+    font-size: 1.2rem;
+  }
+
+  /* Логотипы команд */
+  .tab-team-logo-container {
+    width: 35px;
+    height: 35px;
+  }
+  .tab-team-logo-placeholder {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  .conference-teams-grid .team-card {
+    min-height: 70px;
+  }
+  /* Auth */
+  .auth-block button,
+  .headerMain > button {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .auth-user {
+    font-size: 0.75rem;
+    max-width: 90px;
+  }
+}
+
+/* ------------------------------------------------------------
+   480px — Вертикальная мобильная ориентация
+   ------------------------------------------------------------ */
+@media (max-width: 480px) {
+  /* Header */
+  .headerMain {
+    padding: 10px 12px;
+    gap: 8px;
+    min-height: 50px;
+    justify-content: space-between;
+  }
+  .logo {
+    width: 90px;
+  }
+  .quest {
+    width: 70px;
+  }
+  h1 {
+    display: none;
+  }
+
+  /* Tabs (новый селектор) */
+  .tab-trigger {
+    padding: 7px 28px 7px 12px;
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+  .tab-trigger .tab-number,
+  .tab-option .tab-number {
+    display: none;
+  }
+
+  /* Дропдаун — не даём ему сжаться под ширину триггера
+     и не даём вылезти за пределы экрана */
+  .tab-dropdown {
+    min-width: 200px;
+    max-width: calc(100vw - 24px);
+  }
+
+  /* Общий контент */
+  .body {
+    padding: 15px 10px;
+  }
+
+  .console-content,
+  .reserve-content,
+  .market-content {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .console-card,
+  .reserve-card,
+  .market-card {
+    padding: 10px;
+    font-size: 0.9rem;
+    min-height: 50px;
+  }
+
+  .teams-content {
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  .conference-section {
+    padding: 3px 3px 5px;
+    border-radius: 8px;
+  }
+
+  .conference-title {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    gap: 8px;
+  }
+  .conference-title::before {
+    font-size: 1.1rem;
+    margin-right: 4px;
+  }
+
+  .conference-teams-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+  }
+
+  .conference-teams-grid .team-card {
+    padding: 10px 12px;
+    min-height: 70px;
+    border-radius: 6px;
+  }
+  .conference-teams-grid .team-card h3 {
+    font-size: 0.8rem;
+  }
+
+  /* Логотипы команд */
+  .tab-team-logo-container {
+    width: 35px;
+    height: 35px;
+  }
+  .tab-team-logo-placeholder {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  .tab-team-color-dot {
+    width: 6px;
+    height: 6px;
+    top: 4px;
+    right: 4px;
+  }
+
+  .conference-count {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+  }
+
+  .feedback-menu {
+    width: 95%;
+    padding: 20px;
+  }
+  .feedback-buttons {
+    flex-direction: column;
+  }
+  .save-btn,
+  .close-btn {
+    width: 100%;
+  }
+  /* Auth — на узких экранах скрываем имя, оставляем только кнопку */
+  .auth-block {
+    gap: 0;
+  }
+
+  .auth-user {
+    /* display: none; */
+  }
+
+  .auth-block button,
+  .headerMain > button {
+    padding: 6px 12px;
+    font-size: 0.72rem;
+    border-width: 1.5px;
+    border-radius: 6px;
+  }
+}
+
+/* ------------------------------------------------------------
+   320px — Экстремально маленькие экраны
+   ------------------------------------------------------------ */
+@media (max-width: 320px) {
+  .headerMain {
+    padding: 8px 10px;
+    min-height: 45px;
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .logo {
+    width: 60px;
+  }
+  .quest {
+    width: 60px;
+  }
+  h1 {
+    display: none;
+  }
+
+  /* Дропдаун — минимальная ширина, но не больше экрана */
+  .tab-dropdown {
+    min-width: 180px;
+    max-width: calc(100vw - 16px);
+  }
+
+  .console-content,
+  .reserve-content,
+  .market-content {
+    grid-template-columns: 1fr;
+  }
+
+  .console-card,
+  .reserve-card,
+  .market-card {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .teams-content {
+    gap: 14px;
+    flex-direction: column;
+  }
+
+  .conference-section {
+    padding: 1px 1px 1px;
+  }
+
+  .conference-title {
+    font-size: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .conference-teams-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .conference-teams-grid .team-card {
+    padding: 10px;
+    min-height: 60px;
+  }
+  .conference-teams-grid .team-card h3 {
+    font-size: 0.85rem;
+  }
+
+  /* Логотипы команд */
+  .tab-team-logo-container {
+    width: 30px;
+    height: 30px;
+  }
+  .tab-team-logo-placeholder {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+  .tab-team-color-dot {
+    width: 5px;
+    height: 5px;
+    top: 3px;
+    right: 3px;
+  }
+  /* Auth */
+  .auth-block button,
+  .headerMain > button {
+    padding: 5px 10px;
+    font-size: 0.68rem;
+    border-radius: 5px;
+  }
+}
+
+/* ------------------------------------------------------------
+   240px — Очень узкие экраны
+   ------------------------------------------------------------ */
+@media (max-width: 240px) {
+  .main {
+    min-width: 240px;
+    overflow-x: auto;
+  }
+
+  .headerMain {
+    padding: 5px 8px;
+    min-height: 40px;
+    gap: 5px;
+    justify-content: space-between;
+  }
+  .logo {
+    width: 50px;
+  }
+  .quest {
+    width: 50px;
+  }
+  h1 {
+    display: none;
+  }
+
+  /* Дропдаун — на самом узком экране тоже должен влезать */
+  .tab-dropdown {
+    min-width: 160px;
+    max-width: calc(100vw - 12px);
+    padding: 4px;
+  }
+
+  .body {
+    padding: 10px 8px;
+  }
+
+  .console-content,
+  .reserve-content,
+  .market-content {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .console-card,
+  .reserve-card,
+  .market-card {
+    padding: 8px;
+    font-size: 0.75rem;
+    min-height: 40px;
+  }
+
+  .teams-content {
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .conference-section {
+    padding: 1px 1px 12px;
+    border-radius: 6px;
+  }
+
+  .conference-title {
+    font-size: 0.9rem;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .conference-title::before {
+    font-size: 0.9rem;
+  }
+
+  .conference-teams-grid .team-card {
+    padding: 8px;
+    min-height: 50px;
+    font-size: 0.75rem;
+  }
+
+  /* Логотипы команд */
+  .tab-team-logo-container {
+    width: 25px;
+    height: 25px;
+  }
+  .tab-team-logo-placeholder {
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+  }
+  .tab-team-color-dot {
+    width: 4px;
+    height: 4px;
+    top: 2px;
+    right: 2px;
+  }
+  .conference-teams-grid .team-card h3 {
+    font-size: 0.7rem;
+  }
+  /* Auth */
+  .auth-block button,
+  .headerMain > button {
+    padding: 4px 8px;
+    font-size: 0.62rem;
+    border-width: 1px;
+  }
+}
+
+/* ------------------------------------------------------------
+   240px landscape — Горизонтальная ориентация на очень узких
+   ------------------------------------------------------------ */
+@media (max-width: 240px) and (orientation: landscape) {
+  .headerMain {
+    min-height: 40px;
+    padding: 5px;
+    justify-content: space-between;
+  }
+  .logo,
+  .quest {
+    width: 40px;
+  }
+  h1 {
+    display: none;
+  }
+
+  .conference-teams-grid .team-card {
+    min-height: 45px;
+  }
+
+  .tab-team-logo-container {
+    width: 22px;
+    height: 22px;
+  }
+  .tab-team-logo-placeholder {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+  .conference-teams-grid .team-card h3 {
+    font-size: 0.65rem;
+  }
+  /* Auth */
+  .auth-block button,
+  .headerMain > button {
+    padding: 3px 6px;
+    font-size: 0.6rem;
+  }
+}
+
+/* ------------------------------------------------------------
+   Высокие узкие экраны (по высоте)
+   ------------------------------------------------------------ */
+@media (max-height: 500px) {
+  .headerMain {
+    min-height: 50px;
+    padding: 10px 15px;
+  }
+  h1 {
+    display: none;
+  }
+
+  .conference-teams-grid .team-card {
+    min-height: 65px;
+  }
+
+  .tab-team-logo-container {
+    width: 35px;
+    height: 35px;
+  }
+  .tab-team-logo-placeholder {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  /* Auth */
+  .auth-block button,
+  .headerMain > button {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+}

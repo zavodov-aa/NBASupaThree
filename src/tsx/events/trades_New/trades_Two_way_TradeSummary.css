@@ -1,0 +1,292 @@
+/* 
+.TradeSummary-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+
+.TradeSummary-title {
+  font-size: 1.4rem;
+  color: #007bff;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+
+.TradeSummary-section {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.TradeSummary-section strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 1rem;
+}
+
+
+.TradeSummary-list {
+  margin: 8px 0 0 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.TradeSummary-list-item {
+  padding: 4px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+}
+
+.TradeSummary-list-item:last-child {
+  border-bottom: none;
+}
+
+.TradeSummary-textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: inherit;
+  margin-top: 8px;
+  box-sizing: border-box;
+}
+
+.TradeSummary-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+
+.TradeSummary-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.TradeSummary-button {
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+.TradeSummary-button:hover {
+  transform: translateY(-1px);
+}
+
+.TradeSummary-button:active {
+  transform: translateY(1px);
+}
+
+.TradeSummary-button-reset {
+  background-color: #6c757d;
+  color: white;
+}
+
+.TradeSummary-button-reset:hover {
+  background-color: #5a6268;
+}
+
+.TradeSummary-button-submit {
+  background-color: #007bff;
+  color: white;
+}
+
+.TradeSummary-button-submit:hover {
+  background-color: #0056b3;
+} */
+
+/* Основной контейнер */
+.TradeSummary-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Заголовок */
+.TradeSummary-title {
+  font-size: 1.4rem;
+  color: #007bff;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+/* Строка с командами */
+.TradeSummary-teams-row {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Двухколоночная сетка */
+.TradeSummary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Колонка */
+.TradeSummary-column {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+/* Заголовок колонки */
+.TradeSummary-column-title {
+  background: #007bff;
+  color: white;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Секции внутри колонок (переопределяем фон и границу) */
+.TradeSummary-column .TradeSummary-section {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.TradeSummary-column .TradeSummary-section:last-child {
+  border-bottom: none;
+}
+
+/* Остальные стили сохранены без изменений */
+.TradeSummary-section {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.TradeSummary-section strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 1rem;
+}
+
+.TradeSummary-list {
+  margin: 8px 0 0 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.TradeSummary-list-item {
+  padding: 4px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+}
+
+.TradeSummary-list-item:last-child {
+  border-bottom: none;
+}
+
+.TradeSummary-textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: inherit;
+  margin-top: 8px;
+  box-sizing: border-box;
+}
+
+.TradeSummary-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.TradeSummary-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.TradeSummary-button {
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+.TradeSummary-button:hover {
+  transform: translateY(-1px);
+}
+
+.TradeSummary-button:active {
+  transform: translateY(1px);
+}
+
+.TradeSummary-button-reset {
+  background-color: #6c757d;
+  color: white;
+}
+
+.TradeSummary-button-reset:hover {
+  background-color: #5a6268;
+}
+
+.TradeSummary-button-submit {
+  background-color: #007bff;
+  color: white;
+}
+
+.TradeSummary-button-submit:hover {
+  background-color: #0056b3;
+}
+
+/* Адаптив: на узких экранах колонки идут друг под другом */
+@media (max-width: 600px) {
+  .TradeSummary-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

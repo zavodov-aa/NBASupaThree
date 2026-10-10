@@ -11,6 +11,7 @@ export const initialNewPlayer: Omit<Player, "id"> = {
   year_four: "",
   year_five: "",
   opt: "",
+  status: "",
   exp: "",
   bird: "",
   awards: "",
@@ -18,6 +19,13 @@ export const initialNewPlayer: Omit<Player, "id"> = {
   g_league: "",
   rating: "",
   rokie: "",
+  retention: "",
+  dead_cap_team: "",
+  dc_year_one: "",
+  dc_year_two: "",
+  dc_year_three: "",
+  dc_year_four: "",
+  dc_year_five: "",
 };
 
 export const initialFilters: Record<keyof Omit<Player, "id">, string> = {
@@ -31,6 +39,7 @@ export const initialFilters: Record<keyof Omit<Player, "id">, string> = {
   year_four: "",
   year_five: "",
   opt: "",
+  status: "",
   exp: "",
   bird: "",
   awards: "",
@@ -38,4 +47,11 @@ export const initialFilters: Record<keyof Omit<Player, "id">, string> = {
   g_league: "",
   rating: "",
   rokie: "",
+  retention: "",
+  dead_cap_team: "",
+  dc_year_one: "",
+  dc_year_two: "",
+  dc_year_three: "",
+  dc_year_four: "",
+  dc_year_five: "",
 };

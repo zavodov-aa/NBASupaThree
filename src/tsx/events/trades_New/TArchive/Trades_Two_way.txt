@@ -1,0 +1,3821 @@
+// import React, { useState, useEffect } from "react";
+// import { supabase } from "../../../Supabase";
+// import "./trades_Two_way.css";
+
+// type PlayerList = string[];
+
+// interface PickItem {
+//   id: string;
+//   year: number;
+//   round: 1 | 2;
+//   label: string;
+//   note?: string;
+// }
+
+// interface TradesTwoWayProps {
+//   currentTeam: string;
+// }
+
+// const TradesTwoWay: React.FC<TradesTwoWayProps> = ({ currentTeam }) => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
+//   const [teams, setTeams] = useState<string[]>([]);
+//   const [selectedOpponent, setSelectedOpponent] = useState("");
+//   const [loadingTeams, setLoadingTeams] = useState(false);
+//   const [loadingPlayers, setLoadingPlayers] = useState(false);
+//   const [loadingGPlayers, setLoadingGPlayers] = useState(false);
+//   const [loadingPicks, setLoadingPicks] = useState(false);
+
+//   // Основные игроки
+//   const [playersCurrentTeam, setPlayersCurrentTeam] = useState<PlayerList>([]);
+//   const [playersOpponent, setPlayersOpponent] = useState<PlayerList>([]);
+//   const [selectedPlayerCurrent, setSelectedPlayerCurrent] = useState("");
+//   const [selectedPlayerOpponent, setSelectedPlayerOpponent] = useState("");
+
+//   // G-League игроки
+//   const [gPlayersCurrentTeam, setGPlayersCurrentTeam] = useState<PlayerList>(
+//     [],
+//   );
+//   const [gPlayersOpponent, setGPlayersOpponent] = useState<PlayerList>([]);
+//   const [selectedGPlayerCurrent, setSelectedGPlayerCurrent] = useState("");
+//   const [selectedGPlayerOpponent, setSelectedGPlayerOpponent] = useState("");
+
+//   // Пики
+//   const [picksCurrentTeam, setPicksCurrentTeam] = useState<PickItem[]>([]);
+//   const [picksOpponent, setPicksOpponent] = useState<PickItem[]>([]);
+//   const [selectedPicksCurrent, setSelectedPicksCurrent] = useState<Set<string>>(
+//     new Set(),
+//   );
+//   const [selectedPicksOpponent, setSelectedPicksOpponent] = useState<
+//     Set<string>
+//   >(new Set());
+//   // Примечания к выбранным пикам (ключами являются id пиков)
+//   const [pickNotesCurrent, setPickNotesCurrent] = useState<Map<string, string>>(
+//     new Map(),
+//   );
+//   const [pickNotesOpponent, setPickNotesOpponent] = useState<
+//     Map<string, string>
+//   >(new Map());
+
+//   // Извлечение ростеров
+//   const extractRoster = (data: any[]): string[] => {
+//     if (!data || data.length === 0) return [];
+//     const rosterSet = new Set<string>();
+//     for (const record of data) {
+//       const rosterField = record.active_roster;
+//       if (!rosterField) continue;
+//       if (Array.isArray(rosterField)) {
+//         rosterField.forEach((player: any) => {
+//           if (typeof player === "string") rosterSet.add(player);
+//         });
+//       } else if (typeof rosterField === "string") {
+//         try {
+//           const parsed = JSON.parse(rosterField);
+//           if (Array.isArray(parsed)) {
+//             parsed.forEach((player: any) => {
+//               if (typeof player === "string") rosterSet.add(player);
+//             });
+//           } else if (typeof parsed === "string") {
+//             rosterSet.add(parsed);
+//           }
+//         } catch {
+//           const parts = rosterField.split(",").map((p) => p.trim());
+//           parts.forEach((player) => {
+//             if (player) rosterSet.add(player);
+//           });
+//         }
+//       }
+//     }
+//     return Array.from(rosterSet);
+//   };
+
+//   // Загрузка списка команд
+//   useEffect(() => {
+//     const fetchTeams = async () => {
+//       setLoadingTeams(true);
+//       try {
+//         const { data, error } = await supabase
+//           .from("Players")
+//           .select("team")
+//           .not("team", "is", null)
+//           .order("team");
+//         if (error) throw error;
+//         const uniqueTeams = Array.from(
+//           new Set(data.map((item) => item.team).filter(Boolean)),
+//         ) as string[];
+//         const filteredTeams = uniqueTeams.filter(
+//           (team) => team !== currentTeam,
+//         );
+//         setTeams(filteredTeams);
+//       } catch (err) {
+//         console.error("Ошибка загрузки команд:", err);
+//       } finally {
+//         setLoadingTeams(false);
+//       }
+//     };
+//     if (isModalOpen) fetchTeams();
+//   }, [isModalOpen, currentTeam]);
+
+//   const openModal = () => {
+//     setIsModalOpen(true);
+//     resetToStep1();
+//   };
+
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//     resetToStep1();
+//   };
+
+//   const resetToStep1 = () => {
+//     setStep(1);
+//     setSelectedOpponent("");
+//     setPlayersCurrentTeam([]);
+//     setPlayersOpponent([]);
+//     setSelectedPlayerCurrent("");
+//     setSelectedPlayerOpponent("");
+//     setGPlayersCurrentTeam([]);
+//     setGPlayersOpponent([]);
+//     setSelectedGPlayerCurrent("");
+//     setSelectedGPlayerOpponent("");
+//     setPicksCurrentTeam([]);
+//     setPicksOpponent([]);
+//     setSelectedPicksCurrent(new Set());
+//     setSelectedPicksOpponent(new Set());
+//     setPickNotesCurrent(new Map());
+//     setPickNotesOpponent(new Map());
+//   };
+
+//   // Загрузка основных составов
+//   const loadMainRosters = async () => {
+//     setLoadingPlayers(true);
+//     try {
+//       const [resultCurrent, resultOpponent] = await Promise.all([
+//         supabase
+//           .from("Players")
+//           .select("active_roster")
+//           .eq("team", currentTeam),
+//         supabase
+//           .from("Players")
+//           .select("active_roster")
+//           .eq("team", selectedOpponent),
+//       ]);
+//       if (resultCurrent.error)
+//         throw new Error(
+//           `Ошибка загрузки ${currentTeam}: ${resultCurrent.error.message}`,
+//         );
+//       if (resultOpponent.error)
+//         throw new Error(
+//           `Ошибка загрузки ${selectedOpponent}: ${resultOpponent.error.message}`,
+//         );
+//       setPlayersCurrentTeam(extractRoster(resultCurrent.data));
+//       setPlayersOpponent(extractRoster(resultOpponent.data));
+//     } catch (err) {
+//       console.error(err);
+//       alert("Не удалось загрузить основных игроков");
+//     } finally {
+//       setLoadingPlayers(false);
+//     }
+//   };
+
+//   // Загрузка G-League составов
+//   const loadGLeagueRosters = async () => {
+//     setLoadingGPlayers(true);
+//     try {
+//       const [resultCurrent, resultOpponent] = await Promise.all([
+//         supabase
+//           .from("Players")
+//           .select("active_roster")
+//           .eq("g_league", currentTeam),
+//         supabase
+//           .from("Players")
+//           .select("active_roster")
+//           .eq("g_league", selectedOpponent),
+//       ]);
+//       if (resultCurrent.error)
+//         throw new Error(
+//           `Ошибка загрузки G-League для ${currentTeam}: ${resultCurrent.error.message}`,
+//         );
+//       if (resultOpponent.error)
+//         throw new Error(
+//           `Ошибка загрузки G-League для ${selectedOpponent}: ${resultOpponent.error.message}`,
+//         );
+//       setGPlayersCurrentTeam(extractRoster(resultCurrent.data));
+//       setGPlayersOpponent(extractRoster(resultOpponent.data));
+//     } catch (err) {
+//       console.error("Ошибка загрузки G-League игроков:", err);
+//       alert("Не удалось загрузить составы G-League");
+//     } finally {
+//       setLoadingGPlayers(false);
+//     }
+//   };
+
+//   // Загрузка пиков из таблицы Picks (все строки)
+//   const loadPicks = async () => {
+//     setLoadingPicks(true);
+//     try {
+//       const { data, error } = await supabase.from("Picks").select("*");
+//       if (error) throw error;
+//       if (!data || data.length === 0) {
+//         console.warn("Нет данных в таблице Picks");
+//         setPicksCurrentTeam([]);
+//         setPicksOpponent([]);
+//         return;
+//       }
+
+//       const normalize = (s: string) => s?.trim().toLowerCase() || "";
+//       const currentTeamNorm = normalize(currentTeam);
+//       const opponentNorm = normalize(selectedOpponent);
+
+//       const currentPicks: PickItem[] = [];
+//       const opponentPicks: PickItem[] = [];
+
+//       for (const record of data) {
+//         const addPick = (
+//           year: number,
+//           round: 1 | 2,
+//           teamCol: string,
+//           labelCol: string,
+//           noteCol: string,
+//         ) => {
+//           const teamRaw = record[teamCol];
+//           const label = record[labelCol];
+//           if (!teamRaw || !label) return;
+//           const teamNorm = normalize(teamRaw);
+//           const note = record[noteCol] || "";
+//           const pickObj: PickItem = {
+//             id: `${labelCol}-${year}-${round}-${record.id || Math.random()}`,
+//             year,
+//             round,
+//             label,
+//             note,
+//           };
+//           if (teamNorm === currentTeamNorm) {
+//             currentPicks.push(pickObj);
+//           } else if (teamNorm === opponentNorm) {
+//             opponentPicks.push(pickObj);
+//           }
+//         };
+
+//         addPick(2026, 1, "team1R26", "1R26", "note1R26");
+//         addPick(2026, 2, "team2R26", "2R26", "note2R26");
+//         addPick(2027, 1, "team1R27", "1R27", "note1R27");
+//         addPick(2027, 2, "team2R27", "2R27", "note2R27");
+//         addPick(2028, 1, "team1R28", "1R28", "note1R28");
+//         addPick(2028, 2, "team2R28", "2R28", "note2R28");
+//       }
+
+//       setPicksCurrentTeam(currentPicks);
+//       setPicksOpponent(opponentPicks);
+//       setSelectedPicksCurrent(new Set());
+//       setSelectedPicksOpponent(new Set());
+//       setPickNotesCurrent(new Map());
+//       setPickNotesOpponent(new Map());
+//     } catch (err) {
+//       console.error("Ошибка загрузки пиков:", err);
+//       alert("Не удалось загрузить драфт-пики");
+//     } finally {
+//       setLoadingPicks(false);
+//     }
+//   };
+
+//   const handleNextToStep2 = async () => {
+//     if (!selectedOpponent) {
+//       alert("Выберите команду для обмена");
+//       return;
+//     }
+//     await loadMainRosters();
+//     setStep(2);
+//   };
+
+//   const handleNextToStep3 = async () => {
+//     await loadGLeagueRosters();
+//     setStep(3);
+//   };
+
+//   const handleNextToStep4 = async () => {
+//     await loadPicks();
+//     setStep(4);
+//   };
+
+//   // Обработчики выбора пика (теперь принимают объект PickItem)
+//   const handleTogglePickCurrent = (pick: PickItem) => {
+//     const pickId = pick.id;
+//     setSelectedPicksCurrent((prev) => {
+//       const newSet = new Set(prev);
+//       if (newSet.has(pickId)) {
+//         newSet.delete(pickId);
+//         setPickNotesCurrent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.delete(pickId);
+//           return newNotes;
+//         });
+//       } else {
+//         newSet.add(pickId);
+//         setPickNotesCurrent((notes) => {
+//           const newNotes = new Map(notes);
+//           // Инициализируем заметку уже существующим примечанием из БД (если есть)
+//           newNotes.set(pickId, pick.note || "");
+//           return newNotes;
+//         });
+//       }
+//       return newSet;
+//     });
+//   };
+
+//   const handleTogglePickOpponent = (pick: PickItem) => {
+//     const pickId = pick.id;
+//     setSelectedPicksOpponent((prev) => {
+//       const newSet = new Set(prev);
+//       if (newSet.has(pickId)) {
+//         newSet.delete(pickId);
+//         setPickNotesOpponent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.delete(pickId);
+//           return newNotes;
+//         });
+//       } else {
+//         newSet.add(pickId);
+//         setPickNotesOpponent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.set(pickId, pick.note || "");
+//           return newNotes;
+//         });
+//       }
+//       return newSet;
+//     });
+//   };
+
+//   const updatePickNoteCurrent = (pickId: string, note: string) => {
+//     setPickNotesCurrent((prev) => {
+//       const newNotes = new Map(prev);
+//       newNotes.set(pickId, note);
+//       return newNotes;
+//     });
+//   };
+
+//   const updatePickNoteOpponent = (pickId: string, note: string) => {
+//     setPickNotesOpponent((prev) => {
+//       const newNotes = new Map(prev);
+//       newNotes.set(pickId, note);
+//       return newNotes;
+//     });
+//   };
+
+//   const hasAnyActiveCurrent = () => {
+//     return (
+//       selectedPlayerCurrent !== "" ||
+//       selectedGPlayerCurrent !== "" ||
+//       selectedPicksCurrent.size > 0
+//     );
+//   };
+
+//   const hasAnyActiveOpponent = () => {
+//     return (
+//       selectedPlayerOpponent !== "" ||
+//       selectedGPlayerOpponent !== "" ||
+//       selectedPicksOpponent.size > 0
+//     );
+//   };
+
+//   const handleTrade = () => {
+//     if (!hasAnyActiveCurrent()) {
+//       alert(
+//         `Выберите хотя бы один актив (игрока или пик) из команды ${currentTeam}`,
+//       );
+//       return;
+//     }
+//     if (!hasAnyActiveOpponent()) {
+//       alert(
+//         `Выберите хотя бы один актив (игрока или пик) из команды ${selectedOpponent}`,
+//       );
+//       return;
+//     }
+
+//     const formatPlayers = (main: string, g: string) => {
+//       const parts = [];
+//       if (main) parts.push(`${main} (основной)`);
+//       if (g) parts.push(`${g} (G-League)`);
+//       return parts.length ? parts.join(", ") : "—";
+//     };
+
+//     const formatPicks = (
+//       picksSet: Set<string>,
+//       picksList: PickItem[],
+//       notesMap: Map<string, string>,
+//     ) => {
+//       if (picksSet.size === 0) return "—";
+//       const selected = picksList.filter((p) => picksSet.has(p.id));
+//       return selected
+//         .map((p) => {
+//           const note = notesMap.get(p.id);
+//           return `${p.label} (${p.year}, ${p.round} раунд)${note ? `, примечание: ${note}` : ""}`;
+//         })
+//         .join("; ");
+//     };
+
+//     const currentActive = `${formatPlayers(selectedPlayerCurrent, selectedGPlayerCurrent)} | Пики: ${formatPicks(
+//       selectedPicksCurrent,
+//       picksCurrentTeam,
+//       pickNotesCurrent,
+//     )}`;
+//     const opponentActive = `${formatPlayers(selectedPlayerOpponent, selectedGPlayerOpponent)} | Пики: ${formatPicks(
+//       selectedPicksOpponent,
+//       picksOpponent,
+//       pickNotesOpponent,
+//     )}`;
+
+//     alert(
+//       `Предложение обмена:\n${currentTeam}: ${currentActive}\n${selectedOpponent}: ${opponentActive}`,
+//     );
+//     closeModal();
+//   };
+
+//   const handleBack = () => {
+//     if (step === 4) {
+//       setStep(3);
+//     } else if (step === 3) {
+//       setStep(2);
+//     } else if (step === 2) {
+//       setStep(1);
+//       setSelectedPlayerCurrent("");
+//       setSelectedPlayerOpponent("");
+//       setPlayersCurrentTeam([]);
+//       setPlayersOpponent([]);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <button className="tradesTW-trade-two-way-button" onClick={openModal}>
+//         Trade Two-way
+//       </button>
+//       {isModalOpen && (
+//         <div className="tradesTW-modal-overlay" onClick={closeModal}>
+//           <div
+//             className="tradesTW-modal-content"
+//             onClick={(e) => e.stopPropagation()}
+//           >
+//             {/* Шаг 1: выбор команды */}
+//             {step === 1 && (
+//               <>
+//                 <h2>Выберите команду для обмена с {currentTeam}</h2>
+//                 {loadingTeams ? (
+//                   <p>Загрузка команд...</p>
+//                 ) : (
+//                   <div className="tradesTW-team-selectors">
+//                     <div className="tradesTW-selector">
+//                       <label>Ваша команда:</label>
+//                       <input
+//                         type="text"
+//                         value={currentTeam}
+//                         disabled
+//                         className="tradesTW-fixed-team"
+//                       />
+//                     </div>
+//                     <div className="tradesTW-selector">
+//                       <label>Команда для обмена:</label>
+//                       <select
+//                         value={selectedOpponent}
+//                         onChange={(e) => setSelectedOpponent(e.target.value)}
+//                       >
+//                         <option value="">-- Выберите команду --</option>
+//                         {teams.map((team) => (
+//                           <option key={team} value={team}>
+//                             {team}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep2} disabled={loadingTeams}>
+//                     Далее
+//                   </button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 2: основные игроки */}
+//             {step === 2 && (
+//               <>
+//                 <h2>Основные игроки (необязательно)</h2>
+//                 {loadingPlayers ? (
+//                   <p>Загрузка...</p>
+//                 ) : (
+//                   <div className="tradesTW-team-selectors">
+//                     <div className="tradesTW-selector">
+//                       <label>{currentTeam}:</label>
+//                       <select
+//                         value={selectedPlayerCurrent}
+//                         onChange={(e) =>
+//                           setSelectedPlayerCurrent(e.target.value)
+//                         }
+//                       >
+//                         <option value="">-- Не выбран --</option>
+//                         {playersCurrentTeam.map((p, i) => (
+//                           <option key={`${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                     <div className="tradesTW-selector">
+//                       <label>{selectedOpponent}:</label>
+//                       <select
+//                         value={selectedPlayerOpponent}
+//                         onChange={(e) =>
+//                           setSelectedPlayerOpponent(e.target.value)
+//                         }
+//                       >
+//                         <option value="">-- Не выбран --</option>
+//                         {playersOpponent.map((p, i) => (
+//                           <option key={`${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep3}>Далее</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 3: G-League игроки */}
+//             {step === 3 && (
+//               <>
+//                 <h2>G-League игроки (необязательно)</h2>
+//                 {loadingGPlayers ? (
+//                   <p>Загрузка...</p>
+//                 ) : (
+//                   <div className="tradesTW-team-selectors">
+//                     <div className="tradesTW-selector">
+//                       <label>{currentTeam} (G-League):</label>
+//                       <select
+//                         value={selectedGPlayerCurrent}
+//                         onChange={(e) =>
+//                           setSelectedGPlayerCurrent(e.target.value)
+//                         }
+//                       >
+//                         <option value="">-- Не выбран --</option>
+//                         {gPlayersCurrentTeam.map((p, i) => (
+//                           <option key={`g-${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                     <div className="tradesTW-selector">
+//                       <label>{selectedOpponent} (G-League):</label>
+//                       <select
+//                         value={selectedGPlayerOpponent}
+//                         onChange={(e) =>
+//                           setSelectedGPlayerOpponent(e.target.value)
+//                         }
+//                       >
+//                         <option value="">-- Не выбран --</option>
+//                         {gPlayersOpponent.map((p, i) => (
+//                           <option key={`g-${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep4}>Далее</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 4: выбор драфт-пиков */}
+//             {step === 4 && (
+//               <>
+//                 <h2>Драфт-пики (необязательно)</h2>
+//                 {loadingPicks ? (
+//                   <p>Загрузка пиков...</p>
+//                 ) : (
+//                   <div className="tradesTW-picks-container">
+//                     {/* Пики текущей команды */}
+//                     <div className="tradesTW-picks-column">
+//                       <h3>{currentTeam}</h3>
+//                       {picksCurrentTeam.length === 0 ? (
+//                         <p>Нет доступных пиков</p>
+//                       ) : (
+//                         <ul className="tradesTW-picks-list">
+//                           {picksCurrentTeam.map((pick) => {
+//                             const isChecked = selectedPicksCurrent.has(pick.id);
+//                             return (
+//                               <li key={pick.id}>
+//                                 <label>
+//                                   <input
+//                                     type="checkbox"
+//                                     checked={isChecked}
+//                                     onChange={() =>
+//                                       handleTogglePickCurrent(pick)
+//                                     }
+//                                   />
+//                                   {pick.label} ({pick.year}, {pick.round} раунд)
+//                                   {pick.note && (
+//                                     <span className="tradesTW-pick-note">
+//                                       {" "}
+//                                       — {pick.note}
+//                                     </span>
+//                                   )}
+//                                 </label>
+//                                 {isChecked && (
+//                                   <div className="tradesTW-pick-note-input">
+//                                     <input
+//                                       type="text"
+//                                       placeholder="Примечание к пику (необязательно)"
+//                                       value={
+//                                         pickNotesCurrent.get(pick.id) || ""
+//                                       }
+//                                       onChange={(e) =>
+//                                         updatePickNoteCurrent(
+//                                           pick.id,
+//                                           e.target.value,
+//                                         )
+//                                       }
+//                                     />
+//                                   </div>
+//                                 )}
+//                               </li>
+//                             );
+//                           })}
+//                         </ul>
+//                       )}
+//                     </div>
+
+//                     {/* Пики команды оппонента */}
+//                     <div className="tradesTW-picks-column">
+//                       <h3>{selectedOpponent}</h3>
+//                       {picksOpponent.length === 0 ? (
+//                         <p>Нет доступных пиков</p>
+//                       ) : (
+//                         <ul className="tradesTW-picks-list">
+//                           {picksOpponent.map((pick) => {
+//                             const isChecked = selectedPicksOpponent.has(
+//                               pick.id,
+//                             );
+//                             return (
+//                               <li key={pick.id}>
+//                                 <label>
+//                                   <input
+//                                     type="checkbox"
+//                                     checked={isChecked}
+//                                     onChange={() =>
+//                                       handleTogglePickOpponent(pick)
+//                                     }
+//                                   />
+//                                   {pick.label} ({pick.year}, {pick.round} раунд)
+//                                   {pick.note && (
+//                                     <span className="tradesTW-pick-note">
+//                                       {" "}
+//                                       — {pick.note}
+//                                     </span>
+//                                   )}
+//                                 </label>
+//                                 {isChecked && (
+//                                   <div className="tradesTW-pick-note-input">
+//                                     <input
+//                                       type="text"
+//                                       placeholder="Примечание к пику (необязательно)"
+//                                       value={
+//                                         pickNotesOpponent.get(pick.id) || ""
+//                                       }
+//                                       onChange={(e) =>
+//                                         updatePickNoteOpponent(
+//                                           pick.id,
+//                                           e.target.value,
+//                                         )
+//                                       }
+//                                     />
+//                                   </div>
+//                                 )}
+//                               </li>
+//                             );
+//                           })}
+//                         </ul>
+//                       )}
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleTrade}>Обменять</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+
+// export default TradesTwoWay;
+
+// ------------------------------dead cap 1V--------------------------------------------------
+
+// import React, { useState, useEffect } from "react";
+// import { supabase } from "../../../Supabase";
+// import "./trades_Two_way.css";
+
+// type PlayerList = string[];
+
+// interface PickItem {
+//   id: string;
+//   year: number;
+//   round: 1 | 2;
+//   label: string;
+//   note?: string;
+// }
+
+// interface DeadCapItem {
+//   amount: string; // сумма dead cap
+//   years: number; // 1..5
+// }
+
+// interface TradesTwoWayProps {
+//   currentTeam: string;
+// }
+
+// const TradesTwoWay: React.FC<TradesTwoWayProps> = ({ currentTeam }) => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [step, setStep] = useState<1 | 2 | 3 | 4 | 5>(1);
+//   const [teams, setTeams] = useState<string[]>([]);
+//   const [selectedOpponent, setSelectedOpponent] = useState("");
+//   const [loadingTeams, setLoadingTeams] = useState(false);
+//   const [loadingPlayers, setLoadingPlayers] = useState(false);
+//   const [loadingGPlayers, setLoadingGPlayers] = useState(false);
+//   const [loadingPicks, setLoadingPicks] = useState(false);
+
+//   // Основные игроки
+//   const [playersCurrentTeam, setPlayersCurrentTeam] = useState<PlayerList>([]);
+//   const [playersOpponent, setPlayersOpponent] = useState<PlayerList>([]);
+//   const [selectedPlayerCurrent, setSelectedPlayerCurrent] = useState("");
+//   const [selectedPlayerOpponent, setSelectedPlayerOpponent] = useState("");
+
+//   // G-League игроки
+//   const [gPlayersCurrentTeam, setGPlayersCurrentTeam] = useState<PlayerList>(
+//     [],
+//   );
+//   const [gPlayersOpponent, setGPlayersOpponent] = useState<PlayerList>([]);
+//   const [selectedGPlayerCurrent, setSelectedGPlayerCurrent] = useState("");
+//   const [selectedGPlayerOpponent, setSelectedGPlayerOpponent] = useState("");
+
+//   // Пики
+//   const [picksCurrentTeam, setPicksCurrentTeam] = useState<PickItem[]>([]);
+//   const [picksOpponent, setPicksOpponent] = useState<PickItem[]>([]);
+//   const [selectedPicksCurrent, setSelectedPicksCurrent] = useState<Set<string>>(
+//     new Set(),
+//   );
+//   const [selectedPicksOpponent, setSelectedPicksOpponent] = useState<
+//     Set<string>
+//   >(new Set());
+//   const [pickNotesCurrent, setPickNotesCurrent] = useState<Map<string, string>>(
+//     new Map(),
+//   );
+//   const [pickNotesOpponent, setPickNotesOpponent] = useState<
+//     Map<string, string>
+//   >(new Map());
+
+//   // Dead cap (только для основных игроков)
+//   const [deadCapCurrent, setDeadCapCurrent] = useState<
+//     Map<string, DeadCapItem>
+//   >(new Map());
+//   const [deadCapOpponent, setDeadCapOpponent] = useState<
+//     Map<string, DeadCapItem>
+//   >(new Map());
+
+//   // Извлечение ростеров
+//   const extractRoster = (data: any[]): string[] => {
+//     if (!data || data.length === 0) return [];
+//     const rosterSet = new Set<string>();
+//     for (const record of data) {
+//       const rosterField = record.active_roster;
+//       if (!rosterField) continue;
+//       if (Array.isArray(rosterField)) {
+//         rosterField.forEach((player: any) => {
+//           if (typeof player === "string") rosterSet.add(player);
+//         });
+//       } else if (typeof rosterField === "string") {
+//         try {
+//           const parsed = JSON.parse(rosterField);
+//           if (Array.isArray(parsed)) {
+//             parsed.forEach((player: any) => {
+//               if (typeof player === "string") rosterSet.add(player);
+//             });
+//           } else if (typeof parsed === "string") {
+//             rosterSet.add(parsed);
+//           }
+//         } catch {
+//           const parts = rosterField.split(",").map((p) => p.trim());
+//           parts.forEach((player) => {
+//             if (player) rosterSet.add(player);
+//           });
+//         }
+//       }
+//     }
+//     return Array.from(rosterSet);
+//   };
+
+//   // Загрузка списка команд
+//   useEffect(() => {
+//     const fetchTeams = async () => {
+//       setLoadingTeams(true);
+//       try {
+//         const { data, error } = await supabase
+//           .from("Players")
+//           .select("team")
+//           .not("team", "is", null)
+//           .order("team");
+//         if (error) throw error;
+//         const uniqueTeams = Array.from(
+//           new Set(data.map((item) => item.team).filter(Boolean)),
+//         ) as string[];
+//         const filteredTeams = uniqueTeams.filter(
+//           (team) => team !== currentTeam,
+//         );
+//         setTeams(filteredTeams);
+//       } catch (err) {
+//         console.error("Ошибка загрузки команд:", err);
+//       } finally {
+//         setLoadingTeams(false);
+//       }
+//     };
+//     if (isModalOpen) fetchTeams();
+//   }, [isModalOpen, currentTeam]);
+
+//   const openModal = () => {
+//     setIsModalOpen(true);
+//     resetToStep1();
+//   };
+
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//     resetToStep1();
+//   };
+
+//   const resetToStep1 = () => {
+//     setStep(1);
+//     setSelectedOpponent("");
+//     setPlayersCurrentTeam([]);
+//     setPlayersOpponent([]);
+//     setSelectedPlayerCurrent("");
+//     setSelectedPlayerOpponent("");
+//     setGPlayersCurrentTeam([]);
+//     setGPlayersOpponent([]);
+//     setSelectedGPlayerCurrent("");
+//     setSelectedGPlayerOpponent("");
+//     setPicksCurrentTeam([]);
+//     setPicksOpponent([]);
+//     setSelectedPicksCurrent(new Set());
+//     setSelectedPicksOpponent(new Set());
+//     setPickNotesCurrent(new Map());
+//     setPickNotesOpponent(new Map());
+//     setDeadCapCurrent(new Map());
+//     setDeadCapOpponent(new Map());
+//   };
+
+//   // Загрузка основных составов
+//   const loadMainRosters = async () => {
+//     setLoadingPlayers(true);
+//     try {
+//       const [resultCurrent, resultOpponent] = await Promise.all([
+//         supabase
+//           .from("Players")
+//           .select("active_roster")
+//           .eq("team", currentTeam),
+//         supabase
+//           .from("Players")
+//           .select("active_roster")
+//           .eq("team", selectedOpponent),
+//       ]);
+//       if (resultCurrent.error)
+//         throw new Error(
+//           `Ошибка загрузки ${currentTeam}: ${resultCurrent.error.message}`,
+//         );
+//       if (resultOpponent.error)
+//         throw new Error(
+//           `Ошибка загрузки ${selectedOpponent}: ${resultOpponent.error.message}`,
+//         );
+//       setPlayersCurrentTeam(extractRoster(resultCurrent.data));
+//       setPlayersOpponent(extractRoster(resultOpponent.data));
+//     } catch (err) {
+//       console.error(err);
+//       alert("Не удалось загрузить основных игроков");
+//     } finally {
+//       setLoadingPlayers(false);
+//     }
+//   };
+
+//   // Загрузка G-League составов
+//   const loadGLeagueRosters = async () => {
+//     setLoadingGPlayers(true);
+//     try {
+//       const [resultCurrent, resultOpponent] = await Promise.all([
+//         supabase
+//           .from("Players")
+//           .select("active_roster")
+//           .eq("g_league", currentTeam),
+//         supabase
+//           .from("Players")
+//           .select("active_roster")
+//           .eq("g_league", selectedOpponent),
+//       ]);
+//       if (resultCurrent.error)
+//         throw new Error(
+//           `Ошибка загрузки G-League для ${currentTeam}: ${resultCurrent.error.message}`,
+//         );
+//       if (resultOpponent.error)
+//         throw new Error(
+//           `Ошибка загрузки G-League для ${selectedOpponent}: ${resultOpponent.error.message}`,
+//         );
+//       setGPlayersCurrentTeam(extractRoster(resultCurrent.data));
+//       setGPlayersOpponent(extractRoster(resultOpponent.data));
+//     } catch (err) {
+//       console.error("Ошибка загрузки G-League игроков:", err);
+//       alert("Не удалось загрузить составы G-League");
+//     } finally {
+//       setLoadingGPlayers(false);
+//     }
+//   };
+
+//   // Загрузка пиков
+//   const loadPicks = async () => {
+//     setLoadingPicks(true);
+//     try {
+//       const { data, error } = await supabase.from("Picks").select("*");
+//       if (error) throw error;
+//       if (!data || data.length === 0) {
+//         console.warn("Нет данных в таблице Picks");
+//         setPicksCurrentTeam([]);
+//         setPicksOpponent([]);
+//         return;
+//       }
+
+//       const normalize = (s: string) => s?.trim().toLowerCase() || "";
+//       const currentTeamNorm = normalize(currentTeam);
+//       const opponentNorm = normalize(selectedOpponent);
+
+//       const currentPicks: PickItem[] = [];
+//       const opponentPicks: PickItem[] = [];
+
+//       for (const record of data) {
+//         const addPick = (
+//           year: number,
+//           round: 1 | 2,
+//           teamCol: string,
+//           labelCol: string,
+//           noteCol: string,
+//         ) => {
+//           const teamRaw = record[teamCol];
+//           const label = record[labelCol];
+//           if (!teamRaw || !label) return;
+//           const teamNorm = normalize(teamRaw);
+//           const note = record[noteCol] || "";
+//           const pickObj: PickItem = {
+//             id: `${labelCol}-${year}-${round}-${record.id || Math.random()}`,
+//             year,
+//             round,
+//             label,
+//             note,
+//           };
+//           if (teamNorm === currentTeamNorm) {
+//             currentPicks.push(pickObj);
+//           } else if (teamNorm === opponentNorm) {
+//             opponentPicks.push(pickObj);
+//           }
+//         };
+
+//         addPick(2026, 1, "team1R26", "1R26", "note1R26");
+//         addPick(2026, 2, "team2R26", "2R26", "note2R26");
+//         addPick(2027, 1, "team1R27", "1R27", "note1R27");
+//         addPick(2027, 2, "team2R27", "2R27", "note2R27");
+//         addPick(2028, 1, "team1R28", "1R28", "note1R28");
+//         addPick(2028, 2, "team2R28", "2R28", "note2R28");
+//       }
+
+//       setPicksCurrentTeam(currentPicks);
+//       setPicksOpponent(opponentPicks);
+//       setSelectedPicksCurrent(new Set());
+//       setSelectedPicksOpponent(new Set());
+//       setPickNotesCurrent(new Map());
+//       setPickNotesOpponent(new Map());
+//     } catch (err) {
+//       console.error("Ошибка загрузки пиков:", err);
+//       alert("Не удалось загрузить драфт-пики");
+//     } finally {
+//       setLoadingPicks(false);
+//     }
+//   };
+
+//   const handleNextToStep2 = async () => {
+//     if (!selectedOpponent) {
+//       alert("Выберите команду для обмена");
+//       return;
+//     }
+//     await loadMainRosters();
+//     setStep(2);
+//   };
+
+//   const handleNextToStep3 = async () => {
+//     await loadGLeagueRosters();
+//     setStep(3);
+//   };
+
+//   const handleNextToStep4 = async () => {
+//     await loadPicks();
+//     setStep(4);
+//   };
+
+//   const handleNextToStep5 = () => {
+//     setStep(5);
+//   };
+
+//   // Обработчики для пиков
+//   const handleTogglePickCurrent = (pick: PickItem) => {
+//     const pickId = pick.id;
+//     setSelectedPicksCurrent((prev) => {
+//       const newSet = new Set(prev);
+//       if (newSet.has(pickId)) {
+//         newSet.delete(pickId);
+//         setPickNotesCurrent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.delete(pickId);
+//           return newNotes;
+//         });
+//       } else {
+//         newSet.add(pickId);
+//         setPickNotesCurrent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.set(pickId, pick.note || "");
+//           return newNotes;
+//         });
+//       }
+//       return newSet;
+//     });
+//   };
+
+//   const handleTogglePickOpponent = (pick: PickItem) => {
+//     const pickId = pick.id;
+//     setSelectedPicksOpponent((prev) => {
+//       const newSet = new Set(prev);
+//       if (newSet.has(pickId)) {
+//         newSet.delete(pickId);
+//         setPickNotesOpponent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.delete(pickId);
+//           return newNotes;
+//         });
+//       } else {
+//         newSet.add(pickId);
+//         setPickNotesOpponent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.set(pickId, pick.note || "");
+//           return newNotes;
+//         });
+//       }
+//       return newSet;
+//     });
+//   };
+
+//   const updatePickNoteCurrent = (pickId: string, note: string) => {
+//     setPickNotesCurrent((prev) => {
+//       const newNotes = new Map(prev);
+//       newNotes.set(pickId, note);
+//       return newNotes;
+//     });
+//   };
+
+//   const updatePickNoteOpponent = (pickId: string, note: string) => {
+//     setPickNotesOpponent((prev) => {
+//       const newNotes = new Map(prev);
+//       newNotes.set(pickId, note);
+//       return newNotes;
+//     });
+//   };
+
+//   // Обработчики Dead Cap
+//   const handleToggleDeadCapCurrent = (player: string) => {
+//     setDeadCapCurrent((prev) => {
+//       const newMap = new Map(prev);
+//       if (newMap.has(player)) {
+//         newMap.delete(player);
+//       } else {
+//         newMap.set(player, { amount: "", years: 1 });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const handleToggleDeadCapOpponent = (player: string) => {
+//     setDeadCapOpponent((prev) => {
+//       const newMap = new Map(prev);
+//       if (newMap.has(player)) {
+//         newMap.delete(player);
+//       } else {
+//         newMap.set(player, { amount: "", years: 1 });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapAmountCurrent = (player: string, amount: string) => {
+//     setDeadCapCurrent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, amount });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapYearsCurrent = (player: string, years: number) => {
+//     setDeadCapCurrent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, years });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapAmountOpponent = (player: string, amount: string) => {
+//     setDeadCapOpponent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, amount });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapYearsOpponent = (player: string, years: number) => {
+//     setDeadCapOpponent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, years });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const hasAnyActiveCurrent = () => {
+//     return (
+//       selectedPlayerCurrent !== "" ||
+//       selectedGPlayerCurrent !== "" ||
+//       selectedPicksCurrent.size > 0 ||
+//       deadCapCurrent.size > 0
+//     );
+//   };
+
+//   const hasAnyActiveOpponent = () => {
+//     return (
+//       selectedPlayerOpponent !== "" ||
+//       selectedGPlayerOpponent !== "" ||
+//       selectedPicksOpponent.size > 0 ||
+//       deadCapOpponent.size > 0
+//     );
+//   };
+
+//   const handleTrade = () => {
+//     if (!hasAnyActiveCurrent()) {
+//       alert(
+//         `Выберите хотя бы один актив (игрока, пик или dead cap) из команды ${currentTeam}`,
+//       );
+//       return;
+//     }
+//     if (!hasAnyActiveOpponent()) {
+//       alert(
+//         `Выберите хотя бы один актив (игрока, пик или dead cap) из команды ${selectedOpponent}`,
+//       );
+//       return;
+//     }
+
+//     // Проверка заполнения dead cap (используем forEach, чтобы избежать ошибок итератора)
+//     let hasError = false;
+//     deadCapCurrent.forEach((data, player) => {
+//       if (!data.amount || data.amount.trim() === "") {
+//         alert(`Для игрока ${player} (${currentTeam}) укажите сумму dead cap`);
+//         hasError = true;
+//       }
+//     });
+//     if (hasError) return;
+
+//     deadCapOpponent.forEach((data, player) => {
+//       if (!data.amount || data.amount.trim() === "") {
+//         alert(
+//           `Для игрока ${player} (${selectedOpponent}) укажите сумму dead cap`,
+//         );
+//         hasError = true;
+//       }
+//     });
+//     if (hasError) return;
+
+//     const formatPlayers = (main: string, g: string) => {
+//       const parts = [];
+//       if (main) parts.push(`${main} (основной)`);
+//       if (g) parts.push(`${g} (G-League)`);
+//       return parts.length ? parts.join(", ") : "—";
+//     };
+
+//     const formatPicks = (
+//       picksSet: Set<string>,
+//       picksList: PickItem[],
+//       notesMap: Map<string, string>,
+//     ) => {
+//       if (picksSet.size === 0) return "—";
+//       const selected = picksList.filter((p) => picksSet.has(p.id));
+//       return selected
+//         .map((p) => {
+//           const note = notesMap.get(p.id);
+//           return `${p.label} (${p.year}, ${p.round} раунд)${note ? `, примечание: ${note}` : ""}`;
+//         })
+//         .join("; ");
+//     };
+
+//     const formatDeadCap = (deadCapMap: Map<string, DeadCapItem>) => {
+//       if (deadCapMap.size === 0) return "—";
+//       const items: string[] = [];
+//       deadCapMap.forEach((data, player) => {
+//         items.push(`${player}: ${data.amount}$ на ${data.years} год(а)`);
+//       });
+//       return items.join("; ");
+//     };
+
+//     const currentActive = `${formatPlayers(selectedPlayerCurrent, selectedGPlayerCurrent)} | Пики: ${formatPicks(
+//       selectedPicksCurrent,
+//       picksCurrentTeam,
+//       pickNotesCurrent,
+//     )} | Dead cap: ${formatDeadCap(deadCapCurrent)}`;
+//     const opponentActive = `${formatPlayers(selectedPlayerOpponent, selectedGPlayerOpponent)} | Пики: ${formatPicks(
+//       selectedPicksOpponent,
+//       picksOpponent,
+//       pickNotesOpponent,
+//     )} | Dead cap: ${formatDeadCap(deadCapOpponent)}`;
+
+//     alert(
+//       `Предложение обмена:\n${currentTeam}: ${currentActive}\n${selectedOpponent}: ${opponentActive}`,
+//     );
+//     closeModal();
+//   };
+
+//   const handleBack = () => {
+//     if (step === 5) {
+//       setStep(4);
+//     } else if (step === 4) {
+//       setStep(3);
+//     } else if (step === 3) {
+//       setStep(2);
+//     } else if (step === 2) {
+//       setStep(1);
+//       setSelectedPlayerCurrent("");
+//       setSelectedPlayerOpponent("");
+//       setPlayersCurrentTeam([]);
+//       setPlayersOpponent([]);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <button className="tradesTW-trade-two-way-button" onClick={openModal}>
+//         Trade Two-way
+//       </button>
+//       {isModalOpen && (
+//         <div className="tradesTW-modal-overlay" onClick={closeModal}>
+//           <div
+//             className="tradesTW-modal-content"
+//             onClick={(e) => e.stopPropagation()}
+//           >
+//             {/* Шаг 1: выбор команды */}
+//             {step === 1 && (
+//               <>
+//                 <h2>Выберите команду для обмена с {currentTeam}</h2>
+//                 {loadingTeams ? (
+//                   <p>Загрузка команд...</p>
+//                 ) : (
+//                   <div className="tradesTW-team-selectors">
+//                     <div className="tradesTW-selector">
+//                       <label>Ваша команда:</label>
+//                       <input
+//                         type="text"
+//                         value={currentTeam}
+//                         disabled
+//                         className="tradesTW-fixed-team"
+//                       />
+//                     </div>
+//                     <div className="tradesTW-selector">
+//                       <label>Команда для обмена:</label>
+//                       <select
+//                         value={selectedOpponent}
+//                         onChange={(e) => setSelectedOpponent(e.target.value)}
+//                       >
+//                         <option value="">-- Выберите команду --</option>
+//                         {teams.map((team) => (
+//                           <option key={team} value={team}>
+//                             {team}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep2} disabled={loadingTeams}>
+//                     Далее
+//                   </button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 2: основные игроки */}
+//             {step === 2 && (
+//               <>
+//                 <h2>Основные игроки (необязательно)</h2>
+//                 {loadingPlayers ? (
+//                   <p>Загрузка...</p>
+//                 ) : (
+//                   <div className="tradesTW-team-selectors">
+//                     <div className="tradesTW-selector">
+//                       <label>{currentTeam}:</label>
+//                       <select
+//                         value={selectedPlayerCurrent}
+//                         onChange={(e) =>
+//                           setSelectedPlayerCurrent(e.target.value)
+//                         }
+//                       >
+//                         <option value="">-- Не выбран --</option>
+//                         {playersCurrentTeam.map((p, i) => (
+//                           <option key={`${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                     <div className="tradesTW-selector">
+//                       <label>{selectedOpponent}:</label>
+//                       <select
+//                         value={selectedPlayerOpponent}
+//                         onChange={(e) =>
+//                           setSelectedPlayerOpponent(e.target.value)
+//                         }
+//                       >
+//                         <option value="">-- Не выбран --</option>
+//                         {playersOpponent.map((p, i) => (
+//                           <option key={`${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep3}>Далее</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 3: G-League игроки */}
+//             {step === 3 && (
+//               <>
+//                 <h2>G-League игроки (необязательно)</h2>
+//                 {loadingGPlayers ? (
+//                   <p>Загрузка...</p>
+//                 ) : (
+//                   <div className="tradesTW-team-selectors">
+//                     <div className="tradesTW-selector">
+//                       <label>{currentTeam} (G-League):</label>
+//                       <select
+//                         value={selectedGPlayerCurrent}
+//                         onChange={(e) =>
+//                           setSelectedGPlayerCurrent(e.target.value)
+//                         }
+//                       >
+//                         <option value="">-- Не выбран --</option>
+//                         {gPlayersCurrentTeam.map((p, i) => (
+//                           <option key={`g-${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                     <div className="tradesTW-selector">
+//                       <label>{selectedOpponent} (G-League):</label>
+//                       <select
+//                         value={selectedGPlayerOpponent}
+//                         onChange={(e) =>
+//                           setSelectedGPlayerOpponent(e.target.value)
+//                         }
+//                       >
+//                         <option value="">-- Не выбран --</option>
+//                         {gPlayersOpponent.map((p, i) => (
+//                           <option key={`g-${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep4}>Далее</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 4: драфт-пики */}
+//             {step === 4 && (
+//               <>
+//                 <h2>Драфт-пики (необязательно)</h2>
+//                 {loadingPicks ? (
+//                   <p>Загрузка пиков...</p>
+//                 ) : (
+//                   <div className="tradesTW-picks-container">
+//                     <div className="tradesTW-picks-column">
+//                       <h3>{currentTeam}</h3>
+//                       {picksCurrentTeam.length === 0 ? (
+//                         <p>Нет доступных пиков</p>
+//                       ) : (
+//                         <ul className="tradesTW-picks-list">
+//                           {picksCurrentTeam.map((pick) => {
+//                             const isChecked = selectedPicksCurrent.has(pick.id);
+//                             return (
+//                               <li key={pick.id}>
+//                                 <label>
+//                                   <input
+//                                     type="checkbox"
+//                                     checked={isChecked}
+//                                     onChange={() =>
+//                                       handleTogglePickCurrent(pick)
+//                                     }
+//                                   />
+//                                   {pick.label} ({pick.year}, {pick.round} раунд)
+//                                   {pick.note && (
+//                                     <span className="tradesTW-pick-note">
+//                                       {" "}
+//                                       — {pick.note}
+//                                     </span>
+//                                   )}
+//                                 </label>
+//                                 {isChecked && (
+//                                   <div className="tradesTW-pick-note-input">
+//                                     <input
+//                                       type="text"
+//                                       placeholder="Примечание к пику"
+//                                       value={
+//                                         pickNotesCurrent.get(pick.id) || ""
+//                                       }
+//                                       onChange={(e) =>
+//                                         updatePickNoteCurrent(
+//                                           pick.id,
+//                                           e.target.value,
+//                                         )
+//                                       }
+//                                     />
+//                                   </div>
+//                                 )}
+//                               </li>
+//                             );
+//                           })}
+//                         </ul>
+//                       )}
+//                     </div>
+//                     <div className="tradesTW-picks-column">
+//                       <h3>{selectedOpponent}</h3>
+//                       {picksOpponent.length === 0 ? (
+//                         <p>Нет доступных пиков</p>
+//                       ) : (
+//                         <ul className="tradesTW-picks-list">
+//                           {picksOpponent.map((pick) => {
+//                             const isChecked = selectedPicksOpponent.has(
+//                               pick.id,
+//                             );
+//                             return (
+//                               <li key={pick.id}>
+//                                 <label>
+//                                   <input
+//                                     type="checkbox"
+//                                     checked={isChecked}
+//                                     onChange={() =>
+//                                       handleTogglePickOpponent(pick)
+//                                     }
+//                                   />
+//                                   {pick.label} ({pick.year}, {pick.round} раунд)
+//                                   {pick.note && (
+//                                     <span className="tradesTW-pick-note">
+//                                       {" "}
+//                                       — {pick.note}
+//                                     </span>
+//                                   )}
+//                                 </label>
+//                                 {isChecked && (
+//                                   <div className="tradesTW-pick-note-input">
+//                                     <input
+//                                       type="text"
+//                                       placeholder="Примечание к пику"
+//                                       value={
+//                                         pickNotesOpponent.get(pick.id) || ""
+//                                       }
+//                                       onChange={(e) =>
+//                                         updatePickNoteOpponent(
+//                                           pick.id,
+//                                           e.target.value,
+//                                         )
+//                                       }
+//                                     />
+//                                   </div>
+//                                 )}
+//                               </li>
+//                             );
+//                           })}
+//                         </ul>
+//                       )}
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep5}>Далее</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 5: Dead cap */}
+//             {step === 5 && (
+//               <>
+//                 <h2>Dead cap (необязательно)</h2>
+//                 <p>
+//                   Выберите игроков основного состава, часть зарплаты которых
+//                   остаётся у команды после обмена.
+//                 </p>
+//                 <div className="tradesTW-deadcap-container">
+//                   {/* Dead cap текущей команды */}
+//                   <div className="tradesTW-deadcap-column">
+//                     <h3>{currentTeam}</h3>
+//                     {playersCurrentTeam.length === 0 ? (
+//                       <p>Нет игроков основного состава</p>
+//                     ) : (
+//                       <ul className="tradesTW-deadcap-list">
+//                         {playersCurrentTeam.map((player) => {
+//                           const isSelected = deadCapCurrent.has(player);
+//                           const deadData = deadCapCurrent.get(player);
+//                           return (
+//                             <li key={player}>
+//                               <label>
+//                                 <input
+//                                   type="checkbox"
+//                                   checked={isSelected}
+//                                   onChange={() =>
+//                                     handleToggleDeadCapCurrent(player)
+//                                   }
+//                                 />
+//                                 {player}
+//                               </label>
+//                               {isSelected && (
+//                                 <div className="tradesTW-deadcap-fields">
+//                                   <input
+//                                     type="number"
+//                                     placeholder="Сумма ($)"
+//                                     value={deadData?.amount || ""}
+//                                     onChange={(e) =>
+//                                       updateDeadCapAmountCurrent(
+//                                         player,
+//                                         e.target.value,
+//                                       )
+//                                     }
+//                                   />
+//                                   <select
+//                                     value={deadData?.years || 1}
+//                                     onChange={(e) =>
+//                                       updateDeadCapYearsCurrent(
+//                                         player,
+//                                         parseInt(e.target.value),
+//                                       )
+//                                     }
+//                                   >
+//                                     {[1, 2, 3, 4, 5].map((y) => (
+//                                       <option key={y} value={y}>
+//                                         {y} год(а)
+//                                       </option>
+//                                     ))}
+//                                   </select>
+//                                 </div>
+//                               )}
+//                             </li>
+//                           );
+//                         })}
+//                       </ul>
+//                     )}
+//                   </div>
+
+//                   {/* Dead cap команды оппонента */}
+//                   <div className="tradesTW-deadcap-column">
+//                     <h3>{selectedOpponent}</h3>
+//                     {playersOpponent.length === 0 ? (
+//                       <p>Нет игроков основного состава</p>
+//                     ) : (
+//                       <ul className="tradesTW-deadcap-list">
+//                         {playersOpponent.map((player) => {
+//                           const isSelected = deadCapOpponent.has(player);
+//                           const deadData = deadCapOpponent.get(player);
+//                           return (
+//                             <li key={player}>
+//                               <label>
+//                                 <input
+//                                   type="checkbox"
+//                                   checked={isSelected}
+//                                   onChange={() =>
+//                                     handleToggleDeadCapOpponent(player)
+//                                   }
+//                                 />
+//                                 {player}
+//                               </label>
+//                               {isSelected && (
+//                                 <div className="tradesTW-deadcap-fields">
+//                                   <input
+//                                     type="number"
+//                                     placeholder="Сумма ($)"
+//                                     value={deadData?.amount || ""}
+//                                     onChange={(e) =>
+//                                       updateDeadCapAmountOpponent(
+//                                         player,
+//                                         e.target.value,
+//                                       )
+//                                     }
+//                                   />
+//                                   <select
+//                                     value={deadData?.years || 1}
+//                                     onChange={(e) =>
+//                                       updateDeadCapYearsOpponent(
+//                                         player,
+//                                         parseInt(e.target.value),
+//                                       )
+//                                     }
+//                                   >
+//                                     {[1, 2, 3, 4, 5].map((y) => (
+//                                       <option key={y} value={y}>
+//                                         {y} год(а)
+//                                       </option>
+//                                     ))}
+//                                   </select>
+//                                 </div>
+//                               )}
+//                             </li>
+//                           );
+//                         })}
+//                       </ul>
+//                     )}
+//                   </div>
+//                 </div>
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleTrade}>Обменять</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+
+// export default TradesTwoWay;
+
+// -----------------------V2----------------------------
+
+// import React, { useState, useEffect } from "react";
+// import { supabase } from "../../../Supabase";
+// import "./trades_Two_way.css";
+
+// type PlayerList = string[];
+
+// interface PickItem {
+//   id: string;
+//   year: number;
+//   round: 1 | 2;
+//   label: string;
+//   note?: string;
+// }
+
+// interface DeadCapItem {
+//   amount: string;          // сумма dead cap (удержание)
+//   years: number;           // срок удержания (1..5)
+//   newSalary: string;       // новая зарплата после удержания
+//   newYears: number;        // новый срок контракта
+// }
+
+// interface TradesTwoWayProps {
+//   currentTeam: string;
+// }
+
+// const TradesTwoWay: React.FC<TradesTwoWayProps> = ({ currentTeam }) => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [step, setStep] = useState<1 | 2 | 3 | 4 | 5>(1);
+//   const [teams, setTeams] = useState<string[]>([]);
+//   const [selectedOpponent, setSelectedOpponent] = useState("");
+//   const [loadingTeams, setLoadingTeams] = useState(false);
+//   const [loadingPlayers, setLoadingPlayers] = useState(false);
+//   const [loadingGPlayers, setLoadingGPlayers] = useState(false);
+//   const [loadingPicks, setLoadingPicks] = useState(false);
+
+//   // Основные игроки
+//   const [playersCurrentTeam, setPlayersCurrentTeam] = useState<PlayerList>([]);
+//   const [playersOpponent, setPlayersOpponent] = useState<PlayerList>([]);
+//   const [selectedPlayerCurrent, setSelectedPlayerCurrent] = useState("");
+//   const [selectedPlayerOpponent, setSelectedPlayerOpponent] = useState("");
+
+//   // G-League игроки
+//   const [gPlayersCurrentTeam, setGPlayersCurrentTeam] = useState<PlayerList>([]);
+//   const [gPlayersOpponent, setGPlayersOpponent] = useState<PlayerList>([]);
+//   const [selectedGPlayerCurrent, setSelectedGPlayerCurrent] = useState("");
+//   const [selectedGPlayerOpponent, setSelectedGPlayerOpponent] = useState("");
+
+//   // Пики
+//   const [picksCurrentTeam, setPicksCurrentTeam] = useState<PickItem[]>([]);
+//   const [picksOpponent, setPicksOpponent] = useState<PickItem[]>([]);
+//   const [selectedPicksCurrent, setSelectedPicksCurrent] = useState<Set<string>>(new Set());
+//   const [selectedPicksOpponent, setSelectedPicksOpponent] = useState<Set<string>>(new Set());
+//   const [pickNotesCurrent, setPickNotesCurrent] = useState<Map<string, string>>(new Map());
+//   const [pickNotesOpponent, setPickNotesOpponent] = useState<Map<string, string>>(new Map());
+
+//   // Dead cap (расширенный объект)
+//   const [deadCapCurrent, setDeadCapCurrent] = useState<Map<string, DeadCapItem>>(new Map());
+//   const [deadCapOpponent, setDeadCapOpponent] = useState<Map<string, DeadCapItem>>(new Map());
+
+//   // Извлечение ростеров
+//   const extractRoster = (data: any[]): string[] => {
+//     if (!data || data.length === 0) return [];
+//     const rosterSet = new Set<string>();
+//     for (const record of data) {
+//       const rosterField = record.active_roster;
+//       if (!rosterField) continue;
+//       if (Array.isArray(rosterField)) {
+//         rosterField.forEach((player: any) => {
+//           if (typeof player === "string") rosterSet.add(player);
+//         });
+//       } else if (typeof rosterField === "string") {
+//         try {
+//           const parsed = JSON.parse(rosterField);
+//           if (Array.isArray(parsed)) {
+//             parsed.forEach((player: any) => {
+//               if (typeof player === "string") rosterSet.add(player);
+//             });
+//           } else if (typeof parsed === "string") {
+//             rosterSet.add(parsed);
+//           }
+//         } catch {
+//           const parts = rosterField.split(",").map((p) => p.trim());
+//           parts.forEach((player) => {
+//             if (player) rosterSet.add(player);
+//           });
+//         }
+//       }
+//     }
+//     return Array.from(rosterSet);
+//   };
+
+//   // Загрузка списка команд
+//   useEffect(() => {
+//     const fetchTeams = async () => {
+//       setLoadingTeams(true);
+//       try {
+//         const { data, error } = await supabase
+//           .from("Players")
+//           .select("team")
+//           .not("team", "is", null)
+//           .order("team");
+//         if (error) throw error;
+//         const uniqueTeams = Array.from(new Set(data.map((item) => item.team).filter(Boolean))) as string[];
+//         const filteredTeams = uniqueTeams.filter((team) => team !== currentTeam);
+//         setTeams(filteredTeams);
+//       } catch (err) {
+//         console.error("Ошибка загрузки команд:", err);
+//       } finally {
+//         setLoadingTeams(false);
+//       }
+//     };
+//     if (isModalOpen) fetchTeams();
+//   }, [isModalOpen, currentTeam]);
+
+//   const openModal = () => {
+//     setIsModalOpen(true);
+//     resetToStep1();
+//   };
+
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//     resetToStep1();
+//   };
+
+//   const resetToStep1 = () => {
+//     setStep(1);
+//     setSelectedOpponent("");
+//     setPlayersCurrentTeam([]);
+//     setPlayersOpponent([]);
+//     setSelectedPlayerCurrent("");
+//     setSelectedPlayerOpponent("");
+//     setGPlayersCurrentTeam([]);
+//     setGPlayersOpponent([]);
+//     setSelectedGPlayerCurrent("");
+//     setSelectedGPlayerOpponent("");
+//     setPicksCurrentTeam([]);
+//     setPicksOpponent([]);
+//     setSelectedPicksCurrent(new Set());
+//     setSelectedPicksOpponent(new Set());
+//     setPickNotesCurrent(new Map());
+//     setPickNotesOpponent(new Map());
+//     setDeadCapCurrent(new Map());
+//     setDeadCapOpponent(new Map());
+//   };
+
+//   // Загрузка основных составов
+//   const loadMainRosters = async () => {
+//     setLoadingPlayers(true);
+//     try {
+//       const [resultCurrent, resultOpponent] = await Promise.all([
+//         supabase.from("Players").select("active_roster").eq("team", currentTeam),
+//         supabase.from("Players").select("active_roster").eq("team", selectedOpponent),
+//       ]);
+//       if (resultCurrent.error) throw new Error(`Ошибка загрузки ${currentTeam}: ${resultCurrent.error.message}`);
+//       if (resultOpponent.error) throw new Error(`Ошибка загрузки ${selectedOpponent}: ${resultOpponent.error.message}`);
+//       setPlayersCurrentTeam(extractRoster(resultCurrent.data));
+//       setPlayersOpponent(extractRoster(resultOpponent.data));
+//     } catch (err) {
+//       console.error(err);
+//       alert("Не удалось загрузить основных игроков");
+//     } finally {
+//       setLoadingPlayers(false);
+//     }
+//   };
+
+//   // Загрузка G-League составов
+//   const loadGLeagueRosters = async () => {
+//     setLoadingGPlayers(true);
+//     try {
+//       const [resultCurrent, resultOpponent] = await Promise.all([
+//         supabase.from("Players").select("active_roster").eq("g_league", currentTeam),
+//         supabase.from("Players").select("active_roster").eq("g_league", selectedOpponent),
+//       ]);
+//       if (resultCurrent.error) throw new Error(`Ошибка загрузки G-League для ${currentTeam}: ${resultCurrent.error.message}`);
+//       if (resultOpponent.error) throw new Error(`Ошибка загрузки G-League для ${selectedOpponent}: ${resultOpponent.error.message}`);
+//       setGPlayersCurrentTeam(extractRoster(resultCurrent.data));
+//       setGPlayersOpponent(extractRoster(resultOpponent.data));
+//     } catch (err) {
+//       console.error("Ошибка загрузки G-League игроков:", err);
+//       alert("Не удалось загрузить составы G-League");
+//     } finally {
+//       setLoadingGPlayers(false);
+//     }
+//   };
+
+//   // Загрузка пиков
+//   const loadPicks = async () => {
+//     setLoadingPicks(true);
+//     try {
+//       const { data, error } = await supabase.from("Picks").select("*");
+//       if (error) throw error;
+//       if (!data || data.length === 0) {
+//         console.warn("Нет данных в таблице Picks");
+//         setPicksCurrentTeam([]);
+//         setPicksOpponent([]);
+//         return;
+//       }
+
+//       const normalize = (s: string) => s?.trim().toLowerCase() || "";
+//       const currentTeamNorm = normalize(currentTeam);
+//       const opponentNorm = normalize(selectedOpponent);
+
+//       const currentPicks: PickItem[] = [];
+//       const opponentPicks: PickItem[] = [];
+
+//       for (const record of data) {
+//         const addPick = (year: number, round: 1 | 2, teamCol: string, labelCol: string, noteCol: string) => {
+//           const teamRaw = record[teamCol];
+//           const label = record[labelCol];
+//           if (!teamRaw || !label) return;
+//           const teamNorm = normalize(teamRaw);
+//           const note = record[noteCol] || "";
+//           const pickObj: PickItem = {
+//             id: `${labelCol}-${year}-${round}-${record.id || Math.random()}`,
+//             year,
+//             round,
+//             label,
+//             note,
+//           };
+//           if (teamNorm === currentTeamNorm) {
+//             currentPicks.push(pickObj);
+//           } else if (teamNorm === opponentNorm) {
+//             opponentPicks.push(pickObj);
+//           }
+//         };
+
+//         addPick(2026, 1, "team1R26", "1R26", "note1R26");
+//         addPick(2026, 2, "team2R26", "2R26", "note2R26");
+//         addPick(2027, 1, "team1R27", "1R27", "note1R27");
+//         addPick(2027, 2, "team2R27", "2R27", "note2R27");
+//         addPick(2028, 1, "team1R28", "1R28", "note1R28");
+//         addPick(2028, 2, "team2R28", "2R28", "note2R28");
+//       }
+
+//       setPicksCurrentTeam(currentPicks);
+//       setPicksOpponent(opponentPicks);
+//       setSelectedPicksCurrent(new Set());
+//       setSelectedPicksOpponent(new Set());
+//       setPickNotesCurrent(new Map());
+//       setPickNotesOpponent(new Map());
+//     } catch (err) {
+//       console.error("Ошибка загрузки пиков:", err);
+//       alert("Не удалось загрузить драфт-пики");
+//     } finally {
+//       setLoadingPicks(false);
+//     }
+//   };
+
+//   const handleNextToStep2 = async () => {
+//     if (!selectedOpponent) {
+//       alert("Выберите команду для обмена");
+//       return;
+//     }
+//     await loadMainRosters();
+//     setStep(2);
+//   };
+
+//   const handleNextToStep3 = async () => {
+//     await loadGLeagueRosters();
+//     setStep(3);
+//   };
+
+//   const handleNextToStep4 = async () => {
+//     await loadPicks();
+//     setStep(4);
+//   };
+
+//   const handleNextToStep5 = () => {
+//     setStep(5);
+//   };
+
+//   // Обработчики для пиков
+//   const handleTogglePickCurrent = (pick: PickItem) => {
+//     const pickId = pick.id;
+//     setSelectedPicksCurrent((prev) => {
+//       const newSet = new Set(prev);
+//       if (newSet.has(pickId)) {
+//         newSet.delete(pickId);
+//         setPickNotesCurrent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.delete(pickId);
+//           return newNotes;
+//         });
+//       } else {
+//         newSet.add(pickId);
+//         setPickNotesCurrent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.set(pickId, pick.note || "");
+//           return newNotes;
+//         });
+//       }
+//       return newSet;
+//     });
+//   };
+
+//   const handleTogglePickOpponent = (pick: PickItem) => {
+//     const pickId = pick.id;
+//     setSelectedPicksOpponent((prev) => {
+//       const newSet = new Set(prev);
+//       if (newSet.has(pickId)) {
+//         newSet.delete(pickId);
+//         setPickNotesOpponent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.delete(pickId);
+//           return newNotes;
+//         });
+//       } else {
+//         newSet.add(pickId);
+//         setPickNotesOpponent((notes) => {
+//           const newNotes = new Map(notes);
+//           newNotes.set(pickId, pick.note || "");
+//           return newNotes;
+//         });
+//       }
+//       return newSet;
+//     });
+//   };
+
+//   const updatePickNoteCurrent = (pickId: string, note: string) => {
+//     setPickNotesCurrent((prev) => {
+//       const newNotes = new Map(prev);
+//       newNotes.set(pickId, note);
+//       return newNotes;
+//     });
+//   };
+
+//   const updatePickNoteOpponent = (pickId: string, note: string) => {
+//     setPickNotesOpponent((prev) => {
+//       const newNotes = new Map(prev);
+//       newNotes.set(pickId, note);
+//       return newNotes;
+//     });
+//   };
+
+//   // Обработчики Dead Cap (расширенные)
+//   const handleToggleDeadCapCurrent = (player: string) => {
+//     setDeadCapCurrent((prev) => {
+//       const newMap = new Map(prev);
+//       if (newMap.has(player)) {
+//         newMap.delete(player);
+//       } else {
+//         newMap.set(player, { amount: "", years: 1, newSalary: "", newYears: 1 });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const handleToggleDeadCapOpponent = (player: string) => {
+//     setDeadCapOpponent((prev) => {
+//       const newMap = new Map(prev);
+//       if (newMap.has(player)) {
+//         newMap.delete(player);
+//       } else {
+//         newMap.set(player, { amount: "", years: 1, newSalary: "", newYears: 1 });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapAmountCurrent = (player: string, amount: string) => {
+//     setDeadCapCurrent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, amount });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapYearsCurrent = (player: string, years: number) => {
+//     setDeadCapCurrent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, years });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapNewSalaryCurrent = (player: string, newSalary: string) => {
+//     setDeadCapCurrent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, newSalary });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapNewYearsCurrent = (player: string, newYears: number) => {
+//     setDeadCapCurrent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, newYears });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapAmountOpponent = (player: string, amount: string) => {
+//     setDeadCapOpponent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, amount });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapYearsOpponent = (player: string, years: number) => {
+//     setDeadCapOpponent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, years });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapNewSalaryOpponent = (player: string, newSalary: string) => {
+//     setDeadCapOpponent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, newSalary });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const updateDeadCapNewYearsOpponent = (player: string, newYears: number) => {
+//     setDeadCapOpponent((prev) => {
+//       const newMap = new Map(prev);
+//       const existing = newMap.get(player);
+//       if (existing) {
+//         newMap.set(player, { ...existing, newYears });
+//       }
+//       return newMap;
+//     });
+//   };
+
+//   const hasAnyActiveCurrent = () => {
+//     return (
+//       selectedPlayerCurrent !== "" ||
+//       selectedGPlayerCurrent !== "" ||
+//       selectedPicksCurrent.size > 0 ||
+//       deadCapCurrent.size > 0
+//     );
+//   };
+
+//   const hasAnyActiveOpponent = () => {
+//     return (
+//       selectedPlayerOpponent !== "" ||
+//       selectedGPlayerOpponent !== "" ||
+//       selectedPicksOpponent.size > 0 ||
+//       deadCapOpponent.size > 0
+//     );
+//   };
+
+//   const handleTrade = () => {
+//     if (!hasAnyActiveCurrent()) {
+//       alert(`Выберите хотя бы один актив (игрока, пик или dead cap) из команды ${currentTeam}`);
+//       return;
+//     }
+//     if (!hasAnyActiveOpponent()) {
+//       alert(`Выберите хотя бы один актив (игрока, пик или dead cap) из команды ${selectedOpponent}`);
+//       return;
+//     }
+
+//     // Проверка заполнения dead cap и новой зарплаты/срока
+//     let hasError = false;
+//     deadCapCurrent.forEach((data, player) => {
+//       if (!data.amount || data.amount.trim() === "") {
+//         alert(`Для игрока ${player} (${currentTeam}) укажите сумму dead cap`);
+//         hasError = true;
+//       } else if (!data.newSalary || data.newSalary.trim() === "") {
+//         alert(`Для игрока ${player} (${currentTeam}) укажите новую зарплату (с учётом удержания)`);
+//         hasError = true;
+//       } else if (!data.newYears || data.newYears < 1) {
+//         alert(`Для игрока ${player} (${currentTeam}) укажите новый срок контракта`);
+//         hasError = true;
+//       }
+//     });
+//     if (hasError) return;
+
+//     deadCapOpponent.forEach((data, player) => {
+//       if (!data.amount || data.amount.trim() === "") {
+//         alert(`Для игрока ${player} (${selectedOpponent}) укажите сумму dead cap`);
+//         hasError = true;
+//       } else if (!data.newSalary || data.newSalary.trim() === "") {
+//         alert(`Для игрока ${player} (${selectedOpponent}) укажите новую зарплату (с учётом удержания)`);
+//         hasError = true;
+//       } else if (!data.newYears || data.newYears < 1) {
+//         alert(`Для игрока ${player} (${selectedOpponent}) укажите новый срок контракта`);
+//         hasError = true;
+//       }
+//     });
+//     if (hasError) return;
+
+//     const formatPlayers = (main: string, g: string) => {
+//       const parts = [];
+//       if (main) parts.push(`${main} (основной)`);
+//       if (g) parts.push(`${g} (G-League)`);
+//       return parts.length ? parts.join(", ") : "—";
+//     };
+
+//     const formatPicks = (picksSet: Set<string>, picksList: PickItem[], notesMap: Map<string, string>) => {
+//       if (picksSet.size === 0) return "—";
+//       const selected = picksList.filter((p) => picksSet.has(p.id));
+//       return selected
+//         .map((p) => {
+//           const note = notesMap.get(p.id);
+//           return `${p.label} (${p.year}, ${p.round} раунд)${note ? `, примечание: ${note}` : ""}`;
+//         })
+//         .join("; ");
+//     };
+
+//     const formatDeadCap = (deadCapMap: Map<string, DeadCapItem>) => {
+//       if (deadCapMap.size === 0) return "—";
+//       const items: string[] = [];
+//       deadCapMap.forEach((data, player) => {
+//         items.push(`${player}: удержание ${data.amount}$ на ${data.years} год(а), новая зарплата ${data.newSalary}$ на ${data.newYears} год(а)`);
+//       });
+//       return items.join("; ");
+//     };
+
+//     const currentActive = `${formatPlayers(selectedPlayerCurrent, selectedGPlayerCurrent)} | Пики: ${formatPicks(
+//       selectedPicksCurrent,
+//       picksCurrentTeam,
+//       pickNotesCurrent,
+//     )} | Dead cap: ${formatDeadCap(deadCapCurrent)}`;
+//     const opponentActive = `${formatPlayers(selectedPlayerOpponent, selectedGPlayerOpponent)} | Пики: ${formatPicks(
+//       selectedPicksOpponent,
+//       picksOpponent,
+//       pickNotesOpponent,
+//     )} | Dead cap: ${formatDeadCap(deadCapOpponent)}`;
+
+//     alert(`Предложение обмена:\n${currentTeam}: ${currentActive}\n${selectedOpponent}: ${opponentActive}`);
+//     closeModal();
+//   };
+
+//   const handleBack = () => {
+//     if (step === 5) {
+//       setStep(4);
+//     } else if (step === 4) {
+//       setStep(3);
+//     } else if (step === 3) {
+//       setStep(2);
+//     } else if (step === 2) {
+//       setStep(1);
+//       setSelectedPlayerCurrent("");
+//       setSelectedPlayerOpponent("");
+//       setPlayersCurrentTeam([]);
+//       setPlayersOpponent([]);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <button className="tradesTW-trade-two-way-button" onClick={openModal}>
+//         Trade Two-way
+//       </button>
+//       {isModalOpen && (
+//         <div className="tradesTW-modal-overlay" onClick={closeModal}>
+//           <div className="tradesTW-modal-content" onClick={(e) => e.stopPropagation()}>
+//             {/* Шаг 1: выбор команды */}
+//             {step === 1 && (
+//               <>
+//                 <h2>Выберите команду для обмена с {currentTeam}</h2>
+//                 {loadingTeams ? (
+//                   <p>Загрузка команд...</p>
+//                 ) : (
+//                   <div className="tradesTW-team-selectors">
+//                     <div className="tradesTW-selector">
+//                       <label>Ваша команда:</label>
+//                       <input type="text" value={currentTeam} disabled className="tradesTW-fixed-team" />
+//                     </div>
+//                     <div className="tradesTW-selector">
+//                       <label>Команда для обмена:</label>
+//                       <select value={selectedOpponent} onChange={(e) => setSelectedOpponent(e.target.value)}>
+//                         <option value="">-- Выберите команду --</option>
+//                         {teams.map((team) => (
+//                           <option key={team} value={team}>
+//                             {team}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep2} disabled={loadingTeams}>
+//                     Далее
+//                   </button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 2: основные игроки */}
+//             {step === 2 && (
+//               <>
+//                 <h2>Основные игроки (необязательно)</h2>
+//                 {loadingPlayers ? (
+//                   <p>Загрузка...</p>
+//                 ) : (
+//                   <div className="tradesTW-team-selectors">
+//                     <div className="tradesTW-selector">
+//                       <label>{currentTeam}:</label>
+//                       <select value={selectedPlayerCurrent} onChange={(e) => setSelectedPlayerCurrent(e.target.value)}>
+//                         <option value="">-- Не выбран --</option>
+//                         {playersCurrentTeam.map((p, i) => (
+//                           <option key={`${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                     <div className="tradesTW-selector">
+//                       <label>{selectedOpponent}:</label>
+//                       <select value={selectedPlayerOpponent} onChange={(e) => setSelectedPlayerOpponent(e.target.value)}>
+//                         <option value="">-- Не выбран --</option>
+//                         {playersOpponent.map((p, i) => (
+//                           <option key={`${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep3}>Далее</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 3: G-League игроки */}
+//             {step === 3 && (
+//               <>
+//                 <h2>G-League игроки (необязательно)</h2>
+//                 {loadingGPlayers ? (
+//                   <p>Загрузка...</p>
+//                 ) : (
+//                   <div className="tradesTW-team-selectors">
+//                     <div className="tradesTW-selector">
+//                       <label>{currentTeam} (G-League):</label>
+//                       <select value={selectedGPlayerCurrent} onChange={(e) => setSelectedGPlayerCurrent(e.target.value)}>
+//                         <option value="">-- Не выбран --</option>
+//                         {gPlayersCurrentTeam.map((p, i) => (
+//                           <option key={`g-${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                     <div className="tradesTW-selector">
+//                       <label>{selectedOpponent} (G-League):</label>
+//                       <select value={selectedGPlayerOpponent} onChange={(e) => setSelectedGPlayerOpponent(e.target.value)}>
+//                         <option value="">-- Не выбран --</option>
+//                         {gPlayersOpponent.map((p, i) => (
+//                           <option key={`g-${p}-${i}`} value={p}>
+//                             {p}
+//                           </option>
+//                         ))}
+//                       </select>
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep4}>Далее</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 4: драфт-пики */}
+//             {step === 4 && (
+//               <>
+//                 <h2>Драфт-пики (необязательно)</h2>
+//                 {loadingPicks ? (
+//                   <p>Загрузка пиков...</p>
+//                 ) : (
+//                   <div className="tradesTW-picks-container">
+//                     <div className="tradesTW-picks-column">
+//                       <h3>{currentTeam}</h3>
+//                       {picksCurrentTeam.length === 0 ? (
+//                         <p>Нет доступных пиков</p>
+//                       ) : (
+//                         <ul className="tradesTW-picks-list">
+//                           {picksCurrentTeam.map((pick) => {
+//                             const isChecked = selectedPicksCurrent.has(pick.id);
+//                             return (
+//                               <li key={pick.id}>
+//                                 <label>
+//                                   <input
+//                                     type="checkbox"
+//                                     checked={isChecked}
+//                                     onChange={() => handleTogglePickCurrent(pick)}
+//                                   />
+//                                   {pick.label} ({pick.year}, {pick.round} раунд)
+//                                   {pick.note && <span className="tradesTW-pick-note"> — {pick.note}</span>}
+//                                 </label>
+//                                 {isChecked && (
+//                                   <div className="tradesTW-pick-note-input">
+//                                     <input
+//                                       type="text"
+//                                       placeholder="Примечание к пику"
+//                                       value={pickNotesCurrent.get(pick.id) || ""}
+//                                       onChange={(e) => updatePickNoteCurrent(pick.id, e.target.value)}
+//                                     />
+//                                   </div>
+//                                 )}
+//                               </li>
+//                             );
+//                           })}
+//                         </ul>
+//                       )}
+//                     </div>
+//                     <div className="tradesTW-picks-column">
+//                       <h3>{selectedOpponent}</h3>
+//                       {picksOpponent.length === 0 ? (
+//                         <p>Нет доступных пиков</p>
+//                       ) : (
+//                         <ul className="tradesTW-picks-list">
+//                           {picksOpponent.map((pick) => {
+//                             const isChecked = selectedPicksOpponent.has(pick.id);
+//                             return (
+//                               <li key={pick.id}>
+//                                 <label>
+//                                   <input
+//                                     type="checkbox"
+//                                     checked={isChecked}
+//                                     onChange={() => handleTogglePickOpponent(pick)}
+//                                   />
+//                                   {pick.label} ({pick.year}, {pick.round} раунд)
+//                                   {pick.note && <span className="tradesTW-pick-note"> — {pick.note}</span>}
+//                                 </label>
+//                                 {isChecked && (
+//                                   <div className="tradesTW-pick-note-input">
+//                                     <input
+//                                       type="text"
+//                                       placeholder="Примечание к пику"
+//                                       value={pickNotesOpponent.get(pick.id) || ""}
+//                                       onChange={(e) => updatePickNoteOpponent(pick.id, e.target.value)}
+//                                     />
+//                                   </div>
+//                                 )}
+//                               </li>
+//                             );
+//                           })}
+//                         </ul>
+//                       )}
+//                     </div>
+//                   </div>
+//                 )}
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleNextToStep5}>Далее</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+
+//             {/* Шаг 5: Dead cap + новая зарплата/срок */}
+//             {step === 5 && (
+//               <>
+//                 <h2>Dead cap и новая зарплата</h2>
+//                 <p>Выберите игроков, для которых часть зарплаты остаётся у команды, и укажите новую зарплату/срок для принимающей стороны.</p>
+//                 <div className="tradesTW-deadcap-container">
+//                   {/* Dead cap текущей команды */}
+//                   <div className="tradesTW-deadcap-column">
+//                     <h3>{currentTeam}</h3>
+//                     {playersCurrentTeam.length === 0 ? (
+//                       <p>Нет игроков основного состава</p>
+//                     ) : (
+//                       <ul className="tradesTW-deadcap-list">
+//                         {playersCurrentTeam.map((player) => {
+//                           const isSelected = deadCapCurrent.has(player);
+//                           const deadData = deadCapCurrent.get(player);
+//                           return (
+//                             <li key={player}>
+//                               <label>
+//                                 <input
+//                                   type="checkbox"
+//                                   checked={isSelected}
+//                                   onChange={() => handleToggleDeadCapCurrent(player)}
+//                                 />
+//                                 {player}
+//                               </label>
+//                               {isSelected && (
+//                                 <div className="tradesTW-deadcap-fields">
+//                                   <div className="tradesTW-deadcap-row">
+//                                     <input
+//                                       type="number"
+//                                       placeholder="Сумма удержания ($)"
+//                                       value={deadData?.amount || ""}
+//                                       onChange={(e) => updateDeadCapAmountCurrent(player, e.target.value)}
+//                                     />
+//                                     <select
+//                                       value={deadData?.years || 1}
+//                                       onChange={(e) => updateDeadCapYearsCurrent(player, parseInt(e.target.value))}
+//                                     >
+//                                       {[1, 2, 3, 4, 5].map((y) => (
+//                                         <option key={y} value={y}>
+//                                           {y} год(а) удержания
+//                                         </option>
+//                                       ))}
+//                                     </select>
+//                                   </div>
+//                                   <div className="tradesTW-new-salary-row">
+//                                     <input
+//                                       type="number"
+//                                       placeholder="Новая зарплата ($)"
+//                                       value={deadData?.newSalary || ""}
+//                                       onChange={(e) => updateDeadCapNewSalaryCurrent(player, e.target.value)}
+//                                     />
+//                                     <select
+//                                       value={deadData?.newYears || 1}
+//                                       onChange={(e) => updateDeadCapNewYearsCurrent(player, parseInt(e.target.value))}
+//                                     >
+//                                       {[1, 2, 3, 4, 5].map((y) => (
+//                                         <option key={y} value={y}>
+//                                           {y} год(а) нового контракта
+//                                         </option>
+//                                       ))}
+//                                     </select>
+//                                   </div>
+//                                 </div>
+//                               )}
+//                             </li>
+//                           );
+//                         })}
+//                       </ul>
+//                     )}
+//                   </div>
+
+//                   {/* Dead cap команды оппонента */}
+//                   <div className="tradesTW-deadcap-column">
+//                     <h3>{selectedOpponent}</h3>
+//                     {playersOpponent.length === 0 ? (
+//                       <p>Нет игроков основного состава</p>
+//                     ) : (
+//                       <ul className="tradesTW-deadcap-list">
+//                         {playersOpponent.map((player) => {
+//                           const isSelected = deadCapOpponent.has(player);
+//                           const deadData = deadCapOpponent.get(player);
+//                           return (
+//                             <li key={player}>
+//                               <label>
+//                                 <input
+//                                   type="checkbox"
+//                                   checked={isSelected}
+//                                   onChange={() => handleToggleDeadCapOpponent(player)}
+//                                 />
+//                                 {player}
+//                               </label>
+//                               {isSelected && (
+//                                 <div className="tradesTW-deadcap-fields">
+//                                   <div className="tradesTW-deadcap-row">
+//                                     <input
+//                                       type="number"
+//                                       placeholder="Сумма удержания ($)"
+//                                       value={deadData?.amount || ""}
+//                                       onChange={(e) => updateDeadCapAmountOpponent(player, e.target.value)}
+//                                     />
+//                                     <select
+//                                       value={deadData?.years || 1}
+//                                       onChange={(e) => updateDeadCapYearsOpponent(player, parseInt(e.target.value))}
+//                                     >
+//                                       {[1, 2, 3, 4, 5].map((y) => (
+//                                         <option key={y} value={y}>
+//                                           {y} год(а) удержания
+//                                         </option>
+//                                       ))}
+//                                     </select>
+//                                   </div>
+//                                   <div className="tradesTW-new-salary-row">
+//                                     <input
+//                                       type="number"
+//                                       placeholder="Новая зарплата ($)"
+//                                       value={deadData?.newSalary || ""}
+//                                       onChange={(e) => updateDeadCapNewSalaryOpponent(player, e.target.value)}
+//                                     />
+//                                     <select
+//                                       value={deadData?.newYears || 1}
+//                                       onChange={(e) => updateDeadCapNewYearsOpponent(player, parseInt(e.target.value))}
+//                                     >
+//                                       {[1, 2, 3, 4, 5].map((y) => (
+//                                         <option key={y} value={y}>
+//                                           {y} год(а) нового контракта
+//                                         </option>
+//                                       ))}
+//                                     </select>
+//                                   </div>
+//                                 </div>
+//                               )}
+//                             </li>
+//                           );
+//                         })}
+//                       </ul>
+//                     )}
+//                   </div>
+//                 </div>
+//                 <div className="tradesTW-modal-actions">
+//                   <button onClick={handleTrade}>Обменять</button>
+//                   <button onClick={handleBack}>Назад</button>
+//                   <button onClick={closeModal}>Отмена</button>
+//                 </div>
+//               </>
+//             )}
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+
+// export default TradesTwoWay;
+
+// ----------------------итоги---------------------------
+
+
+
+import React, { useState, useEffect, useCallback } from "react";
+import { supabase } from "../../../Supabase";
+import "./trades_Two_way.css";
+
+type PlayerList = string[];
+
+interface PickItem {
+  id: string;
+  year: number;
+  round: 1 | 2;
+  label: string;
+  note?: string;
+}
+
+interface DeadCapItem {
+  amount: string; // сумма dead cap (удержание)
+  years: number; // срок удержания (1..5)
+  newSalary: string; // новая зарплата после удержания
+  newYears: number; // новый срок контракта
+}
+
+interface TradesTwoWayProps {
+  currentTeam: string;
+}
+
+const TradesTwoWay: React.FC<TradesTwoWayProps> = ({ currentTeam }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [step, setStep] = useState<1 | 2 | 3 | 4 | 5 | 6>(1);
+  const [teams, setTeams] = useState<string[]>([]);
+  const [selectedOpponent, setSelectedOpponent] = useState("");
+  const [loadingTeams, setLoadingTeams] = useState(false);
+  const [loadingPlayers, setLoadingPlayers] = useState(false);
+  const [loadingGPlayers, setLoadingGPlayers] = useState(false);
+  const [loadingPicks, setLoadingPicks] = useState(false);
+
+  // Основные игроки
+  const [playersCurrentTeam, setPlayersCurrentTeam] = useState<PlayerList>([]);
+  const [playersOpponent, setPlayersOpponent] = useState<PlayerList>([]);
+  const [selectedPlayerCurrent, setSelectedPlayerCurrent] = useState("");
+  const [selectedPlayerOpponent, setSelectedPlayerOpponent] = useState("");
+
+  // G-League игроки
+  const [gPlayersCurrentTeam, setGPlayersCurrentTeam] = useState<PlayerList>(
+    [],
+  );
+  const [gPlayersOpponent, setGPlayersOpponent] = useState<PlayerList>([]);
+  const [selectedGPlayerCurrent, setSelectedGPlayerCurrent] = useState("");
+  const [selectedGPlayerOpponent, setSelectedGPlayerOpponent] = useState("");
+
+  // Пики
+  const [picksCurrentTeam, setPicksCurrentTeam] = useState<PickItem[]>([]);
+  const [picksOpponent, setPicksOpponent] = useState<PickItem[]>([]);
+  const [selectedPicksCurrent, setSelectedPicksCurrent] = useState<Set<string>>(
+    new Set(),
+  );
+  const [selectedPicksOpponent, setSelectedPicksOpponent] = useState<
+    Set<string>
+  >(new Set());
+  const [pickNotesCurrent, setPickNotesCurrent] = useState<Map<string, string>>(
+    new Map(),
+  );
+  const [pickNotesOpponent, setPickNotesOpponent] = useState<
+    Map<string, string>
+  >(new Map());
+
+  // Dead cap (расширенный объект)
+  const [deadCapCurrent, setDeadCapCurrent] = useState<
+    Map<string, DeadCapItem>
+  >(new Map());
+  const [deadCapOpponent, setDeadCapOpponent] = useState<
+    Map<string, DeadCapItem>
+  >(new Map());
+
+  // ========== Функции форматирования ==========
+  const formatPlayers = useCallback((main: string, g: string) => {
+    const parts = [];
+    if (main) parts.push(`${main} (основной)`);
+    if (g) parts.push(`${g} (G-League)`);
+    return parts.length ? parts.join(", ") : "—";
+  }, []);
+
+  const formatPicks = useCallback(
+    (
+      picksSet: Set<string>,
+      picksList: PickItem[],
+      notesMap: Map<string, string>,
+    ) => {
+      if (picksSet.size === 0) return "—";
+      const selected = picksList.filter((p) => picksSet.has(p.id));
+      return selected
+        .map((p) => {
+          const note = notesMap.get(p.id);
+          return `${p.label} (${p.year}, ${p.round} раунд)${note ? `, примечание: ${note}` : ""}`;
+        })
+        .join("; ");
+    },
+    [],
+  );
+
+  const formatDeadCap = useCallback((deadCapMap: Map<string, DeadCapItem>) => {
+    if (deadCapMap.size === 0) return "—";
+    const items: string[] = [];
+    deadCapMap.forEach((data, player) => {
+      if (data.amount || data.newSalary) {
+        items.push(
+          `${player}: удержание ${data.amount || "?"}$ на ${data.years} год(а), новая зарплата ${data.newSalary || "?"}$ на ${data.newYears} год(а)`,
+        );
+      } else {
+        items.push(`${player}: выбран для dead cap (детали не указаны)`);
+      }
+    });
+    return items.join("; ");
+  }, []);
+
+  // Извлечение ростеров
+  const extractRoster = (data: any[]): string[] => {
+    if (!data || data.length === 0) return [];
+    const rosterSet = new Set<string>();
+    for (const record of data) {
+      const rosterField = record.active_roster;
+      if (!rosterField) continue;
+      if (Array.isArray(rosterField)) {
+        rosterField.forEach((player: any) => {
+          if (typeof player === "string") rosterSet.add(player);
+        });
+      } else if (typeof rosterField === "string") {
+        try {
+          const parsed = JSON.parse(rosterField);
+          if (Array.isArray(parsed)) {
+            parsed.forEach((player: any) => {
+              if (typeof player === "string") rosterSet.add(player);
+            });
+          } else if (typeof parsed === "string") {
+            rosterSet.add(parsed);
+          }
+        } catch {
+          const parts = rosterField.split(",").map((p) => p.trim());
+          parts.forEach((player) => {
+            if (player) rosterSet.add(player);
+          });
+        }
+      }
+    }
+    return Array.from(rosterSet);
+  };
+
+  // Загрузка списка команд
+  useEffect(() => {
+    const fetchTeams = async () => {
+      setLoadingTeams(true);
+      try {
+        const { data, error } = await supabase
+          .from("Players")
+          .select("team")
+          .not("team", "is", null)
+          .order("team");
+        if (error) throw error;
+        const uniqueTeams = Array.from(
+          new Set(data.map((item) => item.team).filter(Boolean)),
+        ) as string[];
+        const filteredTeams = uniqueTeams.filter(
+          (team) => team !== currentTeam,
+        );
+        setTeams(filteredTeams);
+      } catch (err) {
+        console.error("Ошибка загрузки команд:", err);
+      } finally {
+        setLoadingTeams(false);
+      }
+    };
+    if (isModalOpen) fetchTeams();
+  }, [isModalOpen, currentTeam]);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    resetToStep1();
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    resetToStep1();
+  };
+
+  const resetToStep1 = () => {
+    setStep(1);
+    setSelectedOpponent("");
+    setPlayersCurrentTeam([]);
+    setPlayersOpponent([]);
+    setSelectedPlayerCurrent("");
+    setSelectedPlayerOpponent("");
+    setGPlayersCurrentTeam([]);
+    setGPlayersOpponent([]);
+    setSelectedGPlayerCurrent("");
+    setSelectedGPlayerOpponent("");
+    setPicksCurrentTeam([]);
+    setPicksOpponent([]);
+    setSelectedPicksCurrent(new Set());
+    setSelectedPicksOpponent(new Set());
+    setPickNotesCurrent(new Map());
+    setPickNotesOpponent(new Map());
+    setDeadCapCurrent(new Map());
+    setDeadCapOpponent(new Map());
+  };
+
+  // Загрузка основных составов
+  const loadMainRosters = async () => {
+    setLoadingPlayers(true);
+    try {
+      const [resultCurrent, resultOpponent] = await Promise.all([
+        supabase
+          .from("Players")
+          .select("active_roster")
+          .eq("team", currentTeam),
+        supabase
+          .from("Players")
+          .select("active_roster")
+          .eq("team", selectedOpponent),
+      ]);
+      if (resultCurrent.error)
+        throw new Error(
+          `Ошибка загрузки ${currentTeam}: ${resultCurrent.error.message}`,
+        );
+      if (resultOpponent.error)
+        throw new Error(
+          `Ошибка загрузки ${selectedOpponent}: ${resultOpponent.error.message}`,
+        );
+      setPlayersCurrentTeam(extractRoster(resultCurrent.data));
+      setPlayersOpponent(extractRoster(resultOpponent.data));
+    } catch (err) {
+      console.error(err);
+      alert("Не удалось загрузить основных игроков");
+    } finally {
+      setLoadingPlayers(false);
+    }
+  };
+
+  // Загрузка G-League составов
+  const loadGLeagueRosters = async () => {
+    setLoadingGPlayers(true);
+    try {
+      const [resultCurrent, resultOpponent] = await Promise.all([
+        supabase
+          .from("Players")
+          .select("active_roster")
+          .eq("g_league", currentTeam),
+        supabase
+          .from("Players")
+          .select("active_roster")
+          .eq("g_league", selectedOpponent),
+      ]);
+      if (resultCurrent.error)
+        throw new Error(
+          `Ошибка загрузки G-League для ${currentTeam}: ${resultCurrent.error.message}`,
+        );
+      if (resultOpponent.error)
+        throw new Error(
+          `Ошибка загрузки G-League для ${selectedOpponent}: ${resultOpponent.error.message}`,
+        );
+      setGPlayersCurrentTeam(extractRoster(resultCurrent.data));
+      setGPlayersOpponent(extractRoster(resultOpponent.data));
+    } catch (err) {
+      console.error("Ошибка загрузки G-League игроков:", err);
+      alert("Не удалось загрузить составы G-League");
+    } finally {
+      setLoadingGPlayers(false);
+    }
+  };
+
+  // Загрузка пиков
+  const loadPicks = async () => {
+    setLoadingPicks(true);
+    try {
+      const { data, error } = await supabase.from("Picks").select("*");
+      if (error) throw error;
+      if (!data || data.length === 0) {
+        console.warn("Нет данных в таблице Picks");
+        setPicksCurrentTeam([]);
+        setPicksOpponent([]);
+        return;
+      }
+
+      const normalize = (s: string) => s?.trim().toLowerCase() || "";
+      const currentTeamNorm = normalize(currentTeam);
+      const opponentNorm = normalize(selectedOpponent);
+
+      const currentPicks: PickItem[] = [];
+      const opponentPicks: PickItem[] = [];
+
+      for (const record of data) {
+        const addPick = (
+          year: number,
+          round: 1 | 2,
+          teamCol: string,
+          labelCol: string,
+          noteCol: string,
+        ) => {
+          const teamRaw = record[teamCol];
+          const label = record[labelCol];
+          if (!teamRaw || !label) return;
+          const teamNorm = normalize(teamRaw);
+          const note = record[noteCol] || "";
+          const pickObj: PickItem = {
+            id: `${labelCol}-${year}-${round}-${record.id || Math.random()}`,
+            year,
+            round,
+            label,
+            note,
+          };
+          if (teamNorm === currentTeamNorm) {
+            currentPicks.push(pickObj);
+          } else if (teamNorm === opponentNorm) {
+            opponentPicks.push(pickObj);
+          }
+        };
+
+        addPick(2026, 1, "team1R26", "1R26", "note1R26");
+        addPick(2026, 2, "team2R26", "2R26", "note2R26");
+        addPick(2027, 1, "team1R27", "1R27", "note1R27");
+        addPick(2027, 2, "team2R27", "2R27", "note2R27");
+        addPick(2028, 1, "team1R28", "1R28", "note1R28");
+        addPick(2028, 2, "team2R28", "2R28", "note2R28");
+      }
+
+      setPicksCurrentTeam(currentPicks);
+      setPicksOpponent(opponentPicks);
+      setSelectedPicksCurrent(new Set());
+      setSelectedPicksOpponent(new Set());
+      setPickNotesCurrent(new Map());
+      setPickNotesOpponent(new Map());
+    } catch (err) {
+      console.error("Ошибка загрузки пиков:", err);
+      alert("Не удалось загрузить драфт-пики");
+    } finally {
+      setLoadingPicks(false);
+    }
+  };
+
+  const handleNextToStep2 = async () => {
+    if (!selectedOpponent) {
+      alert("Выберите команду для обмена");
+      return;
+    }
+    await loadMainRosters();
+    setStep(2);
+  };
+
+  const handleNextToStep3 = async () => {
+    await loadGLeagueRosters();
+    setStep(3);
+  };
+
+  const handleNextToStep4 = async () => {
+    await loadPicks();
+    setStep(4);
+  };
+
+  const handleNextToStep5 = () => {
+    setStep(5);
+  };
+
+  // Проверка наличия активов
+  const hasAnyActiveCurrent = () => {
+    return (
+      selectedPlayerCurrent !== "" ||
+      selectedGPlayerCurrent !== "" ||
+      selectedPicksCurrent.size > 0 ||
+      deadCapCurrent.size > 0
+    );
+  };
+
+  const hasAnyActiveOpponent = () => {
+    return (
+      selectedPlayerOpponent !== "" ||
+      selectedGPlayerOpponent !== "" ||
+      selectedPicksOpponent.size > 0 ||
+      deadCapOpponent.size > 0
+    );
+  };
+
+  // Переход к итоговому шагу (без принудительных проверок dead cap)
+  const goToSummary = () => {
+    if (!hasAnyActiveCurrent()) {
+      alert(
+        `Выберите хотя бы один актив (игрока, пик или dead cap) из команды ${currentTeam}`,
+      );
+      return;
+    }
+    if (!hasAnyActiveOpponent()) {
+      alert(
+        `Выберите хотя бы один актив (игрока, пик или dead cap) из команды ${selectedOpponent}`,
+      );
+      return;
+    }
+    // Проверки dead cap на заполнение полей удалены – всё опционально
+    setStep(6);
+  };
+
+  // Отправка предложения
+  const submitTrade = () => {
+    const currentActive = `${formatPlayers(selectedPlayerCurrent, selectedGPlayerCurrent)} | Пики: ${formatPicks(
+      selectedPicksCurrent,
+      picksCurrentTeam,
+      pickNotesCurrent,
+    )} | Dead cap: ${formatDeadCap(deadCapCurrent)}`;
+
+    const opponentActive = `${formatPlayers(selectedPlayerOpponent, selectedGPlayerOpponent)} | Пики: ${formatPicks(
+      selectedPicksOpponent,
+      picksOpponent,
+      pickNotesOpponent,
+    )} | Dead cap: ${formatDeadCap(deadCapOpponent)}`;
+
+    alert(
+      `Предложение обмена отправлено!\n\n${currentTeam}: ${currentActive}\n${selectedOpponent}: ${opponentActive}`,
+    );
+    closeModal();
+  };
+
+  // Сброс всех выборов и возврат на шаг 1
+  const resetSelection = () => {
+    setStep(1);
+    setSelectedOpponent("");
+    setSelectedPlayerCurrent("");
+    setSelectedPlayerOpponent("");
+    setSelectedGPlayerCurrent("");
+    setSelectedGPlayerOpponent("");
+    setSelectedPicksCurrent(new Set());
+    setSelectedPicksOpponent(new Set());
+    setPickNotesCurrent(new Map());
+    setPickNotesOpponent(new Map());
+    setDeadCapCurrent(new Map());
+    setDeadCapOpponent(new Map());
+    setPlayersCurrentTeam([]);
+    setPlayersOpponent([]);
+    setGPlayersCurrentTeam([]);
+    setGPlayersOpponent([]);
+    setPicksCurrentTeam([]);
+    setPicksOpponent([]);
+  };
+
+  const handleBack = () => {
+    if (step === 6) {
+      setStep(5);
+    } else if (step === 5) {
+      setStep(4);
+    } else if (step === 4) {
+      setStep(3);
+    } else if (step === 3) {
+      setStep(2);
+    } else if (step === 2) {
+      setStep(1);
+      setSelectedPlayerCurrent("");
+      setSelectedPlayerOpponent("");
+      setPlayersCurrentTeam([]);
+      setPlayersOpponent([]);
+    }
+  };
+
+  // Обработчики для пиков
+  const handleTogglePickCurrent = (pick: PickItem) => {
+    const pickId = pick.id;
+    setSelectedPicksCurrent((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(pickId)) {
+        newSet.delete(pickId);
+        setPickNotesCurrent((notes) => {
+          const newNotes = new Map(notes);
+          newNotes.delete(pickId);
+          return newNotes;
+        });
+      } else {
+        newSet.add(pickId);
+        setPickNotesCurrent((notes) => {
+          const newNotes = new Map(notes);
+          newNotes.set(pickId, pick.note || "");
+          return newNotes;
+        });
+      }
+      return newSet;
+    });
+  };
+
+  const handleTogglePickOpponent = (pick: PickItem) => {
+    const pickId = pick.id;
+    setSelectedPicksOpponent((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(pickId)) {
+        newSet.delete(pickId);
+        setPickNotesOpponent((notes) => {
+          const newNotes = new Map(notes);
+          newNotes.delete(pickId);
+          return newNotes;
+        });
+      } else {
+        newSet.add(pickId);
+        setPickNotesOpponent((notes) => {
+          const newNotes = new Map(notes);
+          newNotes.set(pickId, pick.note || "");
+          return newNotes;
+        });
+      }
+      return newSet;
+    });
+  };
+
+  const updatePickNoteCurrent = (pickId: string, note: string) => {
+    setPickNotesCurrent((prev) => {
+      const newNotes = new Map(prev);
+      newNotes.set(pickId, note);
+      return newNotes;
+    });
+  };
+
+  const updatePickNoteOpponent = (pickId: string, note: string) => {
+    setPickNotesOpponent((prev) => {
+      const newNotes = new Map(prev);
+      newNotes.set(pickId, note);
+      return newNotes;
+    });
+  };
+
+  // Обработчики Dead Cap
+  const handleToggleDeadCapCurrent = (player: string) => {
+    setDeadCapCurrent((prev) => {
+      const newMap = new Map(prev);
+      if (newMap.has(player)) {
+        newMap.delete(player);
+      } else {
+        newMap.set(player, {
+          amount: "",
+          years: 1,
+          newSalary: "",
+          newYears: 1,
+        });
+      }
+      return newMap;
+    });
+  };
+
+  const handleToggleDeadCapOpponent = (player: string) => {
+    setDeadCapOpponent((prev) => {
+      const newMap = new Map(prev);
+      if (newMap.has(player)) {
+        newMap.delete(player);
+      } else {
+        newMap.set(player, {
+          amount: "",
+          years: 1,
+          newSalary: "",
+          newYears: 1,
+        });
+      }
+      return newMap;
+    });
+  };
+
+  const updateDeadCapAmountCurrent = (player: string, amount: string) => {
+    setDeadCapCurrent((prev) => {
+      const newMap = new Map(prev);
+      const existing = newMap.get(player);
+      if (existing) {
+        newMap.set(player, { ...existing, amount });
+      }
+      return newMap;
+    });
+  };
+
+  const updateDeadCapYearsCurrent = (player: string, years: number) => {
+    setDeadCapCurrent((prev) => {
+      const newMap = new Map(prev);
+      const existing = newMap.get(player);
+      if (existing) {
+        newMap.set(player, { ...existing, years });
+      }
+      return newMap;
+    });
+  };
+
+  const updateDeadCapNewSalaryCurrent = (player: string, newSalary: string) => {
+    setDeadCapCurrent((prev) => {
+      const newMap = new Map(prev);
+      const existing = newMap.get(player);
+      if (existing) {
+        newMap.set(player, { ...existing, newSalary });
+      }
+      return newMap;
+    });
+  };
+
+  const updateDeadCapNewYearsCurrent = (player: string, newYears: number) => {
+    setDeadCapCurrent((prev) => {
+      const newMap = new Map(prev);
+      const existing = newMap.get(player);
+      if (existing) {
+        newMap.set(player, { ...existing, newYears });
+      }
+      return newMap;
+    });
+  };
+
+  const updateDeadCapAmountOpponent = (player: string, amount: string) => {
+    setDeadCapOpponent((prev) => {
+      const newMap = new Map(prev);
+      const existing = newMap.get(player);
+      if (existing) {
+        newMap.set(player, { ...existing, amount });
+      }
+      return newMap;
+    });
+  };
+
+  const updateDeadCapYearsOpponent = (player: string, years: number) => {
+    setDeadCapOpponent((prev) => {
+      const newMap = new Map(prev);
+      const existing = newMap.get(player);
+      if (existing) {
+        newMap.set(player, { ...existing, years });
+      }
+      return newMap;
+    });
+  };
+
+  const updateDeadCapNewSalaryOpponent = (
+    player: string,
+    newSalary: string,
+  ) => {
+    setDeadCapOpponent((prev) => {
+      const newMap = new Map(prev);
+      const existing = newMap.get(player);
+      if (existing) {
+        newMap.set(player, { ...existing, newSalary });
+      }
+      return newMap;
+    });
+  };
+
+  const updateDeadCapNewYearsOpponent = (player: string, newYears: number) => {
+    setDeadCapOpponent((prev) => {
+      const newMap = new Map(prev);
+      const existing = newMap.get(player);
+      if (existing) {
+        newMap.set(player, { ...existing, newYears });
+      }
+      return newMap;
+    });
+  };
+
+  return (
+    <>
+      <button className="tradesTW-trade-two-way-button" onClick={openModal}>
+        Trade Two-way
+      </button>
+      {isModalOpen && (
+        <div className="tradesTW-modal-overlay" onClick={closeModal}>
+          <div
+            className="tradesTW-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Шаг 1: выбор команды */}
+            {step === 1 && (
+              <>
+                <h2>Выберите команду для обмена с {currentTeam}</h2>
+                {loadingTeams ? (
+                  <p>Загрузка команд...</p>
+                ) : (
+                  <div className="tradesTW-team-selectors">
+                    <div className="tradesTW-selector">
+                      <label>Ваша команда:</label>
+                      <input
+                        type="text"
+                        value={currentTeam}
+                        disabled
+                        className="tradesTW-fixed-team"
+                      />
+                    </div>
+                    <div className="tradesTW-selector">
+                      <label>Команда для обмена:</label>
+                      <select
+                        value={selectedOpponent}
+                        onChange={(e) => setSelectedOpponent(e.target.value)}
+                      >
+                        <option value="">-- Выберите команду --</option>
+                        {teams.map((team) => (
+                          <option key={team} value={team}>
+                            {team}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                )}
+                <div className="tradesTW-modal-actions">
+                  <button onClick={handleNextToStep2} disabled={loadingTeams}>
+                    Далее
+                  </button>
+                  <button onClick={closeModal}>Отмена</button>
+                </div>
+              </>
+            )}
+
+            {/* Шаг 2: основные игроки */}
+            {step === 2 && (
+              <>
+                <h2>Основные игроки (необязательно)</h2>
+                {loadingPlayers ? (
+                  <p>Загрузка...</p>
+                ) : (
+                  <div className="tradesTW-team-selectors">
+                    <div className="tradesTW-selector">
+                      <label>{currentTeam}:</label>
+                      <select
+                        value={selectedPlayerCurrent}
+                        onChange={(e) =>
+                          setSelectedPlayerCurrent(e.target.value)
+                        }
+                      >
+                        <option value="">-- Не выбран --</option>
+                        {playersCurrentTeam.map((p, i) => (
+                          <option key={`${p}-${i}`} value={p}>
+                            {p}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="tradesTW-selector">
+                      <label>{selectedOpponent}:</label>
+                      <select
+                        value={selectedPlayerOpponent}
+                        onChange={(e) =>
+                          setSelectedPlayerOpponent(e.target.value)
+                        }
+                      >
+                        <option value="">-- Не выбран --</option>
+                        {playersOpponent.map((p, i) => (
+                          <option key={`${p}-${i}`} value={p}>
+                            {p}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                )}
+                <div className="tradesTW-modal-actions">
+                  <button onClick={handleNextToStep3}>Далее</button>
+                  <button onClick={handleBack}>Назад</button>
+                  <button onClick={closeModal}>Отмена</button>
+                </div>
+              </>
+            )}
+
+            {/* Шаг 3: G-League игроки */}
+            {step === 3 && (
+              <>
+                <h2>G-League игроки (необязательно)</h2>
+                {loadingGPlayers ? (
+                  <p>Загрузка...</p>
+                ) : (
+                  <div className="tradesTW-team-selectors">
+                    <div className="tradesTW-selector">
+                      <label>{currentTeam} (G-League):</label>
+                      <select
+                        value={selectedGPlayerCurrent}
+                        onChange={(e) =>
+                          setSelectedGPlayerCurrent(e.target.value)
+                        }
+                      >
+                        <option value="">-- Не выбран --</option>
+                        {gPlayersCurrentTeam.map((p, i) => (
+                          <option key={`g-${p}-${i}`} value={p}>
+                            {p}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="tradesTW-selector">
+                      <label>{selectedOpponent} (G-League):</label>
+                      <select
+                        value={selectedGPlayerOpponent}
+                        onChange={(e) =>
+                          setSelectedGPlayerOpponent(e.target.value)
+                        }
+                      >
+                        <option value="">-- Не выбран --</option>
+                        {gPlayersOpponent.map((p, i) => (
+                          <option key={`g-${p}-${i}`} value={p}>
+                            {p}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                )}
+                <div className="tradesTW-modal-actions">
+                  <button onClick={handleNextToStep4}>Далее</button>
+                  <button onClick={handleBack}>Назад</button>
+                  <button onClick={closeModal}>Отмена</button>
+                </div>
+              </>
+            )}
+
+            {/* Шаг 4: драфт-пики */}
+            {step === 4 && (
+              <>
+                <h2>Драфт-пики (необязательно)</h2>
+                {loadingPicks ? (
+                  <p>Загрузка пиков...</p>
+                ) : (
+                  <div className="tradesTW-picks-container">
+                    <div className="tradesTW-picks-column">
+                      <h3>{currentTeam}</h3>
+                      {picksCurrentTeam.length === 0 ? (
+                        <p>Нет доступных пиков</p>
+                      ) : (
+                        <ul className="tradesTW-picks-list">
+                          {picksCurrentTeam.map((pick) => {
+                            const isChecked = selectedPicksCurrent.has(pick.id);
+                            return (
+                              <li key={pick.id}>
+                                <label>
+                                  <input
+                                    type="checkbox"
+                                    checked={isChecked}
+                                    onChange={() =>
+                                      handleTogglePickCurrent(pick)
+                                    }
+                                  />
+                                  {pick.label} ({pick.year}, {pick.round} раунд)
+                                  {pick.note && (
+                                    <span className="tradesTW-pick-note">
+                                      {" "}
+                                      — {pick.note}
+                                    </span>
+                                  )}
+                                </label>
+                                {isChecked && (
+                                  <div className="tradesTW-pick-note-input">
+                                    <input
+                                      type="text"
+                                      placeholder="Примечание к пику"
+                                      value={
+                                        pickNotesCurrent.get(pick.id) || ""
+                                      }
+                                      onChange={(e) =>
+                                        updatePickNoteCurrent(
+                                          pick.id,
+                                          e.target.value,
+                                        )
+                                      }
+                                    />
+                                  </div>
+                                )}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
+                    <div className="tradesTW-picks-column">
+                      <h3>{selectedOpponent}</h3>
+                      {picksOpponent.length === 0 ? (
+                        <p>Нет доступных пиков</p>
+                      ) : (
+                        <ul className="tradesTW-picks-list">
+                          {picksOpponent.map((pick) => {
+                            const isChecked = selectedPicksOpponent.has(
+                              pick.id,
+                            );
+                            return (
+                              <li key={pick.id}>
+                                <label>
+                                  <input
+                                    type="checkbox"
+                                    checked={isChecked}
+                                    onChange={() =>
+                                      handleTogglePickOpponent(pick)
+                                    }
+                                  />
+                                  {pick.label} ({pick.year}, {pick.round} раунд)
+                                  {pick.note && (
+                                    <span className="tradesTW-pick-note">
+                                      {" "}
+                                      — {pick.note}
+                                    </span>
+                                  )}
+                                </label>
+                                {isChecked && (
+                                  <div className="tradesTW-pick-note-input">
+                                    <input
+                                      type="text"
+                                      placeholder="Примечание к пику"
+                                      value={
+                                        pickNotesOpponent.get(pick.id) || ""
+                                      }
+                                      onChange={(e) =>
+                                        updatePickNoteOpponent(
+                                          pick.id,
+                                          e.target.value,
+                                        )
+                                      }
+                                    />
+                                  </div>
+                                )}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                )}
+                <div className="tradesTW-modal-actions">
+                  <button onClick={handleNextToStep5}>Далее</button>
+                  <button onClick={handleBack}>Назад</button>
+                  <button onClick={closeModal}>Отмена</button>
+                </div>
+              </>
+            )}
+
+            {/* Шаг 5: Dead cap + новая зарплата/срок (все поля опциональны) */}
+            {step === 5 && (
+              <>
+                <h2>Dead cap и новая зарплата (необязательно)</h2>
+                <p>
+                  Выберите игроков, для которых часть зарплаты остаётся у
+                  команды. При желании укажите сумму удержания, срок, новую
+                  зарплату и новый срок контракта.
+                </p>
+                <div className="tradesTW-deadcap-container">
+                  <div className="tradesTW-deadcap-column">
+                    <h3>{currentTeam}</h3>
+                    {playersCurrentTeam.length === 0 ? (
+                      <p>Нет игроков основного состава</p>
+                    ) : (
+                      <ul className="tradesTW-deadcap-list">
+                        {playersCurrentTeam.map((player) => {
+                          const isSelected = deadCapCurrent.has(player);
+                          const deadData = deadCapCurrent.get(player);
+                          return (
+                            <li key={player}>
+                              <label>
+                                <input
+                                  type="checkbox"
+                                  checked={isSelected}
+                                  onChange={() =>
+                                    handleToggleDeadCapCurrent(player)
+                                  }
+                                />
+                                {player}
+                              </label>
+                              {isSelected && (
+                                <div className="tradesTW-deadcap-fields">
+                                  <div className="tradesTW-deadcap-row">
+                                    <input
+                                      type="number"
+                                      placeholder="Сумма удержания ($) (опционально)"
+                                      value={deadData?.amount || ""}
+                                      onChange={(e) =>
+                                        updateDeadCapAmountCurrent(
+                                          player,
+                                          e.target.value,
+                                        )
+                                      }
+                                    />
+                                    <select
+                                      value={deadData?.years || 1}
+                                      onChange={(e) =>
+                                        updateDeadCapYearsCurrent(
+                                          player,
+                                          parseInt(e.target.value),
+                                        )
+                                      }
+                                    >
+                                      {[1, 2, 3, 4, 5].map((y) => (
+                                        <option key={y} value={y}>
+                                          {y} год(а) удержания
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                  <div className="tradesTW-new-salary-row">
+                                    <input
+                                      type="number"
+                                      placeholder="Новая зарплата ($) (опционально)"
+                                      value={deadData?.newSalary || ""}
+                                      onChange={(e) =>
+                                        updateDeadCapNewSalaryCurrent(
+                                          player,
+                                          e.target.value,
+                                        )
+                                      }
+                                    />
+                                    <select
+                                      value={deadData?.newYears || 1}
+                                      onChange={(e) =>
+                                        updateDeadCapNewYearsCurrent(
+                                          player,
+                                          parseInt(e.target.value),
+                                        )
+                                      }
+                                    >
+                                      {[1, 2, 3, 4, 5].map((y) => (
+                                        <option key={y} value={y}>
+                                          {y} год(а) нового контракта
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                </div>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </div>
+                  <div className="tradesTW-deadcap-column">
+                    <h3>{selectedOpponent}</h3>
+                    {playersOpponent.length === 0 ? (
+                      <p>Нет игроков основного состава</p>
+                    ) : (
+                      <ul className="tradesTW-deadcap-list">
+                        {playersOpponent.map((player) => {
+                          const isSelected = deadCapOpponent.has(player);
+                          const deadData = deadCapOpponent.get(player);
+                          return (
+                            <li key={player}>
+                              <label>
+                                <input
+                                  type="checkbox"
+                                  checked={isSelected}
+                                  onChange={() =>
+                                    handleToggleDeadCapOpponent(player)
+                                  }
+                                />
+                                {player}
+                              </label>
+                              {isSelected && (
+                                <div className="tradesTW-deadcap-fields">
+                                  <div className="tradesTW-deadcap-row">
+                                    <input
+                                      type="number"
+                                      placeholder="Сумма удержания ($) (опционально)"
+                                      value={deadData?.amount || ""}
+                                      onChange={(e) =>
+                                        updateDeadCapAmountOpponent(
+                                          player,
+                                          e.target.value,
+                                        )
+                                      }
+                                    />
+                                    <select
+                                      value={deadData?.years || 1}
+                                      onChange={(e) =>
+                                        updateDeadCapYearsOpponent(
+                                          player,
+                                          parseInt(e.target.value),
+                                        )
+                                      }
+                                    >
+                                      {[1, 2, 3, 4, 5].map((y) => (
+                                        <option key={y} value={y}>
+                                          {y} год(а) удержания
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                  <div className="tradesTW-new-salary-row">
+                                    <input
+                                      type="number"
+                                      placeholder="Новая зарплата ($) (опционально)"
+                                      value={deadData?.newSalary || ""}
+                                      onChange={(e) =>
+                                        updateDeadCapNewSalaryOpponent(
+                                          player,
+                                          e.target.value,
+                                        )
+                                      }
+                                    />
+                                    <select
+                                      value={deadData?.newYears || 1}
+                                      onChange={(e) =>
+                                        updateDeadCapNewYearsOpponent(
+                                          player,
+                                          parseInt(e.target.value),
+                                        )
+                                      }
+                                    >
+                                      {[1, 2, 3, 4, 5].map((y) => (
+                                        <option key={y} value={y}>
+                                          {y} год(а) нового контракта
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                </div>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+                <div className="tradesTW-modal-actions">
+                  <button onClick={goToSummary}>Далее</button>
+                  <button onClick={handleBack}>Назад</button>
+                  <button onClick={closeModal}>Отмена</button>
+                </div>
+              </>
+            )}
+
+            {/* Шаг 6: Итог и отправка */}
+            {step === 6 && (
+              <>
+                <h2>Итог сделки</h2>
+                <div className="tradesTW-summary">
+                  <div className="tradesTW-summary-column">
+                    <h3>{currentTeam}</h3>
+                    <p>
+                      <strong>Основной игрок:</strong>{" "}
+                      {selectedPlayerCurrent || "—"}
+                    </p>
+                    <p>
+                      <strong>G-League игрок:</strong>{" "}
+                      {selectedGPlayerCurrent || "—"}
+                    </p>
+                    <p>
+                      <strong>Пики:</strong>{" "}
+                      {formatPicks(
+                        selectedPicksCurrent,
+                        picksCurrentTeam,
+                        pickNotesCurrent,
+                      )}
+                    </p>
+                    <p>
+                      <strong>Dead cap:</strong> {formatDeadCap(deadCapCurrent)}
+                    </p>
+                  </div>
+                  <div className="tradesTW-summary-column">
+                    <h3>{selectedOpponent}</h3>
+                    <p>
+                      <strong>Основной игрок:</strong>{" "}
+                      {selectedPlayerOpponent || "—"}
+                    </p>
+                    <p>
+                      <strong>G-League игрок:</strong>{" "}
+                      {selectedGPlayerOpponent || "—"}
+                    </p>
+                    <p>
+                      <strong>Пики:</strong>{" "}
+                      {formatPicks(
+                        selectedPicksOpponent,
+                        picksOpponent,
+                        pickNotesOpponent,
+                      )}
+                    </p>
+                    <p>
+                      <strong>Dead cap:</strong>{" "}
+                      {formatDeadCap(deadCapOpponent)}
+                    </p>
+                  </div>
+                </div>
+                <div className="tradesTW-modal-actions">
+                  <button onClick={submitTrade}>Отправить предложение</button>
+                  <button onClick={resetSelection}>Сбросить</button>
+                  <button onClick={handleBack}>Назад</button>
+                  <button onClick={closeModal}>Отмена</button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default TradesTwoWay;

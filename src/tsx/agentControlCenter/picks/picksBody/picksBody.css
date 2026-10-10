@@ -308,3 +308,115 @@
   transform: translateY(1px);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
+
+.pb-team-option {
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pb-team-option:hover {
+  background: #f5f5f5;
+}
+
+.pb-team-option.selected {
+  background: #e0e0e0;
+}
+
+@media (max-width: 250px) {
+  /* Главная кнопка */
+  .pb-select-pick-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* Контейнер с кнопками (дропдауны) */
+  .pb-modal-content > div:first-child {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  /* Общие настройки модального окна */
+  .pb-modal-content {
+    padding: 12px;
+    width: 95%;
+    max-width: none;
+  }
+
+  /* Дропдауны */
+  .pb-dropdown-trigger {
+    padding: 6px 10px;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  /* Чипы */
+  .pb-pick-chip {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .pb-note-badge {
+    font-size: 10px;
+    padding: 1px 6px;
+  }
+
+  .pb-edit-chip,
+  .pb-remove-chip {
+    font-size: 14px;
+    padding: 0 2px;
+  }
+
+  /* Блок пиков по командам */
+  .pb-team-group-title {
+    font-size: 13px;
+  }
+
+  .pb-team-pick-item {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  .pb-note-indicator {
+    font-size: 10px;
+  }
+
+  /* Модалка редактирования команды */
+  .pb-edit-content {
+    width: 90%;
+    max-width: 220px;
+    padding: 12px;
+  }
+
+  .pb-edit-content h4 {
+    font-size: 14px;
+  }
+
+  .pb-search-input {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  .pb-team-option {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  /* Текстовая область примечания */
+  .pb-note-input {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  /* Кнопки действий */
+  .pb-edit-actions button {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  /* Кнопка закрытия */
+  .pb-close-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

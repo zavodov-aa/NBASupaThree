@@ -1,0 +1,248 @@
+/* styles.css */
+
+.tabs-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: visible; /* чтобы dropdown не обрезался */
+  background: transparent; /* наследует фон хедера */
+  border-bottom: none; /* убрал дублирующую линию */
+}
+
+.tabs-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Обёртка селектора */
+.tab-select {
+  position: relative;
+  display: inline-block;
+  padding: 0; /* убрал вертикальные отступы */
+}
+
+/* -------- Кнопка-триггер -------- */
+.tab-trigger {
+  position: relative;
+  padding: 10px 40px 10px 24px;
+  background: rgba(255, 245, 227, 0.08);
+  border: 1px solid rgba(255, 245, 227, 0.25);
+  border-radius: 8px;
+  color: #fff5e3; /* светлый текст на тёмном фоне */
+  font-family:
+    "SF Pro Display",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 0.3px;
+  overflow: hidden;
+}
+
+.tab-trigger::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 245, 227, 0.15),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.tab-trigger:hover::before {
+  opacity: 1;
+}
+
+.tab-trigger:hover {
+  border-color: rgba(255, 245, 227, 0.5);
+  background: rgba(255, 245, 227, 0.15);
+  /* убрал translateY, чтобы не ломать выравнивание */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tab-select.open .tab-trigger {
+  background: rgba(255, 245, 227, 0.18);
+  border-color: rgba(255, 245, 227, 0.5);
+  box-shadow: 0 0 30px rgba(255, 245, 227, 0.1);
+}
+
+.tab-number {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #9ea3b0;
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
+
+.tab-trigger .tab-number,
+.tab-select.open .tab-trigger .tab-number {
+  color: #fff5e3;
+}
+
+.tab-label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Стрелка */
+.tab-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff5e3;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tab-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* Подчёркивание как у активного таба */
+.tab-underline {
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #fff5e3, #9ea3b0);
+  border-radius: 2px;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.tab-select.open .tab-underline,
+.tab-trigger:hover .tab-underline {
+  width: 60%;
+  opacity: 1;
+}
+
+.tab-select.open .tab-underline {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.6;
+    box-shadow: 0 0 10px rgba(255, 245, 227, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(255, 245, 227, 0.4);
+  }
+}
+
+/* -------- Выпадающая табличка -------- */
+/* -------- Выпадающая табличка -------- */
+.tab-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 100%;
+  width: max-content; /* ✅ растягивается под контент */
+  max-width: min(420px, 90vw); /* ✅ не вылезает за экран */
+  background: #fff5e3;
+  border: 1px solid rgba(189, 186, 171, 0.35);
+  border-radius: 8px;
+  box-shadow:
+    0 12px 30px rgba(158, 163, 176, 0.15),
+    0 2px 6px rgba(189, 186, 171, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  padding: 6px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: dropdownIn 0.2s ease-out;
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #312d2d;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.tab-option::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(158, 163, 176, 0.12),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tab-option:hover::before {
+  opacity: 1;
+}
+
+.tab-option:hover {
+  color: #9ea3b0;
+  background: rgba(158, 163, 176, 0.08);
+  border-color: rgba(158, 163, 176, 0.2);
+}
+
+.tab-option.active {
+  color: #312d2d;
+  background: rgba(158, 163, 176, 0.12);
+  border-color: rgba(158, 163, 176, 0.3);
+}
+
+.tab-option.active .tab-number {
+  color: #312d2d;
+}
+
+.tab-check {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  color: #312d2d;
+}

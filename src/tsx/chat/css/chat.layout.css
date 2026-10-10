@@ -1,0 +1,39 @@
+.chat-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header  header"
+    "sidebar view";
+  height: 100vh;
+  height: 100dvh;
+  background: #ecece7;
+  color: #252525;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
+.chat-layout > .header-chat {
+  grid-area: header;
+}
+
+.chat-layout > .chat-sidebar {
+  grid-area: sidebar;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.chat-layout > .chat-view {
+  grid-area: view;
+  min-height: 0;
+}
+
+/* Overlay по умолчанию скрыт. Показывается только на мобилке
+   через chat.responsive.css, когда drawer открыт. */
+.chat-layout__overlay {
+  display: none;
+}

@@ -1,0 +1,9 @@
+/* style.css - Главный файл стилей (импорты) */
+@import "mainN.css";
+@import "header.css";
+@import "tabs.css";
+@import "cards.css";
+@import "teams.css";
+@import "feedback.css";
+@import "animations.css";
+@import "responsiveAdaptive.css";

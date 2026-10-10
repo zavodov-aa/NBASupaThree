@@ -1,0 +1,13 @@
+.picks-general-on-teams-sticky-container {
+  position: fixed;
+  bottom: 40px; /* отступ снизу */
+  right: 40px; /* отступ справа */
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+  pointer-events: none; /* чтобы контейнер не перекрывал клики */
+}
+
+.picks-general-on-teams-sticky-container > * {
+  pointer-events: auto; /* сама кнопка кликабельна */
+}

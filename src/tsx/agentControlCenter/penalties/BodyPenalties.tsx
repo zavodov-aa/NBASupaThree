@@ -106,7 +106,7 @@
 //   const calculateTeamStats = () => {
 //     const stats: TeamStats[] = nbaTeams.map((team) => {
 //       const teamPenalties = penalties.filter(
-//         (penalty) => penalty.team === team
+//         (penalty) => penalty.team === team,
 //       );
 //       return {
 //         name: team,
@@ -117,7 +117,7 @@
 //   };
 
 //   const handleInputChange = (
-//     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+//     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
 //   ) => {
 //     const { name, value } = e.target;
 //     setNewPenalty({
@@ -192,95 +192,153 @@
 //   };
 
 //   return (
-//     <div className="nba-penalties-container">
-//       <button className="nba-add-penalty-btn" onClick={handleAddPenalty}>
-//         Добавить штраф
-//       </button>
+//     <div className="penalties-container">
+//       <div className="penalties-header-section">
+//         <h1 className="penalties-main-title">Штрафы НБА</h1>
+//         <button
+//           className="penalties-add-penalty-btn"
+//           onClick={handleAddPenalty}
+//           disabled={loading}
+//         >
+//           + Добавить штраф
+//         </button>
+//       </div>
 
-//       {error && <div className="nba-error-message">Ошибка: {error}</div>}
+//       {error && (
+//         <div className="penalties-error-message">
+//           <span className="penalties-error-icon">⚠️</span> Ошибка: {error}
+//         </div>
+//       )}
 
 //       {showForm && (
-//         <div className="nba-penalty-form">
-//           <h3>Добавление нового штрафа</h3>
-//           <div className="nba-form-group">
-//             <label>Дата *</label>
-//             <input
-//               type="date"
-//               name="date"
-//               value={newPenalty.date}
-//               onChange={handleInputChange}
-//               required
-//               disabled={loading}
-//             />
-//           </div>
-//           <div className="nba-form-group">
-//             <label>Команда</label>
-//             <select
-//               name="team"
-//               value={newPenalty.team}
-//               onChange={handleInputChange}
-//               disabled={loading}
-//             >
-//               <option value="">Выберите команду</option>
-//               {nbaTeams.map((team, index) => (
-//                 <option key={index} value={team}>
-//                   {team}
-//                 </option>
-//               ))}
-//             </select>
-//           </div>
-//           <div className="nba-form-group">
-//             <label>Описание *</label>
-//             <textarea
-//               name="description"
-//               value={newPenalty.description}
-//               onChange={handleInputChange}
-//               rows={4}
-//               required
-//               disabled={loading}
-//             />
-//           </div>
-//           <div className="nba-form-actions">
+//         <div className="penalties-penalty-form">
+//           <div className="penalties-form-header">
+//             <h3>Добавление нового штрафа</h3>
 //             <button
-//               className="nba-save-btn"
-//               onClick={handleSavePenalty}
-//               disabled={loading}
-//             >
-//               {loading ? "Сохранение..." : "Сохранить"}
-//             </button>
-//             <button
-//               className="nba-cancel-btn"
+//               className="penalties-close-form-btn"
 //               onClick={handleCancel}
 //               disabled={loading}
 //             >
-//               Отмена
+//               ×
 //             </button>
+//           </div>
+//           <div className="penalties-form-content">
+//             <div className="penalties-form-group">
+//               <label htmlFor="date">Дата *</label>
+//               <input
+//                 id="date"
+//                 type="date"
+//                 name="date"
+//                 value={newPenalty.date}
+//                 onChange={handleInputChange}
+//                 required
+//                 disabled={loading}
+//                 max={new Date().toISOString().split("T")[0]}
+//               />
+//             </div>
+//             <div className="penalties-form-group">
+//               <label htmlFor="team">Команда</label>
+//               <select
+//                 id="team"
+//                 name="team"
+//                 value={newPenalty.team}
+//                 onChange={handleInputChange}
+//                 disabled={loading}
+//               >
+//                 <option value="">Выберите команду</option>
+//                 {nbaTeams.map((team, index) => (
+//                   <option key={index} value={team}>
+//                     {team}
+//                   </option>
+//                 ))}
+//               </select>
+//             </div>
+//             <div className="penalties-form-group">
+//               <label htmlFor="description">Описание *</label>
+//               <textarea
+//                 id="description"
+//                 name="description"
+//                 value={newPenalty.description}
+//                 onChange={handleInputChange}
+//                 rows={4}
+//                 required
+//                 disabled={loading}
+//                 placeholder="Введите описание штрафа..."
+//               />
+//             </div>
+//             <div className="penalties-form-actions">
+//               <button
+//                 className="penalties-save-btn"
+//                 onClick={handleSavePenalty}
+//                 disabled={loading}
+//               >
+//                 {loading ? (
+//                   <>
+//                     <span className="penalties-loading-spinner"></span>
+//                     Сохранение...
+//                   </>
+//                 ) : (
+//                   "Сохранить"
+//                 )}
+//               </button>
+//               <button
+//                 className="penalties-cancel-btn"
+//                 onClick={handleCancel}
+//                 disabled={loading}
+//               >
+//                 Отмена
+//               </button>
+//             </div>
 //           </div>
 //         </div>
 //       )}
 
-//       <div className="nba-teams-overview">
-//         <h3>Команды НБА ({teamStats.length})</h3>
+//       <div className="penalties-teams-overview">
+//         <div className="penalties-overview-header">
+//           <h3>Команды НБА ({teamStats.length})</h3>
+//           <div className="penalties-stats-summary">
+//             Всего штрафов: {penalties.length}
+//           </div>
+//         </div>
 
-//         {loading ? (
-//           <p>Загрузка данных...</p>
+//         {loading && !penalties.length ? (
+//           <div className="penalties-loading-container">
+//             <div className="penalties-loading-spinner-large"></div>
+//             <p>Загрузка данных...</p>
+//           </div>
 //         ) : (
-//           <div className="nba-teams-grid">
+//           <div className="penalties-teams-grid">
 //             {teamStats.map((team) => (
 //               <div
 //                 key={team.name}
-//                 className={`nba-team-card ${
-//                   selectedTeam === team.name ? "nba-team-selected" : ""
-//                 }`}
+//                 className={`penalties-team-card ${
+//                   selectedTeam === team.name ? "penalties-team-selected" : ""
+//                 } ${team.count > 0 ? "penalties-has-penalties" : "penalties-no-penalties"}`}
 //                 onClick={() => handleTeamClick(team.name)}
+//                 role="button"
+//                 tabIndex={0}
+//                 onKeyPress={(e) =>
+//                   e.key === "Enter" && handleTeamClick(team.name)
+//                 }
 //               >
-//                 <div className="nba-team-name">{team.name}</div>
-//                 <div
-//                   className={`nba-team-penalty-count ${
-//                     team.count > 0 ? "nba-has-penalties" : "nba-no-penalties"
-//                   }`}
-//                 >
-//                   {team.count > 0 ? `Штрафов: ${team.count}` : "Нет штрафов"}
+//                 <div className="penalties-team-logo-placeholder">
+//                   {team.name.charAt(0)}
+//                 </div>
+//                 <div className="penalties-team-content">
+//                   <div className="penalties-team-name">{team.name}</div>
+//                   <div className="penalties-team-penalty-count">
+//                     {team.count > 0 ? (
+//                       <>
+//                         <span className="penalties-count-badge">
+//                           {team.count}
+//                         </span>
+//                         штраф
+//                         {team.count === 1 ? "" : team.count > 4 ? "ов" : "а"}
+//                       </>
+//                     ) : (
+//                       "Нет штрафов"
+//                     )}
+//                   </div>
 //                 </div>
 //               </div>
 //             ))}
@@ -289,30 +347,45 @@
 //       </div>
 
 //       {selectedTeam && (
-//         <div className="nba-team-detail">
-//           <div className="nba-detail-header">
-//             <h3>{selectedTeam} - Детали штрафов</h3>
+//         <div className="penalties-team-detail">
+//           <div className="penalties-detail-header">
+//             <div className="penalties-detail-title">
+//               <h3>{selectedTeam}</h3>
+//               <div className="penalties-detail-subtitle">
+//                 Штрафов: {getTeamPenalties(selectedTeam).length}
+//               </div>
+//             </div>
 //             <button
-//               className="nba-back-btn"
+//               className="penalties-back-btn"
 //               onClick={() => setSelectedTeam(null)}
+//               disabled={loading}
 //             >
-//               ← Назад к списку
+//               <span className="penalties-back-arrow">←</span>
+//               Назад к списку
 //             </button>
 //           </div>
 
 //           {getTeamPenalties(selectedTeam).length === 0 ? (
-//             <p className="nba-no-penalties-message">
-//               У этой команды нет штрафов
-//             </p>
+//             <div className="penalties-no-penalties-message">
+//               <div className="penalties-no-penalties-icon">🏆</div>
+//               <p>У этой команды нет штрафов</p>
+//               <p className="penalties-no-penalties-hint">
+//                 Нажмите "Добавить штраф", чтобы создать первый
+//               </p>
+//             </div>
 //           ) : (
-//             <div className="nba-detail-list">
+//             <div className="penalties-detail-list">
 //               {getTeamPenalties(selectedTeam).map((penalty) => (
-//                 <div key={penalty.id} className="nba-detail-item">
-//                   <div className="nba-detail-date">
-//                     <strong>Дата:</strong> {penalty.date}
+//                 <div key={penalty.id} className="penalties-detail-item">
+//                   <div className="penalties-detail-item-header">
+//                     <div className="penalties-detail-date">
+//                       <span className="penalties-date-icon">📅</span>
+//                       {new Date(penalty.date).toLocaleDateString("ru-RU")}
+//                     </div>
+//                     <div className="penalties-detail-id">#{penalty.id}</div>
 //                   </div>
-//                   <div className="nba-detail-description">
-//                     <strong>Описание:</strong> {penalty.description}
+//                   <div className="penalties-detail-description">
+//                     {penalty.description}
 //                   </div>
 //                 </div>
 //               ))}
@@ -325,7 +398,6 @@
 // };
 
 // export default BodyPenalties;
-
 
 import React, { useState, ChangeEvent, useEffect } from "react";
 import "./bodyPenalties.css";
@@ -361,6 +433,7 @@ const BodyPenalties = () => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [editingPenalty, setEditingPenalty] = useState<Penalty | null>(null); // Редактируемый штраф
 
   const nbaTeams: string[] = [
     "Atlanta Hawks",
@@ -435,7 +508,7 @@ const BodyPenalties = () => {
   const calculateTeamStats = () => {
     const stats: TeamStats[] = nbaTeams.map((team) => {
       const teamPenalties = penalties.filter(
-        (penalty) => penalty.team === team
+        (penalty) => penalty.team === team,
       );
       return {
         name: team,
@@ -446,7 +519,7 @@ const BodyPenalties = () => {
   };
 
   const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setNewPenalty({
@@ -456,8 +529,20 @@ const BodyPenalties = () => {
   };
 
   const handleAddPenalty = () => {
+    setEditingPenalty(null);
+    setNewPenalty({ date: "", team: "", description: "" });
     setShowForm(true);
     setSelectedTeam(null);
+  };
+
+  const handleEditPenalty = (penalty: Penalty) => {
+    setEditingPenalty(penalty);
+    setNewPenalty({
+      date: penalty.date,
+      team: penalty.team,
+      description: penalty.description,
+    });
+    setShowForm(true);
   };
 
   const handleSavePenalty = async () => {
@@ -470,31 +555,56 @@ const BodyPenalties = () => {
     setError(null);
 
     try {
-      const { data, error } = await supabase
-        .from("Penalties")
-        .insert([
-          {
+      if (editingPenalty) {
+        // Обновление существующего штрафа
+        const { error } = await supabase
+          .from("Penalties")
+          .update({
             date: newPenalty.date,
             team: newPenalty.team,
             description: newPenalty.description,
-          },
-        ])
-        .select();
+          })
+          .eq("id", editingPenalty.id);
 
-      if (error) throw error;
+        if (error) throw error;
 
-      if (data && data.length > 0) {
-        const penaltyToAdd: Penalty = {
-          id: data[0].id,
-          date: data[0].date,
-          team: data[0].team || "",
-          description: data[0].description,
-        };
+        // Обновляем локальное состояние
+        setPenalties((prevPenalties) =>
+          prevPenalties.map((p) =>
+            p.id === editingPenalty.id ? { ...p, ...newPenalty } : p,
+          ),
+        );
+        alert("Штраф успешно обновлён");
+      } else {
+        // Создание нового штрафа
+        const { data, error } = await supabase
+          .from("Penalties")
+          .insert([
+            {
+              date: newPenalty.date,
+              team: newPenalty.team,
+              description: newPenalty.description,
+            },
+          ])
+          .select();
 
-        setPenalties([penaltyToAdd, ...penalties]);
-        setNewPenalty({ date: "", team: "", description: "" });
-        setShowForm(false);
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          const penaltyToAdd: Penalty = {
+            id: data[0].id,
+            date: data[0].date,
+            team: data[0].team || "",
+            description: data[0].description,
+          };
+          setPenalties([penaltyToAdd, ...penalties]);
+          alert("Штраф успешно добавлен");
+        }
       }
+
+      setNewPenalty({ date: "", team: "", description: "" });
+      setShowForm(false);
+      setEditingPenalty(null);
     } catch (err: any) {
       console.error("Ошибка при сохранении штрафа:", err);
       setError(err.message || "Не удалось сохранить штраф");
@@ -504,9 +614,40 @@ const BodyPenalties = () => {
     }
   };
 
+  const handleDeletePenalty = async (penaltyId: number) => {
+    const confirmed = window.confirm(
+      "Вы уверены, что хотите удалить этот штраф?",
+    );
+    if (!confirmed) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const { error } = await supabase
+        .from("Penalties")
+        .delete()
+        .eq("id", penaltyId);
+
+      if (error) throw error;
+
+      setPenalties((prevPenalties) =>
+        prevPenalties.filter((p) => p.id !== penaltyId),
+      );
+      alert("Штраф удалён");
+    } catch (err: any) {
+      console.error("Ошибка при удалении штрафа:", err);
+      setError(err.message || "Не удалось удалить штраф");
+      alert("Ошибка при удалении: " + err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleCancel = () => {
     setShowForm(false);
     setSelectedTeam(null);
+    setEditingPenalty(null);
     setNewPenalty({ date: "", team: "", description: "" });
     setError(null);
   };
@@ -514,6 +655,7 @@ const BodyPenalties = () => {
   const handleTeamClick = (teamName: string) => {
     setSelectedTeam(teamName);
     setShowForm(false);
+    setEditingPenalty(null);
   };
 
   const getTeamPenalties = (teamName: string) => {
@@ -521,11 +663,11 @@ const BodyPenalties = () => {
   };
 
   return (
-    <div className="nba-penalties-container">
-      <div className="nba-header-section">
-        <h1 className="nba-main-title">Штрафы НБА</h1>
+    <div className="penalties-container">
+      <div className="penalties-header-section">
+        <h1 className="penalties-main-title">Штрафы НБА</h1>
         <button
-          className="nba-add-penalty-btn"
+          className="penalties-add-penalty-btn"
           onClick={handleAddPenalty}
           disabled={loading}
         >
@@ -534,25 +676,29 @@ const BodyPenalties = () => {
       </div>
 
       {error && (
-        <div className="nba-error-message">
-          <span className="nba-error-icon">⚠️</span> Ошибка: {error}
+        <div className="penalties-error-message">
+          <span className="penalties-error-icon">⚠️</span> Ошибка: {error}
         </div>
       )}
 
       {showForm && (
-        <div className="nba-penalty-form">
-          <div className="nba-form-header">
-            <h3>Добавление нового штрафа</h3>
+        <div className="penalties-penalty-form">
+          <div className="penalties-form-header">
+            <h3>
+              {editingPenalty
+                ? "Редактирование штрафа"
+                : "Добавление нового штрафа"}
+            </h3>
             <button
-              className="nba-close-form-btn"
+              className="penalties-close-form-btn"
               onClick={handleCancel}
               disabled={loading}
             >
               ×
             </button>
           </div>
-          <div className="nba-form-content">
-            <div className="nba-form-group">
+          <div className="penalties-form-content">
+            <div className="penalties-form-group">
               <label htmlFor="date">Дата *</label>
               <input
                 id="date"
@@ -565,7 +711,7 @@ const BodyPenalties = () => {
                 max={new Date().toISOString().split("T")[0]}
               />
             </div>
-            <div className="nba-form-group">
+            <div className="penalties-form-group">
               <label htmlFor="team">Команда</label>
               <select
                 id="team"
@@ -582,7 +728,7 @@ const BodyPenalties = () => {
                 ))}
               </select>
             </div>
-            <div className="nba-form-group">
+            <div className="penalties-form-group">
               <label htmlFor="description">Описание *</label>
               <textarea
                 id="description"
@@ -595,23 +741,25 @@ const BodyPenalties = () => {
                 placeholder="Введите описание штрафа..."
               />
             </div>
-            <div className="nba-form-actions">
+            <div className="penalties-form-actions">
               <button
-                className="nba-save-btn"
+                className="penalties-save-btn"
                 onClick={handleSavePenalty}
                 disabled={loading}
               >
                 {loading ? (
                   <>
-                    <span className="nba-loading-spinner"></span>
-                    Сохранение...
+                    <span className="penalties-loading-spinner"></span>
+                    {editingPenalty ? "Обновление..." : "Сохранение..."}
                   </>
+                ) : editingPenalty ? (
+                  "Обновить"
                 ) : (
                   "Сохранить"
                 )}
               </button>
               <button
-                className="nba-cancel-btn"
+                className="penalties-cancel-btn"
                 onClick={handleCancel}
                 disabled={loading}
               >
@@ -622,27 +770,27 @@ const BodyPenalties = () => {
         </div>
       )}
 
-      <div className="nba-teams-overview">
-        <div className="nba-overview-header">
+      <div className="penalties-teams-overview">
+        <div className="penalties-overview-header">
           <h3>Команды НБА ({teamStats.length})</h3>
-          <div className="nba-stats-summary">
+          <div className="penalties-stats-summary">
             Всего штрафов: {penalties.length}
           </div>
         </div>
 
         {loading && !penalties.length ? (
-          <div className="nba-loading-container">
-            <div className="nba-loading-spinner-large"></div>
+          <div className="penalties-loading-container">
+            <div className="penalties-loading-spinner-large"></div>
             <p>Загрузка данных...</p>
           </div>
         ) : (
-          <div className="nba-teams-grid">
+          <div className="penalties-teams-grid">
             {teamStats.map((team) => (
               <div
                 key={team.name}
-                className={`nba-team-card ${
-                  selectedTeam === team.name ? "nba-team-selected" : ""
-                } ${team.count > 0 ? "nba-has-penalties" : "nba-no-penalties"}`}
+                className={`penalties-team-card ${
+                  selectedTeam === team.name ? "penalties-team-selected" : ""
+                } ${team.count > 0 ? "penalties-has-penalties" : "penalties-no-penalties"}`}
                 onClick={() => handleTeamClick(team.name)}
                 role="button"
                 tabIndex={0}
@@ -650,15 +798,17 @@ const BodyPenalties = () => {
                   e.key === "Enter" && handleTeamClick(team.name)
                 }
               >
-                <div className="nba-team-logo-placeholder">
+                <div className="penalties-team-logo-placeholder">
                   {team.name.charAt(0)}
                 </div>
-                <div className="nba-team-content">
-                  <div className="nba-team-name">{team.name}</div>
-                  <div className="nba-team-penalty-count">
+                <div className="penalties-team-content">
+                  <div className="penalties-team-name">{team.name}</div>
+                  <div className="penalties-team-penalty-count">
                     {team.count > 0 ? (
                       <>
-                        <span className="nba-count-badge">{team.count}</span>
+                        <span className="penalties-count-badge">
+                          {team.count}
+                        </span>
                         штраф
                         {team.count === 1 ? "" : team.count > 4 ? "ов" : "а"}
                       </>
@@ -674,44 +824,62 @@ const BodyPenalties = () => {
       </div>
 
       {selectedTeam && (
-        <div className="nba-team-detail">
-          <div className="nba-detail-header">
-            <div className="nba-detail-title">
+        <div className="penalties-team-detail">
+          <div className="penalties-detail-header">
+            <div className="penalties-detail-title">
               <h3>{selectedTeam}</h3>
-              <div className="nba-detail-subtitle">
+              <div className="penalties-detail-subtitle">
                 Штрафов: {getTeamPenalties(selectedTeam).length}
               </div>
             </div>
             <button
-              className="nba-back-btn"
+              className="penalties-back-btn"
               onClick={() => setSelectedTeam(null)}
               disabled={loading}
             >
-              <span className="nba-back-arrow">←</span>
+              <span className="penalties-back-arrow">←</span>
               Назад к списку
             </button>
           </div>
 
           {getTeamPenalties(selectedTeam).length === 0 ? (
-            <div className="nba-no-penalties-message">
-              <div className="nba-no-penalties-icon">🏆</div>
+            <div className="penalties-no-penalties-message">
+              <div className="penalties-no-penalties-icon">🏆</div>
               <p>У этой команды нет штрафов</p>
-              <p className="nba-no-penalties-hint">
+              <p className="penalties-no-penalties-hint">
                 Нажмите "Добавить штраф", чтобы создать первый
               </p>
             </div>
           ) : (
-            <div className="nba-detail-list">
+            <div className="penalties-detail-list">
               {getTeamPenalties(selectedTeam).map((penalty) => (
-                <div key={penalty.id} className="nba-detail-item">
-                  <div className="nba-detail-item-header">
-                    <div className="nba-detail-date">
-                      <span className="nba-date-icon">📅</span>
+                <div key={penalty.id} className="penalties-detail-item">
+                  <div className="penalties-detail-item-header">
+                    <div className="penalties-detail-date">
+                      <span className="penalties-date-icon">📅</span>
                       {new Date(penalty.date).toLocaleDateString("ru-RU")}
                     </div>
-                    <div className="nba-detail-id">#{penalty.id}</div>
+                    <div className="penalties-detail-actions">
+                      <button
+                        className="penalties-edit-btn"
+                        onClick={() => handleEditPenalty(penalty)}
+                        disabled={loading}
+                        title="Редактировать"
+                      >
+                        ✏️ Редактировать
+                      </button>
+                      <button
+                        className="penalties-delete-btn"
+                        onClick={() => handleDeletePenalty(penalty.id)}
+                        disabled={loading}
+                        title="Удалить"
+                      >
+                        🗑️ Удалить
+                      </button>
+                    </div>
+                    <div className="penalties-detail-id">#{penalty.id}</div>
                   </div>
-                  <div className="nba-detail-description">
+                  <div className="penalties-detail-description">
                     {penalty.description}
                   </div>
                 </div>

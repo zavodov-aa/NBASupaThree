@@ -1,12 +1,14 @@
 import React from "react";
-import HeaderPenalties from "./HeaderPenalties";
+import HeaderPenalties from "./archive/HeaderPenalties";
 import BodyPenalties from "./BodyPenalties";
 import "./penalties.css";
+import PlayerOptionHeader from "../../market/playerOption/playerOptionAdmin/PlayerOptionHeader";
 
 const Penalties = () => {
   return (
     <div>
-      <HeaderPenalties />
+      {/* <HeaderPenalties /> */}
+      <PlayerOptionHeader />
       <BodyPenalties />
     </div>
   );

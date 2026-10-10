@@ -1,0 +1,102 @@
+/* Контейнер для двух колонок */
+.Trades_Two_way_players-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: stretch; /* колонки растягиваются на одинаковую высоту */
+}
+
+/* Каждая колонка (команда) */
+.Trades_Two_way_players-column {
+  flex: 1;
+  min-width: 250px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* заголовок сверху, сетка занимает остаток */
+}
+
+/* Горизонтальная сетка для игроков */
+.Trades_Two_way_players-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  flex: 1; /* занимает всё доступное место */
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 5px;
+  align-content: flex-start; /* карточки прижимаются к верху, если их мало */
+}
+
+/* Карточка игрока */
+.Trades_Two_way_players-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 10px;
+  width: 110px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.Trades_Two_way_players-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Trades_Two_way_players-card.Trades_Two_way_players-selected {
+  border-color: #007bff;
+  background-color: #e7f1ff;
+}
+
+.Trades_Two_way_players-name {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.Trades_Two_way_players-position {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.Trades_Two_way_players-check input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Кнопки действий */
+.Trades_Two_way_players-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.Trades_Two_way_players-back,
+.Trades_Two_way_players-next {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.Trades_Two_way_players-back {
+  background: #6c757d;
+  color: white;
+}
+
+.Trades_Two_way_players-next {
+  background: #007bff;
+  color: white;
+}

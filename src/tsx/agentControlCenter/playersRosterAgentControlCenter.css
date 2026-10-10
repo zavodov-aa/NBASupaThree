@@ -641,6 +641,10 @@
     white-space: normal;
     line-height: 1.2;
   }
+  .playersRosterAgentControlCenter-deadCapTeamCell {
+    padding: 8px 6px;
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -685,6 +689,10 @@
     font-size: 9px !important;
     padding: 3px !important;
     min-width: 70px;
+  }
+  .playersRosterAgentControlCenter-deadCapTeamCell {
+    padding: 6px 4px;
+    font-size: 9px;
   }
 }
 
@@ -903,7 +911,7 @@
 
 .fixed-picks-button {
   position: fixed;
-  bottom: 20px; /* отступ от нижнего края */
+  bottom: 100px; /* отступ от нижнего края */
   left: 20px; /* отступ от левого края */
   z-index: 1000; /* чтобы элемент был поверх остального контента */
 }
@@ -912,4 +920,15 @@
 .fixed-picks-button button,
 .fixed-picks-button .picks-body-button {
   /* ваши стили для кнопки */
+}
+
+/* Базовые стили для DEAD CAP TEAM */
+.playersRosterAgentControlCenter-deadCapTeamCell {
+  padding: 10px 8px;
+  font-size: 12px;
+  border-right: 1px solid #333;
+  white-space: nowrap;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
 }

@@ -1,0 +1,134 @@
+/* Основной контейнер */
+.Trades_Two_way_gleague-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Горизонтальное расположение колонок */
+.Trades_Two_way_gleague-columns {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+/* Каждая колонка */
+.Trades_Two_way_gleague-column {
+  flex: 1;
+  min-width: 250px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок колонки */
+.Trades_Two_way_gleague-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 8px;
+}
+
+/* Список игроков */
+.Trades_Two_way_gleague-player-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Элемент списка */
+.Trades_Two_way_gleague-player-item {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.2s;
+}
+
+.Trades_Two_way_gleague-player-item:hover {
+  background: #e9ecef;
+}
+
+.Trades_Two_way_gleague-player-item label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.Trades_Two_way_gleague-player-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Сообщение, если игроков нет */
+.Trades_Two_way_gleague-empty {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  padding: 20px;
+}
+
+/* Блок с кнопками */
+.Trades_Two_way_gleague-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Общие стили для кнопок */
+.Trades_Two_way_gleague-button {
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+.Trades_Two_way_gleague-button:hover {
+  transform: translateY(-1px);
+}
+
+.Trades_Two_way_gleague-button:active {
+  transform: translateY(1px);
+}
+
+/* Специфичные стили */
+.Trades_Two_way_gleague-button-back {
+  background-color: #6c757d;
+  color: white;
+}
+
+.Trades_Two_way_gleague-button-back:hover {
+  background-color: #5a6268;
+}
+
+.Trades_Two_way_gleague-button-next {
+  background-color: #007bff;
+  color: white;
+}
+
+.Trades_Two_way_gleague-button-next:hover {
+  background-color: #0056b3;
+}
+
+/* Стиль для загрузки */
+.Trades_Two_way_gleague-loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #007bff;
+}

@@ -1,0 +1,418 @@
+/* Кнопка "Cash" — стиль как у pb-select-pick-button */
+.cb-button {
+  background-color: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 30px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.cb-button:hover {
+  background-color: #f5f5f5;
+  border-color: #b0b0b0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cb-button:active {
+  background-color: #e8e8e8;
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Модальное окно — стиль как у pb-modal-overlay и pb-modal-content */
+.cb-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: cb-fade-in 0.3s ease;
+}
+
+.cb-modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: cb-slide-up 0.3s ease;
+}
+
+.cb-modal-title {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.cb-modal-text {
+  margin: 0 0 20px 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.cb-close-btn {
+  background: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 16px;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.cb-close-btn:hover {
+  background: #d9d9d9;
+}
+
+/* Анимации (как в PicksBody) */
+@keyframes cb-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cb-slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Стили для выпадающего списка команд */
+.cb-team-selector {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.cb-dropdown-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.cb-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  margin-top: 4px;
+}
+
+.cb-search-input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.cb-teams-list {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.cb-team-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.cb-team-item:hover {
+  background-color: #f5f5f5;
+}
+
+.cb-team-item input {
+  margin-right: 8px;
+}
+
+.cb-no-teams {
+  padding: 12px;
+  text-align: center;
+  color: #999;
+}
+
+.cb-dropdown-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-top: 1px solid #eee;
+}
+
+.cb-clear-btn,
+.cb-apply-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cb-clear-btn {
+  background-color: #f0f0f0;
+}
+
+.cb-apply-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.cb-selected-teams {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.cb-selected-teams h3 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.cb-cash-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.cb-cash-list li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cb-total-cash {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+  text-align: right;
+}
+
+.cb-edit-container {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.cb-edit-input {
+  width: 80px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cb-save-btn,
+.cb-cancel-edit-btn {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cb-save-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.cb-cancel-edit-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cb-edit-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 8px;
+  padding: 0;
+}
+
+.cb-edit-icon:hover {
+  opacity: 0.7;
+}
+
+/* Контейнер для двух кнопок (Прибавить / Убавить) */
+.cb-operation-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Стиль для текущей суммы в режиме редактирования */
+.cb-current-cash {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+/* Если нужно, можно задать ширину поля ввода */
+.cb-edit-input {
+  width: 120px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Убедимся, что кнопка "Отмена" не дублирует красный цвет, если используем .cb-cancel-edit-btn */
+.cb-cancel-edit-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cb-cancel-edit-btn:hover {
+  background-color: #c82333;
+}
+
+/* Зелёная кнопка "Прибавить" через .cb-save-btn */
+.cb-save-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.cb-save-btn:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 250px) {
+  /* Главная кнопка */
+  .cb-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* Модальное окно */
+  .cb-modal-content {
+    padding: 16px;
+    width: 95%;
+    max-width: 95%;
+  }
+
+  .cb-modal-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .cb-modal-text {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  /* Выпадающий список */
+  .cb-dropdown-button {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .cb-search-input {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .cb-team-item {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .cb-dropdown-actions {
+    padding: 6px;
+  }
+
+  .cb-clear-btn,
+  .cb-apply-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  /* Список выбранных команд */
+  .cb-selected-teams {
+    margin: 12px 0;
+    padding: 10px;
+  }
+
+  .cb-selected-teams h3 {
+    font-size: 14px;
+  }
+
+  .cb-cash-list li {
+    padding: 6px 0;
+  }
+
+  .cb-team-name {
+    font-size: 12px;
+  }
+
+  /* Редактирование суммы */
+  .cb-edit-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .cb-edit-input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .cb-operation-buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cb-operation-buttons button,
+  .cb-cancel-edit-btn {
+    width: 100%;
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .cb-current-cash {
+    font-size: 11px;
+  }
+
+  /* Кнопка закрытия модалки */
+  .cb-close-btn {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  /* Иконка редактирования */
+  .cb-edit-icon {
+    font-size: 12px;
+    margin-left: 4px;
+  }
+}

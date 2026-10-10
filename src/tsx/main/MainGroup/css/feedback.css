@@ -1,0 +1,144 @@
+/* feedback.css - Стили контекстного меню обратной связи */
+.feedback-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(158, 163, 176, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.feedback-menu {
+  background-color: #fff5e3;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(166, 171, 181, 0.2);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.feedback-menu h3 {
+  margin: 0 0 20px 0;
+  color: #bdbaab;
+  font-size: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #bdbaab;
+  padding-bottom: 10px;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #9ea3b0;
+  font-size: 0.9rem;
+}
+
+.form-input-feedback,
+.form-textarea-feedback {
+  padding: 10px 12px;
+  border: 2px solid #bdbaab;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff5e3;
+  color: #9ea3b0;
+  transition: border-color 0.3s;
+}
+
+.form-input-feedback:focus,
+.form-textarea-feedback:focus {
+  outline: none;
+  border-color: #a6abb5;
+}
+
+.form-input-feedback::placeholder,
+.form-textarea-feedback::placeholder {
+  color: #bdbaab;
+}
+
+.form-textarea-feedback {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.feedback-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.save-btn,
+.close-btn {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.save-btn {
+  background-color: #a6abb5;
+  color: #fff5e3;
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: #9ea3b0;
+}
+
+.save-btn:disabled {
+  background-color: #bdbaab;
+  cursor: not-allowed;
+}
+
+.close-btn {
+  background-color: #bdbaab;
+  color: #fff5e3;
+}
+
+.close-btn:hover:not(:disabled) {
+  background-color: #9ea3b0;
+}
+
+.close-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit-message {
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  animation: slideIn 0.3s ease-out;
+}
+
+.submit-message.success {
+  background-color: #bdbaab;
+  color: #fff5e3;
+  border: 1px solid #a6abb5;
+}
+
+.submit-message.error {
+  background-color: #a6abb5;
+  color: #fff5e3;
+  border: 1px solid #9ea3b0;
+}

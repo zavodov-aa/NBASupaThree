@@ -1,11 +1,13 @@
 import React from "react";
-import LogsHeader from "./LogsHeader";
+import LogsHeader from "./archive/LogsHeader";
 import Logs from "./logs";
+import PlayerOptionHeader from "../../market/playerOption/playerOptionAdmin/PlayerOptionHeader";
 
 const LogsMain = () => {
   return (
     <div>
-      <LogsHeader />
+      {/* <LogsHeader /> */}
+      <PlayerOptionHeader />
       <Logs />
     </div>
   );

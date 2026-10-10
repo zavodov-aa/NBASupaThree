@@ -1,0 +1,14 @@
+/* main.css - Основные стили */
+.main {
+  overflow-x: hidden;
+  min-width: 240px;
+  color: #fff5e3;
+  min-height: 100vh;
+  background: #bdbaab;
+}
+
+.body {
+  padding: 30px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}

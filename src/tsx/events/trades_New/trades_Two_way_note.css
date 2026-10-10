@@ -1,0 +1,103 @@
+/* Основной контейнер */
+.Trades_Two_way_note-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Заголовок */
+.Trades_Two_way_note-title {
+  font-size: 1.4rem;
+  color: #007bff;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+/* Секция с полем ввода */
+.Trades_Two_way_note-section {
+  margin-bottom: 20px;
+}
+
+/* Лейбл */
+.Trades_Two_way_note-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 1rem;
+}
+
+/* Текстовое поле */
+.Trades_Two_way_note-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.Trades_Two_way_note-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Блок с кнопками */
+.Trades_Two_way_note-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Общие стили для кнопок */
+.Trades_Two_way_note-button {
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+.Trades_Two_way_note-button:hover {
+  transform: translateY(-1px);
+}
+
+.Trades_Two_way_note-button:active {
+  transform: translateY(1px);
+}
+
+/* Кнопка "Назад" */
+.Trades_Two_way_note-button-back {
+  background-color: #6c757d;
+  color: white;
+}
+
+.Trades_Two_way_note-button-back:hover {
+  background-color: #5a6268;
+}
+
+/* Кнопка "Подтвердить трейд" */
+.Trades_Two_way_note-button-submit {
+  background-color: #007bff;
+  color: white;
+}
+
+.Trades_Two_way_note-button-submit:hover {
+  background-color: #0056b3;
+}

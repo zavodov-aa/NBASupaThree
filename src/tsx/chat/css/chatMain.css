@@ -1,0 +1,13 @@
+/* ============================================================
+   ChatMain — точка входа. Сами стили разнесены по файлам.
+   ============================================================ */
+
+@import "./chat.layout.css";
+@import "./chat.sidebar.css";
+@import "./chat.view.css";
+@import "./chat.message.css";
+@import "./chat.message.menu.css";
+@import "./chat.message.forwarded.css";
+@import "./chat.input.css";
+@import "./chat.picker.css";
+@import "./chat.responsive.css";

@@ -1,74 +1,334 @@
-import React from "react";
+// import React, { ComponentType } from "react";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "./tsx/main/Main";
-import Lakers from "./tsx/team/lakers/Lakers";
-import HeadInfoAgentControlCenter from "./tsx/agentControlCenter/HeadInfoAgentControlCenter";
-// import PlayersRosterAgentControlCenter from "./tsx/agentControlCenter/PlayersRosterAgentControlCenter";
-import DeadCapRosterAgentControl from "./tsx/agentControlCenter/DeadCapRosterAgentControl";
-import Hawks from "./tsx/team/hawks/Hawks";
-import Celtics from "./tsx/team/celtics/Celtics";
-import Nets from "./tsx/team/nets/Nets";
-import Hornets from "./tsx/team/hornets/Hornets";
-import Bulls from "./tsx/team/bulls/Bulls";
-import Cavalers from "./tsx/team/cavalers/Cavaliers";
-import Mavericks from "./tsx/team/mavericks/Mavericks";
-import Nuggets from "./tsx/team/nuggets/Nuggets";
-import Pistons from "./tsx/team/pistons/Pistons";
-import Warriors from "./tsx/team/warriors/Warriors";
-import Rockets from "./tsx/team/rockets/Rockets";
-import Pacers from "./tsx/team/pacers/Pacers";
-import Clippers from "./tsx/team/clippers/Clippers";
-import Grizzlies from "./tsx/team/grizzlies/Grizzlies";
-import Heat from "./tsx/team/heat/Heat";
-import Bucks from "./tsx/team/bucks/Bucks";
-import Timberwolves from "./tsx/team/timberwolves/Timberwolves";
-import Pelicans from "./tsx/team/pelicans/Pelicans";
-import Knicks from "./tsx/team/knicks/Knicks";
-import Thunder from "./tsx/team/thunder/Thunder";
-import Magic from "./tsx/team/magic/Magic";
-import Sevsix from "./tsx/team/76ers/Sevsix";
-import Suns from "./tsx/team/suns/Suns";
-import Blazers from "./tsx/team/blazers/Blazers";
-import Kings from "./tsx/team/kings/Kings";
-import Spurs from "./tsx/team/spurs/Spurs";
-import Raptors from "./tsx/team/raptors/Raptors";
-import Jazz from "./tsx/team/jazz/Jazz";
-import Wizards from "./tsx/team/wizards/Wizards";
-import Logs from "./tsx/agentControlCenter/logs/logs";
+// // pages
+// import NotFound from "./tsx/pagesZero/NotFound";
+// import Forbidden from "./tsx/pagesZero/Forbidden";
+
+// // main
+// import MainN from "./tsx/main/MainGroup/MainN";
+
+// // agent control center
+// import LogsMain from "./tsx/agentControlCenter/logs/LogsMain";
+// import Penalties from "./tsx/agentControlCenter/penalties/Penalties";
+// import PlayerConsoleAdminMain from "./tsx/agentControlCenter/playerConsole/PlayerConsoleAdminMain";
+// import PicksMain from "./tsx/agentControlCenter/picks/PicksMain";
+// import HeadAdminConsoleMain from "./tsx/agentControlCenter/headConsole/HeadAdminConsoleMain";
+
+// // events
+// import MainTournament from "./tsx/events/tournament/MainTournament";
+// import TradesAll from "./tsx/events/trades/TreadesAllHeader/TradesAll";
+// import DraftLotteryMain from "./tsx/events/draftLottery/DraftLotteryMain";
+
+// // market — admin
+// import PlayerOptionMain from "./tsx/market/playerOption/playerOptionAdmin/PlayerOptionMain";
+// import TeamOptionAdminMain from "./tsx/market/teamOption/teamOptionAdmin/TeamOptionAdminMain";
+// import RFAAdminMain from "./tsx/market/rfa/rfaAdmin/RFAAdminMain";
+// import UFAAdminFirstRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminFirstRound/UFAAdminFirstRoundMain";
+// import UFAAdminSecondRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminSecondRound/UFAAdminSecondRoundMain";
+// import UFAAdminThirdRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminThirdRound/UFAAdminThirdRoundMain";
+
+// // market — user
+// import PlayerOptionUserMain from "./tsx/market/playerOption/playerOptionUser/PlayerOptionUserMain";
+// import TeamOptionUserMain from "./tsx/market/teamOption/teamOptionUser/TeamOptionUserMain";
+// import RFAUserFirstRoundMain from "./tsx/market/rfa/rfaUser/RFAUserFirstRoundFull/RFAUserMain";
+// import RFAUserSecondMain from "./tsx/market/rfa/rfaUser/RFAUserSecondRoundFull/RFAUserSecondMain";
+// import RFAUserResultMain from "./tsx/market/rfa/rfaUser/rfaUserResult/RFAUserResultMain";
+// import UFAUFRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundFirstStage/UFAUFRFirstStageMain";
+// import UFAUFRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundSecondStage/UFAUFRSecondStageMain";
+// import UFAUserFirstRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRoundResult/UFAUserFirstRoundResultMain";
+// import UFAUSRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundFirstStage/UFAUSRFirstStageMain";
+// import UFAUSRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundSecondStage/UFAUSRSecondStageMain";
+// import UFAUserSecondRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRoundResult/UFAUserSecondRoundResultMain";
+// import UFAUTRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundFirstStage/UFAUTRFirstStageMain";
+// import UFAUTRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundSecondStage/UFAUTRSecondStageMain";
+// import UFAUserThirdRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRoundResult/UFAUserThirdRoundResultMain";
+
+// // teams
+// import HawksMain from "./tsx/team_new/hawks/HawksMain";
+// import CelticsMain from "./tsx/team_new/celtics/CelticsMain";
+// import NetsMain from "./tsx/team_new/nets/NetsMain";
+// import HornetsMain from "./tsx/team_new/hornets/HornetsMain";
+// import BullsMain from "./tsx/team_new/bulls/BullsMain";
+// import CavaliersMain from "./tsx/team_new/cavaliers/CavaliersMain";
+// import MavericksMain from "./tsx/team_new/mavericks/MavericksMain";
+// import NuggetsMain from "./tsx/team_new/nuggets/NuggetsMain";
+// import PistonsMain from "./tsx/team_new/pistons/PistonsMain";
+// import WarriorsMain from "./tsx/team_new/warriors/WarriorsMain";
+// import RocketsMain from "./tsx/team_new/rockets/RocketsMain";
+// import PacersMain from "./tsx/team_new/pacers/PacersMain";
+// import ClippersMain from "./tsx/team_new/clippers/ClippersMain";
+// import LakersMain from "./tsx/team_new/lakers/LakersMain";
+// import GrizzliesMain from "./tsx/team_new/grizzlies/GrizzliesMain";
+// import HeatMain from "./tsx/team_new/heat/HeatMain";
+// import BucksMain from "./tsx/team_new/bucks/BucksMain";
+// import TimberwolvesMain from "./tsx/team_new/timberwolves/TimberwolvesMain";
+// import PelicansMain from "./tsx/team_new/pelicans/PelicansMain";
+// import KnicksMain from "./tsx/team_new/knicks/KnicksMain";
+// import ThunderMain from "./tsx/team_new/thunder/ThunderMain";
+// import MagicMain from "./tsx/team_new/magic/MagicMain";
+// import SevsixMain from "./tsx/team_new/sevsix/SevsixMain";
+// import SunsMain from "./tsx/team_new/suns/SunsMain";
+// import BlazersMain from "./tsx/team_new/blazers/BlazersMain";
+// import KingsMain from "./tsx/team_new/kings/KingsMain";
+// import RaptorsMain from "./tsx/team_new/raptors/RaptorsMain";
+// import JazzMain from "./tsx/team_new/jazz/JazzMain";
+// import WizardsMain from "./tsx/team_new/wizards/WizardsMain";
+// import SpursMain from "./tsx/team_new/spurs/SpursMain";
+
+// // auth
+
+// import { AuthProvider } from "./tsx/authorization/AuthContext";
+// import { AuthModalProvider } from "./tsx/authorization/AuthModalContext";
+// import ProtectedRoute from "./tsx/authorization/ProtectedRoute";
+// import AuthModal from "./tsx/authorization/AuthModal";
+
+// // chat
+// import ChatMain from "./tsx/chat/ChatMain";
+
+// /* ------------------------------------------------------------------ */
+// /*  Teams                                                             */
+// /* ------------------------------------------------------------------ */
+
+// type RouteItem = {
+//   path: string;
+//   Component: ComponentType;
+//   roles?: string[];
+// };
+
+// const TEAM_ROUTES: RouteItem[] = [
+//   { path: "/hawksMain", Component: HawksMain },
+//   { path: "/celticsMain", Component: CelticsMain },
+//   { path: "/netsMain", Component: NetsMain },
+//   { path: "/hornetsMain", Component: HornetsMain },
+//   { path: "/bullsMain", Component: BullsMain },
+//   { path: "/cavaliersMain", Component: CavaliersMain },
+//   { path: "/mavericksMain", Component: MavericksMain },
+//   { path: "/nuggetsMain", Component: NuggetsMain },
+//   { path: "/pistonsMain", Component: PistonsMain },
+//   { path: "/warriorsMain", Component: WarriorsMain },
+//   { path: "/rocketsMain", Component: RocketsMain },
+//   { path: "/pacersMain", Component: PacersMain },
+//   { path: "/clippersMain", Component: ClippersMain },
+//   { path: "/lakersMain", Component: LakersMain },
+//   { path: "/grizzliesMain", Component: GrizzliesMain },
+//   { path: "/heatMain", Component: HeatMain },
+//   { path: "/bucksMain", Component: BucksMain },
+//   { path: "/timberwolvesMain", Component: TimberwolvesMain },
+//   { path: "/pelicansMain", Component: PelicansMain },
+//   { path: "/knicksMain", Component: KnicksMain },
+//   { path: "/thunderMain", Component: ThunderMain },
+//   { path: "/magicMain", Component: MagicMain },
+//   { path: "/sevsixMain", Component: SevsixMain },
+//   { path: "/sunsMain", Component: SunsMain },
+//   { path: "/blazersMain", Component: BlazersMain },
+//   { path: "/kingsMain", Component: KingsMain },
+//   { path: "/spursMain", Component: SpursMain },
+//   { path: "/raptorsMain", Component: RaptorsMain },
+//   { path: "/jazzMain", Component: JazzMain },
+//   { path: "/wizardsMain", Component: WizardsMain },
+// ];
+
+// /* ------------------------------------------------------------------ */
+// /*  Admin routes                                                      */
+// /* ------------------------------------------------------------------ */
+
+// const ADMIN_ROUTES: RouteItem[] = [
+//   {
+//     path: "/headAdminConsoleMain",
+//     Component: HeadAdminConsoleMain,
+//     roles: ["admin", "user"],
+//   },
+//   {
+//     path: "/playerConsoleAdminMain",
+//     Component: PlayerConsoleAdminMain,
+//     roles: ["admin", "user"],
+//   },
+
+//   { path: "/picksMain", Component: PicksMain, roles: ["admin", "user"] },
+//   { path: "/logs", Component: LogsMain },
+//   { path: "/penalties", Component: Penalties },
+//   { path: "/playerOptionMain", Component: PlayerOptionMain },
+//   { path: "/teamOptionMain", Component: TeamOptionAdminMain },
+//   { path: "/rfaAdminMain", Component: RFAAdminMain },
+//   { path: "/ufaAdminFirstRoundMain", Component: UFAAdminFirstRoundMain },
+//   { path: "/ufaAdminSecondRoundMain", Component: UFAAdminSecondRoundMain },
+//   { path: "/ufaAdminThirdRoundMain", Component: UFAAdminThirdRoundMain },
+// ];
+
+// /* ------------------------------------------------------------------ */
+// /*  User market routes                                                */
+// /* ------------------------------------------------------------------ */
+
+// const USER_MARKET_ROUTES: RouteItem[] = [
+//   { path: "/playerOptionUserMain", Component: PlayerOptionUserMain },
+//   { path: "/teamOptionUserMain", Component: TeamOptionUserMain },
+//   { path: "/rfaUserFirstRoundMain", Component: RFAUserFirstRoundMain },
+//   { path: "/rfaUserSecondMain", Component: RFAUserSecondMain },
+//   { path: "/rfaUserResultMain", Component: RFAUserResultMain },
+//   { path: "/ufaufrFirstStageMain", Component: UFAUFRFirstStageMain },
+//   { path: "/ufaufrSecondStageMain", Component: UFAUFRSecondStageMain },
+//   {
+//     path: "/ufaUserFirstRoundResultMain",
+//     Component: UFAUserFirstRoundResultMain,
+//   },
+//   { path: "/ufaUSRFirstStageMain", Component: UFAUSRFirstStageMain },
+//   { path: "/ufaUSRSecondStageMain", Component: UFAUSRSecondStageMain },
+//   {
+//     path: "/ufaUserSecondRoundResultMain",
+//     Component: UFAUserSecondRoundResultMain,
+//   },
+//   { path: "/ufaUTRFirstStageMain", Component: UFAUTRFirstStageMain },
+//   { path: "/ufaUTRSecondStageMain", Component: UFAUTRSecondStageMain },
+//   {
+//     path: "/ufaUserThirdRoundResultMain",
+//     Component: UFAUserThirdRoundResultMain,
+//   },
+// ];
+
+// /* ------------------------------------------------------------------ */
+// /*  Generic / events routes                                           */
+// /* ------------------------------------------------------------------ */
+
+// const COMMON_ROUTES: RouteItem[] = [
+//   { path: "/maintournament", Component: MainTournament },
+//   { path: "/tradesAll", Component: TradesAll },
+//   { path: "/draftLotteryMain", Component: DraftLotteryMain },
+// ];
+
+// // ------------------------------------------------------------------------
+// // chat
+// // ----------------------------------------------------------------------------
+
+// // новая группа роутов chat
+
+// const CHAT_ROUTES: RouteItem[] = [
+//   {
+//     path: "/chat",
+//     Component: ChatMain,
+//     roles: ["admin", "user"],
+//   },
+//   {
+//     path: "/chat/:channelId",
+//     Component: ChatMain,
+//     roles: ["admin", "user"],
+//   },
+// ];
+
+// /* ------------------------------------------------------------------ */
+// /*  Helper                                                            */
+// /* ------------------------------------------------------------------ */
+
+// function renderRoutes(routes: RouteItem[]) {
+//   return routes.map(({ path, Component, roles }) => (
+//     <Route
+//       key={path}
+//       path={path}
+//       element={
+//         roles ? (
+//           <ProtectedRoute roles={roles}>
+//             <Component />
+//           </ProtectedRoute>
+//         ) : (
+//           <Component />
+//         )
+//       }
+//     />
+//   ));
+// }
+
+// /* ------------------------------------------------------------------ */
+// /*  Router                                                            */
+// /* ------------------------------------------------------------------ */
+
+// function Routing() {
+//   return (
+//     <AuthProvider>
+//       <AuthModalProvider>
+//         <BrowserRouter>
+//           <Routes>
+//             {/* main */}
+//             <Route path="/" element={<MainN />} />
+
+//             {/* teams */}
+//             {renderRoutes(TEAM_ROUTES)}
+
+//             {/* admin */}
+//             {renderRoutes(ADMIN_ROUTES)}
+
+//             {/* user market */}
+//             {renderRoutes(USER_MARKET_ROUTES)}
+
+//             {/* common */}
+//             {renderRoutes(COMMON_ROUTES)}
+
+//             {/* chat */}
+//             {renderRoutes(CHAT_ROUTES)}
+
+//             {/* errors */}
+//             <Route path="/403" element={<Forbidden />} />
+//             <Route path="*" element={<NotFound />} />
+//           </Routes>
+//         </BrowserRouter>
+//         <AuthModal />
+//       </AuthModalProvider>
+//     </AuthProvider>
+//   );
+// }
+
+// export default Routing;
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+import React, { ComponentType } from "react";
+// ✅ ИЗМЕНЕНО: BrowserRouter → HashRouter
+// ❌ БЫЛО: import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
+
+// pages
+import NotFound from "./tsx/pagesZero/NotFound";
+import Forbidden from "./tsx/pagesZero/Forbidden";
+
+// main
+import MainN from "./tsx/main/MainGroup/MainN";
+
+// agent control center
 import LogsMain from "./tsx/agentControlCenter/logs/LogsMain";
-import MainTournament from "./tsx/events/tournament/MainTournament";
 import Penalties from "./tsx/agentControlCenter/penalties/Penalties";
-// import PlayersRosterAgentControlCenterFix from "./tsx/agentControlCenter/PlayersRosterAgentControlCenterFix";
-import PlayersRosterAgentControlCenterFixTwo from "./tsx/agentControlCenter/PlayersRosterAgentControlCenterFixTwo";
-import PlayersRosterAgentControlCenterFix from "./tsx/agentControlCenter/PlayersRosterAgentControlCenterFix";
-import PlayersRosterAgentControlCenterFixThreeArchive from "./tsx/agentControlCenter/PlayersRosterAgentControlCenterFixThreeArchive";
+import PlayerConsoleAdminMain from "./tsx/agentControlCenter/playerConsole/PlayerConsoleAdminMain";
+import PicksMain from "./tsx/agentControlCenter/picks/PicksMain";
+import HeadAdminConsoleMain from "./tsx/agentControlCenter/headConsole/HeadAdminConsoleMain";
+
+// events
+import MainTournament from "./tsx/events/tournament/MainTournament";
 import TradesAll from "./tsx/events/trades/TreadesAllHeader/TradesAll";
-import PlayerOption from "./tsx/market/playerOption/playerOptionAdmin/PlayerOption";
+import DraftLotteryMain from "./tsx/events/draftLottery/DraftLotteryMain";
+
+// market — admin
 import PlayerOptionMain from "./tsx/market/playerOption/playerOptionAdmin/PlayerOptionMain";
-import PlayerOptionUserMain from "./tsx/market/playerOption/playerOptionUser/PlayerOptionUserMain";
-import TeamOptionUser from "./tsx/market/teamOption/teamOptionUser/TeamOptionUser";
-import TeamOptionUserMain from "./tsx/market/teamOption/teamOptionUser/TeamOptionUserMain";
 import TeamOptionAdminMain from "./tsx/market/teamOption/teamOptionAdmin/TeamOptionAdminMain";
-import RFAUserFirstRoundMain from "./tsx/market/rfa/rfaUser/RFAUserFirstRoundFull/RFAUserMain";
 import RFAAdminMain from "./tsx/market/rfa/rfaAdmin/RFAAdminMain";
-import RFAUserResultMain from "./tsx/market/rfa/rfaUser/rfaUserResult/RFAUserResultMain";
+import UFAAdminFirstRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminFirstRound/UFAAdminFirstRoundMain";
+import UFAAdminSecondRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminSecondRound/UFAAdminSecondRoundMain";
+import UFAAdminThirdRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminThirdRound/UFAAdminThirdRoundMain";
+
+// market — user
+import PlayerOptionUserMain from "./tsx/market/playerOption/playerOptionUser/PlayerOptionUserMain";
+import TeamOptionUserMain from "./tsx/market/teamOption/teamOptionUser/TeamOptionUserMain";
+import RFAUserFirstRoundMain from "./tsx/market/rfa/rfaUser/RFAUserFirstRoundFull/RFAUserMain";
 import RFAUserSecondMain from "./tsx/market/rfa/rfaUser/RFAUserSecondRoundFull/RFAUserSecondMain";
+import RFAUserResultMain from "./tsx/market/rfa/rfaUser/rfaUserResult/RFAUserResultMain";
 import UFAUFRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundFirstStage/UFAUFRFirstStageMain";
 import UFAUFRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundSecondStage/UFAUFRSecondStageMain";
-import UFAAdminFirstRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminFirstRound/UFAAdminFirstRoundMain";
 import UFAUserFirstRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRoundResult/UFAUserFirstRoundResultMain";
 import UFAUSRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundFirstStage/UFAUSRFirstStageMain";
 import UFAUSRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundSecondStage/UFAUSRSecondStageMain";
-import UFAAdminSecondRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminSecondRound/UFAAdminSecondRoundMain";
 import UFAUserSecondRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRoundResult/UFAUserSecondRoundResultMain";
 import UFAUTRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundFirstStage/UFAUTRFirstStageMain";
 import UFAUTRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundSecondStage/UFAUTRSecondStageMain";
-import UFAAdminThirdRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminThirdRound/UFAAdminThirdRoundMain";
 import UFAUserThirdRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRoundResult/UFAUserThirdRoundResultMain";
-import DraftLotteryMain from "./tsx/events/draftLottery/DraftLotteryMain";
-import PlayerConsoleAdminMain from "./tsx/agentControlCenter/playerConsole/PlayerConsoleAdminMain";
-import PicksMain from "./tsx/agentControlCenter/picks/PicksMain";
+
+// teams
 import HawksMain from "./tsx/team_new/hawks/HawksMain";
 import CelticsMain from "./tsx/team_new/celtics/CelticsMain";
 import NetsMain from "./tsx/team_new/nets/NetsMain";
@@ -95,184 +355,218 @@ import SevsixMain from "./tsx/team_new/sevsix/SevsixMain";
 import SunsMain from "./tsx/team_new/suns/SunsMain";
 import BlazersMain from "./tsx/team_new/blazers/BlazersMain";
 import KingsMain from "./tsx/team_new/kings/KingsMain";
-import SpursMan from "./tsx/team_new/spurs/SpursMain";
 import RaptorsMain from "./tsx/team_new/raptors/RaptorsMain";
 import JazzMain from "./tsx/team_new/jazz/JazzMain";
 import WizardsMain from "./tsx/team_new/wizards/WizardsMain";
+import SpursMain from "./tsx/team_new/spurs/SpursMain";
 
-// import TradesMain from "./tsx/events/trades/TreadesAllHeader/TradesMain";
+// auth
+
+import { AuthProvider } from "./tsx/authorization/AuthContext";
+import { AuthModalProvider } from "./tsx/authorization/AuthModalContext";
+import ProtectedRoute from "./tsx/authorization/ProtectedRoute";
+import AuthModal from "./tsx/authorization/AuthModal";
+
+// chat
+import ChatMain from "./tsx/chat/ChatMain";
+
+/* ------------------------------------------------------------------ */
+/*  Types                                                             */
+/* ------------------------------------------------------------------ */
+
+type RouteItem = {
+  path: string;
+  Component: ComponentType;
+  roles?: string[];
+};
+
+/* ------------------------------------------------------------------ */
+/*  Teams                                                             */
+/* ------------------------------------------------------------------ */
+
+const TEAM_ROUTES: RouteItem[] = [
+  { path: "/hawksMain", Component: HawksMain },
+  { path: "/celticsMain", Component: CelticsMain },
+  { path: "/netsMain", Component: NetsMain },
+  { path: "/hornetsMain", Component: HornetsMain },
+  { path: "/bullsMain", Component: BullsMain },
+  { path: "/cavaliersMain", Component: CavaliersMain },
+  { path: "/mavericksMain", Component: MavericksMain },
+  { path: "/nuggetsMain", Component: NuggetsMain },
+  { path: "/pistonsMain", Component: PistonsMain },
+  { path: "/warriorsMain", Component: WarriorsMain },
+  { path: "/rocketsMain", Component: RocketsMain },
+  { path: "/pacersMain", Component: PacersMain },
+  { path: "/clippersMain", Component: ClippersMain },
+  { path: "/lakersMain", Component: LakersMain },
+  { path: "/grizzliesMain", Component: GrizzliesMain },
+  { path: "/heatMain", Component: HeatMain },
+  { path: "/bucksMain", Component: BucksMain },
+  { path: "/timberwolvesMain", Component: TimberwolvesMain },
+  { path: "/pelicansMain", Component: PelicansMain },
+  { path: "/knicksMain", Component: KnicksMain },
+  { path: "/thunderMain", Component: ThunderMain },
+  { path: "/magicMain", Component: MagicMain },
+  { path: "/sevsixMain", Component: SevsixMain },
+  { path: "/sunsMain", Component: SunsMain },
+  { path: "/blazersMain", Component: BlazersMain },
+  { path: "/kingsMain", Component: KingsMain },
+  { path: "/spursMain", Component: SpursMain },
+  { path: "/raptorsMain", Component: RaptorsMain },
+  { path: "/jazzMain", Component: JazzMain },
+  { path: "/wizardsMain", Component: WizardsMain },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Admin routes                                                      */
+/* ------------------------------------------------------------------ */
+
+const ADMIN_ROUTES: RouteItem[] = [
+  {
+    path: "/headAdminConsoleMain",
+    Component: HeadAdminConsoleMain,
+    roles: ["admin", "user"],
+  },
+  {
+    path: "/playerConsoleAdminMain",
+    Component: PlayerConsoleAdminMain,
+    roles: ["admin", "user"],
+  },
+
+  { path: "/picksMain", Component: PicksMain, roles: ["admin", "user"] },
+  { path: "/logs", Component: LogsMain },
+  { path: "/penalties", Component: Penalties },
+  { path: "/playerOptionMain", Component: PlayerOptionMain },
+  { path: "/teamOptionMain", Component: TeamOptionAdminMain },
+  { path: "/rfaAdminMain", Component: RFAAdminMain },
+  { path: "/ufaAdminFirstRoundMain", Component: UFAAdminFirstRoundMain },
+  { path: "/ufaAdminSecondRoundMain", Component: UFAAdminSecondRoundMain },
+  { path: "/ufaAdminThirdRoundMain", Component: UFAAdminThirdRoundMain },
+];
+
+/* ------------------------------------------------------------------ */
+/*  User market routes                                                */
+/* ------------------------------------------------------------------ */
+
+const USER_MARKET_ROUTES: RouteItem[] = [
+  { path: "/playerOptionUserMain", Component: PlayerOptionUserMain },
+  { path: "/teamOptionUserMain", Component: TeamOptionUserMain },
+  { path: "/rfaUserFirstRoundMain", Component: RFAUserFirstRoundMain },
+  { path: "/rfaUserSecondMain", Component: RFAUserSecondMain },
+  { path: "/rfaUserResultMain", Component: RFAUserResultMain },
+  { path: "/ufaufrFirstStageMain", Component: UFAUFRFirstStageMain },
+  { path: "/ufaufrSecondStageMain", Component: UFAUFRSecondStageMain },
+  {
+    path: "/ufaUserFirstRoundResultMain",
+    Component: UFAUserFirstRoundResultMain,
+  },
+  { path: "/ufaUSRFirstStageMain", Component: UFAUSRFirstStageMain },
+  { path: "/ufaUSRSecondStageMain", Component: UFAUSRSecondStageMain },
+  {
+    path: "/ufaUserSecondRoundResultMain",
+    Component: UFAUserSecondRoundResultMain,
+  },
+  { path: "/ufaUTRFirstStageMain", Component: UFAUTRFirstStageMain },
+  { path: "/ufaUTRSecondStageMain", Component: UFAUTRSecondStageMain },
+  {
+    path: "/ufaUserThirdRoundResultMain",
+    Component: UFAUserThirdRoundResultMain,
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Generic / events routes                                           */
+/* ------------------------------------------------------------------ */
+
+const COMMON_ROUTES: RouteItem[] = [
+  { path: "/maintournament", Component: MainTournament },
+  { path: "/tradesAll", Component: TradesAll },
+  { path: "/draftLotteryMain", Component: DraftLotteryMain },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Chat routes                                                       */
+/* ------------------------------------------------------------------ */
+
+// ✅ ИЗМЕНЕНО: /chat → /talk (InfinityFree блокирует URL со словом "chat" → 403)
+// ❌ БЫЛО:
+// const CHAT_ROUTES: RouteItem[] = [
+//   { path: "/chat", Component: ChatMain, roles: ["admin", "user"] },
+//   { path: "/chat/:channelId", Component: ChatMain, roles: ["admin", "user"] },
+// ];
+const CHAT_ROUTES: RouteItem[] = [
+  {
+    path: "/talk",
+    Component: ChatMain,
+    roles: ["admin", "user"],
+  },
+  {
+    path: "/talk/:channelId",
+    Component: ChatMain,
+    roles: ["admin", "user"],
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Helper                                                            */
+/* ------------------------------------------------------------------ */
+
+function renderRoutes(routes: RouteItem[]) {
+  return routes.map(({ path, Component, roles }) => (
+    <Route
+      key={path}
+      path={path}
+      element={
+        roles ? (
+          <ProtectedRoute roles={roles}>
+            <Component />
+          </ProtectedRoute>
+        ) : (
+          <Component />
+        )
+      }
+    />
+  ));
+}
+
+/* ------------------------------------------------------------------ */
+/*  Router                                                            */
+/* ------------------------------------------------------------------ */
 
 function Routing() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />} />
+    <AuthProvider>
+      <AuthModalProvider>
+        {/* ✅ ИЗМЕНЕНО: BrowserRouter → HashRouter */}
+        {/* ❌ БЫЛО: <BrowserRouter> ... </BrowserRouter> */}
+        <HashRouter>
+          <Routes>
+            {/* main */}
+            <Route path="/" element={<MainN />} />
 
-        {/* team  */}
-        <Route path="/hawks" element={<Hawks />} />
-        <Route path="/celtics" element={<Celtics />} />
-        <Route path="/nets" element={<Nets />} />
-        <Route path="/hornets" element={<Hornets />} />
-        <Route path="/bulls" element={<Bulls />} />
-        <Route path="/cavalers" element={<Cavalers />} />
-        <Route path="/mavericks" element={<Mavericks />} />
-        <Route path="/nuggets" element={<Nuggets />} />
-        <Route path="/pistons" element={<Pistons />} />
-        <Route path="/warriors" element={<Warriors />} />
-        <Route path="/rockets" element={<Rockets />} />
-        <Route path="/pacers" element={<Pacers />} />
-        <Route path="/clippers" element={<Clippers />} />
-        <Route path="/lakers" element={<Lakers />} />
-        <Route path="/grizzlies" element={<Grizzlies />} />
-        <Route path="/heat" element={<Heat />} />
-        <Route path="/bucks" element={<Bucks />} />
-        <Route path="/timberwolves" element={<Timberwolves />} />
-        <Route path="/pelicans" element={<Pelicans />} />
-        <Route path="/knicks" element={<Knicks />} />
-        <Route path="/thunder" element={<Thunder />} />
-        <Route path="/magic" element={<Magic />} />
-        <Route path="/sevsix" element={<Sevsix />} />
-        <Route path="/suns" element={<Suns />} />
-        <Route path="/blazers" element={<Blazers />} />
-        <Route path="/kings" element={<Kings />} />
-        <Route path="/spurs" element={<Spurs />} />
-        <Route path="/raptors" element={<Raptors />} />
-        <Route path="/jazz" element={<Jazz />} />
-        <Route path="/wizards" element={<Wizards />} />
+            {/* teams */}
+            {renderRoutes(TEAM_ROUTES)}
 
-        {/* team NEW */}
-        <Route path="/hawksMain" element={<HawksMain />} />
-        <Route path="/celticsMain" element={<CelticsMain />} />
-        <Route path="/netsMain" element={<NetsMain />} />
-        <Route path="/hornetsMain" element={<HornetsMain />} />
-        <Route path="/bullsMain" element={<BullsMain />} />
-        <Route path="cavaliersMain" element={<CavaliersMain />} />
-        <Route path="/mavericksMain" element={<MavericksMain />} />
-        <Route path="/nuggetsMain" element={<NuggetsMain />} />
-        <Route path="/pistonsMain" element={<PistonsMain />} />
-        <Route path="/warriorsMain" element={<WarriorsMain />} />
-        <Route path="/rocketsMain" element={<RocketsMain />} />
-        <Route path="/pacersMain" element={<PacersMain />} />
-        <Route path="/clippersMain" element={<ClippersMain />} />
-        <Route path="/lakersMain" element={<LakersMain />} />
-        <Route path="/grizzliesMain" element={<GrizzliesMain />} />
-        <Route path="/heatMain" element={<HeatMain />} />
-        <Route path="/bucksMain" element={<BucksMain />} />
-        <Route path="/timberwolvesMain" element={<TimberwolvesMain />} />
-        <Route path="/pelicansMain" element={<PelicansMain />} />
-        <Route path="/knicksMain" element={<KnicksMain />} />
-        <Route path="/thunderMain" element={<ThunderMain />} />
-        <Route path="/magicMain" element={<MagicMain />} />
-        <Route path="/sevsixMain" element={<SevsixMain />} />
-        <Route path="/sunsMain" element={<SunsMain />} />
-        <Route path="/blazersMain" element={<BlazersMain />} />
-        <Route path="/kingsMain" element={<KingsMain />} />
-        <Route path="/spursMan" element={<SpursMan />} />
-        <Route path="/raptorsMain" element={<RaptorsMain />} />
-        <Route path="/jazzMain" element={<JazzMain />} />
-        <Route path="/wizardsMain" element={<WizardsMain />} />
+            {/* admin */}
+            {renderRoutes(ADMIN_ROUTES)}
 
-        {/* agentConsole */}
-        <Route
-          path="/headInfoAgentControlCenter"
-          element={<HeadInfoAgentControlCenter />}
-        />
-        <Route
-          path="/playersRosterAgentControlCenter"
-          element={<PlayersRosterAgentControlCenterFixThreeArchive />}
-        />
-        {/* players new  */}
-        <Route
-          path="/playerConsoleAdminMain"
-          element={<PlayerConsoleAdminMain />}
-        />
+            {/* user market */}
+            {renderRoutes(USER_MARKET_ROUTES)}
 
-        {/* players new  */}
+            {/* common */}
+            {renderRoutes(COMMON_ROUTES)}
 
-        <Route path="/picksMain" element={<PicksMain />} />
+            {/* chat */}
+            {renderRoutes(CHAT_ROUTES)}
 
-        <Route
-          path="/deadCapRosterAgentControl"
-          element={<DeadCapRosterAgentControl />}
-        />
-        {/* <Route path="/logs" element={<Logs />} /> */}
-        <Route path="/logs" element={<LogsMain />} />
-        <Route path="/penalties" element={<Penalties />} />
-        <Route path="/playerOptionMain" element={<PlayerOptionMain />} />
-        <Route path="/teamOptionMain" element={<TeamOptionAdminMain />} />
-        <Route path="/rfaAdminMain" element={<RFAAdminMain />} />
-        <Route
-          path="/ufaAdminFirstRoundMain"
-          element={<UFAAdminFirstRoundMain />}
-        />
-        <Route
-          path="/ufaAdminSecondRoundMain"
-          element={<UFAAdminSecondRoundMain />}
-        />
-        <Route
-          path="/ufaAdminThirdRoundMain"
-          element={<UFAAdminThirdRoundMain />}
-        />
-
-        {/* {events} */}
-
-        <Route path="/maintournament" element={<MainTournament />} />
-        <Route path="/tradesAll" element={<TradesAll />} />
-        {/* <Route path="/tradesAll" element={<TradesMain />} /> */}
-        <Route path="/draftLotteryMain" element={<DraftLotteryMain />} />
-
-        {/* market */}
-
-        <Route
-          path="/playerOptionUserMain"
-          element={<PlayerOptionUserMain />}
-        />
-        {/* <Route path="/teamOptionUser" element={<TeamOptionUser />} /> */}
-        <Route path="/teamOptionUserMain" element={<TeamOptionUserMain />} />
-        <Route
-          path="/rfaUserFirstRoundMain"
-          element={<RFAUserFirstRoundMain />}
-        />
-        <Route path="/rfaUserSecondMain" element={<RFAUserSecondMain />} />
-        <Route path="/rfaUserResultMain" element={<RFAUserResultMain />} />
-        <Route
-          path="/ufaufrFirstStageMain"
-          element={<UFAUFRFirstStageMain />}
-        />
-        <Route
-          path="/ufaufrSecondStageMain"
-          element={<UFAUFRSecondStageMain />}
-        />
-        <Route
-          path="/ufaUserFirstRoundResultMain"
-          element={<UFAUserFirstRoundResultMain />}
-        />
-        <Route
-          path="/ufaUSRFirstStageMain"
-          element={<UFAUSRFirstStageMain />}
-        />
-        <Route
-          path="/ufaUSRSecondStageMain"
-          element={<UFAUSRSecondStageMain />}
-        />
-        <Route
-          path="/ufaUserSecondRoundResultMain"
-          element={<UFAUserSecondRoundResultMain />}
-        />
-        <Route
-          path="/ufaUTRFirstStageMain"
-          element={<UFAUTRFirstStageMain />}
-        />
-        <Route
-          path="/ufaUTRSecondStageMain"
-          element={<UFAUTRSecondStageMain />}
-        />
-        <Route
-          path="/ufaUserThirdRoundResultMain"
-          element={<UFAUserThirdRoundResultMain />}
-        />
-      </Routes>
-    </BrowserRouter>
+            {/* errors */}
+            <Route path="/403" element={<Forbidden />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </HashRouter>
+        <AuthModal />
+      </AuthModalProvider>
+    </AuthProvider>
   );
 }
 

@@ -9,6 +9,11 @@ type PickWithDetails = {
   note: string;
 };
 
+// Пропсы
+type PicksBodyProps = {
+  readOnly?: boolean;
+};
+
 // Соответствие между колонками пиков, команд и примечаний
 const columnMapping = [
   { pick: "1R26", team: "team1R26", note: "note1R26" },
@@ -19,7 +24,7 @@ const columnMapping = [
   { pick: "2R28", team: "team2R28", note: "note2R28" },
 ];
 
-const PicksBody: React.FC = () => {
+const PicksBody: React.FC<PicksBodyProps> = ({ readOnly = false }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pickObjects, setPickObjects] = useState<PickWithDetails[]>([]);
   const [selectedPicks, setSelectedPicks] = useState<PickWithDetails[]>([]);
@@ -196,11 +201,13 @@ const PicksBody: React.FC = () => {
 
   // Удаление пика из выбранных
   const removePick = (pick: string) => {
+    if (readOnly) return;
     setSelectedPicks(selectedPicks.filter((p) => p.pick !== pick));
   };
 
   // Редактирование команды
   const startEditing = (pickObj: PickWithDetails) => {
+    if (readOnly) return;
     setEditingPick(pickObj.pick);
     setEditingTeamValue(pickObj.team);
     setTeamSearchEdit(""); // сброс поиска при открытии
@@ -213,6 +220,7 @@ const PicksBody: React.FC = () => {
   };
 
   const saveEditing = async () => {
+    if (readOnly) return;
     if (!editingPick) return;
 
     try {
@@ -247,6 +255,7 @@ const PicksBody: React.FC = () => {
 
   // Редактирование примечания
   const startEditingNote = (pickObj: PickWithDetails) => {
+    if (readOnly) return;
     setEditingNotePick(pickObj.pick);
     setEditingNoteValue(pickObj.note);
   };
@@ -257,6 +266,7 @@ const PicksBody: React.FC = () => {
   };
 
   const saveEditingNote = async () => {
+    if (readOnly) return;
     if (!editingNotePick) return;
 
     try {
@@ -567,36 +577,41 @@ const PicksBody: React.FC = () => {
                               : obj.note}
                           </span>
                         )}
-                        <button
-                          className="pb-edit-chip"
-                          onClick={() => startEditingNote(obj)}
-                          aria-label="Редактировать примечание"
-                          title="Редактировать примечание"
-                        >
-                          📝
-                        </button>
-                        <button
-                          className="pb-edit-chip"
-                          onClick={() => startEditing(obj)}
-                          aria-label="Редактировать команду"
-                          title="Редактировать команду"
-                        >
-                          ✎
-                        </button>
-                        <button
-                          className="pb-remove-chip"
-                          onClick={() => removePick(obj.pick)}
-                          aria-label="Удалить"
-                        >
-                          ×
-                        </button>
+                        {/* 👈 кнопки редактирования/удаления — только админам */}
+                        {!readOnly && (
+                          <>
+                            <button
+                              className="pb-edit-chip"
+                              onClick={() => startEditingNote(obj)}
+                              aria-label="Редактировать примечание"
+                              title="Редактировать примечание"
+                            >
+                              📝
+                            </button>
+                            <button
+                              className="pb-edit-chip"
+                              onClick={() => startEditing(obj)}
+                              aria-label="Редактировать команду"
+                              title="Редактировать команду"
+                            >
+                              ✎
+                            </button>
+                            <button
+                              className="pb-remove-chip"
+                              onClick={() => removePick(obj.pick)}
+                              aria-label="Удалить"
+                            >
+                              ×
+                            </button>
+                          </>
+                        )}
                       </span>
                     ))
                   )}
                 </div>
 
-                {/* Модальное окно редактирования команды с поиском */}
-                {editingPick && (
+                {/* 👈 Модалка редактирования команды — только админам */}
+                {!readOnly && editingPick && (
                   <div className="pb-edit-modal">
                     <div className="pb-edit-content">
                       <h4>Редактирование команды для "{editingPick}"</h4>
@@ -671,8 +686,8 @@ const PicksBody: React.FC = () => {
                   </div>
                 )}
 
-                {/* Модальное окно редактирования примечания */}
-                {editingNotePick && (
+                {/* 👈 Модалка редактирования примечания — только админам */}
+                {!readOnly && editingNotePick && (
                   <div className="pb-edit-modal">
                     <div className="pb-edit-content">
                       <h4>Редактирование примечания для "{editingNotePick}"</h4>
