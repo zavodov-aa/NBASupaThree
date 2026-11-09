@@ -1,0 +1,90 @@
+.po-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  color: #e6e6e6;
+}
+
+.po-header h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.po-subtitle {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #9aa0a6;
+}
+
+.po-message {
+  padding: 16px;
+  border-radius: 8px;
+  background: #1c1f24;
+  color: #cfd2d6;
+  font-size: 14px;
+}
+
+.po-message--error {
+  background: #3a1c1c;
+  color: #ffb4b4;
+}
+
+.po-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #16191d;
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.po-table thead th {
+  text-align: left;
+  padding: 12px 14px;
+  background: #1f232a;
+  color: #9aa0a6;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid #2a2f36;
+}
+
+.po-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #23272e;
+}
+
+.po-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.po-table tbody tr:hover {
+  background: #1b1f25;
+}
+
+.po-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.po-salary {
+  font-variant-numeric: tabular-nums;
+  color: #7fdca4;
+}
+
+.po-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.po-badge--po {
+  background: #2a3f5f;
+  color: #9ec5ff;
+}

@@ -59,3 +59,42 @@
   font-size: 13px;
   line-height: 1;
 }
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* Ряд быстрых реакций сверху меню */
+.chat-message-menu__reactions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 4px;
+}
+
+.chat-message-menu__reaction {
+  font-size: 20px;
+  line-height: 1;
+  padding: 6px 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  transition:
+    background 0.12s ease,
+    transform 0.12s ease;
+}
+
+.chat-message-menu__reaction:hover {
+  background: #f0f2f5;
+  transform: scale(1.15);
+}
+
+.chat-message-menu__reaction:active {
+  transform: scale(0.95);
+}
+
+/* Разделитель между реакциями и пунктами меню */
+.chat-message-menu__divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 4px 0;
+}

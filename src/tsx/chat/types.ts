@@ -20,3 +20,12 @@ export type Message = {
   edited_at?: string | null;
   deleted_at?: string | null;
 };
+
+export type MessageReaction = {
+  id: string;
+  message_id: string;
+  user_id: number;
+  team: string;
+  emoji: string;
+  created_at: string;
+};

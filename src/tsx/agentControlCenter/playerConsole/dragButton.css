@@ -1,0 +1,218 @@
+/* ============================================================
+   Плавающая кнопка (FAB) + выдвижная панель для Picks / Cash
+   ============================================================ */
+
+.pcam-fab {
+  position: fixed;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  background-color: #1f2937;
+  color: #e0e0e0;
+  font-size: 22px;
+  line-height: 1;
+  cursor: grab;
+  z-index: 1200;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  user-select: none;
+  touch-action: none; /* важно: иначе на мобилке будет скролл вместо drag */
+  transition:
+    background-color 0.15s ease,
+    transform 0.12s ease,
+    box-shadow 0.15s ease;
+}
+
+.pcam-fab:hover {
+  background-color: #2a3441;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.65);
+}
+
+.pcam-fab:active {
+  cursor: grabbing;
+  transform: scale(0.97);
+}
+
+.pcam-fab--open {
+  background-color: #8b1e1e;
+  border-color: #a03030;
+}
+
+.pcam-fab--open:hover {
+  background-color: #a03030;
+}
+
+.pcam-fab__icon {
+  pointer-events: none;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Индикатор несохранённых изменений / активности (опционально) */
+.pcam-fab__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background-color: #e53935;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0a0a0a;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Выдвижная панель
+   ============================================================ */
+
+.pcam-panel {
+  position: fixed;
+  width: 380px;
+  max-width: calc(100vw - 24px);
+  max-height: 75vh;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+  z-index: 1199;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #e0e0e0;
+  animation: pcam-panel-in 0.16s ease-out;
+}
+
+@keyframes pcam-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pcam-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background-color: #252525;
+  border-bottom: 1px solid #333;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.pcam-panel__header:active {
+  cursor: grabbing;
+}
+
+.pcam-panel__title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.pcam-panel__close {
+  background: none;
+  border: 1px solid #444;
+  color: #ccc;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+  transition: all 0.15s ease;
+}
+
+.pcam-panel__close:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+  border-color: #555;
+}
+
+.pcam-panel__content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+}
+
+/* Скроллбар в тёмной теме */
+.pcam-panel__content::-webkit-scrollbar {
+  width: 8px;
+}
+.pcam-panel__content::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+.pcam-panel__content::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+.pcam-panel__content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ============================================================
+   Адаптив
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .pcam-fab {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .pcam-panel {
+    width: calc(100vw - 20px);
+    max-height: 70vh;
+  }
+
+  .pcam-panel__content {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pcam-fab {
+    width: 46px;
+    height: 46px;
+    font-size: 18px;
+  }
+
+  .pcam-panel {
+    width: calc(100vw - 16px);
+    max-height: 65vh;
+  }
+}
+
+/* Уменьшенная анимация для пользователей с prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .pcam-panel {
+    animation: none;
+  }
+  .pcam-fab {
+    transition: none;
+  }
+}

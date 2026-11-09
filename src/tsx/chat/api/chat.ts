@@ -1,5 +1,5 @@
 import { supabase } from "../../../Supabase";
-import type { Channel, Message } from "../types";
+import type { Channel, Message, MessageReaction } from "../types";
 
 /* ---------------------------------------------------------------- */
 /*  Каналы                                                          */
@@ -500,6 +500,98 @@ export function subscribeToChannelReads(
         table: "channel_reads",
         filter: `channel_id=eq.${channelId}`,
       },
+      () => onChange(),
+    )
+    .subscribe();
+
+  return () => {
+    supabase.removeChannel(sub);
+  };
+}
+
+/* ---------------------------------------------------------------- */
+/*  Реакции                                                         */
+/* ---------------------------------------------------------------- */
+
+/**
+ * Получить все реакции для канала.
+ * Сначала берём id всех сообщений канала, потом тянем реакции по ним.
+ */
+export async function getReactionsForChannel(
+  channelId: string,
+): Promise<MessageReaction[]> {
+  const { data: msgs, error: msgsError } = await supabase
+    .from("messages")
+    .select("id")
+    .eq("channel_id", channelId);
+
+  if (msgsError) throw msgsError;
+
+  const ids = (msgs ?? []).map((m) => m.id as string);
+  if (ids.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from("message_reactions")
+    .select("*")
+    .in("message_id", ids);
+
+  if (error) throw error;
+  return (data ?? []) as MessageReaction[];
+}
+
+/**
+ * Поставить / снять реакцию.
+ * Если такая реакция (message + user + emoji) уже есть — удаляем,
+ * иначе — добавляем.
+ */
+export async function toggleReaction(params: {
+  messageId: string;
+  userId: number;
+  team: string;
+  emoji: string;
+}): Promise<void> {
+  const { messageId, userId, team, emoji } = params;
+
+  const { data: existing, error: findError } = await supabase
+    .from("message_reactions")
+    .select("id")
+    .eq("message_id", messageId)
+    .eq("user_id", userId)
+    .eq("emoji", emoji)
+    .maybeSingle();
+
+  if (findError) throw findError;
+
+  if (existing) {
+    const { error } = await supabase
+      .from("message_reactions")
+      .delete()
+      .eq("id", existing.id);
+    if (error) throw error;
+  } else {
+    const { error } = await supabase
+      .from("message_reactions")
+      .insert({ message_id: messageId, user_id: userId, team, emoji });
+    if (error) throw error;
+  }
+}
+
+/**
+ * Подписка на изменения реакций.
+ * Слушаем всю таблицу message_reactions без фильтра по каналу,
+ * потому что фильтр по message_id недоступен в postgres_changes
+ * (только по колонкам самой таблицы). На каждое изменение
+ * просто перезагружаем реакции канала.
+ */
+export function subscribeToReactions(
+  channelId: string,
+  onChange: () => void,
+): () => void {
+  const sub = supabase
+    .channel(`reactions:${channelId}`)
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: "message_reactions" },
       () => onChange(),
     )
     .subscribe();

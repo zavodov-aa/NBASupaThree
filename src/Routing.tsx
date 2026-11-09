@@ -305,28 +305,33 @@ import TradesAll from "./tsx/events/trades/TreadesAllHeader/TradesAll";
 import DraftLotteryMain from "./tsx/events/draftLottery/DraftLotteryMain";
 
 // market — admin
-import PlayerOptionMain from "./tsx/market/playerOption/playerOptionAdmin/PlayerOptionMain";
-import TeamOptionAdminMain from "./tsx/market/teamOption/teamOptionAdmin/TeamOptionAdminMain";
-import RFAAdminMain from "./tsx/market/rfa/rfaAdmin/RFAAdminMain";
-import UFAAdminFirstRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminFirstRound/UFAAdminFirstRoundMain";
-import UFAAdminSecondRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminSecondRound/UFAAdminSecondRoundMain";
-import UFAAdminThirdRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminThirdRound/UFAAdminThirdRoundMain";
+// рынок 1 ВАРИАНТ АРХИВ
+// import PlayerOptionMain from "./tsx/market/playerOption/playerOptionAdmin/PlayerOptionMain";
+// import TeamOptionAdminMain from "./tsx/market/teamOption/teamOptionAdmin/TeamOptionAdminMain";
+// import RFAAdminMain from "./tsx/market/rfa/rfaAdmin/RFAAdminMain";
+// import UFAAdminFirstRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminFirstRound/UFAAdminFirstRoundMain";
+// import UFAAdminSecondRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminSecondRound/UFAAdminSecondRoundMain";
+// import UFAAdminThirdRoundMain from "./tsx/market/ufa/UFAAdmin/UFAAdminThirdRound/UFAAdminThirdRoundMain";
+// рынок 1 ВАРИАНТ АРХИВ
 
 // market — user
-import PlayerOptionUserMain from "./tsx/market/playerOption/playerOptionUser/PlayerOptionUserMain";
-import TeamOptionUserMain from "./tsx/market/teamOption/teamOptionUser/TeamOptionUserMain";
-import RFAUserFirstRoundMain from "./tsx/market/rfa/rfaUser/RFAUserFirstRoundFull/RFAUserMain";
-import RFAUserSecondMain from "./tsx/market/rfa/rfaUser/RFAUserSecondRoundFull/RFAUserSecondMain";
-import RFAUserResultMain from "./tsx/market/rfa/rfaUser/rfaUserResult/RFAUserResultMain";
-import UFAUFRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundFirstStage/UFAUFRFirstStageMain";
-import UFAUFRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundSecondStage/UFAUFRSecondStageMain";
-import UFAUserFirstRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRoundResult/UFAUserFirstRoundResultMain";
-import UFAUSRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundFirstStage/UFAUSRFirstStageMain";
-import UFAUSRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundSecondStage/UFAUSRSecondStageMain";
-import UFAUserSecondRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRoundResult/UFAUserSecondRoundResultMain";
-import UFAUTRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundFirstStage/UFAUTRFirstStageMain";
-import UFAUTRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundSecondStage/UFAUTRSecondStageMain";
-import UFAUserThirdRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRoundResult/UFAUserThirdRoundResultMain";
+// import PlayerOptionUserMain from "./tsx/market/playerOption/playerOptionUser/PlayerOptionUserMain";
+// import TeamOptionUserMain from "./tsx/market/teamOption/teamOptionUser/TeamOptionUserMain";
+// import RFAUserFirstRoundMain from "./tsx/market/rfa/rfaUser/RFAUserFirstRoundFull/RFAUserMain";
+// import RFAUserSecondMain from "./tsx/market/rfa/rfaUser/RFAUserSecondRoundFull/RFAUserSecondMain";
+// import RFAUserResultMain from "./tsx/market/rfa/rfaUser/rfaUserResult/RFAUserResultMain";
+// import UFAUFRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundFirstStage/UFAUFRFirstStageMain";
+// import UFAUFRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRound/UFAUserFirstRoundSecondStage/UFAUFRSecondStageMain";
+// import UFAUserFirstRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserFirstRoundResult/UFAUserFirstRoundResultMain";
+// import UFAUSRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundFirstStage/UFAUSRFirstStageMain";
+// import UFAUSRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRound/UFAUserSecondRoundSecondStage/UFAUSRSecondStageMain";
+// import UFAUserSecondRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserSecondRoundResult/UFAUserSecondRoundResultMain";
+// import UFAUTRFirstStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundFirstStage/UFAUTRFirstStageMain";
+// import UFAUTRSecondStageMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRound/UFAUserThirdRoundSecondStage/UFAUTRSecondStageMain";
+// import UFAUserThirdRoundResultMain from "./tsx/market/ufa/UFAUser/UFAUserThirdRoundResult/UFAUserThirdRoundResultMain";
+
+// market — user 2V
+import PlayerOptionUserMainNew from "./tsx/marketNew/PlayerOptionUserNew/PlayerOptionUserMainNew";
 
 // teams
 import HawksMain from "./tsx/team_new/hawks/HawksMain";
@@ -436,12 +441,14 @@ const ADMIN_ROUTES: RouteItem[] = [
   { path: "/picksMain", Component: PicksMain, roles: ["admin", "user"] },
   { path: "/logs", Component: LogsMain },
   { path: "/penalties", Component: Penalties },
-  { path: "/playerOptionMain", Component: PlayerOptionMain },
-  { path: "/teamOptionMain", Component: TeamOptionAdminMain },
-  { path: "/rfaAdminMain", Component: RFAAdminMain },
-  { path: "/ufaAdminFirstRoundMain", Component: UFAAdminFirstRoundMain },
-  { path: "/ufaAdminSecondRoundMain", Component: UFAAdminSecondRoundMain },
-  { path: "/ufaAdminThirdRoundMain", Component: UFAAdminThirdRoundMain },
+  // рынок 1 ВАРИАНТ АРХИВ
+  // { path: "/playerOptionMain", Component: PlayerOptionMain },
+  // { path: "/teamOptionMain", Component: TeamOptionAdminMain },
+  // { path: "/rfaAdminMain", Component: RFAAdminMain },
+  // { path: "/ufaAdminFirstRoundMain", Component: UFAAdminFirstRoundMain },
+  // { path: "/ufaAdminSecondRoundMain", Component: UFAAdminSecondRoundMain },
+  // { path: "/ufaAdminThirdRoundMain", Component: UFAAdminThirdRoundMain },
+  // рынок 1 ВАРИАНТ АРХИВ
 ];
 
 /* ------------------------------------------------------------------ */
@@ -449,29 +456,33 @@ const ADMIN_ROUTES: RouteItem[] = [
 /* ------------------------------------------------------------------ */
 
 const USER_MARKET_ROUTES: RouteItem[] = [
-  { path: "/playerOptionUserMain", Component: PlayerOptionUserMain },
-  { path: "/teamOptionUserMain", Component: TeamOptionUserMain },
-  { path: "/rfaUserFirstRoundMain", Component: RFAUserFirstRoundMain },
-  { path: "/rfaUserSecondMain", Component: RFAUserSecondMain },
-  { path: "/rfaUserResultMain", Component: RFAUserResultMain },
-  { path: "/ufaufrFirstStageMain", Component: UFAUFRFirstStageMain },
-  { path: "/ufaufrSecondStageMain", Component: UFAUFRSecondStageMain },
-  {
-    path: "/ufaUserFirstRoundResultMain",
-    Component: UFAUserFirstRoundResultMain,
-  },
-  { path: "/ufaUSRFirstStageMain", Component: UFAUSRFirstStageMain },
-  { path: "/ufaUSRSecondStageMain", Component: UFAUSRSecondStageMain },
-  {
-    path: "/ufaUserSecondRoundResultMain",
-    Component: UFAUserSecondRoundResultMain,
-  },
-  { path: "/ufaUTRFirstStageMain", Component: UFAUTRFirstStageMain },
-  { path: "/ufaUTRSecondStageMain", Component: UFAUTRSecondStageMain },
-  {
-    path: "/ufaUserThirdRoundResultMain",
-    Component: UFAUserThirdRoundResultMain,
-  },
+  // рынок 1 ВАРИАНТ АРХИВ
+  // { path: "/playerOptionUserMain", Component: PlayerOptionUserMain },
+  // { path: "/teamOptionUserMain", Component: TeamOptionUserMain },
+  // { path: "/rfaUserFirstRoundMain", Component: RFAUserFirstRoundMain },
+  // { path: "/rfaUserSecondMain", Component: RFAUserSecondMain },
+  // { path: "/rfaUserResultMain", Component: RFAUserResultMain },
+  // { path: "/ufaufrFirstStageMain", Component: UFAUFRFirstStageMain },
+  // { path: "/ufaufrSecondStageMain", Component: UFAUFRSecondStageMain },
+  // {
+  //   path: "/ufaUserFirstRoundResultMain",
+  //   Component: UFAUserFirstRoundResultMain,
+  // },
+  // { path: "/ufaUSRFirstStageMain", Component: UFAUSRFirstStageMain },
+  // { path: "/ufaUSRSecondStageMain", Component: UFAUSRSecondStageMain },
+  // {
+  //   path: "/ufaUserSecondRoundResultMain",
+  //   Component: UFAUserSecondRoundResultMain,
+  // },
+  // { path: "/ufaUTRFirstStageMain", Component: UFAUTRFirstStageMain },
+  // { path: "/ufaUTRSecondStageMain", Component: UFAUTRSecondStageMain },
+  // {
+  //   path: "/ufaUserThirdRoundResultMain",
+  //   Component: UFAUserThirdRoundResultMain,
+  // },
+
+  // рынок 2 ВАРИАНТ
+  { path: "/playerOptionUserMainNew", Component: PlayerOptionUserMainNew },
 ];
 
 /* ------------------------------------------------------------------ */

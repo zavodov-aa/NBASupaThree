@@ -70,6 +70,28 @@
   border-color: #cfcfc9;
 }
 
+/* ===== Цветная полоска слева у чужих сообщений ===== */
+.chat-message-row:not(.chat-message-row--own) .chat-message {
+  position: relative;
+  padding-left: 16px;
+}
+.chat-message-row:not(.chat-message-row--own) .chat-message::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--team-color, #d0d0ca);
+}
+.chat-message-row--own .chat-message::before {
+  display: none;
+}
+.chat-message-row--deleted .chat-message::before {
+  opacity: 0.35;
+}
+
 .chat-message--clickable {
   cursor: pointer;
   transition: filter 0.12s ease;
@@ -82,18 +104,30 @@
   outline-offset: 2px;
 }
 
-/* ===== Шапка команды (только имя, без времени) ===== */
+/* ===== Шапка команды (цветной чип) ===== */
 .chat-message__team {
-  display: block;
+  display: inline-block;
+  align-self: flex-start;
   font-size: 11px;
-  color: #5a5a5a;
-  margin-bottom: 4px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+  max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.chat-message--own .chat-message__team {
+  /* fallback, если CSS-переменных нет */
+  background: #e8e8e2;
   color: #4a4a4a;
+  /* цвет команды, прокинутый из MessageItem */
+  background: var(--team-color, #e8e8e2);
+  color: var(--team-text, #4a4a4a);
+}
+/* У своих сообщений чип не показываем (showTeam и так false, но на всякий) */
+.chat-message--own .chat-message__team {
+  display: none;
 }
 
 /* ===== Текст ===== */
@@ -239,16 +273,30 @@
   color: #252525;
 }
 
-/* ===== Разделитель даты ===== */
+/* ===== Разделитель даты (вариант B: дата по центру, линии по бокам) ===== */
 .chat-message__date-separator {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
-  margin: 12px 0 4px;
+  margin: 14px 0 6px;
   padding: 0;
 }
+
+/* Линии по бокам */
+.chat-message__date-separator::before,
+.chat-message__date-separator::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 1px;
+}
+
+/* Пилюля по центру */
 .chat-message__date-pill {
+  flex: 0 0 auto;
   display: inline-block;
   padding: 3px 12px;
   background: rgba(0, 0, 0, 0.07);
@@ -258,4 +306,16 @@
   letter-spacing: 0.02em;
   border-radius: 999px;
   user-select: none;
+  white-space: nowrap;
+}
+
+/* На узких экранах линии не должны «съедать» пилюлю */
+@media (max-width: 420px) {
+  .chat-message__date-separator {
+    gap: 6px;
+  }
+  .chat-message__date-pill {
+    padding: 3px 10px;
+    font-size: 10px;
+  }
 }
